@@ -1,5 +1,5 @@
 const AdSchema = require('../schemas/AdSchema');
-const { uploadFileToAws, awsFolderNames, getFileUrlFromAws, deleteFileFromAws, extractFileNameFromUrl } = require('../utils/FileUploadAwsUtil');
+const { uploadFileToAws, awsFolderNames, getFileUrlFromAws, deleteFileFromAws, extractFileNameFromUrl, handleFileUploads } = require('../utils/FileUploadAwsUtil');
 
 const createAd = async (req, res) => {
     try {
@@ -26,10 +26,10 @@ const createAd = async (req, res) => {
         let imageUrl = null;
         if (image) {
             try {
-                const imageFileName = `${awsFolderNames.ads}/${Date.now()}-${image.name}`;
-                const uploadResult = await uploadFileToAws(imageFileName, image.tempFilePath);
-                if (uploadResult) {
-                    imageUrl = getFileUrlFromAws(imageFileName);
+                const userId = req.user?.id || 'mockUserId';
+                const urls = await handleFileUploads(image, awsFolderNames.ads, userId, 'image');
+                if (urls && urls.length > 0) {
+                    imageUrl = urls[0];
                 } else {
                     console.warn('Image upload to S3 failed, creating ad without image');
                 }
@@ -69,7 +69,7 @@ const createAd = async (req, res) => {
 
 const getAllAds = async (req, res) => {
     try {
-        const ads = AdSchema.find().sort({ createdAt: -1 });
+        const ads = await AdSchema.find().sort({ createdAt: -1 });
 
         return res.status(200).json({
             status: true,
@@ -88,7 +88,7 @@ const getAllAds = async (req, res) => {
 const getActiveAds = async (req, res) => {
     try {
         const now = new Date();
-        const ads = AdSchema.find({
+        const ads = await AdSchema.find({
             status: 'Active',
             startDate: { $lte: now },
             endDate: { $gte: now },
@@ -111,7 +111,7 @@ const getActiveAds = async (req, res) => {
 const getPopupAd = async (req, res) => {
     try {
         const now = new Date();
-        const popupAd = AdSchema.findOne({
+        const popupAd = await AdSchema.findOne({
             status: 'Active',
             showAsPopup: true,
             startDate: { $lte: now },
@@ -173,10 +173,10 @@ const updateAd = async (req, res) => {
         if (req.files && req.files.image) {
             try {
                 const image = req.files.image;
-                const imageFileName = `${awsFolderNames.ads}/${Date.now()}-${image.name}`;
-                const uploadResult = await uploadFileToAws(imageFileName, image.tempFilePath);
-                if (uploadResult) {
-                    newImageUrl = getFileUrlFromAws(imageFileName);
+                const userId = req.user?.id || 'mockUserId';
+                const urls = await handleFileUploads(image, awsFolderNames.ads, userId, 'image');
+                if (urls && urls.length > 0) {
+                    newImageUrl = urls[0];
                     // Delete old image
                     if (ad.imageUrl) {
                         const oldFileName = extractFileNameFromUrl(ad.imageUrl);
@@ -193,13 +193,13 @@ const updateAd = async (req, res) => {
         }
 
         // Update fields
-        ad.title = title || ad.title;
-        ad.description = description || ad.description;
-        ad.category = category || ad.category;
+        ad.title = title !== undefined ? title : ad.title;
+        ad.description = description !== undefined ? description : ad.description;
+        ad.category = category !== undefined ? category : ad.category;
         ad.startDate = startDate ? new Date(startDate) : ad.startDate;
         ad.endDate = endDate ? new Date(endDate) : ad.endDate;
         ad.showAsPopup = showAsPopup !== undefined ? (showAsPopup === 'true' || showAsPopup === true) : ad.showAsPopup;
-        ad.status = status || ad.status;
+        ad.status = status !== undefined ? status : ad.status;
         ad.imageUrl = newImageUrl;
 
         await ad.save();

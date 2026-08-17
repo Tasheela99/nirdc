@@ -1,17 +1,8 @@
 const AnnouncementSchema = require('../schemas/AnnouncementSchema');
-const {uploadFileToAws, awsFolderNames, getFileUrlFromAws, deleteFileFromAws, extractFileNameFromUrl} = require("../utils/FileUploadAwsUtil");
+const {uploadFileToAws, awsFolderNames, getFileUrlFromAws, deleteFileFromAws, extractFileNameFromUrl, handleFileUploads} = require("../utils/FileUploadAwsUtil");
 const path = require('path');
 
-const uploadAnnouncementFile = async (file, isPdf = false) => {
-    if (!file) return null;
-    const folder = isPdf ? awsFolderNames.announcementPdfs : awsFolderNames.announcement;
-    const fileName = `${folder}/${Date.now()}-${file.name}`;
-    const uploadResult = await uploadFileToAws(fileName, file.tempFilePath);
-    if (!uploadResult) throw new Error('Failed to upload file to AWS S3.');
-    const url = getFileUrlFromAws(fileName);
-    if (!url) throw new Error('Failed to retrieve file URL from AWS S3.');
-    return url;
-};
+const cacheService = require("../services/CacheService");
 
 const deleteFileFromAwsIfExist = async (url) => {
     if (!url) return;
@@ -24,6 +15,7 @@ const deleteFileFromAwsIfExist = async (url) => {
 const createAnnouncement = async (req, res) => {
     try {
         const {titleEn, titleSi, titleTa, descriptionEn, descriptionSi, descriptionTa, date} = req.body;
+        const userId = req.user?.id || 'mockUserId';
 
         if (!req.files || !req.files.commonImage) {
             return res.status(400).json({
@@ -32,14 +24,21 @@ const createAnnouncement = async (req, res) => {
             });
         }
 
-        const commonImage = await uploadAnnouncementFile(req.files?.commonImage);
-        const imageEn = await uploadAnnouncementFile(req.files?.imageEn);
-        const imageSi = await uploadAnnouncementFile(req.files?.imageSi);
-        const imageTa = await uploadAnnouncementFile(req.files?.imageTa);
+        const uploadSingle = async (fileKey, isPdf = false) => {
+            if (!req.files || !req.files[fileKey]) return null;
+            const folder = isPdf ? awsFolderNames.announcementPdfs : awsFolderNames.announcement;
+            const urls = await handleFileUploads(req.files[fileKey], folder, userId, fileKey);
+            return urls && urls.length > 0 ? urls[0] : null;
+        };
 
-        const pdfEn = await uploadAnnouncementFile(req.files?.pdfEn, true);
-        const pdfSi = await uploadAnnouncementFile(req.files?.pdfSi, true);
-        const pdfTa = await uploadAnnouncementFile(req.files?.pdfTa, true);
+        const commonImage = await uploadSingle('commonImage');
+        const imageEn = await uploadSingle('imageEn');
+        const imageSi = await uploadSingle('imageSi');
+        const imageTa = await uploadSingle('imageTa');
+
+        const pdfEn = await uploadSingle('pdfEn', true);
+        const pdfSi = await uploadSingle('pdfSi', true);
+        const pdfTa = await uploadSingle('pdfTa', true);
 
         const newAnnouncementData = {
             titleEn, titleSi, titleTa,
@@ -52,6 +51,7 @@ const createAnnouncement = async (req, res) => {
 
         const newAnnouncement = new AnnouncementSchema(newAnnouncementData);
         const savedAnnouncement = await newAnnouncement.save();
+        await cacheService.clearPattern('announcements_*');
 
         res.status(201).json({
             status: true,
@@ -70,7 +70,7 @@ const createAnnouncement = async (req, res) => {
 
 const getAllAnnouncements = async (req, res) => {
     try {
-        const announcements = AnnouncementSchema.find();
+        const announcements = await AnnouncementSchema.find();
 
         // Ensure PDF URLs are always present
         const formatted = announcements.map(a => ({
@@ -143,6 +143,7 @@ const deleteAnnouncement = async (req, res) => {
         await deleteFileFromAwsIfExist(announcement.pdfTa);
 
         await AnnouncementSchema.findByIdAndDelete(id);
+        await cacheService.clearPattern('announcements_*');
 
         return res.status(200).json({
             status: true,
@@ -161,6 +162,7 @@ const deleteAnnouncement = async (req, res) => {
 const updateAnnouncement = async (req, res) => {
     const id = req.params.id;
     const { titleEn, titleSi, titleTa, descriptionEn, descriptionSi, descriptionTa, date } = req.body;
+    const userId = req.user?.id || 'mockUserId';
 
     try {
         const announcement = await AnnouncementSchema.findById(id);
@@ -168,50 +170,58 @@ const updateAnnouncement = async (req, res) => {
             return res.status(404).json({ status: false, message: 'Announcement not found' });
         }
 
+        const uploadSingle = async (fileKey, isPdf = false) => {
+            if (!req.files || !req.files[fileKey]) return null;
+            const folder = isPdf ? awsFolderNames.announcementPdfs : awsFolderNames.announcement;
+            const urls = await handleFileUploads(req.files[fileKey], folder, userId, fileKey);
+            return urls && urls.length > 0 ? urls[0] : null;
+        };
+
         if (req.files) {
             // Update images
             if (req.files.commonImage) {
                 await deleteFileFromAwsIfExist(announcement.commonImage);
-                announcement.commonImage = await uploadAnnouncementFile(req.files.commonImage);
+                announcement.commonImage = await uploadSingle('commonImage');
             }
             if (req.files.imageEn) {
                 await deleteFileFromAwsIfExist(announcement.imageEn);
-                announcement.imageEn = await uploadAnnouncementFile(req.files.imageEn);
+                announcement.imageEn = await uploadSingle('imageEn');
             }
             if (req.files.imageSi) {
                 await deleteFileFromAwsIfExist(announcement.imageSi);
-                announcement.imageSi = await uploadAnnouncementFile(req.files.imageSi);
+                announcement.imageSi = await uploadSingle('imageSi');
             }
             if (req.files.imageTa) {
                 await deleteFileFromAwsIfExist(announcement.imageTa);
-                announcement.imageTa = await uploadAnnouncementFile(req.files.imageTa);
+                announcement.imageTa = await uploadSingle('imageTa');
             }
 
             // Update PDFs
             if (req.files.pdfEn) {
                 await deleteFileFromAwsIfExist(announcement.pdfEn);
-                announcement.pdfEn = await uploadAnnouncementFile(req.files.pdfEn, true);
+                announcement.pdfEn = await uploadSingle('pdfEn', true);
             }
             if (req.files.pdfSi) {
                 await deleteFileFromAwsIfExist(announcement.pdfSi);
-                announcement.pdfSi = await uploadAnnouncementFile(req.files.pdfSi, true);
+                announcement.pdfSi = await uploadSingle('pdfSi', true);
             }
             if (req.files.pdfTa) {
                 await deleteFileFromAwsIfExist(announcement.pdfTa);
-                announcement.pdfTa = await uploadAnnouncementFile(req.files.pdfTa, true);
+                announcement.pdfTa = await uploadSingle('pdfTa', true);
             }
         }
 
         // Update fields
-        announcement.titleEn = titleEn || announcement.titleEn;
-        announcement.titleSi = titleSi || announcement.titleSi;
-        announcement.titleTa = titleTa || announcement.titleTa;
-        announcement.descriptionEn = descriptionEn || announcement.descriptionEn;
-        announcement.descriptionSi = descriptionSi || announcement.descriptionSi;
-        announcement.descriptionTa = descriptionTa || announcement.descriptionTa;
-        announcement.date = date || announcement.date;
+        announcement.titleEn = titleEn !== undefined ? titleEn : announcement.titleEn;
+        announcement.titleSi = titleSi !== undefined ? titleSi : announcement.titleSi;
+        announcement.titleTa = titleTa !== undefined ? titleTa : announcement.titleTa;
+        announcement.descriptionEn = descriptionEn !== undefined ? descriptionEn : announcement.descriptionEn;
+        announcement.descriptionSi = descriptionSi !== undefined ? descriptionSi : announcement.descriptionSi;
+        announcement.descriptionTa = descriptionTa !== undefined ? descriptionTa : announcement.descriptionTa;
+        announcement.date = date !== undefined ? date : announcement.date;
 
         await announcement.save();
+        await cacheService.clearPattern('announcements_*');
 
         return res.status(200).json({
             status: true,

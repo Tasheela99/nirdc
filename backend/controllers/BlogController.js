@@ -1,16 +1,8 @@
 const BlogSchema = require('../schemas/BlogSchema');
-const {uploadFileToAws, awsFolderNames, getFileUrlFromAws, deleteFileFromAws, extractFileNameFromUrl} = require("../utils/FileUploadAwsUtil");
+const {uploadFileToAws, awsFolderNames, getFileUrlFromAws, deleteFileFromAws, extractFileNameFromUrl, handleFileUploads} = require("../utils/FileUploadAwsUtil");
 const path = require('path');
 
-const uploadBlogImage = async (imageFile) => {
-    if (!imageFile) return null;
-    const fileName = `${awsFolderNames.blog}/${Date.now()}-${imageFile.name}`;
-    const uploadResult = await uploadFileToAws(fileName, imageFile.tempFilePath);
-    if (!uploadResult) throw new Error('Failed to upload image to AWS S3.');
-    const url = getFileUrlFromAws(fileName);
-    if (!url) throw new Error('Failed to retrieve image URL from AWS S3.');
-    return url;
-};
+const cacheService = require("../services/CacheService");
 
 const deleteImageFromAwsIfExist = async (imageUrl) => {
     if (!imageUrl) return;
@@ -23,6 +15,7 @@ const deleteImageFromAwsIfExist = async (imageUrl) => {
 const createBlog = async (req, res) => {
     try {
         const {titleEn, titleSi, titleTa, descriptionEn, descriptionSi, descriptionTa, date} = req.body;
+        const userId = req.user?.id || 'mockUserId';
 
         if (!req.files || !req.files.commonImage) {
             return res.status(400).json({
@@ -31,10 +24,16 @@ const createBlog = async (req, res) => {
             });
         }
 
-        const commonImage = await uploadBlogImage(req.files?.commonImage);
-        const imageEn = await uploadBlogImage(req.files?.imageEn);
-        const imageSi = await uploadBlogImage(req.files?.imageSi);
-        const imageTa = await uploadBlogImage(req.files?.imageTa);
+        const uploadSingle = async (fileKey) => {
+            if (!req.files || !req.files[fileKey]) return null;
+            const urls = await handleFileUploads(req.files[fileKey], awsFolderNames.blog, userId, fileKey);
+            return urls && urls.length > 0 ? urls[0] : null;
+        };
+
+        const commonImage = await uploadSingle('commonImage');
+        const imageEn = await uploadSingle('imageEn');
+        const imageSi = await uploadSingle('imageSi');
+        const imageTa = await uploadSingle('imageTa');
 
         const newBlog = new BlogSchema({
             titleEn, titleSi, titleTa,
@@ -47,6 +46,7 @@ const createBlog = async (req, res) => {
         });
 
         await newBlog.save();
+        await cacheService.clearPattern('blogs_*');
 
         return res.status(201).json({
             status: true,
@@ -64,7 +64,7 @@ const createBlog = async (req, res) => {
 
 const getAllBlogs = async (req, res) => {
     try {
-        const blog = BlogSchema.find();
+        const blog = await BlogSchema.find();
 
         return res.status(200).json({
             status: true,
@@ -119,6 +119,7 @@ const deleteBlog = async (req, res) => {
         await deleteImageFromAwsIfExist(blog.imageTa);
 
         await BlogSchema.findByIdAndDelete(id);
+        await cacheService.clearPattern('blogs_*');
 
         return res.status(200).json({
             status: true,
@@ -137,6 +138,7 @@ const deleteBlog = async (req, res) => {
 const updateBlog = async (req, res) => {
     const id = req.params.id;
     const { titleEn, titleSi, titleTa, descriptionEn, descriptionSi, descriptionTa, date } = req.body;
+    const userId = req.user?.id || 'mockUserId';
 
     try {
         const blog = await BlogSchema.findById(id);
@@ -144,36 +146,43 @@ const updateBlog = async (req, res) => {
             return res.status(404).json({ status: false, message: 'Blog not found' });
         }
 
+        const uploadSingle = async (fileKey) => {
+            if (!req.files || !req.files[fileKey]) return null;
+            const urls = await handleFileUploads(req.files[fileKey], awsFolderNames.blog, userId, fileKey);
+            return urls && urls.length > 0 ? urls[0] : null;
+        };
+
         // Handle image update
         if (req.files) {
             if (req.files.commonImage) {
                 await deleteImageFromAwsIfExist(blog.commonImage);
-                blog.commonImage = await uploadBlogImage(req.files.commonImage);
+                blog.commonImage = await uploadSingle('commonImage');
             }
             if (req.files.imageEn) {
                 await deleteImageFromAwsIfExist(blog.imageEn);
-                blog.imageEn = await uploadBlogImage(req.files.imageEn);
+                blog.imageEn = await uploadSingle('imageEn');
             }
             if (req.files.imageSi) {
                 await deleteImageFromAwsIfExist(blog.imageSi);
-                blog.imageSi = await uploadBlogImage(req.files.imageSi);
+                blog.imageSi = await uploadSingle('imageSi');
             }
             if (req.files.imageTa) {
                 await deleteImageFromAwsIfExist(blog.imageTa);
-                blog.imageTa = await uploadBlogImage(req.files.imageTa);
+                blog.imageTa = await uploadSingle('imageTa');
             }
         }
 
         // Update fields
-        blog.titleEn = titleEn || blog.titleEn;
-        blog.titleSi = titleSi || blog.titleSi;
-        blog.titleTa = titleTa || blog.titleTa;
-        blog.descriptionEn = descriptionEn || blog.descriptionEn;
-        blog.descriptionSi = descriptionSi || blog.descriptionSi;
-        blog.descriptionTa = descriptionTa || blog.descriptionTa;
-        blog.date = date || blog.date;
+        blog.titleEn = titleEn !== undefined ? titleEn : blog.titleEn;
+        blog.titleSi = titleSi !== undefined ? titleSi : blog.titleSi;
+        blog.titleTa = titleTa !== undefined ? titleTa : blog.titleTa;
+        blog.descriptionEn = descriptionEn !== undefined ? descriptionEn : blog.descriptionEn;
+        blog.descriptionSi = descriptionSi !== undefined ? descriptionSi : blog.descriptionSi;
+        blog.descriptionTa = descriptionTa !== undefined ? descriptionTa : blog.descriptionTa;
+        blog.date = date !== undefined ? date : blog.date;
 
         await blog.save();
+        await cacheService.clearPattern('blogs_*');
 
         return res.status(200).json({
             status: true,
