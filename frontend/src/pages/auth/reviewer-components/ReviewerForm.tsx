@@ -23,7 +23,7 @@ const SignUpSchema = z.object({
         .regex(/[0-9]/, { message: 'Password must contain a number' })
         .regex(/[@$!%*?&]/, { message: 'Password must contain at least one special character (@, $, !, %, *, ?, &)' }),
     confirmPassword: z.string(),
-    areasOfExpertise: z.array(z.string()).min(1, { message: 'Select at least one area of expertise' })
+    areasOfExpertise: z.string().min(1, { message: 'Enter your areas of expertise' })
 }).refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
     path: ["confirmPassword"]
@@ -41,18 +41,7 @@ const countryOptions: OptionType[] = Object.entries(countries).map(([, country])
     phoneCode: `+${country.phone}`,
 }));
 
-const expertiseOptions = [
-    { value: "Information Technology", label: "Information Technology" },
-    { value: "Agriculture", label: "Agriculture" },
-    { value: "Engineering", label: "Engineering" },
-    { value: "Medicine & Health", label: "Medicine & Health" },
-    { value: "Renewable Energy", label: "Renewable Energy" },
-    { value: "AI & Machine Learning", label: "AI & Machine Learning" },
-    { value: "Environmental Science", label: "Environmental Science" },
-    { value: "Biotechnology", label: "Biotechnology" },
-    { value: "Social Sciences", label: "Social Sciences" },
-    { value: "Other", label: "Other" }
-];
+// Removed expertiseOptions array
 
 interface Props {
     initialData: any;
@@ -73,7 +62,7 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
         country: "",
         password: "",
         confirmPassword: "",
-        areasOfExpertise: [],
+        areasOfExpertise: "",
     });
     
     const [errors, setErrors] = useState<any>({});
@@ -101,19 +90,7 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
         }
     };
 
-    const handleExpertiseChange = (selectedOptions: any) => {
-        setFormData((prev: any) => ({
-            ...prev,
-            areasOfExpertise: selectedOptions ? selectedOptions.map((opt: any) => opt.value) : [],
-        }));
-        if (errors.areasOfExpertise) {
-            setErrors((prev: any) => {
-                const newErrors = { ...prev };
-                delete newErrors.areasOfExpertise;
-                return newErrors;
-            });
-        }
-    };
+    // Removed handleExpertiseChange since it was used for the select component
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -221,54 +198,15 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
             />
             
             <div className="grid grid-cols-1 gap-5">
-                <div>
-                    <Select
-                        isMulti
-                        options={expertiseOptions}
-                        onChange={handleExpertiseChange}
-                        placeholder={t('auth.register.selectExpertise', 'Select Areas of Expertise *')}
-                        value={expertiseOptions.filter(option => formData.areasOfExpertise?.includes(option.value))}
-                        styles={{
-                            control: (base, state) => ({
-                                ...base,
-                                backgroundColor: 'transparent',
-                                borderColor: errors.areasOfExpertise ? '#d32f2f' : (state.isFocused ? '#6B1D4A' : 'rgba(128, 128, 128, 0.4)'),
-                                minHeight: '56px', borderRadius: '10px', fontSize: '1rem',
-                                boxShadow: 'none'
-                            }),
-                            singleValue: (base) => ({ ...base, color: 'inherit' }),
-                            input: (base) => ({ ...base, color: 'inherit' }),
-                            placeholder: (base) => ({ ...base, color: '#94A3B8' }),
-                            menu: (base) => ({ ...base, zIndex: 9999, backgroundColor: '#ffffff', borderRadius: '10px', overflow: 'hidden' }),
-                            option: (base, state) => ({
-                                ...base,
-                                color: state.isSelected ? '#ffffff' : '#1e293b',
-                                backgroundColor: state.isSelected ? '#6B1D4A' : (state.isFocused ? '#f1f5f9' : '#ffffff'),
-                                cursor: 'pointer',
-                                '&:active': { backgroundColor: '#8C2963', color: '#ffffff' }
-                            }),
-                            multiValue: (base) => ({
-                                ...base,
-                                backgroundColor: 'rgba(107, 29, 74, 0.1)',
-                                borderRadius: '6px'
-                            }),
-                            multiValueLabel: (base) => ({
-                                ...base,
-                                color: '#6B1D4A',
-                                fontWeight: 500
-                            }),
-                            multiValueRemove: (base) => ({
-                                ...base,
-                                color: '#6B1D4A',
-                                ':hover': {
-                                    backgroundColor: 'rgba(107, 29, 74, 0.2)',
-                                    color: '#4C1333',
-                                },
-                            }),
-                        }}
-                    />
-                    {errors.areasOfExpertise && <p className="text-[0.75rem] text-[#d32f2f] mt-1 ml-[14px]">{errors.areasOfExpertise}</p>}
-                </div>
+                <TextField
+                    label={t('auth.register.selectExpertise', 'Areas of Expertise *')}
+                    fullWidth 
+                    value={formData.areasOfExpertise}
+                    onChange={(e) => handleChange("areasOfExpertise", e.target.value)}
+                    error={!!errors.areasOfExpertise} 
+                    helperText={errors.areasOfExpertise || t('auth.register.expertiseHint', 'Separate multiple areas with commas')}
+                    placeholder={t('auth.register.expertisePlaceholder', 'e.g. Artificial Intelligence, Data Science')}
+                />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5">

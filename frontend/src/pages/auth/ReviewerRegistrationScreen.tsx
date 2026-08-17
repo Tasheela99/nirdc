@@ -118,7 +118,14 @@ const ReviewerRegistrationScreen = () => {
             const formDataToSend = new FormData();
             Object.keys(formDetails).forEach(key => {
                 if (key === 'areasOfExpertise') {
-                    formDataToSend.append(key, JSON.stringify(formDetails[key]));
+                    // Split the string by commas to create an array for the backend
+                    let expertiseArray = formDetails[key];
+                    if (typeof expertiseArray === 'string') {
+                        expertiseArray = expertiseArray.split(',').map((s: string) => s.trim()).filter(Boolean);
+                    } else if (!Array.isArray(expertiseArray)) {
+                        expertiseArray = [expertiseArray];
+                    }
+                    formDataToSend.append(key, JSON.stringify(expertiseArray));
                 } else {
                     formDataToSend.append(key, formDetails[key]);
                 }
