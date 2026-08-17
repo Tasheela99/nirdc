@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormSectionProps } from '../research-types/FormTypes.ts';
-import DragDropFileUpload from '../../../../../../components/common/DragDropFileUpload';
+import DragDropFileUpload from '../../../../../../components/common/DragDropFileUpload.tsx';
 
 const FileUploadSection: React.FC<FormSectionProps> = ({ formData, setFormData }) => {
 

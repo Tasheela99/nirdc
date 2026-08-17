@@ -1,6 +1,6 @@
 import React from 'react';
 import { InvestmentFormSectionProps } from '../investment-types/InvestmentFormTypes.ts';
-import DragDropFileUpload from '../../../../../../components/common/DragDropFileUpload';
+import DragDropFileUpload from '../../../../../../components/common/DragDropFileUpload.tsx';
 
 const InvestmentFileUploadSection: React.FC<InvestmentFormSectionProps> = ({ formData, setFormData }) => {
 
