@@ -76,7 +76,7 @@ const createNews = async (req, res) => {
 
 const getAllNews = async (req, res) => {
     try {
-        const news = NewsSchema.find({activeState: true})
+        const news = await NewsSchema.find({activeState: true})
             .sort({createdAt: -1})
             .limit(6);
 
