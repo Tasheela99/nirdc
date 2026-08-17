@@ -8,7 +8,7 @@ const InvestorFileUploadSection: React.FC<InvestorFormProps> = ({ formData, setF
             
 
             <label className="block text-main-color font-semibold mb-4">
-                9. Attach your certifications and any other relevant documents (5MB max)
+                9. Attach your certifications and any other relevant documents (50MB max)
             </label>
             <div className="flex flex-col items-center space-y-4">
                 {/* File Input */}
@@ -65,7 +65,9 @@ const InvestorFileUploadSection: React.FC<InvestorFormProps> = ({ formData, setF
                                 <span className="truncate">{file.name}</span>
                                 <div className="flex items-center">
                                     <span className="text-sm text-gray-500 mr-3">
-                                        {(file.size / 1024).toFixed(1)} KB
+                                        {file.size > 1024 * 1024 
+                                            ? `${(file.size / (1024 * 1024)).toFixed(2)} MB` 
+                                            : `${(file.size / 1024).toFixed(1)} KB`}
                                     </span>
                                     <button 
                                         type="button"

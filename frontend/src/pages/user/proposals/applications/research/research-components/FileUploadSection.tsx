@@ -37,7 +37,7 @@ const FileUploadSection: React.FC<FormSectionProps> = ({ formData, setFormData }
     ) => (
         <div className="mt-4">
             <label className="block text-main-color font-medium mb-2">
-                {questionNumber}. {label} (5MB max)
+                {questionNumber}. {label} (50MB max)
             </label>
             <div className="border border-gray-300 rounded-lg p-4 bg-gray-50 text-gray-900  shadow-sm">
                 <div className="flex flex-col items-center space-y-4">
@@ -71,7 +71,9 @@ const FileUploadSection: React.FC<FormSectionProps> = ({ formData, setFormData }
                                     <span className="truncate">{file.name}</span>
                                     <div className="flex items-center">
                                         <span className="text-sm text-gray-500 mr-3">
-                                            {(file.size / 1024).toFixed(1)} KB
+                                            {file.size > 1024 * 1024 
+                                                ? `${(file.size / (1024 * 1024)).toFixed(2)} MB` 
+                                                : `${(file.size / 1024).toFixed(1)} KB`}
                                         </span>
                                         <button
                                             type="button"
