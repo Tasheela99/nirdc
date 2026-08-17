@@ -114,9 +114,8 @@ const connectDB = async () => {
 };
 
 // Ensure DB is connected for serverless environments
-app.use(async (req, res, next) => {
-    await connectDB().catch(next);
-    next();
+app.use((req, res, next) => {
+    connectDB().then(() => next()).catch(next);
 });
 
 if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
