@@ -22,6 +22,15 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
     const [fileErrors, setFileErrors] = useState<{ name: string; error: string }[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
+    const toArray = (files: FileList): File[] => {
+        const arr: File[] = [];
+        for (let i = 0; i < files.length; i++) {
+            const item = files.item(i);
+            if (item) arr.push(item);
+        }
+        return arr;
+    };
+
     const handleDragOver = (e: React.DragEvent) => {
         e.preventDefault();
         setIsDragging(true);
@@ -35,7 +44,7 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
     const processFiles = (newFiles: File[]) => {
         const errors: { name: string; error: string }[] = [];
         const validFiles: File[] = [];
-        const currentFiles = fileList ? Array.from(fileList) : [];
+        const currentFiles = fileList ? toArray(fileList) : [];
 
         newFiles.forEach(file => {
             // Check size
@@ -80,13 +89,13 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
         e.preventDefault();
         setIsDragging(false);
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            processFiles(Array.from(e.dataTransfer.files));
+            processFiles(toArray(e.dataTransfer.files));
         }
     };
 
     const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
-            processFiles(Array.from(e.target.files));
+            processFiles(toArray(e.target.files));
         }
         if (fileInputRef.current) fileInputRef.current.value = '';
     };
@@ -94,7 +103,7 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
     const removeFile = (indexToRemove: number) => {
         if (!fileList) return;
         const dt = new DataTransfer();
-        Array.from(fileList).forEach((file, index) => {
+        toArray(fileList).forEach((file, index) => {
             if (index !== indexToRemove) dt.items.add(file);
         });
         onChange(dt.files.length > 0 ? dt.files : null);
@@ -166,9 +175,9 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
             {/* Uploaded Files List */}
             {fileList && fileList.length > 0 && (
                 <div className="mt-6">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-3">Template file to upload</h4>
+                    <h4 className="text-sm font-semibold text-gray-700 mb-3">Attached files</h4>
                     <div className="space-y-3">
-                        {Array.from(fileList).map((file, idx) => {
+                        {toArray(fileList).map((file, idx) => {
                             const ext = file.name.split('.').pop()?.toUpperCase() || 'FILE';
                             return (
                                 <div key={idx} className="flex items-center justify-between p-4 border border-gray-200 bg-white rounded-xl shadow-sm">
