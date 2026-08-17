@@ -133,6 +133,7 @@ const deleteNews = async (req, res) => {
         await deleteImageFromAwsIfExist(news.imageTa);
 
         await NewsSchema.findByIdAndDelete(id);
+        await cacheService.clearPattern('news_*');
 
         return res.status(200).json({
             status: true,
@@ -186,13 +187,13 @@ const updateNews = async (req, res) => {
         }
 
         // Update fields
-        news.titleEn = titleEn || news.titleEn;
-        news.titleSi = titleSi || news.titleSi;
-        news.titleTa = titleTa || news.titleTa;
-        news.contentEn = contentEn || news.contentEn;
-        news.contentSi = contentSi || news.contentSi;
-        news.contentTa = contentTa || news.contentTa;
-        news.date = date || news.date;
+        news.titleEn = titleEn !== undefined ? titleEn : news.titleEn;
+        news.titleSi = titleSi !== undefined ? titleSi : news.titleSi;
+        news.titleTa = titleTa !== undefined ? titleTa : news.titleTa;
+        news.contentEn = contentEn !== undefined ? contentEn : news.contentEn;
+        news.contentSi = contentSi !== undefined ? contentSi : news.contentSi;
+        news.contentTa = contentTa !== undefined ? contentTa : news.contentTa;
+        news.date = date !== undefined ? date : news.date;
 
         await news.save();
         await cacheService.clearPattern('news_*');
