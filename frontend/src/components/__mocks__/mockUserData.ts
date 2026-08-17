@@ -1,0 +1,71 @@
+export const users = [
+  {
+    username: "user1",
+    displayName: "User 1",
+    password: "user1",
+    email: "user1@example.com",
+    role: "USER",
+  },
+  {
+    username: "user2",
+    displayName: "User 2",
+    password: "user2",
+    email: "user2@example.com",
+    role: "USER",
+  },
+  {
+    username: "admin",
+    displayName: "Admin",
+    password: "admin",
+    email: "admin@example.com",
+    role: "ADMIN",
+  },
+];
+
+export const directorsMockData = [
+  {
+    id: 1,
+    username: "director1",
+    displayName: "Director 1 Name",
+    email: "director1@example.com",
+    role: "DIRECTOR",
+    mobile: "+94 701 234 567",
+    department: "Department 1",
+  },
+  {
+    id: 2,
+    username: "director2",
+    displayName: "Director 2 Name",
+    email: "director2@example.com",
+    role: "DIRECTOR",
+    mobile: "+94 701 234 567",
+    department: "Department 2",
+  },
+  {
+    id: 3,
+    username: "director3",
+    displayName: "Director 3 Name",
+    email: "director3@example.com",
+    role: "DIRECTOR",
+    mobile: "+94 701 234 567",
+    department: "Department 3",
+  },
+  {
+    id: 4,
+    username: "director1",
+    displayName: "Director 4 Name",
+    email: "director4@example.com",
+    role: "DIRECTOR",
+    mobile: "+94 701 234 567",
+    department: "Department 4",
+  },
+  {
+    id: 5,
+    username: "director1",
+    displayName: "Director 5 Name",
+    email: "director5@example.com",
+    role: "DIRECTOR",
+    mobile: "+94 701 234 567",
+    department: "Department 5",
+  },
+];

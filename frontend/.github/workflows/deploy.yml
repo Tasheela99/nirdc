@@ -1,0 +1,39 @@
+name: Deploy React App to Ubuntu Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+      - name: Create .env file
+        run: |
+            echo "VITE_APP_ENCRYPTION_KEY=${{ secrets.ENCRYPTION_KEY }}" >> .env
+            echo "VITE_API_URL=${{ secrets.API_URL }}" >> .env
+            echo "VITE_APP_TITLE=${{ secrets.APP_TITLE }}" >> .env
+            
+      - name: Build the app
+        run: npm run build
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/scp-action@v0.1.1
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ubuntu
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "dist/assets,dist/index.html,dist/vite.svg"
+          target: "/var/www/html"

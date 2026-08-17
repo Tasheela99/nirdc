@@ -1,0 +1,412 @@
+{
+  "auth": {
+    "register": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "designation": "Designation",
+      "institution": "Institution",
+      "selectCountry": "Select Country",
+      "mobilePlaceholder": "Mobile Number *",
+      "emailAddress": "Email Address",
+      "selectExpertise": "Select Areas of Expertise *",
+      "password": "Password",
+      "confirmPassword": "Confirm Password"
+    }
+  },
+  "reviewerRegistration": {
+    "title": "Reviewer Registration",
+    "subtitle": "Complete all steps below to submit your reviewer application.",
+    "brandingTitle": "Become a Reviewer",
+    "brandingDesc": "Join our expert panel to evaluate groundbreaking R&D proposals and shape the future of innovation in Sri Lanka.",
+    "alreadyHaveAccount": "Already have an account? Sign in",
+    "step1Title": "Step 1: Who is a NIRDC Reviewer?",
+    "step2Title": "Step 2: Required Qualifications",
+    "step3Title": "Step 3: Conditions to Fulfill",
+    "step4Title": "Step 4: Training Video",
+    "step5Title": "Step 5: MCQ Assessment",
+    "step6Title": "Step 6: Non-Disclosure Agreement",
+    "step7Title": "Step 7: Personal Details & CV",
+    "intro": {
+      "heading": "Who is a NIRDC Reviewer?",
+      "p1": "A NIRDC Reviewer is an expert panel member appointed to evaluate groundbreaking R&D proposals and shape the future of innovation in Sri Lanka. Reviewers play a critical role in identifying projects with high commercialization potential.",
+      "p2": "You will be responsible for providing objective, expert feedback on various proposals submitted by researchers across the country, ensuring that funding is allocated to the most deserving and impactful projects.",
+      "confirm": "I have completely read and understood the role of a NIRDC Reviewer."
+    },
+    "qualifications": {
+      "heading": "Required Qualifications",
+      "q1": "Hold a recognized doctoral degree (Ph.D.) or equivalent in a relevant field of study.",
+      "q2": "Have a minimum of 5 years of post-doctoral research or industry experience.",
+      "q3": "Demonstrated track record of successful project management or product commercialization.",
+      "q4": "Strong analytical and critical thinking skills, with an ability to assess both technical merit and market viability.",
+      "confirm": "I have completely read and understood the required qualifications."
+    },
+    "conditions": {
+      "heading": "Conditions to Fulfill",
+      "p1": "As a Reviewer, you must agree to the following conditions before proceeding:",
+      "c1": "Maintain strict confidentiality regarding all proposals and intellectual property shared with you.",
+      "c2": "Declare any conflict of interest immediately upon assignment of a proposal.",
+      "c3": "Complete all assigned reviews within the stipulated timeframe (usually 14 days).",
+      "c4": "Provide constructive, unbiased, and evidence-based feedback on all evaluations.",
+      "c5": "Attend mandatory reviewer training sessions and calibration meetings as requested by NIRDC.",
+      "confirm": "I confirm that I meet and agree to fulfill all the above conditions."
+    },
+    "video": {
+      "unavailable": "Training video is currently unavailable. You may proceed.",
+      "proceedBtn": "Proceed to Assessment",
+      "warning": "Please watch the video completely to proceed.",
+      "completed": "Completed",
+      "required": "Please watch the entire video to proceed."
+    },
+    "nda": {
+      "heading": "Non-Disclosure Agreement (NDA)",
+      "docTitle": "CONFIDENTIALITY AND NON-DISCLOSURE AGREEMENT",
+      "p1": "This Non-Disclosure Agreement (the \"Agreement\") is entered into by and between the National Initiative for R&D Commercialisation (\"NIRDC\") and the undersigned Reviewer.",
+      "p2": "1. Confidential Information: The Reviewer acknowledges that in the course of evaluating proposals, they will have access to proprietary and confidential information, including but not limited to business plans, financial models, intellectual property, and trade secrets.",
+      "p3": "2. Non-Disclosure: The Reviewer agrees to hold all Confidential Information in strict confidence and not to disclose such information to any third party without prior written consent from NIRDC.",
+      "p4": "3. Non-Use: The Reviewer agrees not to use any Confidential Information for their own benefit or the benefit of any third party.",
+      "p5": "4. Return of Materials: Upon request, or after the completion of the review process, the Reviewer must destroy or return any physical or digital copies of the Confidential Information.",
+      "p6": "5. Conflict of Interest: The Reviewer must immediately declare any existing or potential conflict of interest regarding any proposal assigned to them.",
+      "p7": "By checking the box below, you digitally sign and legally bind yourself to these terms.",
+      "confirm": "I accept the terms of the Non-Disclosure Agreement and legally bind myself to them.",
+      "acceptBtn": "Accept NDA"
+    },
+    "personalDetails": {
+      "heading": "Your Personal Details",
+      "cvHeading": "Upload Your CV",
+      "submitBtn": "Submit Registration"
+    },
+    "cvUpload": {
+      "instructions": "Please upload your most recent Curriculum Vitae (CV) highlighting your expertise, publications, and previous review experience.",
+      "uploadTitle": "Upload your CV",
+      "dragDrop": "Drag and drop your file here, or click to browse",
+      "formats": "Supported formats: PDF, DOCX (Max 10MB)",
+      "sizeError": "File size should not exceed 10MB"
+    },
+    "mcq": {
+      "fetchError": "Failed to load MCQs. Please try again later.",
+      "missingAnswers": "Please answer all questions before submitting.",
+      "noMcqs": "No MCQs available at the moment. You may proceed.",
+      "proceedBtn": "Proceed",
+      "scoreText": "Score: {{score}} / {{total}}",
+      "scoreSuccess": "Congratulations! You have passed the assessment.",
+      "scoreFailed": "You need to answer correctly to proceed. Please try again.",
+      "retryBtn": "Retry Assessment",
+      "submitBtn": "Submit Answers"
+    },
+    "buttons": {
+      "confirmProceed": "Confirm & Proceed"
+    }
+  },
+  "header": {
+    "home": "Home",
+    "proposals": "Proposals",
+    "updatesNews": "News",
+    "news": "News",
+    "announcements": "Announcements",
+    "blogs": "Blogs",
+    "strategicObjectives": "Strategic Objectives",
+    "aboutUs": "About Us",
+    "submitProposal": "Submit Proposal",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "logout": "Logout",
+    "changePassword": "Change Password",
+    "userMenu": "User menu",
+    "user": "User"
+  },
+  "banner": {
+    "badge": "National Initiative for R&D Commercialisation",
+    "titleLine1": "Transforming Research",
+    "titleLine2": "Into National Impact",
+    "subtitle": "Bridging the gap between groundbreaking research and real-world solutions for Sri Lanka's economic growth and social well-being.",
+    "submitResearch": "Submit Your Research",
+    "exploreProposals": "Explore Proposals"
+  },
+  "strategic": {
+    "sectionTitle": "Strategic Objectives",
+    "sectionSubtitle": "Our framework for transforming research into national impact through structured initiatives.",
+    "viewDetails": "View details",
+    "clickToClose": "Click to close",
+    "quote": "\"From insights to innovation, shaping Sri Lanka's future through cutting-edge research.\"",
+    "vision": {
+      "title": "Vision",
+      "summary": "Swift commercialization of national research to drive economic growth and sustainability.",
+      "content": "Immediate impact through the swift commercialization of national research to drive economic growth, enhance social well-being, and promote environmental sustainability."
+    },
+    "mission": {
+      "title": "Mission",
+      "summary": "Connecting investors with market-ready research solutions through targeted mechanisms.",
+      "content": "To identify completed or near-completed research projects with high commercialization potential, to develop targeted mechanisms to address funding gaps, and to create a dynamic platform that connects investors with market-ready solutions."
+    },
+    "gapFilling": {
+      "title": "Gap Filling Funding",
+      "summary": "Identifying high-TRL projects and building balanced portfolios with robust due diligence.",
+      "portfolioDev": "Portfolio Development",
+      "portfolioItems": [
+        "Identify and evaluate high-TRL projects needing funds for completion.",
+        "Create transparent evaluation criteria and processes.",
+        "Develop mechanisms to assess project completion status.",
+        "Build balanced portfolio of gap-funded projects."
+      ],
+      "riskProcess": "Risk & Process Management",
+      "riskItems": [
+        "Implement robust due diligence processes.",
+        "Design gap funding risk assessment tools.",
+        "Establish project completion verification methods.",
+        "Create monitoring and support mechanisms."
+      ]
+    },
+    "investorMatching": {
+      "title": "Investor Matching",
+      "summary": "Creating frameworks and networks connecting investors with market-ready research.",
+      "heading": "Investment Facilitation",
+      "items": [
+        "Create investor-project matching mechanisms.",
+        "Develop co-investment frameworks.",
+        "Build investor networks and partnerships.",
+        "Design investment readiness programs."
+      ]
+    },
+    "knowledge": {
+      "title": "Knowledge Dissemination",
+      "summary": "Sharing scientific knowledge and R&D success stories through dedicated platforms.",
+      "heading": "Knowledge Management",
+      "items": [
+        "Create scientific knowledge sharing platforms.",
+        "Document and share project success stories.",
+        "Develop R&D update communication strategies.",
+        "Establish knowledge dissemination protocols."
+      ]
+    },
+    "values": {
+      "title": "Values",
+      "summary": "Innovation, integrity, accountability, teamwork — our guiding principles.",
+      "items": [
+        {
+          "key": "Innovation",
+          "value": "Embracing creativity and groundbreaking ideas."
+        },
+        {
+          "key": "Integrity",
+          "value": "Upholding ethics and transparency."
+        },
+        {
+          "key": "Accountability",
+          "value": "Delivering on commitments."
+        },
+        {
+          "key": "Teamwork",
+          "value": "Building strong partnerships."
+        },
+        {
+          "key": "Trust",
+          "value": "Fostering openness and respect."
+        },
+        {
+          "key": "Diversity",
+          "value": "Valuing diverse perspectives."
+        },
+        {
+          "key": "Communication",
+          "value": "Effective knowledge sharing."
+        },
+        {
+          "key": "Proactiveness",
+          "value": "Anticipating challenges."
+        },
+        {
+          "key": "Excellence",
+          "value": "Highest standards in all endeavors."
+        },
+        {
+          "key": "Flexibility",
+          "value": "Adapting to change."
+        }
+      ]
+    }
+  },
+  "news": {
+    "sectionTitle": "Updates & News",
+    "sectionSubtitle": "Stay informed with the latest news and updates from NIRDC Sri Lanka.",
+    "readMore": "Read More",
+    "viewAllNews": "View All News",
+    "dateNotAvailable": "Date not available",
+    "untitledArticle": "Untitled Article",
+    "contentNotAvailable": "Content not available.",
+    "fetchError": "Failed to fetch news. Please try again.",
+    "networkError": "Network error. Please check your connection.",
+    "tryAgain": "Try Again",
+    "emptyStateTitle": "No News Available",
+    "emptyStateDesc": "There is currently no news to display. Check back soon for updates.",
+    "errorStateTitle": "Unable to Load News"
+  },
+  "announcements": {
+    "emptyStateTitle": "No Announcements Available",
+    "emptyStateDesc": "There are currently no announcements to display. Check back soon for updates and new information.",
+    "errorStateTitle": "Unable to Load Announcements",
+    "create": "Create Announcement",
+    "createFirst": "Create First Announcement",
+    "featured": "Featured",
+    "notice": "Notice",
+    "pdf": "PDF",
+    "viewDetails": "View Details",
+    "readMore": "Read More",
+    "untitled": "Untitled Announcement",
+    "fetchError": "Failed to fetch announcements. Please try again.",
+    "tryAgain": "Try Again"
+  },
+  "blogs": {
+    "emptyStateTitle": "No Articles Available",
+    "emptyStateDesc": "There are currently no articles to display. Check back soon for new publications.",
+    "errorStateTitle": "Unable to Load Articles",
+    "create": "Create Article",
+    "createFirst": "Create First Article",
+    "featured": "Featured",
+    "article": "Article",
+    "readArticle": "Read Article",
+    "readMore": "Read More",
+    "untitled": "Untitled Article",
+    "fetchError": "Failed to fetch articles. Please try again.",
+    "tryAgain": "Try Again"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "We are a team of scientists, administrators, economists, industrialists, legal and many other subject experts, got together to build a government initiative to rapidly commercialise completed or near completed research and developments (R&D) done in Sri Lanka. While a long-term R&D mechanism is initiated at the newly formed Science and Technology ministry, we operate at the President's Secretariat to provide gap filling funding for near completed R&D projects and help investors to match completed R&D projects."
+  },
+  "footer": {
+    "brandDescription": "National Initiative for Research & Development Commercialisation, driving innovation and economic growth in Sri Lanka.",
+    "contactUs": "Contact Us",
+    "address": "Presidential Secretariat, Galle Face, Colombo 01, Sri Lanka.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "aboutUs": "About Us",
+    "news": "News",
+    "announcements": "Announcements",
+    "strategicObjectives": "Strategic Objectives",
+    "privacyPolicy": "Privacy Policy",
+    "followUs": "Follow Us",
+    "copyright": "NIRDC, Sri Lanka. All rights reserved.",
+    "poweredBy": "Powered by President Media Division (PMD).",
+    "presidentialWebsite": "Presidential Secretariat Website"
+  },
+  "proposal": {
+    "submitNewProposal": "SUBMIT NEW PROPOSAL",
+    "viewMyProposals": "VIEW MY PROPOSALS"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved. Please check the URL or navigate back to the homepage.",
+    "backToHome": "Back to Home",
+    "goBack": "Go Back"
+  },
+  "auth": {
+    "brandName": "NIRDC",
+    "brandText": "National Initiative for Research & Development Commercialisation",
+    "welcomeBack": "Welcome Back",
+    "welcomeSubtext": "Sign in to access your research proposals, track applications, and connect with investors.",
+    "signIn": "Sign In",
+    "enterCredentials": "Enter your credentials to continue",
+    "email": "Email Address",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "signInButton": "Sign In",
+    "or": "OR",
+    "createAccount": "Create Account",
+    "verifyAccount": "Verify Account",
+    "backToLogin": "Already have an account? Sign in",
+    "register": {
+      "joinNirdc": "Accelerate Innovation",
+      "joinText": "Join the premier platform connecting Sri Lankan researchers with visionary investors to commercialize high-impact R&D projects.",
+      "createAccount": "Create Account",
+      "fillDetails": "Enter your professional details to access the portal.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "designation": "Designation",
+      "institution": "Institution",
+      "selectCountry": "Select Country",
+      "emailAddress": "Email Address",
+      "mobilePlaceholder": "Mobile Number *",
+      "mobileHelper": "Used for account verification and project updates.",
+      "confirmPassword": "Confirm Password"
+    },
+    "verify": {
+      "title": "Verify Account",
+      "subtitle": "Enter the OTP sent to your email",
+      "almostThere": "Almost There!",
+      "almostText": "Complete your account verification by entering the code we sent to your email address.",
+      "emailOtp": "Email OTP",
+      "didntReceive": "Didn't Receive OTP?",
+      "verifyButton": "Verify Account"
+    },
+    "resend": {
+      "title": "Resend OTP",
+      "subtitle": "Enter your email address to receive a new OTP",
+      "needNewCode": "Need a New Code?",
+      "needNewText": "We'll send a fresh OTP to your registered email and mobile number.",
+      "resendButton": "Resend OTP"
+    }
+  },
+  "welcome": {
+    "title": "Upload Your CV/Resume",
+    "heading": "For Consideration as a Technical Evaluation Committee Member",
+    "description1": "The Technical Evaluation Committee will comprise a distinguished panel of experts from diverse fields, including scientific research, industry, economics, law, the arts, and local heritage.",
+    "description2": "Eligible candidates are invited to submit their CVs/resumes for evaluation and join with us in this esteemed initiative.",
+    "submitCV": "Submit CV"
+  },
+  "pages": {
+    "proposal": "Proposal",
+    "submitNewProposal": "Submit New Proposal",
+    "announcementsSubtitle": "Stay updated with the latest news and information",
+    "blogsTitle": "Latest Articles",
+    "blogsSubtitle": "Explore our most recent insights and publications",
+    "newsSubtitle": "Stay informed with the latest news and updates from NIRDC"
+  },
+  "common": {
+    "loading": "Loading..."
+  },
+  "messages": {
+    "loginSuccess": "Login successful!",
+    "changeTempPassword": "Please change your temporary password to continue.",
+    "registrationSuccess": "Registration successful!",
+    "emailAlreadyRegistered": "This Email Is Already Registered",
+    "phoneAlreadyRegistered": "This Phone Number Is Already Registered",
+    "registrationFailed": "Registration failed",
+    "tooManyAttempts": "Too many attempts. Please try again later.",
+    "networkError": "Network error occurred. Please try again.",
+    "unexpectedError": "An unexpected error occurred. Please try again.",
+    "emailOtpRequired": "Email and OTP are required.",
+    "accountVerified": "Account Successfully Verified! Redirecting to login...",
+    "otpVerificationFailed": "OTP verification failed. Please try again.",
+    "verificationFailed": "Verification failed. Please check your OTP and try again.",
+    "enterEmail": "Please enter your email address.",
+    "otpSent": "A new OTP has been sent to your email.",
+    "resendFailed": "Failed to resend OTP.",
+    "resendError": "Error occurred while resending the OTP.",
+    "emailVerified": "Email Verified Successfully! Redirecting to login...",
+    "emailOtpFailed": "Email OTP verification failed. Please try again.",
+    "incorrectOtp": "Incorrect OTP. Please try again.",
+    "mobileVerified": "Mobile Verified Successfully! Redirecting to login...",
+    "mobileOtpFailed": "Mobile OTP verification failed. Please try again.",
+    "bothEmailOtpRequired": "Both email and OTP are required.",
+    "invalidToken": "Invalid or missing token.",
+    "passwordsDoNotMatch": "Passwords do not match.",
+    "passwordResetSuccess": "Password reset successfully.",
+    "genericError": "An error occurred. Please try again.",
+    "resetEmailSent": "If this email is registered, you will receive a reset link.",
+    "newPasswordMinLength": "New password must be at least 8 characters long.",
+    "newPasswordsDoNotMatch": "New passwords do not match.",
+    "passwordChangeSuccess": "Password changed successfully! Redirecting to login...",
+    "passwordChangeFailed": "Password change failed. Please try again."
+  },
+  "cookie": {
+    "title": "We value your privacy",
+    "text": "Accepting cookies allows a website to store small text files on your device. These remember your login and preferences to enable site functionality. You can choose to Accept All or Reject All.",
+    "acceptAll": "Accept All",
+    "rejectAll": "Reject All"
+  },
+  "ticker": {
+    "msg1": "We provide gap filling funding for near completed R&D project commercialisation",
+    "msg2": "We match investors for R&D completed project commercialisation",
+    "msg3": "We disseminate scientific knowledge and R&D project updates"
+  }
+}

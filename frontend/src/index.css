@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== CSS Custom Properties ===== */
+:root {
+  /* OLD COLORS (Government Blue)
+  --color-bg-canvas: #F8FAFC;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-surface-dark: #0F172A;
+  --color-text-main: #0F172A;
+  --color-text-muted: #475569;
+  --color-accent: #0B4F9C;
+  --color-primary-dark: #083B75;
+  --color-primary-light: #2572C6;
+  --color-accent-light: #F7DC6F;
+  --color-border-subtle: #E2E8F0;
+  --color-gold: #D97706;
+  */
+
+  /* NEW COLORS (NIRDC Logo Theme) */
+  --color-bg-canvas: #FAFAFA;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-surface-dark: #111111;
+  --color-text-main: #111111;
+  --color-text-muted: #915A78;
+  --color-accent: #6B1D4A;         /* Primary Plum/Purple */
+  --color-primary-dark: #4C1333;   /* Darker Plum */
+  --color-primary-light: #8C2963;  /* Lighter Plum */
+  --color-accent-light: #F2B705;   /* Golden Yellow from Swirl */
+  --color-border-subtle: #EBEBEB;
+  --color-gold: #E66127;           /* Vibrant Orange from Swirl */
+
+  --font-sans: 'Outfit', 'Inter', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+.dark {
+  /* OLD COLORS (Government Blue)
+  --color-bg-canvas: #090D16;
+  --color-bg-surface: #131B2E;
+  --color-bg-surface-dark: #090D16;
+  --color-text-main: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --color-accent: #1D77D7;
+  --color-primary-dark: #145EAE;
+  --color-primary-light: #4A97EC;
+  --color-accent-light: #FCD34D;
+  --color-border-subtle: #1E293B;
+  --color-gold: #F59E0B;
+  */
+
+  /* NEW COLORS (NIRDC Logo Theme) */
+  --color-bg-canvas: #0D050A;
+  --color-bg-surface: #160B12;
+  --color-bg-surface-dark: #0D050A;
+  --color-text-main: #F8FAFC;
+  --color-text-muted: #B592A6;      /* Soft mauve text for smooth reading */
+  --color-accent: #9C3872;          /* Softer, eye-pleasing plum for dark mode */
+  --color-primary-dark: #6B1D4A;
+  --color-primary-light: #B84B8E;   /* Balanced plum light */
+  --color-accent-light: #FAD154;   /* Golden Yellow */
+  --color-border-subtle: #331A2A;
+  --color-gold: #FA8046;           /* Vibrant Orange */
+}
+
+/* ===== Base Resets ===== */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* ===== MUI Overrides ===== */
+@layer utilities {
+  .MuiOutlinedInput-root .MuiOutlinedInput-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    --tw-ring-color: transparent !important;
+    --tw-ring-offset-shadow: none !important;
+    --tw-ring-shadow: none !important;
+    border-color: transparent !important;
+  }
+}
+
+/* ===== Color Scheme Adaptability ===== */
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Prevent browser dark mode autofill styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-text-main) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-bg-surface) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ===== Swiper Overrides ===== */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-accent);
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--color-primary-light);
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--color-accent);
+  opacity: 1;
+}
+
+/* ===== Phone Input ===== */
+.PhoneInput {
+  padding: 6px 2px;
+  border-radius: 10px;
+  background-color: transparent !important;
+}
+
+.PhoneInputInput>input {
+  border: transparent !important;
+  background-color: transparent !important;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  font-family: var(--font-body);
+}
+
+.PhoneInputInput>input:focus {
+  border: none !important;
+  outline: transparent !important;
+}
+
+/* ===== Scrollbar (subtle, modern) ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A0AEC0;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background-color: rgba(11, 79, 156, 0.15);
+  color: var(--color-text-main);
+}
+
+/* ===== Language-specific Fonts ===== */
+/* Sinhala: Noto Serif Sinhala */
+html[lang="si"] {
+  --font-lang: 'Noto Serif Sinhala', serif;
+}
+/* Tamil: Abhaya Libre */
+html[lang="ta"] {
+  --font-lang: 'Abhaya Libre', serif;
+}
+
+html[lang="si"] body,
+html[lang="ta"] body {
+  font-family: var(--font-lang);
+}
+
+html[lang="si"] h1, html[lang="si"] h2, html[lang="si"] h3, html[lang="si"] h4, html[lang="si"] h5, html[lang="si"] h6,
+html[lang="ta"] h1, html[lang="ta"] h2, html[lang="ta"] h3, html[lang="ta"] h4, html[lang="ta"] h5, html[lang="ta"] h6 {
+  font-family: var(--font-lang);
+}
+
+html[lang="si"] button, html[lang="si"] a, html[lang="si"] span, html[lang="si"] p, html[lang="si"] li, html[lang="si"] label, html[lang="si"] input, html[lang="si"] textarea,
+html[lang="ta"] button, html[lang="ta"] a, html[lang="ta"] span, html[lang="ta"] p, html[lang="ta"] li, html[lang="ta"] label, html[lang="ta"] input, html[lang="ta"] textarea {
+  font-family: var(--font-lang);
+}
+
+/* ===== Print Stylesheet ===== */
+@media print {
+  /* Hide non-printable elements */
+  aside,
+  nav,
+  header,
+  footer,
+  .no-print,
+  .no-print *,
+  button,
+  .MuiButton-root,
+  .comments-panel-container,
+  .comments-panel,
+  .MuiDrawer-root,
+  .MuiAppBar-root,
+  .MuiSnackbar-root,
+  .MuiBox-root:has(> button),
+  .back-btn-container,
+  .md\:hidden,
+  [class*="md:hidden"],
+  [class*="cookie"],
+  [id*="cookie"] {
+    display: none !important;
+  }
+
+  /* Reset main content alignment and margin */
+  body,
+  #root,
+  main,
+  .flex,
+  .min-h-screen {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    transform: none !important;
+  }
+
+  /* Remove sidebar margin offset */
+  .md\:ml-\[260px\],
+  .md\:ml-64,
+  [class*="ml-"] {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Optimize container padding and background for printing */
+  .view-proposals-background,
+  .MuiContainer-root,
+  .MuiPaper-root {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Main branded header card - transform into clean document header with underline */
+  .proposal-details-html-view > .MuiPaper-root {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2.5px solid #111111 !important;
+    border-radius: 0 !important;
+    padding: 0 0 16px 0 !important;
+    margin-bottom: 28px !important;
+  }
+
+  /* Allow main sections (Cards) to flow naturally across page boundaries to avoid empty pages */
+  .MuiCard-root {
+    box-shadow: none !important;
+    border: none !important; /* Remove heavy card borders */
+    margin-bottom: 28px !important;
+    page-break-inside: auto !important; 
+    background: transparent !important;
+  }
+
+  /* Section headers - remove left bar, replace with a formal bottom underline and hide icons */
+  .MuiBox-root:has(> .MuiTypography-h6) {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-bottom: 1.5px solid #111111 !important;
+    padding-bottom: 6px !important;
+    margin-bottom: 16px !important;
+  }
+  .MuiBox-root:has(> .MuiTypography-h6) svg {
+    display: none !important;
+  }
+
+  /* Force standard body typography font sizes and line heights for printing */
+  body, p, span, li, td {
+    font-size: 11pt !important;
+    line-height: 1.6 !important;
+    color: #111111 !important;
+  }
+
+  /* Heading hierarchies conforming to institutional standards */
+  h1, .MuiTypography-h1 { font-size: 20pt !important; font-weight: 700 !important; color: #000000 !important; margin-bottom: 12pt !important; }
+  h2, .MuiTypography-h2 { font-size: 16pt !important; font-weight: 700 !important; color: #000000 !important; margin-bottom: 10pt !important; }
+  h3, .MuiTypography-h3 { font-size: 13pt !important; font-weight: 700 !important; color: #000000 !important; margin-bottom: 8pt !important; }
+  h4, .MuiTypography-h4 { font-size: 11pt !important; font-weight: 700 !important; color: #000000 !important; }
+  h5, .MuiTypography-h5 { font-size: 11pt !important; font-weight: 700 !important; color: #000000 !important; }
+  h6, .MuiTypography-h6 { font-size: 10pt !important; font-weight: 700 !important; color: #000000 !important; }
+
+  /* Standardizing Question and Answer presentation */
+  /* Make Question Labels bold, distinct, and slightly muted dark grey */
+  .MuiTypography-caption {
+    font-size: 8.5pt !important;
+    font-weight: 700 !important;
+    color: #374151 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: block !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Prevent individual Question + Answer blocks from breaking awkwardly across page limits */
+  .MuiBox-root:has(> .MuiTypography-caption) {
+    page-break-inside: avoid !important;
+  }
+
+  /* Standardizing answers text fields to avoid solid gray blocks consuming heavy ink */
+  [class*="bg-"],
+  [style*="background"],
+  .MuiBox-root[style*="background-color"],
+  div[style*="background-color: rgb(249, 250, 251)"],
+  div[style*="background-color: #f9fafb"] {
+    background-color: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    padding: 10px !important;
+    border-radius: 6px !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Make Chips (department, status, TRL) cleaner for print */
+  .MuiChip-root {
+    border: 1px solid #9ca3af !important;
+    background: #f9fafb !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+  }
+
+  /* Ensure page breaks don't orphan headers or break tables awkwardly */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  tr, img {
+    page-break-inside: avoid;
+  }
+}

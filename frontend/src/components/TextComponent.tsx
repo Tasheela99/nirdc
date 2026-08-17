@@ -1,0 +1,44 @@
+import { FC, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
+const Text: FC = () => {
+    const { t } = useTranslation();
+
+    const messages = [
+        t("ticker.msg1"),
+        t("ticker.msg2"),
+        t("ticker.msg3"),
+    ];
+
+    const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+    const [fadeOut, setFadeOut] = useState(false);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFadeOut(true);
+            setTimeout(() => {
+                setCurrentMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
+                setFadeOut(false);
+            }, 800);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [messages.length]);
+
+    return (
+        <section className="flex flex-col" aria-label="Key messages">
+            <div className="bg-primary dark:bg-primary-dark py-6 text-white flex flex-col items-center justify-center">
+                <div className="max-w-4xl px-4 text-center">
+                    <p
+                        className={`text-lg md:text-xl font-medium tracking-wide ${
+                            fadeOut ? "opacity-0" : "opacity-100"
+                        } transition-opacity duration-800`}
+                    >
+                        {messages[currentMessageIndex]}
+                    </p>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Text;

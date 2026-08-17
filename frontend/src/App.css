@@ -1,0 +1,38 @@
+/* Swiper Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #003893;
+}
+
+/* Swiper Pagination Bullets */
+.swiper-pagination-bullet {
+    background-color: #2E86C1;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #003893;
+    opacity: 1;
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+        width: 210mm;
+        height: 297mm;
+        font-size: 12px;
+        -webkit-print-color-adjust: exact;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+}
