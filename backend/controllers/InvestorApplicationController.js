@@ -163,7 +163,7 @@ const saveInvestorApplication = async (req, res) => {
 
 const getAllInvestorApplications = async (req, res) => {
     try {
-        const proposals = InvestorApplicationSchema
+        const proposals = await InvestorApplicationSchema
             .find()
             .populate('userId', 'userName email mobile firstName lastName')
             .lean()
@@ -259,11 +259,11 @@ const getInvestorApplicationsByUser = async (req, res) => {
     const skip = (page - 1) * limit;
 
     try {
-        const result = await InvestorApplicationSchema.find({ user: userId })
+        const result = await InvestorApplicationSchema.find({ userId: userId })
             .skip(skip)
             .limit(limit);
 
-        const totalCount = await InvestorApplicationSchema.countDocuments({ user: userId });
+        const totalCount = await InvestorApplicationSchema.countDocuments({ userId: userId });
         const totalPages = Math.ceil(totalCount / limit);
 
         return res.status(200).json({

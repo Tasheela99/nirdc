@@ -18,7 +18,7 @@ const decryptToken = (encryptedToken: string): string => {
 
 const instance = axios.create({
     baseURL: BASE_URL,
-    timeout: 15000, // Increased timeout to 15 seconds
+    timeout: 120000, // Increased timeout to 120 seconds to allow large file uploads
     withCredentials: true, // Enable credentials
     headers: {
         "Content-Type": "application/json",

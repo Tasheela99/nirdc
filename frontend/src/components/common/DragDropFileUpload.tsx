@@ -22,7 +22,8 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
     const [fileErrors, setFileErrors] = useState<{ name: string; error: string }[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const toArray = (files: FileList): File[] => {
+    const toArray = (files: FileList | null): File[] => {
+        if (!files) return [];
         const arr: File[] = [];
         for (let i = 0; i < files.length; i++) {
             const item = files.item(i);
@@ -31,12 +32,12 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
         return arr;
     };
 
-    const handleDragOver = (e: React.DragEvent) => {
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsDragging(true);
     };
 
-    const handleDragLeave = (e: React.DragEvent) => {
+    const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsDragging(false);
     };
@@ -71,7 +72,7 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
 
         if (currentFiles.length + validFiles.length > maxFiles) {
             errors.push({ name: 'Limit Exceeded', error: `Maximum of ${maxFiles} files allowed` });
-            const availableSlots = maxFiles - currentFiles.length;
+            const availableSlots = Math.max(0, maxFiles - currentFiles.length);
             validFiles.splice(availableSlots);
         }
 
@@ -85,7 +86,7 @@ const DragDropFileUpload: React.FC<DragDropFileUploadProps> = ({
         }
     };
 
-    const handleDrop = (e: React.DragEvent) => {
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
         e.preventDefault();
         setIsDragging(false);
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {

@@ -174,7 +174,7 @@ const saveResearchApplication = async (req, res) => {
 
 const getAllResearchApplications = async (req, res) => {
     try {
-        const proposals = ResearchInvestmentApplicationSchema
+        const proposals = await ResearchInvestmentApplicationSchema
             .find()
             .populate('userId', 'userName email mobile firstName lastName')
             .sort({ createdAt: -1 });
@@ -239,11 +239,11 @@ const getResearchApplicationsByUser = async (req, res) => {
     const skip = (page - 1) * limit;
 
     try {
-        const result = ResearchInvestmentApplicationSchema.find({ user: userId })
+        const result = await ResearchInvestmentApplicationSchema.find({ userId: userId })
             .skip(skip)
             .limit(limit);
 
-        const totalCount = ResearchInvestmentApplicationSchema.countDocuments({ user: userId });
+        const totalCount = await ResearchInvestmentApplicationSchema.countDocuments({ userId: userId });
         const totalPages = Math.ceil(totalCount / limit);
 
         return res.status(200).json({
