@@ -1,0 +1,8 @@
+{
+  "name": "nirdc",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo \"Vercel handles build via vercel.json\""
+  }
+}
