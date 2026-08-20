@@ -7,12 +7,17 @@ import bannerApi from "../../../api/BannerApi";
 import hero1 from "../../../assets/hero_01.png";
 import hero2 from "../../../assets/hero_02.png";
 import hero3 from "../../../assets/hero_03.png";
+import mobileHero1 from "../../../assets/mobile_hero_01.jpg";
+import mobileHero2 from "../../../assets/mobile_hero_02.jpg";
+import mobileHero3 from "../../../assets/mobile_hero_03.jpg";
 
 const fallbackBanners = [hero1, hero2, hero3];
+const fallbackMobileBanners = [mobileHero1, mobileHero2, mobileHero3];
 
 const MainBannerPage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [banners, setBanners] = useState<string[]>(fallbackBanners);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -37,51 +42,60 @@ const MainBannerPage: React.FC = () => {
     return () => clearInterval(interval);
   }, [banners.length]);
 
-  return (
-    <section className="relative w-full h-screen overflow-hidden" aria-label="Hero banner">
-      {banners.map((banner, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
-            }`}
-          style={{ backgroundImage: `url(${banner})` }}
-          role="img"
-          aria-label={`Banner image ${index + 1}`}
-        />
-      ))}
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+  return (
+    <section className="relative w-full h-[85vh] sm:h-screen min-h-[500px] overflow-hidden" aria-label="Hero banner">
+      {banners.map((banner, index) => {
+        const bgImage = isMobile ? fallbackMobileBanners[index % fallbackMobileBanners.length] : banner;
+        return (
+          <div
+            key={index}
+            className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
+            style={{ backgroundImage: `url(${bgImage})` }}
+            role="img"
+            aria-label={`Banner image ${index + 1}`}
+          />
+        );
+      })}
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 sm:from-black/70 sm:via-black/30 sm:to-transparent" />
       <div className="absolute inset-0 bg-primary/20" />
 
-      <div className="relative h-full flex flex-col items-start justify-center text-left px-6 sm:px-12 max-w-screen-xl mx-auto">
+      <div className="relative h-full flex flex-col items-start justify-center text-left px-4 sm:px-12 pt-16 sm:pt-0 max-w-screen-xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-          className="max-w-2xl"
+          className="max-w-2xl w-full"
         >
-          <div className="inline-block mb-5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-            <span className="text-white/90 text-xs sm:text-sm font-semibold tracking-wide uppercase">
+          <div className="mb-3 sm:mb-5">
+            <span className="text-white/90 text-[10px] sm:text-sm font-semibold tracking-wide uppercase">
               {t('banner.badge')}
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight font-sans">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-3 sm:mb-6 leading-[1.15] sm:leading-[1.1] tracking-tight font-sans">
             {t('banner.titleLine1')}
             <br />
             <span style={{ color: "#8c2963" }}>{t('banner.titleLine2')}</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-white/80 mb-8 max-w-xl leading-relaxed font-body">
+          <p className="text-sm sm:text-lg text-white/90 sm:text-white/80 mb-5 sm:mb-8 max-w-xl leading-relaxed font-body">
             {t('banner.subtitle')}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch gap-4 mt-8 w-full">
+          <div className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4 mt-2 sm:mt-8 w-full max-w-md sm:max-w-none">
 
             {/* SUBMIT button — glassy purple */}
             <button
               onClick={() => navigate("/login")}
-              className="group relative flex flex-col items-center justify-center gap-5 flex-1 h-[190px] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              className="group relative flex flex-col items-center justify-center gap-3 sm:gap-5 flex-1 py-3 sm:py-0 sm:h-[190px] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: "linear-gradient(145deg, rgba(140, 41, 99, 0.50) 0%, rgba(100, 20, 65, 0.28) 100%)",
                 border: "1px solid rgba(200, 80, 140, 0.40)",
@@ -107,20 +121,13 @@ const MainBannerPage: React.FC = () => {
 
               {/* Icon */}
               <FileUp
-                size={44}
-                className="text-pink-100 group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                className="w-8 h-8 sm:w-11 sm:h-11 text-pink-100 group-hover:scale-110 transition-transform duration-300 drop-shadow"
                 strokeWidth={1.4}
               />
 
-              {/* Pill badge */}
+              {/* Text instead of pill */}
               <div
                 style={{
-                  background: "rgba(255,255,255,0.12)",
-                  border: "1px solid rgba(200,80,140,0.55)",
-                  backdropFilter: "blur(8px)",
-                  WebkitBackdropFilter: "blur(8px)",
-                  padding: "3px 16px",
-                  borderRadius: "999px",
                   fontSize: "11px",
                   fontWeight: 700,
                   letterSpacing: "0.18em",
@@ -150,7 +157,7 @@ const MainBannerPage: React.FC = () => {
             {/* REVIEW button — glassy white/frost */}
             <button
               onClick={() => navigate("/reviewer-registration")}
-              className="group relative flex flex-col items-center justify-center gap-5 flex-1 h-[190px] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              className="group relative flex flex-col items-center justify-center gap-3 sm:gap-5 flex-1 py-3 sm:py-0 sm:h-[190px] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: "linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(140,41,99,0.15) 100%)",
                 border: "1px solid rgba(255,255,255,0.30)",
@@ -176,20 +183,13 @@ const MainBannerPage: React.FC = () => {
 
               {/* Icon */}
               <FileCheck
-                size={44}
-                className="text-white group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                className="w-8 h-8 sm:w-11 sm:h-11 text-white group-hover:scale-110 transition-transform duration-300 drop-shadow"
                 strokeWidth={1.4}
               />
 
-              {/* Pill badge */}
+              {/* Text instead of pill */}
               <div
                 style={{
-                  background: "rgba(255,255,255,0.20)",
-                  border: "1px solid rgba(255,255,255,0.50)",
-                  backdropFilter: "blur(8px)",
-                  WebkitBackdropFilter: "blur(8px)",
-                  padding: "3px 16px",
-                  borderRadius: "999px",
                   fontSize: "11px",
                   fontWeight: 700,
                   letterSpacing: "0.18em",

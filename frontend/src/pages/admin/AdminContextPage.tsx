@@ -5,7 +5,7 @@ import {
     Menu, X, LayoutDashboard, Users, Newspaper,
     FileText, Megaphone, BookOpen, LogOut, Lock, ExternalLink, ChevronDown
 } from "lucide-react";
-import { Tv, Image as ImageIcon } from "lucide-react";
+import { Tv, Image as ImageIcon, DownloadCloud } from "lucide-react";
 import { Menu as MuiMenu, MenuItem, Avatar } from "@mui/material";
 import ManageDirectorsScreen from "./directors/ManageDirectorsPage.tsx";
 import RegisterDirectorScreen from "./directors/RegisterDirectorPage.tsx";
@@ -24,6 +24,8 @@ import CreateblogScreen from "./blog/CreateBlogPage.tsx";
 import ManageAdsScreen from "./ad/ManageAdsPage.tsx";
 import CreateAdScreen from "./ad/CreateAdPage.tsx";
 import ManageBannerScreen from "./home/ManageBannerPage.tsx";
+import ManageDownloadsPage from "./downloads/ManageDownloadsPage.tsx";
+import CreateDownloadPage from "./downloads/CreateDownloadPage.tsx";
 import ProtectedRoute from "../../ProtectedRoute";
 import {USER_ROLE} from "../../constants/AppConstants.tsx";
 import ChangePasswordDialog from "../../components/common/ChangePasswordDialog";
@@ -44,6 +46,7 @@ const sidebarIcons: Record<string, React.ReactNode> = {
     "Manage Blogs": <BookOpen size={18} />,
     "Manage Ads": <Tv size={18} />,
     "Manage Banner": <ImageIcon size={18} />,
+    "Manage Downloads": <DownloadCloud size={18} />,
 };
 
 const AdminContextScreen = () => {
@@ -79,6 +82,7 @@ const AdminContextScreen = () => {
         {path: "/admin/manage-blog", label: "Manage Blogs"},
         {path: "/admin/manage-ads", label: "Manage Ads"},
         {path: "/admin/manage-banner", label: "Manage Banner"},
+        {path: "/admin/manage-downloads", label: "Manage Downloads"},
     ];
 
     const getInitial = () => (userInfo?.userName?.[0] || "A").toUpperCase();
@@ -258,6 +262,8 @@ const AdminContextScreen = () => {
                             <Route path="manage-ads" element={<ProtectedRoute><ManageAdsScreen /></ProtectedRoute>} />
                             <Route path="create-ad" element={<ProtectedRoute><CreateAdScreen /></ProtectedRoute>} />
                             <Route path="manage-banner" element={<ProtectedRoute><ManageBannerScreen /></ProtectedRoute>} />
+                            <Route path="manage-downloads" element={<ProtectedRoute><ManageDownloadsPage /></ProtectedRoute>} />
+                            <Route path="create-download" element={<ProtectedRoute><CreateDownloadPage /></ProtectedRoute>} />
                     </Routes>
                 </div>
             </div>

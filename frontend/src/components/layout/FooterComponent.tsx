@@ -98,9 +98,9 @@ const FooterComponent: FC = () => {
             <h3 className="text-white text-sm font-semibold uppercase tracking-wider">{t('footer.followUs')}</h3>
             <div className="flex gap-3">
               {[
-                { icon: Facebook, href: "https://www.facebook.com/share/19pHQVdJm2/?mibextid=wwXIfr", label: "Facebook" },
-                { icon: Youtube, href: "https://www.youtube.com/", label: "YouTube" },
-                { icon: Linkedin, href: "https://www.linkedin.com/in/national-initiative-for-research-and-development-commercialisation-041ab9343/", label: "LinkedIn" },
+                { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61570984992776", label: "Facebook" },
+                { icon: Youtube, href: "https://www.youtube.com/@NIRDC", label: "YouTube" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/national-initiative-for-research-and-development-commercialization/", label: "LinkedIn" },
               ].map((social) => (
                 <a
                   key={social.label}

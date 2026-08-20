@@ -320,11 +320,11 @@ const StrategicObjectivesScreen: FC = () => {
           </div>
         </motion.div>
 
-        {/* Set 2: Core Strategy (Investor Matching, Knowledge, Gap Filling) */}
+        {/* Set 2: Core Strategy (Gap Filling, Investor Matching, Knowledge) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-8 pt-4">
+          <div className="md:col-span-2">{renderCoreCard(redesignedSections[2])}</div>
           <div>{renderCoreCard(redesignedSections[3])}</div>
           <div>{renderCoreCard(redesignedSections[4])}</div>
-          <div className="md:col-span-2">{renderCoreCard(redesignedSections[2])}</div>
         </div>
       </div>
     </section>

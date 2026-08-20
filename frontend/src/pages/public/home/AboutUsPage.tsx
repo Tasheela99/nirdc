@@ -95,6 +95,7 @@ const AboutUsScreen: FC = () => {
           </motion.div>
 
         </div>
+
       </div>
     </section>
   );

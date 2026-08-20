@@ -142,11 +142,13 @@ const ReviewerConfigRoute = require('./routes/ReviewerConfigRoute');
 const McqRoute = require('./routes/McqRoute');
 const ReviewAssignmentRoute = require('./routes/ReviewAssignmentRoute');
 const ReviewerRegistrationRoute = require('./routes/reviewerRegistrationRoutes');
+const DownloadRoute = require('./routes/DownloadRoute');
 
 app.use('/api/v1/reviewer-config', ReviewerConfigRoute);
 app.use('/api/v1', McqRoute); 
 app.use('/api/v1/review-assignments', ReviewAssignmentRoute);
 app.use('/api/v1/reviewer-registration', ReviewerRegistrationRoute);
+app.use('/api/v1/downloads', DownloadRoute);
 
 // Global Error Handler Middleware
 app.use(errorHandler);

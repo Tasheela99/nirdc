@@ -43,12 +43,12 @@ const countryOptions: OptionType[] = Object.entries(countries).map(([, country])
 }));
 
 const PREDEFINED_EXPERTISE = [
-    "Engineering & Technology",
-    "Medicine & Health Sciences",
-    "Agriculture & Environmental Sciences",
-    "Information Technology & Computer Science",
-    "Social Sciences & Humanities",
-    "Natural & Physical Sciences"
+    "Technology",
+    "Environment",
+    "Food and sustenance",
+    "Social development",
+    "Well-being and intellectual",
+    "Other"
 ];
 
 interface Props {

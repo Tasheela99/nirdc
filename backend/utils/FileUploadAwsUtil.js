@@ -27,6 +27,7 @@ const awsFolderNames = {
     ads: 'ads-images',
     reviewerCv: 'reviewer-cvs',
     reviewerVideo: 'reviewer-videos',
+    downloads: 'downloads',
 };
 
 const uploadFileToAws = async (fileName, filePath) => {

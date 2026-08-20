@@ -29,12 +29,11 @@ const Text: FC = () => {
 
     return (
         <section className={`flex flex-col ${isHome ? 'absolute w-full top-[80px] z-40' : ''}`} aria-label="Key messages">
-            <div className={`${isHome ? 'bg-transparent' : 'bg-primary dark:bg-primary-dark'} py-6 text-white flex flex-col items-center justify-center`}>
+            <div className={`${isHome ? 'bg-transparent' : 'bg-primary dark:bg-primary-dark'} py-14 text-white flex flex-col items-center justify-center`}>
                 <div className="max-w-4xl px-4 text-center">
                     <p
-                        className={`text-lg md:text-xl font-medium tracking-wide ${
-                            fadeOut ? "opacity-0" : "opacity-100"
-                        } transition-opacity duration-800`}
+                        className={`text-xl md:text-2xl font-medium tracking-wide ${fadeOut ? "opacity-0" : "opacity-100"
+                            } transition-opacity duration-800`}
                     >
                         {messages[currentMessageIndex]}
                     </p>

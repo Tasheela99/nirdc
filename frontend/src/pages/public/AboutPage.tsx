@@ -3,6 +3,7 @@ import Text from "../../components/TextComponent.tsx";
 
 const StrategicObjectivesScreen = lazy(() => import('./home/StrategicObjectivesPage.tsx'));
 const AboutUsScreen = lazy(() => import('./home/AboutUsPage.tsx'));
+const DownloadsSection = lazy(() => import('./home/DownloadsSection.tsx'));
 
 const AboutPage: FC = () => {
     return (
@@ -10,9 +11,13 @@ const AboutPage: FC = () => {
             <Suspense fallback={<div className="h-64 bg-surface dark:bg-dark-bg animate-pulse" />}>
                 <AboutUsScreen />
             </Suspense>
-            
+
+            <Suspense fallback={<div className="h-64 bg-surface dark:bg-dark-bg animate-pulse" />}>
+                <DownloadsSection />
+            </Suspense>
+
             <Text />
-            
+
             <Suspense fallback={<div className="h-96 bg-surface dark:bg-dark-bg animate-pulse" />}>
                 <StrategicObjectivesScreen />
             </Suspense>
