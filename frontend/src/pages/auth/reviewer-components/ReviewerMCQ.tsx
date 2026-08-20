@@ -12,32 +12,67 @@ interface Mcq {
 }
 
 interface Props {
-    onComplete: (score: number) => void;
+    sessionId?: string | null;
+    onComplete: (score: number) => void | Promise<void>;
 }
 
-const ReviewerMCQ: React.FC<Props> = ({ onComplete }) => {
+const ReviewerMCQ: React.FC<Props> = ({ sessionId, onComplete }) => {
     const { showAlert } = useAlert();
     const [mcqs, setMcqs] = useState<Mcq[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [answers, setAnswers] = useState<Record<string, number>>({});
     const [submitted, setSubmitted] = useState(false);
     const [score, setScore] = useState(0);
     const { t } = useTranslation();
 
+    const getLocalStorageKey = () => `reviewerMcqState_${sessionId}`;
+
     useEffect(() => {
+        if (!sessionId) return;
+        const key = getLocalStorageKey();
+        const stored = localStorage.getItem(key);
+        if (stored) {
+            try {
+                const data = JSON.parse(stored);
+                if (data.mcqs && data.mcqs.length > 0) {
+                    setMcqs(data.mcqs);
+                    setAnswers(data.answers || {});
+                    setScore(data.score || 0);
+                    setSubmitted(data.submitted || false);
+                    setIsLoading(false);
+                    return;
+                }
+            } catch (e) {
+                console.error("Failed to parse local MCQ state", e);
+            }
+        }
         fetchMcqs();
-    }, []);
+    }, [sessionId]);
+
+    const saveLocalState = (newMcqs: Mcq[], newAnswers: any, newSubmitted: boolean, newScore: number) => {
+        if (!sessionId) return;
+        localStorage.setItem(getLocalStorageKey(), JSON.stringify({
+            mcqs: newMcqs,
+            answers: newAnswers,
+            submitted: newSubmitted,
+            score: newScore
+        }));
+    };
 
     const fetchMcqs = async () => {
         setIsLoading(true);
         try {
             const response = await callAPI<any>("GET", "/mcqs/random");
             console.log("Random MCQs Response:", response);
+            let fetchedMcqs = [];
             if (response.data) {
-                setMcqs(response.data.slice(0, 1)); // Testing: limit to 1
+                fetchedMcqs = response.data.slice(0, 1); // Testing: limit to 1
             } else if (Array.isArray(response)) {
-                setMcqs(response.slice(0, 1)); // Testing: limit to 1
+                fetchedMcqs = response.slice(0, 1); // Testing: limit to 1
             }
+            setMcqs(fetchedMcqs);
+            saveLocalState(fetchedMcqs, {}, false, 0);
         } catch (error) {
             console.error("Error fetching MCQs", error);
             showAlert(t('reviewerRegistration.mcq.fetchError'), "error");
@@ -48,11 +83,13 @@ const ReviewerMCQ: React.FC<Props> = ({ onComplete }) => {
 
     const handleOptionSelect = (questionId: string, optionIndex: number) => {
         if (!submitted) {
-            setAnswers(prev => ({ ...prev, [questionId]: optionIndex }));
+            const newAnswers = { ...answers, [questionId]: optionIndex };
+            setAnswers(newAnswers);
+            saveLocalState(mcqs, newAnswers, submitted, score);
         }
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (Object.keys(answers).length < mcqs.length) {
             showAlert(t('reviewerRegistration.mcq.missingAnswers'), "warning");
             return;
@@ -67,15 +104,34 @@ const ReviewerMCQ: React.FC<Props> = ({ onComplete }) => {
 
         setScore(currentScore);
         setSubmitted(true);
+        saveLocalState(mcqs, answers, true, currentScore);
+
         // Testing: Scale score so the parent validation (>= 8) passes if we get the 1 question right
-        onComplete(currentScore === mcqs.length ? 10 : 0);
+        const finalScore = currentScore === mcqs.length ? 10 : 0;
+        
+        setIsSubmitting(true);
+        try {
+            await onComplete(finalScore);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleRetry = () => {
         setAnswers({});
         setSubmitted(false);
         setScore(0);
+        saveLocalState([], {}, false, 0);
         fetchMcqs(); // Fetch new set of questions
+    };
+
+    const handleFallbackComplete = async () => {
+        setIsSubmitting(true);
+        try {
+            await onComplete(10);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     if (isLoading) {
@@ -87,9 +143,11 @@ const ReviewerMCQ: React.FC<Props> = ({ onComplete }) => {
             <div className="text-center p-8 space-y-4">
                 <p className="text-gray-500">{t('reviewerRegistration.mcq.noMcqs')}</p>
                 <button 
-                    onClick={() => onComplete(10)}
-                    className="px-6 py-2 bg-[#6B1D4A] text-white rounded-lg hover:bg-[#8C2963] transition-colors"
+                    onClick={handleFallbackComplete}
+                    disabled={isSubmitting}
+                    className="px-6 py-2 bg-[#6B1D4A] text-white rounded-lg hover:bg-[#8C2963] transition-colors flex items-center justify-center gap-2 mx-auto disabled:opacity-70 disabled:cursor-not-allowed"
                 >
+                    {isSubmitting && <CircularProgress size={18} color="inherit" />}
                     {t('reviewerRegistration.mcq.proceedBtn')}
                 </button>
             </div>
@@ -154,8 +212,10 @@ const ReviewerMCQ: React.FC<Props> = ({ onComplete }) => {
                 {!submitted && (
                     <button 
                         onClick={handleSubmit} 
-                        className="px-6 py-2 bg-[#6B1D4A] text-white rounded-lg hover:bg-[#8C2963] transition-colors"
+                        disabled={isSubmitting}
+                        className="px-6 py-2 bg-[#6B1D4A] text-white rounded-lg hover:bg-[#8C2963] transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                     >
+                        {isSubmitting && <CircularProgress size={18} color="inherit" />}
                         {t('reviewerRegistration.mcq.submitBtn')}
                     </button>
                 )}

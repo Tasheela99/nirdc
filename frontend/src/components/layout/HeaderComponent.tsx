@@ -1,12 +1,10 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
 import {Link, useNavigate, useLocation} from "react-router-dom";
 import {HashLink} from "react-router-hash-link";
-import logo from "../../assets/NIRDC-logo-SVG.svg";
 import logoLight from "../../assets/NIRDC-logo-LIGHT.svg";
 import emblem from "../../assets/Emblem_of_Sri_Lanka.svg";
 import {USER_ROLE} from "../../constants/AppConstants";
 import UserContext from "../../store/UserContext.tsx";
-import DarkModeContext from "../../store/DarkModeContext.tsx";
 import ChangePasswordDialog from "../common/ChangePasswordDialog";
 import {AnimatePresence, motion} from "framer-motion";
 import { Menu, X, ChevronDown, LogOut, Lock, LayoutDashboard, User } from "lucide-react";
@@ -151,7 +149,6 @@ const Header: React.FC = () => {
     const [mobileNewsDropdownOpen, setMobileNewsDropdownOpen] = useState(false);
     const navigate = useNavigate();
     const {userInfo, isLoggedIn, resetUserInfo} = useContext(UserContext);
-    const {isDark} = useContext(DarkModeContext);
     const [isAdmin, setIsAdmin] = useState(false);
     const [isDirector, setIsDirector] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
@@ -212,17 +209,15 @@ const Header: React.FC = () => {
     // Nav link styles
     const getNavLinkClass = (path: string) => {
         const active = location.pathname === path || (path !== '/' && location.pathname.startsWith(path));
-        const baseTextColor = isTransparent 
-            ? (active ? 'text-white' : 'text-white/80 hover:text-white')
-            : (active ? 'text-accent dark:text-primary-light' : 'text-gray-700 dark:text-gray-200 hover:text-accent dark:hover:text-primary-light');
-        const afterBgColor = isTransparent ? 'after:bg-white' : 'after:bg-primary dark:after:bg-primary-light';
+        const baseTextColor = active ? 'text-white' : 'text-white/80 hover:text-white';
+        const afterBgColor = 'after:bg-white';
         const afterWidth = active ? 'after:w-full' : 'after:w-0';
         return `relative ${isLongLang ? 'text-[13px]' : 'text-sm'} font-medium whitespace-nowrap ${baseTextColor} transition-all duration-150 active:scale-[0.97] after:absolute after:-bottom-1 after:left-0 after:h-[2px] ${afterWidth} ${afterBgColor} after:transition-all after:duration-300 hover:after:w-full`;
     };
 
     const getMobileNavLinkClass = (path: string) => {
         const active = location.pathname === path || (path !== '/' && location.pathname.startsWith(path));
-        return `block py-3 px-4 text-sm font-medium ${isTransparent ? (active ? 'text-white bg-white/20' : 'text-white/80 hover:text-white hover:bg-white/10') : (active ? 'text-accent bg-gray-100 dark:text-primary-light dark:bg-gray-800' : 'text-gray-700 dark:text-gray-200 hover:text-accent hover:bg-gray-50 dark:hover:bg-dark-surface')} rounded-lg transition-all duration-150 active:scale-[0.97]`;
+        return `block py-3 px-4 text-sm font-medium ${active ? 'text-white bg-white/20' : 'text-white/80 hover:text-white hover:bg-white/10'} rounded-lg transition-all duration-150 active:scale-[0.97]`;
     };
 
     return (
@@ -230,7 +225,7 @@ const Header: React.FC = () => {
             className={`${isTransparentPage ? 'fixed w-full' : 'sticky'} top-0 z-50 transition-all duration-300 ${
                 isTransparent
                     ? "bg-white/10 backdrop-blur-md border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
-                    : (scrolled || isOpen ? "bg-white/90 dark:bg-[#0D050A]/90 backdrop-blur-lg shadow-md" : "bg-white dark:bg-dark-bg shadow-sm")
+                    : "bg-[#111827]/[0.96] dark:bg-[#0D050A]/[0.96] backdrop-blur-md shadow-md border-b border-gray-800/50"
             }`}
             role="banner"
         >
@@ -240,7 +235,7 @@ const Header: React.FC = () => {
                     <Link to="/" className="flex items-center shrink-0 gap-4" aria-label="NIRDC Home">
                         <img src={emblem} alt="Emblem of Sri Lanka" className="h-16 w-auto" />
                         <div className="h-12 w-[1px] bg-gray-300 dark:bg-gray-700 hidden sm:block"></div>
-                        <img src={isTransparent || isDark ? logoLight : logo} alt="NIRDC Logo" className="h-14 w-auto transition-all duration-300" />
+                        <img src={logoLight} alt="NIRDC Logo" className="h-14 w-auto transition-all duration-300" />
                     </Link>
 
                     {/* Desktop Nav */}
@@ -262,8 +257,8 @@ const Header: React.FC = () => {
                                 <div className="relative" ref={newsDropdownRef}>
                                     <button
                                         onClick={() => setNewsDropdownOpen(!newsDropdownOpen)}
-                                        className={`${getNavLinkClass('/all-news')} flex items-center gap-1 ${newsDropdownOpen ? 'text-accent dark:text-primary-light after:w-full' : ''}`}
-                                        style={{ color: newsDropdownOpen ? themeColorValues.primary.main : undefined }}
+                                        className={`${getNavLinkClass('/all-news')} flex items-center gap-1 ${newsDropdownOpen ? 'text-white after:w-full' : ''}`}
+                                        style={{ color: newsDropdownOpen ? '#ffffff' : undefined }}
                                         aria-expanded={newsDropdownOpen}
                                         aria-haspopup="true"
                                     >
@@ -314,7 +309,7 @@ const Header: React.FC = () => {
  
                         {(isAdmin || isDirector) && (
                             <button
-                                className={`flex items-center gap-2 bg-primary hover:bg-primary-dark text-white ${isLongLang ? 'text-[13px] px-3' : 'text-sm px-4'} font-semibold whitespace-nowrap 2xl:px-5 py-2 rounded-lg transition-all duration-200 active:scale-[0.97] hover:shadow-lg hover:-translate-y-0.5`}
+                                className={`flex items-center gap-2 bg-white text-primary hover:bg-gray-100 ${isLongLang ? 'text-[13px] px-3' : 'text-sm px-4'} font-semibold whitespace-nowrap 2xl:px-5 py-2 rounded-lg transition-all duration-200 active:scale-[0.97] hover:shadow-lg hover:-translate-y-0.5`}
                                 onClick={() => {
                                     navigate("/dashboard");
                                 }}
@@ -325,7 +320,7 @@ const Header: React.FC = () => {
                         )}
  
                         {/* Language Switcher */}
-                        <LanguageSwitcher transparentTheme={isTransparent} />
+                        <LanguageSwitcher transparentTheme={true} />
 
 
  
@@ -333,7 +328,7 @@ const Header: React.FC = () => {
                             <UserDropdown userInfo={userInfo} handleLogout={handleLogout} />
                         ) : (
                             <button
-                                className={`flex items-center gap-2 border-2 ${isTransparent ? 'border-white text-white hover:bg-white hover:text-primary' : 'border-primary text-primary dark:text-primary-light dark:border-primary-light hover:bg-primary hover:text-white'} ${isLongLang ? 'text-[13px] px-3' : 'text-sm px-4'} font-semibold py-1.5 rounded-lg transition-all duration-200 active:scale-[0.97]`}
+                                className={`flex items-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary ${isLongLang ? 'text-[13px] px-3' : 'text-sm px-4'} font-semibold py-1.5 rounded-lg transition-all duration-200 active:scale-[0.97]`}
                                 onClick={() => navigate("/login")}
                             >
                                 <User size={16} />
@@ -346,7 +341,7 @@ const Header: React.FC = () => {
                     <div className={mobileMenuClass}>
                         <button
                             onClick={toggleMenu}
-                            className={`p-2 rounded-lg ${isTransparent ? 'text-white hover:bg-white/20' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-dark-surface'} transition-colors`}
+                            className={`p-2 rounded-lg text-white hover:bg-white/20 transition-colors`}
                             aria-label={isOpen ? "Close menu" : "Open menu"}
                             aria-expanded={isOpen}
                         >
@@ -371,7 +366,7 @@ const Header: React.FC = () => {
                             <div className="pb-4 space-y-1">
                                 <div className="flex items-center justify-between pr-4">
                                     {/* Mobile Language Switcher */}
-                                    <LanguageSwitcher isMobile transparentTheme={isTransparent} />
+                                    <LanguageSwitcher isMobile transparentTheme={true} />
 
                                     <div className="flex items-center gap-2">
                                         {(isAdmin || isDirector) && (

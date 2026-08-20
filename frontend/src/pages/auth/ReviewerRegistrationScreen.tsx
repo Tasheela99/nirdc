@@ -51,7 +51,7 @@ const ReviewerRegistrationScreen = () => {
 
     useEffect(() => {
         const initSession = async () => {
-            let storedSession = sessionStorage.getItem("reviewerSessionId");
+            let storedSession = localStorage.getItem("reviewerSessionId");
             if (storedSession) {
                 try {
                     const res: any = await authApi.getReviewerSessionState(storedSession);
@@ -62,7 +62,7 @@ const ReviewerRegistrationScreen = () => {
                         return;
                     }
                 } catch (e) {
-                    sessionStorage.removeItem("reviewerSessionId");
+                    localStorage.removeItem("reviewerSessionId");
                 }
             }
             
@@ -71,7 +71,7 @@ const ReviewerRegistrationScreen = () => {
                 const newId = res.sessionId || res.data?.sessionId;
                 if (newId) {
                     setSessionId(newId);
-                    sessionStorage.setItem("reviewerSessionId", newId);
+                    localStorage.setItem("reviewerSessionId", newId);
                     const state = res.stepsCompleted || res.data?.stepsCompleted;
                     if (state) setSteps(state);
                 }
@@ -126,6 +126,8 @@ const ReviewerRegistrationScreen = () => {
                         expertiseArray = [expertiseArray];
                     }
                     formDataToSend.append(key, JSON.stringify(expertiseArray));
+                } else if (key === 'customExpertise') {
+                    // Ignore customExpertise as it is already merged into areasOfExpertise
                 } else {
                     formDataToSend.append(key, formDetails[key]);
                 }
@@ -139,7 +141,7 @@ const ReviewerRegistrationScreen = () => {
             const response = await authApi.registerReviewer(formDataToSend) as any;
             if (response.status || response.success) {
                 showAlert(response.message || "Registration successful!", "success");
-                sessionStorage.removeItem("reviewerSessionId");
+                localStorage.removeItem("reviewerSessionId");
                 navigate(`/security/verify-account/${formDetails.email}`);
             } else {
                 showAlert(response.message || "Registration failed.", "error");
@@ -153,14 +155,14 @@ const ReviewerRegistrationScreen = () => {
     };
 
     return (
-        <div className="min-h-[calc(100vh-66px)] flex-1 flex flex-col lg:flex-row w-full bg-[#FAFAFA] dark:bg-dark-bg relative">
+        <div className="min-h-[calc(100vh-80px)] flex-1 flex flex-col lg:flex-row w-full bg-[#FAFAFA] dark:bg-dark-bg relative">
             {/* Absolute Language Switcher at Top Right */}
             <div className="absolute top-4 right-4 z-10 bg-white/80 dark:bg-black/50 backdrop-blur-sm rounded-lg shadow-sm p-1">
                 <LanguageSwitcher />
             </div>
 
             {/* Left - Branding Panel */}
-            <div className="hidden lg:flex lg:sticky lg:top-0 lg:h-[calc(100vh-66px)] lg:w-[45%] flex-col items-center justify-center bg-gradient-to-br from-primary to-primary-dark p-12 text-center">
+            <div className="hidden lg:flex lg:sticky lg:top-[80px] lg:h-[calc(100vh-80px)] lg:w-[45%] flex-col items-center justify-center bg-gradient-to-br from-primary to-primary-dark p-12 text-center">
                 <img src={logo} alt="NIRDC Logo" className="w-48 h-auto mb-6 brightness-0 invert" />
                 <h2 className="text-2xl font-bold text-white mb-3 tracking-tight">{t('reviewerRegistration.brandingTitle')}</h2>
                 <p className="text-white/80 text-[0.95rem] max-w-xs leading-relaxed font-body font-light">
@@ -169,7 +171,7 @@ const ReviewerRegistrationScreen = () => {
             </div>
 
             {/* Right - Form Panel */}
-            <div className="w-full lg:w-[55%] flex flex-col bg-white dark:bg-dark-surface p-6 lg:p-12 pt-16 lg:pt-12 border-l border-black/5 dark:border-white/5 min-h-[calc(100vh-66px)] lg:min-h-0">
+            <div className="w-full lg:w-[55%] flex flex-col bg-white dark:bg-dark-surface p-6 lg:p-12 pt-16 lg:pt-12 border-l border-black/5 dark:border-white/5 min-h-[calc(100vh-80px)] lg:min-h-0">
                 <div className="w-full h-full flex flex-col">
                     <div className="text-center lg:text-left mb-6 shrink-0">
                         <img src={logo} alt="NIRDC Logo" className="w-28 h-auto mx-auto mb-6 lg:hidden" />
@@ -191,7 +193,7 @@ const ReviewerRegistrationScreen = () => {
                                 </div>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <ReviewerIntro onComplete={async () => {
+                                <ReviewerIntro completed={steps.whoIsReviewer} onComplete={async () => {
                                     if (await markStepCompleted("whoIsReviewer")) setExpanded("panel2");
                                 }} />
                             </AccordionDetails>
@@ -206,7 +208,7 @@ const ReviewerRegistrationScreen = () => {
                                 </div>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <ReviewerQualifications onComplete={async () => {
+                                <ReviewerQualifications completed={steps.qualifications} onComplete={async () => {
                                     if (await markStepCompleted("qualifications")) setExpanded("panel3");
                                 }} />
                             </AccordionDetails>
@@ -221,7 +223,7 @@ const ReviewerRegistrationScreen = () => {
                                 </div>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <ReviewerConditions onComplete={async () => {
+                                <ReviewerConditions completed={steps.conditions} onComplete={async () => {
                                     if (await markStepCompleted("conditions")) setExpanded("panel4");
                                 }} />
                             </AccordionDetails>
@@ -255,6 +257,7 @@ const ReviewerRegistrationScreen = () => {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <ReviewerMCQ 
+                                    sessionId={sessionId}
                                     onComplete={async (score) => {
                                         setMcqScore(score);
                                         if (score >= 8) {
@@ -276,9 +279,12 @@ const ReviewerRegistrationScreen = () => {
                                 </div>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <ReviewerNDA onComplete={async () => {
-                                    if (await markStepCompleted("nda")) setExpanded("panel7");
-                                }} />
+                                <ReviewerNDA 
+                                    completed={steps.nda}
+                                    onComplete={async () => {
+                                        if (await markStepCompleted("nda")) setExpanded("panel7");
+                                    }} 
+                                />
                             </AccordionDetails>
                         </Accordion>
 

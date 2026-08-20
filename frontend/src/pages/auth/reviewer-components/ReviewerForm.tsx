@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, InputAdornment, FormControl, IconButton, CircularProgress } from "@mui/material";
+import { TextField, InputAdornment, FormControl, IconButton, CircularProgress, Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import { User, Briefcase, Building2, Mail, Eye, EyeOff } from "lucide-react";
 import Select from "react-select";
 import { countries } from "countries-list";
@@ -23,7 +23,8 @@ const SignUpSchema = z.object({
         .regex(/[0-9]/, { message: 'Password must contain a number' })
         .regex(/[@$!%*?&]/, { message: 'Password must contain at least one special character (@, $, !, %, *, ?, &)' }),
     confirmPassword: z.string(),
-    areasOfExpertise: z.string().min(1, { message: 'Enter your areas of expertise' })
+    areasOfExpertise: z.array(z.string()).min(1, { message: 'Please select at least one predefined area of expertise' }),
+    customExpertise: z.string().optional()
 }).refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
     path: ["confirmPassword"]
@@ -41,7 +42,14 @@ const countryOptions: OptionType[] = Object.entries(countries).map(([, country])
     phoneCode: `+${country.phone}`,
 }));
 
-// Removed expertiseOptions array
+const PREDEFINED_EXPERTISE = [
+    "Engineering & Technology",
+    "Medicine & Health Sciences",
+    "Agriculture & Environmental Sciences",
+    "Information Technology & Computer Science",
+    "Social Sciences & Humanities",
+    "Natural & Physical Sciences"
+];
 
 interface Props {
     initialData: any;
@@ -62,7 +70,8 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
         country: "",
         password: "",
         confirmPassword: "",
-        areasOfExpertise: "",
+        areasOfExpertise: [] as string[],
+        customExpertise: "",
     });
     
     const [errors, setErrors] = useState<any>({});
@@ -90,14 +99,39 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
         }
     };
 
-    // Removed handleExpertiseChange since it was used for the select component
+    const handleExpertiseToggle = (expertise: string) => {
+        setFormData((prev: any) => {
+            const current = prev.areasOfExpertise as string[];
+            const updated = current.includes(expertise)
+                ? current.filter(e => e !== expertise)
+                : [...current, expertise];
+            
+            if (errors.areasOfExpertise && updated.length > 0) {
+                setErrors((errs: any) => {
+                    const newErrs = { ...errs };
+                    delete newErrs.areasOfExpertise;
+                    return newErrs;
+                });
+            }
+            
+            return { ...prev, areasOfExpertise: updated };
+        });
+    };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         try {
             SignUpSchema.parse(formData);
             setErrors({});
-            onComplete(formData);
+            const customArr = formData.customExpertise 
+                ? formData.customExpertise.split(',').map((s: string) => s.trim()).filter(Boolean) 
+                : [];
+            // Create a copy of formData and merge the expertise
+            const finalData = { 
+                ...formData, 
+                areasOfExpertise: [...formData.areasOfExpertise, ...customArr] 
+            };
+            onComplete(finalData);
         } catch (validationError) {
             if (validationError instanceof z.ZodError) {
                 const errorMap = validationError.flatten().fieldErrors;
@@ -197,14 +231,40 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                 InputProps={{ endAdornment: <InputAdornment position="end"><Mail size={16} className="text-[#94A3B8]" /></InputAdornment> }}
             />
             
+            <div className="grid grid-cols-1 gap-2 mt-2">
+                <p className={`font-semibold ${errors.areasOfExpertise ? 'text-[#d32f2f]' : 'text-gray-700 dark:text-gray-200'}`}>
+                    {t('auth.register.selectExpertise', 'Areas of Expertise *')}
+                </p>
+                <div className={`p-4 border rounded-xl ${errors.areasOfExpertise ? 'border-[#d32f2f]' : 'border-gray-200 dark:border-white/10'}`}>
+                    <FormGroup className="grid grid-cols-1 sm:grid-cols-2 gap-x-4">
+                        {PREDEFINED_EXPERTISE.map((expertise) => (
+                            <FormControlLabel
+                                key={expertise}
+                                control={
+                                    <Checkbox
+                                        checked={(formData.areasOfExpertise as string[]).includes(expertise)}
+                                        onChange={() => handleExpertiseToggle(expertise)}
+                                        sx={{
+                                            color: '#94A3B8',
+                                            '&.Mui-checked': { color: '#6B1D4A' },
+                                        }}
+                                    />
+                                }
+                                label={<span className="text-sm text-gray-700 dark:text-gray-300">{expertise}</span>}
+                            />
+                        ))}
+                    </FormGroup>
+                    {errors.areasOfExpertise && <p className="text-[0.75rem] text-[#d32f2f] mt-2">{errors.areasOfExpertise}</p>}
+                </div>
+            </div>
+
             <div className="grid grid-cols-1 gap-5">
                 <TextField
-                    label={t('auth.register.selectExpertise', 'Areas of Expertise *')}
+                    label={t('auth.register.customExpertise', 'Other / Additional Expertise')}
                     fullWidth 
-                    value={formData.areasOfExpertise}
-                    onChange={(e) => handleChange("areasOfExpertise", e.target.value)}
-                    error={!!errors.areasOfExpertise} 
-                    helperText={errors.areasOfExpertise || t('auth.register.expertiseHint', 'Separate multiple areas with commas')}
+                    value={formData.customExpertise}
+                    onChange={(e) => handleChange("customExpertise", e.target.value)}
+                    helperText={t('auth.register.expertiseHint', 'Separate multiple areas with commas')}
                     placeholder={t('auth.register.expertisePlaceholder', 'e.g. Artificial Intelligence, Data Science')}
                 />
             </div>

@@ -49,7 +49,7 @@ const AboutUsScreen: FC = () => {
     <section id="about-us" className="bg-gradient-to-br from-primary to-primary-dark min-h-auto pt-32 pb-20 text-white overflow-hidden">
       <div className="max-w-screen-xl mx-auto px-6 sm:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
-          
+
           {/* Left Column - Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -68,9 +68,9 @@ const AboutUsScreen: FC = () => {
               </p>
             </div>
           </motion.div>
-          
+
           {/* Right Column - Collage */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}

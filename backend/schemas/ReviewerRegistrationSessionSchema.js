@@ -17,7 +17,7 @@ const ReviewerRegistrationSessionSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        expires: 86400 // Automatically delete the document after 24 hours (86400 seconds)
+        expires: 604800 
     }
 });
 

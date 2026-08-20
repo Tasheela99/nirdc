@@ -9,7 +9,7 @@ const FooterComponent: FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 dark:bg-dark-bg text-gray-300">
+    <footer className="bg-[#111827]/[0.96] dark:bg-[#0D050A]/[0.96] backdrop-blur-md text-gray-300">
       {/* Main Footer */}
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">

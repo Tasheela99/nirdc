@@ -1,15 +1,31 @@
 import React, { useState } from "react";
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { Checkbox, FormControlLabel, CircularProgress } from "@mui/material";
 import { CheckCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 interface Props {
-    onComplete: () => void;
+    completed: boolean;
+    onComplete: () => void | Promise<void>;
 }
 
-const ReviewerConditions: React.FC<Props> = ({ onComplete }) => {
-    const [checked, setChecked] = useState(false);
+const ReviewerConditions: React.FC<Props> = ({ completed, onComplete }) => {
+    const [checked, setChecked] = useState(completed);
+    const [isLoading, setIsLoading] = useState(false);
     const { t } = useTranslation();
+
+    React.useEffect(() => {
+        setChecked(completed);
+    }, [completed]);
+
+    const handleComplete = async () => {
+        if (!checked) return;
+        setIsLoading(true);
+        try {
+            await onComplete();
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <div className="flex flex-col gap-4">
@@ -41,11 +57,11 @@ const ReviewerConditions: React.FC<Props> = ({ onComplete }) => {
 
             <div className="mt-4 flex justify-end">
                 <button
-                    onClick={() => checked && onComplete()}
-                    disabled={!checked}
+                    onClick={handleComplete}
+                    disabled={!checked || isLoading}
                     className={`px-6 py-2 rounded-lg transition-colors flex items-center gap-2 ${checked ? 'bg-[#6B1D4A] text-white hover:bg-[#8C2963]' : 'bg-gray-300 dark:bg-white/10 text-gray-500 dark:text-gray-400 cursor-not-allowed'}`}
                 >
-                    <CheckCircle size={18} />
+                    {isLoading ? <CircularProgress size={18} color="inherit" /> : <CheckCircle size={18} />}
                     {t('reviewerRegistration.buttons.confirmProceed')}
                 </button>
             </div>
