@@ -3,7 +3,6 @@ import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 
 import Header from "./components/layout/HeaderComponent.tsx";
 import FooterComponent from "./components/layout/FooterComponent.tsx";
-import Text from "./components/TextComponent.tsx";
 import UserContext from "./store/UserContext.tsx";
 import { USER_ROLE } from "./constants/AppConstants.tsx";
 
@@ -76,9 +75,6 @@ const LoadingSpinner = () => (
 const AppRouter = () => {
     const { userInfo } = useContext(UserContext);
     const location = useLocation();
-    const isHome = location.pathname === "/";
-    const [isAdmin, setIsAdmin] = useState(false);
-    const [isDirector, setIsDirector] = useState(false);
     const [loading, setLoading] = useState(true);
 
     const isAdminRoute = location.pathname.startsWith("/admin");
@@ -87,11 +83,6 @@ const AppRouter = () => {
 
     useEffect(() => {
         if (userInfo !== undefined) {
-            setIsAdmin(
-                userInfo?.role === USER_ROLE.ADMIN ||
-                userInfo?.role === USER_ROLE.SUPER_ADMIN
-            );
-            setIsDirector(userInfo?.role === USER_ROLE.DIRECTOR);
             setLoading(false);
         }
     }, [userInfo]);

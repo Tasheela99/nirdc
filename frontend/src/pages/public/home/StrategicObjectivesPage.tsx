@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Lightbulb, Rocket, Package, Briefcase, BookOpen, Heart, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { Lightbulb, Rocket, Package, Briefcase, BookOpen, Heart } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const TypewriterText = ({ text, delay = 50 }: { text: string, delay?: number }) => {
@@ -40,7 +40,6 @@ const TypewriterText = ({ text, delay = 50 }: { text: string, delay?: number }) 
 
 const StrategicObjectivesScreen: FC = () => {
   const { t } = useTranslation();
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
   const sections = [
     {
@@ -147,9 +146,6 @@ const StrategicObjectivesScreen: FC = () => {
     },
   ];
 
-  const handleCardClick = (index: number) => {
-    setExpandedCard(expandedCard === index ? null : index);
-  };
 
   // Apply dark mode styling overrides to sections
   const redesignedSections = sections.map((sec) => {
@@ -279,69 +275,6 @@ const StrategicObjectivesScreen: FC = () => {
           </div>
         </div>
       </div>
-    );
-  };
-
-  const renderCard = (section: any, originalIndex: number, spanClass: string) => {
-    const Icon = section.icon;
-    const isExpanded = expandedCard === originalIndex;
-
-    return (
-      <motion.div
-        key={originalIndex}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: originalIndex * 0.05, ease: [0.23, 1, 0.32, 1] }}
-        onClick={() => handleCardClick(originalIndex)}
-        className={`group relative bg-white dark:bg-dark-surface rounded-2xl border ${section.borderColor} dark:border-dark-border p-6 cursor-pointer transition-all duration-200 active:scale-[0.98] hover:shadow-lg hover:-translate-y-0.5 ${
-          isExpanded ? "ring-2 ring-primary/30 shadow-md -translate-y-0.5" : "shadow-sm"
-        } ${spanClass}`}
-      >
-        {/* Icon */}
-        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${section.gradient} flex items-center justify-center mb-5 shadow group-hover:scale-105 transition-transform duration-200`}>
-          <Icon size={24} className="text-white" />
-        </div>
-
-        {/* Title */}
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors font-sans">
-          {section.title}
-        </h3>
-
-        {/* Summary */}
-        <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4 font-body">
-          {section.summary}
-        </p>
-
-        {/* Expand indicator */}
-        <div className={`flex items-center gap-1 text-xs font-semibold transition-all ${isExpanded ? 'text-primary' : 'text-gray-400 group-hover:text-primary'} mt-4`}>
-          {isExpanded ? t('strategic.clickToClose') : t('strategic.viewDetails')}
-          <ChevronDown size={14} className={`transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
-        </div>
-
-        {/* Inline Expanded Content */}
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-              className="overflow-hidden"
-            >
-              <div 
-                className="pt-5 mt-5 border-t border-gray-100 dark:border-dark-border cursor-auto"
-                onClick={(e) => e.stopPropagation()}
-              >
-                {section.content}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Top gradient line */}
-        <div className={`absolute top-0 left-6 right-6 h-1 bg-gradient-to-r ${section.gradient} rounded-b-full transition-opacity duration-200 ${isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
-      </motion.div>
     );
   };
 

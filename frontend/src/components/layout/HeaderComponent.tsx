@@ -9,7 +9,7 @@ import UserContext from "../../store/UserContext.tsx";
 import DarkModeContext from "../../store/DarkModeContext.tsx";
 import ChangePasswordDialog from "../common/ChangePasswordDialog";
 import {AnimatePresence, motion} from "framer-motion";
-import { Menu, X, ChevronDown, Sun, Moon, LogOut, Lock, LayoutDashboard, User } from "lucide-react";
+import { Menu, X, ChevronDown, LogOut, Lock, LayoutDashboard, User } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { themeColorValues } from "../../theme/theme";
@@ -151,7 +151,7 @@ const Header: React.FC = () => {
     const [mobileNewsDropdownOpen, setMobileNewsDropdownOpen] = useState(false);
     const navigate = useNavigate();
     const {userInfo, isLoggedIn, resetUserInfo} = useContext(UserContext);
-    const {isDark, toggleDarkMode} = useContext(DarkModeContext);
+    const {isDark} = useContext(DarkModeContext);
     const [isAdmin, setIsAdmin] = useState(false);
     const [isDirector, setIsDirector] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
