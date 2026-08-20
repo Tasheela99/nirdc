@@ -241,6 +241,47 @@ const StrategicObjectivesScreen: FC = () => {
     return sec;
   });
 
+  const renderCoreCard = (section: any) => {
+    const Icon = section.icon;
+    return (
+      <div className="relative mt-8 group h-full">
+        <div className="bg-[#fafafa] dark:bg-dark-surface border-[1.5px] border-gray-200 dark:border-gray-700 pt-14 pb-10 px-8 text-center h-full transition-all duration-300 hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 rounded-sm">
+          {/* Overlapping Icon */}
+          <div className="absolute -top-9 left-1/2 -translate-x-1/2 w-[72px] h-[72px] bg-primary dark:bg-primary-dark rounded-full flex items-center justify-center z-10 transition-transform duration-300 group-hover:scale-110 shadow-md">
+            <Icon size={32} className="text-white" strokeWidth={1.5} />
+          </div>
+
+          <h3 className="text-lg font-bold text-[#333] dark:text-gray-100 uppercase tracking-[0.15em] mb-4 font-sans mt-2">
+            {section.title}
+          </h3>
+          
+          <div className="w-8 h-[2px] bg-gray-400 dark:bg-gray-500 mx-auto mb-6 transition-all duration-300 group-hover:w-12 group-hover:bg-primary dark:group-hover:bg-primary-light" />
+
+          <div className="text-base text-gray-500 dark:text-gray-400 leading-relaxed font-body">
+            {section.title === t('strategic.vision.title') ? (
+              t('strategic.vision.content')
+            ) : section.title === t('strategic.mission.title') ? (
+              t('strategic.mission.content')
+            ) : section.title === t('strategic.values.title') ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 text-left">
+                {(t('strategic.values.items', { returnObjects: true }) as { key: string; value: string }[]).map((item, valIdx) => (
+                  <div key={valIdx} className="bg-white dark:bg-dark-bg p-3 rounded-md shadow-sm border border-gray-100 dark:border-gray-800 hover:-translate-y-0.5 transition-transform">
+                    <span className="font-bold text-gray-700 dark:text-gray-300 text-xs uppercase tracking-wider block mb-1">{item.key}</span>
+                    <span className="text-sm text-gray-500 block leading-snug">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-left">
+                {section.content}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const renderCard = (section: any, originalIndex: number, spanClass: string) => {
     const Icon = section.icon;
     const isExpanded = expandedCard === originalIndex;
@@ -325,10 +366,10 @@ const StrategicObjectivesScreen: FC = () => {
         </motion.div>
 
         {/* Set 1: Core Identity (Vision, Mission, Values) */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 mb-8">
-          {renderCard(redesignedSections[0], 0, "md:col-span-3")}
-          {renderCard(redesignedSections[1], 1, "md:col-span-3")}
-          {renderCard(redesignedSections[5], 5, "md:col-span-6")}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-16 pt-4">
+          <div>{renderCoreCard(redesignedSections[1])}</div> {/* Mission */}
+          <div>{renderCoreCard(redesignedSections[0])}</div> {/* Vision */}
+          <div className="md:col-span-2">{renderCoreCard(redesignedSections[5])}</div> {/* Values */}
         </div>
 
         {/* Quote Banner */}
@@ -347,10 +388,10 @@ const StrategicObjectivesScreen: FC = () => {
         </motion.div>
 
         {/* Set 2: Core Strategy (Investor Matching, Knowledge, Gap Filling) */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 mb-8">
-          {renderCard(redesignedSections[3], 3, "md:col-span-3")}
-          {renderCard(redesignedSections[4], 4, "md:col-span-3")}
-          {renderCard(redesignedSections[2], 2, "md:col-span-6")}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 mb-8 pt-4">
+          <div>{renderCoreCard(redesignedSections[3])}</div>
+          <div>{renderCoreCard(redesignedSections[4])}</div>
+          <div className="md:col-span-2">{renderCoreCard(redesignedSections[2])}</div>
         </div>
       </div>
     </section>

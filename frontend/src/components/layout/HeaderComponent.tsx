@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useLocation} from "react-router-dom";
 import {HashLink} from "react-router-hash-link";
 import logo from "../../assets/NIRDC-logo-SVG.svg";
 import logoLight from "../../assets/NIRDC-logo-LIGHT.svg";
@@ -156,7 +156,11 @@ const Header: React.FC = () => {
     const [isDirector, setIsDirector] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const newsDropdownRef = useRef<HTMLDivElement>(null);
+    const location = useLocation();
+    const isTransparentPage = location.pathname === '/' || location.pathname === '/about-us';
     const [scrolled, setScrolled] = useState(false);
+    
+    const isTransparent = isTransparentPage && !scrolled;
 
     useEffect(() => {
         setIsAdmin(
@@ -206,39 +210,51 @@ const Header: React.FC = () => {
     }, []);
 
     // Nav link styles
-    const navLinkClass = `relative ${isLongLang ? 'text-[13px]' : 'text-sm'} font-medium whitespace-nowrap text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary-light transition-all duration-150 active:scale-[0.97] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full`;
-    const mobileNavLinkClass = "block py-3 px-4 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-primary hover:bg-surface dark:hover:bg-dark-surface rounded-lg transition-all duration-150 active:scale-[0.97]";
+    const getNavLinkClass = (path: string) => {
+        const active = location.pathname === path || (path !== '/' && location.pathname.startsWith(path));
+        const baseTextColor = isTransparent 
+            ? (active ? 'text-white' : 'text-white/80 hover:text-white')
+            : (active ? 'text-accent dark:text-primary-light' : 'text-gray-700 dark:text-gray-200 hover:text-accent dark:hover:text-primary-light');
+        const afterBgColor = isTransparent ? 'after:bg-white' : 'after:bg-primary dark:after:bg-primary-light';
+        const afterWidth = active ? 'after:w-full' : 'after:w-0';
+        return `relative ${isLongLang ? 'text-[13px]' : 'text-sm'} font-medium whitespace-nowrap ${baseTextColor} transition-all duration-150 active:scale-[0.97] after:absolute after:-bottom-1 after:left-0 after:h-[2px] ${afterWidth} ${afterBgColor} after:transition-all after:duration-300 hover:after:w-full`;
+    };
+
+    const getMobileNavLinkClass = (path: string) => {
+        const active = location.pathname === path || (path !== '/' && location.pathname.startsWith(path));
+        return `block py-3 px-4 text-sm font-medium ${isTransparent ? (active ? 'text-white bg-white/20' : 'text-white/80 hover:text-white hover:bg-white/10') : (active ? 'text-accent bg-gray-100 dark:text-primary-light dark:bg-gray-800' : 'text-gray-700 dark:text-gray-200 hover:text-accent hover:bg-gray-50 dark:hover:bg-dark-surface')} rounded-lg transition-all duration-150 active:scale-[0.97]`;
+    };
 
     return (
         <header
-            className={`sticky top-0 z-50 transition-all duration-300 ${
-                scrolled
-                    ? "bg-white/90 dark:bg-[#0D050A]/90 backdrop-blur-lg shadow-md"
-                    : "bg-white dark:bg-dark-bg shadow-sm"
+            className={`${isTransparentPage ? 'fixed w-full' : 'sticky'} top-0 z-50 transition-all duration-300 ${
+                isTransparent
+                    ? "bg-white/10 backdrop-blur-md border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
+                    : (scrolled || isOpen ? "bg-white/90 dark:bg-[#0D050A]/90 backdrop-blur-lg shadow-md" : "bg-white dark:bg-dark-bg shadow-sm")
             }`}
             role="banner"
         >
             <div className={`${isLongLang ? 'max-w-[98%] 2xl:max-w-[1600px]' : 'max-w-screen-xl'} mx-auto px-4 sm:px-6 lg:px-8`}>
-                <div className="flex justify-between items-center h-16">
+                <div className="flex justify-between items-center h-20">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center shrink-0 gap-3" aria-label="NIRDC Home">
-                        <img src={emblem} alt="Emblem of Sri Lanka" className="h-10 w-auto" />
-                        <div className="h-8 w-[1px] bg-gray-300 dark:bg-gray-700 hidden sm:block"></div>
-                        <img src={isDark ? logoLight : logo} alt="NIRDC Logo" className="h-9 w-auto transition-all duration-300" />
+                    <Link to="/" className="flex items-center shrink-0 gap-4" aria-label="NIRDC Home">
+                        <img src={emblem} alt="Emblem of Sri Lanka" className="h-16 w-auto" />
+                        <div className="h-12 w-[1px] bg-gray-300 dark:bg-gray-700 hidden sm:block"></div>
+                        <img src={isTransparent || isDark ? logoLight : logo} alt="NIRDC Logo" className="h-14 w-auto transition-all duration-300" />
                     </Link>
 
                     {/* Desktop Nav */}
                     <nav className={`${desktopNavClass} items-center ${isLongLang ? 'gap-2 2xl:gap-4' : 'gap-3 2xl:gap-6'}`} role="navigation" aria-label="Main navigation">
                         <button
                             onClick={() => window.location.href = '/'}
-                            className={navLinkClass}
+                            className={getNavLinkClass('/')}
                         >
                             {t('header.home')}
                         </button>
 
                         {!isAdmin && !isDirector ? (
                             <>
-                                <Link to="/proposal" className={navLinkClass}>
+                                <Link to="/proposal" className={getNavLinkClass('/proposal')}>
                                     {t('header.proposals')}
                                 </Link>
 
@@ -246,7 +262,7 @@ const Header: React.FC = () => {
                                 <div className="relative" ref={newsDropdownRef}>
                                     <button
                                         onClick={() => setNewsDropdownOpen(!newsDropdownOpen)}
-                                        className={`${navLinkClass} flex items-center gap-1 ${newsDropdownOpen ? 'text-primary dark:text-primary-light after:w-full' : ''}`}
+                                        className={`${getNavLinkClass('/all-news')} flex items-center gap-1 ${newsDropdownOpen ? 'text-accent dark:text-primary-light after:w-full' : ''}`}
                                         style={{ color: newsDropdownOpen ? themeColorValues.primary.main : undefined }}
                                         aria-expanded={newsDropdownOpen}
                                         aria-haspopup="true"
@@ -288,7 +304,7 @@ const Header: React.FC = () => {
                                     </AnimatePresence>
                                 </div>
 
-                                <Link to="/about-us" className={navLinkClass}>
+                                <Link to="/about-us" className={getNavLinkClass('/about-us')}>
                                     {t('header.aboutUs')}
                                 </Link>
 
@@ -309,22 +325,15 @@ const Header: React.FC = () => {
                         )}
  
                         {/* Language Switcher */}
-                        <LanguageSwitcher />
+                        <LanguageSwitcher transparentTheme={isTransparent} />
 
-                        {/* Dark Mode Toggle */}
-                        <button
-                            onClick={toggleDarkMode}
-                            className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-surface transition-all duration-150 active:scale-90"
-                            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                        >
-                            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                        </button>
+
  
                         {isLoggedIn ? (
                             <UserDropdown userInfo={userInfo} handleLogout={handleLogout} />
                         ) : (
                             <button
-                                className={`flex items-center gap-2 border-2 border-primary text-primary dark:text-primary-light dark:border-primary-light hover:bg-primary hover:text-white ${isLongLang ? 'text-[13px] px-3' : 'text-sm px-4'} font-semibold py-1.5 rounded-lg transition-all duration-200 active:scale-[0.97]`}
+                                className={`flex items-center gap-2 border-2 ${isTransparent ? 'border-white text-white hover:bg-white hover:text-primary' : 'border-primary text-primary dark:text-primary-light dark:border-primary-light hover:bg-primary hover:text-white'} ${isLongLang ? 'text-[13px] px-3' : 'text-sm px-4'} font-semibold py-1.5 rounded-lg transition-all duration-200 active:scale-[0.97]`}
                                 onClick={() => navigate("/login")}
                             >
                                 <User size={16} />
@@ -333,18 +342,11 @@ const Header: React.FC = () => {
                         )}
                     </nav>
 
-                    {/* Mobile: Dark mode + Hamburger */}
+                    {/* Mobile: Hamburger */}
                     <div className={mobileMenuClass}>
                         <button
-                            onClick={toggleDarkMode}
-                            className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors"
-                            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                        >
-                            {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                        </button>
-                        <button
                             onClick={toggleMenu}
-                            className="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors"
+                            className={`p-2 rounded-lg ${isTransparent ? 'text-white hover:bg-white/20' : 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-dark-surface'} transition-colors`}
                             aria-label={isOpen ? "Close menu" : "Open menu"}
                             aria-expanded={isOpen}
                         >
@@ -367,16 +369,40 @@ const Header: React.FC = () => {
                             aria-label="Mobile navigation"
                         >
                             <div className="pb-4 space-y-1">
-                                {/* Mobile Language Switcher */}
-                                <LanguageSwitcher isMobile />
+                                <div className="flex items-center justify-between pr-4">
+                                    {/* Mobile Language Switcher */}
+                                    <LanguageSwitcher isMobile transparentTheme={isTransparent} />
 
-                                <Link to="/" className={mobileNavLinkClass} onClick={closeMenu}>
+                                    <div className="flex items-center gap-2">
+                                        {(isAdmin || isDirector) && (
+                                            <button
+                                                className="flex items-center justify-center gap-1.5 bg-primary hover:bg-primary-dark text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-all duration-200 active:scale-[0.97]"
+                                                onClick={() => { navigate(isAdmin ? "/admin" : "/admin/dashboard"); closeMenu(); }}
+                                            >
+                                                <LayoutDashboard size={14} />
+                                                <span className="hidden sm:inline">{t('header.dashboard')}</span>
+                                            </button>
+                                        )}
+                                        
+                                        {!isLoggedIn && (
+                                            <button
+                                                className={`flex items-center justify-center gap-1.5 border-2 ${isTransparent ? 'border-white text-white hover:bg-white hover:text-primary' : 'border-primary text-primary dark:text-primary-light dark:border-primary-light hover:bg-primary hover:text-white'} text-xs font-semibold px-3 py-1.5 rounded-lg transition-all duration-200 active:scale-[0.97]`}
+                                                onClick={() => { navigate("/login"); closeMenu(); }}
+                                            >
+                                                <User size={14} />
+                                                {t('header.login')}
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <Link to="/" className={getMobileNavLinkClass('/')} onClick={closeMenu}>
                                     {t('header.home')}
                                 </Link>
 
                                 {!isAdmin && !isDirector ? (
                                     <>
-                                        <Link to="/proposal" className={mobileNavLinkClass} onClick={closeMenu}>
+                                        <Link to="/proposal" className={getMobileNavLinkClass('/proposal')} onClick={closeMenu}>
                                             {t('header.proposals')}
                                         </Link>
 
@@ -388,7 +414,7 @@ const Header: React.FC = () => {
                                                     e.stopPropagation();
                                                     setMobileNewsDropdownOpen(!mobileNewsDropdownOpen);
                                                 }}
-                                                className={`${mobileNavLinkClass} flex items-center justify-between w-full`}
+                                                className={`${getMobileNavLinkClass('/all-news')} flex items-center justify-between w-full`}
                                             >
                                                 <span>{t('header.updatesNews')}</span>
                                                 <ChevronDown
@@ -406,11 +432,11 @@ const Header: React.FC = () => {
                                                         transition={{duration: 0.2}}
                                                         className="ml-4 pl-4 border-l-2 border-primary space-y-1 overflow-hidden"
                                                     >
-                                                        <HashLink smooth to="/all-news" className={`${mobileNavLinkClass} !py-2.5 !px-3 mb-1`}
+                                                        <HashLink smooth to="/all-news" className={`${getMobileNavLinkClass('/all-news')} !py-2.5 !px-3 mb-1`}
                                                                   onClick={() => { setMobileNewsDropdownOpen(false); closeMenu(); }}>
                                                             {t('header.news')}
                                                         </HashLink>
-                                                        <Link to="/announcements" className={`${mobileNavLinkClass} !py-2.5 !px-3`}
+                                                        <Link to="/announcements" className={`${getMobileNavLinkClass('/announcements')} !py-2.5 !px-3`}
                                                               onClick={() => { setMobileNewsDropdownOpen(false); closeMenu(); }}>
                                                             {t('header.announcements')}
                                                         </Link>
@@ -419,38 +445,14 @@ const Header: React.FC = () => {
                                             </AnimatePresence>
                                         </div>
 
-                                        <Link to="/about-us" className={mobileNavLinkClass} onClick={closeMenu}>
+                                        <Link to="/about-us" className={getMobileNavLinkClass('/about-us')} onClick={closeMenu}>
                                             {t('header.aboutUs')}
                                         </Link>
-
-
                                     </>
                                 ) : null}
 
-                                {(isAdmin || isDirector) && (
-                                    <div className="px-4 pt-2">
-                                        <button
-                                            className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 active:scale-[0.97]"
-                                            onClick={() => { navigate(isAdmin ? "/admin" : "/admin/dashboard"); closeMenu(); }}
-                                        >
-                                            <LayoutDashboard size={16} />
-                                            {t('header.dashboard')}
-                                        </button>
-                                    </div>
-                                )}
-
-                                {isLoggedIn ? (
+                                {isLoggedIn && (
                                     <UserDropdown userInfo={userInfo} handleLogout={handleLogout} isMobile={true} />
-                                ) : (
-                                    <div className="px-4 pt-2">
-                                        <button
-                                            className="w-full flex items-center justify-center gap-2 border-2 border-primary text-primary dark:text-primary-light dark:border-primary-light hover:bg-primary hover:text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-200 active:scale-[0.97]"
-                                            onClick={() => { navigate("/login"); closeMenu(); }}
-                                        >
-                                            <User size={16} />
-                                            {t('header.login')}
-                                        </button>
-                                    </div>
                                 )}
                             </div>
                         </motion.div>

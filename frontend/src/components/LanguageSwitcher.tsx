@@ -11,9 +11,10 @@ const languages = [
 
 interface LanguageSwitcherProps {
   isMobile?: boolean;
+  transparentTheme?: boolean;
 }
 
-const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isMobile = false }) => {
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isMobile = false, transparentTheme = false }) => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -40,7 +41,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isMobile = false })
   if (isMobile) {
     return (
       <div className="flex items-center gap-2 px-4 py-2">
-        <Globe size={16} className="text-gray-500 dark:text-gray-400 shrink-0" />
+        <Globe size={16} className={`${transparentTheme ? 'text-white' : 'text-gray-500 dark:text-gray-400'} shrink-0`} />
         <div className="flex gap-1.5">
           {languages.map((lang) => (
             <button
@@ -48,8 +49,8 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isMobile = false })
               onClick={() => handleLanguageChange(lang.code)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 active:scale-95 ${
                 currentLang.code === lang.code
-                  ? 'bg-primary text-white shadow-sm'
-                  : 'bg-gray-100 dark:bg-dark-surface text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-border'
+                  ? (transparentTheme ? 'bg-white text-primary shadow-sm' : 'bg-primary text-white shadow-sm')
+                  : (transparentTheme ? 'bg-white/20 text-white hover:bg-white/30' : 'bg-gray-100 dark:bg-dark-surface text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-border')
               }`}
               aria-label={`Switch to ${lang.nativeName}`}
             >
@@ -66,7 +67,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isMobile = false })
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-surface transition-all duration-150 active:scale-95"
+        className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg ${transparentTheme ? 'text-white hover:bg-white/20' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-surface'} transition-all duration-150 active:scale-95`}
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-label="Change language"

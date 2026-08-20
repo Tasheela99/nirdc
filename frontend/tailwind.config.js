@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Outfit', 'Inter', 'sans-serif'],
-        body: ['"Plus Jakarta Sans"', 'sans-serif'],
+        sans: ['Roboto', 'sans-serif'],
+        body: ['Roboto', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
         sinhala: ['"Abhaya Libre"', 'serif'],
       },

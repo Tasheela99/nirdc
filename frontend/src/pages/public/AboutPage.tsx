@@ -1,4 +1,5 @@
 import { FC, lazy, Suspense } from 'react';
+import Text from "../../components/TextComponent.tsx";
 
 const StrategicObjectivesScreen = lazy(() => import('./home/StrategicObjectivesPage.tsx'));
 const AboutUsScreen = lazy(() => import('./home/AboutUsPage.tsx'));
@@ -9,6 +10,9 @@ const AboutPage: FC = () => {
             <Suspense fallback={<div className="h-64 bg-surface dark:bg-dark-bg animate-pulse" />}>
                 <AboutUsScreen />
             </Suspense>
+            
+            <Text />
+            
             <Suspense fallback={<div className="h-96 bg-surface dark:bg-dark-bg animate-pulse" />}>
                 <StrategicObjectivesScreen />
             </Suspense>

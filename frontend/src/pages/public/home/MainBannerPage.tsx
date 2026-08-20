@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { FileUp, FileCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import bannerApi from "../../../api/BannerApi";
-import banner1 from "../../../assets/b-1.jpg";
-import banner2 from "../../../assets/b-2.jpg";
-import banner3 from "../../../assets/b-3.jpg";
-import banner4 from "../../../assets/b-4.jpg";
+import hero1 from "../../../assets/hero_01.png";
+import hero2 from "../../../assets/hero_02.png";
+import hero3 from "../../../assets/hero_03.png";
 
-const fallbackBanners = [banner1, banner2, banner4, banner3];
+const fallbackBanners = [hero1, hero2, hero3];
 
 const MainBannerPage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,13 +38,12 @@ const MainBannerPage: React.FC = () => {
   }, [banners.length]);
 
   return (
-    <section className="relative w-full h-[calc(100vh-4rem)] overflow-hidden" aria-label="Hero banner">
+    <section className="relative w-full h-screen overflow-hidden" aria-label="Hero banner">
       {banners.map((banner, index) => (
         <div
           key={index}
-          className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
           style={{ backgroundImage: `url(${banner})` }}
           role="img"
           aria-label={`Banner image ${index + 1}`}
@@ -71,40 +69,166 @@ const MainBannerPage: React.FC = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight font-sans">
             {t('banner.titleLine1')}
             <br />
-            <span className="text-primary-light">{t('banner.titleLine2')}</span>
+            <span style={{ color: "#8c2963" }}>{t('banner.titleLine2')}</span>
           </h1>
 
           <p className="text-base sm:text-lg text-white/80 mb-8 max-w-xl leading-relaxed font-body">
             {t('banner.subtitle')}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch gap-4 mt-8 w-full">
+
+            {/* SUBMIT button — glassy purple */}
             <button
-              onClick={() => navigate("/main-page")}
-              className="group flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.97]"
+              onClick={() => navigate("/login")}
+              className="group relative flex flex-col items-center justify-center gap-5 flex-1 h-[190px] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              style={{
+                background: "linear-gradient(145deg, rgba(140, 41, 99, 0.50) 0%, rgba(100, 20, 65, 0.28) 100%)",
+                border: "1px solid rgba(200, 80, 140, 0.40)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                boxShadow: "0 8px 32px rgba(140, 41, 99, 0.35), inset 0 1px 0 rgba(255,255,255,0.15)",
+              }}
             >
-              {t('banner.submitResearch')}
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              {/* Inner gloss sheen */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "linear-gradient(160deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 50%, transparent 100%)",
+                }}
+              />
+              {/* Hover glow */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{
+                  background: "linear-gradient(145deg, rgba(200,80,140,0.25) 0%, rgba(140,41,99,0.12) 100%)",
+                }}
+              />
+
+              {/* Icon */}
+              <FileUp
+                size={44}
+                className="text-pink-100 group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                strokeWidth={1.4}
+              />
+
+              {/* Pill badge */}
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(200,80,140,0.55)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  padding: "3px 16px",
+                  borderRadius: "999px",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  letterSpacing: "0.18em",
+                  color: "rgba(255,210,235,0.95)",
+                  textTransform: "uppercase" as const,
+                }}
+              >
+                USER LOGIN
+              </div>
+
+              {/* Label */}
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 500,
+                  color: "rgba(255,190,225,0.70)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase" as const,
+                  transition: "color 0.2s",
+                }}
+                className="group-hover:!text-pink-100"
+              >
+                I Want To Submit Proposal
+              </span>
             </button>
+
+            {/* REVIEW button — glassy white/frost */}
             <button
-              onClick={() => navigate("/proposal")}
-              className="flex items-center justify-center gap-2 border border-white/20 text-white hover:bg-white/10 backdrop-blur-sm font-semibold px-8 py-3.5 rounded-lg transition-all duration-200 active:scale-[0.97]"
+              onClick={() => navigate("/reviewer-registration")}
+              className="group relative flex flex-col items-center justify-center gap-5 flex-1 h-[190px] rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+              style={{
+                background: "linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(140,41,99,0.15) 100%)",
+                border: "1px solid rgba(255,255,255,0.30)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                boxShadow: "0 8px 32px rgba(140,41,99,0.20), inset 0 1px 0 rgba(255,255,255,0.25)",
+              }}
             >
-              {t('banner.exploreProposals')}
+              {/* Inner gloss sheen */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "linear-gradient(160deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.04) 50%, transparent 100%)",
+                }}
+              />
+              {/* Hover glow */}
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{
+                  background: "rgba(255,255,255,0.08)",
+                }}
+              />
+
+              {/* Icon */}
+              <FileCheck
+                size={44}
+                className="text-white group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                strokeWidth={1.4}
+              />
+
+              {/* Pill badge */}
+              <div
+                style={{
+                  background: "rgba(255,255,255,0.20)",
+                  border: "1px solid rgba(255,255,255,0.50)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  padding: "3px 16px",
+                  borderRadius: "999px",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  letterSpacing: "0.18em",
+                  color: "rgba(255,255,255,0.95)",
+                  textTransform: "uppercase" as const,
+                }}
+              >
+                REVIEWER REGISTRATION
+              </div>
+
+              {/* Label */}
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 500,
+                  color: "rgba(255,255,255,0.65)",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase" as const,
+                  transition: "color 0.2s",
+                }}
+                className="group-hover:!text-white"
+              >
+                I Want To Review Proposal
+              </span>
             </button>
+
           </div>
         </motion.div>
 
+        {/* Slide indicators */}
         <div className="absolute bottom-8 flex gap-2">
           {banners.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "w-8 bg-white"
-                  : "w-2 bg-white/40 hover:bg-white/60"
-              }`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${index === currentIndex
+                ? "w-8 bg-white"
+                : "w-2 bg-white/40 hover:bg-white/60"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

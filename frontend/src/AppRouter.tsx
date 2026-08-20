@@ -107,9 +107,6 @@ const AppRouter = () => {
             {/* Header */}
             {!hideLayout && <Header />}
 
-            {/* Marquee text */}
-            {((!isAdmin && !isDirector && !isReviewerRoute && location.pathname !== "/reviewer-registration") || ((isAdmin || isDirector) && isHome)) && <Text />}
-
             <div className="flex flex-auto flex-col min-h-[calc(100vh-64px)]">
                 <div className="flex-grow flex flex-col">
                     <Suspense fallback={<LoadingSpinner />}>

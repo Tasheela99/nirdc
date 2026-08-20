@@ -1,8 +1,11 @@
 import { FC, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 const Text: FC = () => {
     const { t } = useTranslation();
+    const location = useLocation();
+    const isHome = location.pathname === '/';
 
     const messages = [
         t("ticker.msg1"),
@@ -25,8 +28,8 @@ const Text: FC = () => {
     }, [messages.length]);
 
     return (
-        <section className="flex flex-col" aria-label="Key messages">
-            <div className="bg-primary dark:bg-primary-dark py-6 text-white flex flex-col items-center justify-center">
+        <section className={`flex flex-col ${isHome ? 'absolute w-full top-[80px] z-40' : ''}`} aria-label="Key messages">
+            <div className={`${isHome ? 'bg-transparent' : 'bg-primary dark:bg-primary-dark'} py-6 text-white flex flex-col items-center justify-center`}>
                 <div className="max-w-4xl px-4 text-center">
                     <p
                         className={`text-lg md:text-xl font-medium tracking-wide ${

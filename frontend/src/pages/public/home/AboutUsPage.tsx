@@ -46,7 +46,7 @@ const AboutUsScreen: FC = () => {
   ];
 
   return (
-    <section id="about-us" className="bg-gradient-to-br from-primary to-primary-dark min-h-auto py-20 text-white overflow-hidden">
+    <section id="about-us" className="bg-gradient-to-br from-primary to-primary-dark min-h-auto pt-32 pb-20 text-white overflow-hidden">
       <div className="max-w-screen-xl mx-auto px-6 sm:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
           
