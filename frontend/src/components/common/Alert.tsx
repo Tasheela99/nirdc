@@ -1,6 +1,5 @@
 import React from "react";
 import DOMPurify from "dompurify";
-import { X } from "lucide-react"; // assuming lucide-react is available, else I'll use a simple SVG. Let's use a simple SVG to be safe.
 
 interface AlertComponentProps {
     message: string;

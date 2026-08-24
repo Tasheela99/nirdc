@@ -1,6 +1,6 @@
 import React from 'react';
 import { InvestmentFormSectionProps } from '../investment-types/InvestmentFormTypes.ts';
-import { Grid, TextField, Box, FormControl, FormLabel, InputLabel, Select, MenuItem, Typography, InputAdornment } from '@mui/material';
+import { Grid, TextField, Box, FormControl, FormLabel, InputLabel, Select, MenuItem, Typography } from '@mui/material';
 
 const FundingSection: React.FC<InvestmentFormSectionProps> = ({ formData, handleChange }) => {
     const handleNumericChange = (e: React.ChangeEvent<HTMLInputElement>) => {
