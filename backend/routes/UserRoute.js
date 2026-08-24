@@ -16,7 +16,7 @@ router.post('/admin/create-director', authorized(['SUPER_ADMIN', 'ADMIN']), User
 router.get('/admin/get-all-directors', authorized(['SUPER_ADMIN', 'ADMIN']), UserController.getAllDirectors);
 
 
-router.put('/admin/update-user/:id', authorized(['SUPER_ADMIN']), UserController.updateUser);
+router.put('/admin/update-user/:id', authorized(['SUPER_ADMIN', 'ADMIN']), UserController.updateUser);
 router.put('/admin/update-user-role/:id', authorized(['SUPER_ADMIN']), UserController.updateUserRole);
 router.get('/admin/get-all-users', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), UserController.getAllUsers);
 router.delete('/admin/delete-user', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), UserController.deleteUser);
@@ -30,11 +30,11 @@ router.post('/user/change-password', authorized(['USER', 'ADMIN', 'DIRECTOR', 'S
 
 router.post('/register-reviewer', ReviewerController.registerReviewer);
 // Reviewer specific routes
-router.get('/admin/reviewers/all', authorized(['SUPER_ADMIN', 'ADMIN']), ReviewerController.getAllReviewers);
-router.get('/admin/reviewers/pending', authorized(['SUPER_ADMIN', 'ADMIN']), ReviewerController.getPendingReviewers);
+router.get('/admin/reviewers/all', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), ReviewerController.getAllReviewers);
+router.get('/admin/reviewers/pending', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), ReviewerController.getPendingReviewers);
 router.get('/admin/reviewers/approved', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), ReviewerController.getApprovedReviewers);
-router.put('/admin/reviewers/:id/approve', authorized(['SUPER_ADMIN', 'ADMIN']), ReviewerController.approveReviewer);
-router.put('/admin/reviewers/:id/reject', authorized(['SUPER_ADMIN', 'ADMIN']), ReviewerController.rejectReviewer);
+router.put('/admin/reviewers/:id/approve', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), ReviewerController.approveReviewer);
+router.put('/admin/reviewers/:id/reject', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), ReviewerController.rejectReviewer);
 
 
 module.exports = router;

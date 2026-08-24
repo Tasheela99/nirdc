@@ -1,11 +1,12 @@
 import React from 'react';
 import { InvestmentFormSectionProps } from '../investment-types/InvestmentFormTypes.ts';
+import { Grid, TextField, Box, FormControl, FormLabel, InputLabel, Select, MenuItem, Typography, InputAdornment } from '@mui/material';
 
 const FundingSection: React.FC<InvestmentFormSectionProps> = ({ formData, handleChange }) => {
     const handleNumericChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         if (value === '' || /^\d+(\.\d*)?$/.test(value) || /^\.\d+$/.test(value)) {
-            handleChange(e);
+            handleChange(e as any);
         }
     };
 
@@ -13,161 +14,177 @@ const FundingSection: React.FC<InvestmentFormSectionProps> = ({ formData, handle
         return null;
     }
 
-
     return (
-        <div>
-            <label className="block text-main-color font-medium mb-2">
+        <Box sx={{ flexGrow: 1, mt: 4 }}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 'bold', color: 'text.primary', mb: 3 }}>
                 5. If gap-filling funding is needed (If you selected (4.a) "Funds" above)
-            </label>
-            <fieldset className="border border-gray-300 rounded-lg p-4">
-                <legend className="text-main-color font-semibold"></legend>
+            </Typography>
 
-                <div className="mt-4">
-                    <label className="block font-medium text-main-color">
-                        a. Research gap(s) identified for your project (1-3 gaps, not exceeding 800 characters in total)
-                    </label>
-                    <textarea
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="a. Research gap(s) identified for your project (1-3 gaps, not exceeding 800 characters in total)"
                         name="researchGaps"
                         value={formData.researchGaps}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2"
-                        rows={3}
-                        maxLength={3000}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 800 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.researchGaps?.length || 0}/800 characters`}
                         placeholder="Research gap(s)"
                     />
-                </div>
+                </Grid>
 
-                <div className="mt-4">
-                    <label className="block font-medium text-main-color">
-                        b. Research objectives - proposed solutions/interventions to address those identified gaps (1-5 objectives)
-                    </label>
-                    <textarea
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="b. Research objectives - proposed solutions/interventions to address those identified gaps (1-5 objectives)"
                         name="researchObjectives"
                         value={formData.researchObjectives}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2"
-                        rows={3}
-                        maxLength={3500}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 3500 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.researchObjectives?.length || 0}/3500 characters`}
                         placeholder="Proposed solutions"
                     />
-                </div>
+                </Grid>
 
-                <div className="mt-4">
-                    <label className="block font-medium text-main-color">
-                        c. Research plan for gap filling (Describe your plan based on following topics)
-                    </label>
-                    <ul className="list-disc py-4 pl-5 space-y-1 text-gray-700">
-                        <li className="font-medium">a. Background and introduction</li>
-                        <li className="font-medium">b. Specific aims/actions</li>
-                        <li className="font-medium">c. Methodologies</li>
-                        <li className="font-medium">d. Timeline and milestones</li>
-                        <li className="font-medium">e. Expected challenges and proposed alternative approaches</li>
-                    </ul>
-                    <textarea
+                <Grid item xs={12}>
+                    <Box sx={{ mb: 2 }}>
+                        <FormLabel sx={{ color: 'text.primary', mb: 1, display: 'block' }}>
+                            c. Research plan for gap filling (Describe your plan based on following topics)
+                        </FormLabel>
+                        <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: '#4b5563', fontSize: '0.875rem', marginBottom: '8px' }}>
+                            <li>a. Background and introduction</li>
+                            <li>b. Specific aims/actions</li>
+                            <li>c. Methodologies</li>
+                            <li>d. Timeline and milestones</li>
+                            <li>e. Expected challenges and proposed alternative approaches</li>
+                        </ul>
+                    </Box>
+                    <TextField
+                        fullWidth
                         name="researchPlan"
                         value={formData.researchPlan}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2"
-                        rows={3}
-                        maxLength={3000}
+                        variant="outlined"
+                        multiline
+                        rows={8}
+                        inputProps={{ maxLength: 3000 }}
+                        helperText={`${formData.researchPlan?.length || 0}/3000 characters`}
                         placeholder="Research plan"
                     />
-                </div>
+                </Grid>
 
-                <fieldset className="border border-gray-300 rounded-lg p-4">
-                    <legend className="text-main-color font-semibold">d. Total Project Cost</legend>
+                <Grid item xs={12}>
+                    <Typography variant="subtitle2" sx={{ fontWeight: 'bold', color: 'text.primary', mb: 2, mt: 2 }}>
+                        d. Total Project Cost
+                    </Typography>
+                </Grid>
 
-                    {/* Currency Selection */}
-                    <div className="mt-4">
-                        <label className="block text-main-color font-medium mb-2">
-                            1. Total project cost
-                        </label>
-                        <div className="flex items-center space-x-4">
-                            <select
-                                name="currencyValue"
-                                value={formData.currencyValue}
-                                onChange={handleChange}
-                                className="w-1/3 border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                            >
-                                <option value="">Select Currency</option>
-                                <option value="USD">USD</option>
-                                <option value="LKR">LKR</option>
-                            </select>
+                {/* Currency Selection and Total project cost */}
+                <Grid item xs={12} md={4}>
+                    <FormControl fullWidth variant="outlined">
+                        <InputLabel shrink>Currency</InputLabel>
+                        <Select
+                            name="currencyValue"
+                            value={formData.currencyValue}
+                            onChange={handleChange as any}
+                            label="Currency"
+                            displayEmpty
+                            notched
+                        >
+                            <MenuItem value=""><em>Select Currency</em></MenuItem>
+                            <MenuItem value="USD">USD</MenuItem>
+                            <MenuItem value="LKR">LKR</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
 
-                            <input
-                                type="text"
-                                name="projectCost"
-                                value={formData.projectCost}
-                                onChange={handleNumericChange}
-                                className="w-2/3 border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                                placeholder="Enter amount"
-                            />
-                        </div>
-                    </div>
+                <Grid item xs={12} md={8}>
+                    <TextField
+                        fullWidth
+                        label="1. Total project cost"
+                        name="projectCost"
+                        value={formData.projectCost}
+                        onChange={handleNumericChange as any}
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                        placeholder="Enter amount"
+                    />
+                </Grid>
 
-                    {/* Total Expenditure */}
-                    <div className="mt-4">
-                        <label className="block text-main-color font-medium mb-2">
-                            2. Total Expenditure to Date
-                        </label>
-                        <input
-                            type="text"
-                            name="expenditure"
-                            value={formData.expenditure}
-                            onChange={handleNumericChange}
-                            className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                            placeholder="Enter total expenditure"
-                        />
-                    </div>
+                {/* Total Expenditure */}
+                <Grid item xs={12} md={6}>
+                    <TextField
+                        fullWidth
+                        label="2. Total Expenditure to Date"
+                        name="expenditure"
+                        value={formData.expenditure}
+                        onChange={handleNumericChange as any}
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                        placeholder="Enter total expenditure"
+                    />
+                </Grid>
 
-                    {/* Budget for Gap Filling */}
-                    <div className="mt-4">
-                        <label className="block text-main-color font-medium mb-2">
-                            3. Expected TOTAL Budget for Gap Filling Research
-                        </label>
-                        <input
-                            type="text"
-                            name="budget"
-                            value={formData.budget}
-                            onChange={handleNumericChange}
-                            className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                            placeholder="Enter total"
-                        />
-                    </div>
+                {/* Budget for Gap Filling */}
+                <Grid item xs={12} md={6}>
+                    <TextField
+                        fullWidth
+                        label="3. Expected TOTAL Budget for Gap Filling Research"
+                        name="budget"
+                        value={formData.budget}
+                        onChange={handleNumericChange as any}
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                        placeholder="Enter total"
+                    />
+                </Grid>
 
-                    {/* Milestone Budget */}
-                    <div className="mt-4">
-                        <label className="block text-main-color font-medium mb-2">
-                            4. Budget needed to achieve each milestone described in 5.d
-                        </label>
-                        <textarea
-                            name="milestone_budget"
-                            value={formData.milestone_budget}
-                            onChange={handleChange}
-                            className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                            rows={4}
-                            maxLength={3000}
-                            placeholder="Describe budget allocation for each milestone"
-                        />
-                    </div>
-                </fieldset>
+                {/* Milestone Budget */}
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="4. Budget needed to achieve each milestone described in 5.d"
+                        name="milestone_budget"
+                        value={formData.milestone_budget}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 3000 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.milestone_budget?.length || 0}/3000 characters`}
+                        placeholder="Describe budget allocation for each milestone"
+                    />
+                </Grid>
 
-                <div className="mt-4">
-                    <label className="block font-medium text-main-color">
-                        e. Place(s) where the research is to be conducted
-                    </label>
-                    <textarea
+                {/* Place(s) where the research is to be conducted */}
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="e. Place(s) where the research is to be conducted"
                         name="researchPlace"
                         value={formData.researchPlace}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2"
-                        rows={1}
-                        maxLength={3000}
+                        variant="outlined"
+                        multiline
+                        rows={2}
+                        inputProps={{ maxLength: 3000 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.researchPlace?.length || 0}/3000 characters`}
                         placeholder="e.g: University, research institute, private company, etc."
                     />
-                </div>
-            </fieldset>
-        </div>
+                </Grid>
+            </Grid>
+        </Box>
     );
 };
 

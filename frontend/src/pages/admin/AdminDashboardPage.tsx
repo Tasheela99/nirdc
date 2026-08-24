@@ -8,9 +8,6 @@ import { useNavigate } from "react-router-dom";
 import questionnaireApi from "../../api/QuestionnaireApi";
 import { callAPI } from "../../config/AxiosInstance";
 import adminApi from "../../api/AdminApi";
-import UsersTable from "../../components/admin/UsersTable";
-import DeleteUserDialog from "../../components/admin/DeleteUserDialog";
-import SearchBar from '../../components/admin/SearchBar';
 import UserContext from "../../store/UserContext";
 
 const statCardConfig = [
@@ -121,13 +118,6 @@ const AdminDashboardScreen = () => {
     const [users, setUsers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [openDialog, setOpenDialog] = useState(false);
-    const [password, setPassword] = useState("");
-    const [selectedUser, setSelectedUser] = useState<any | null>(null);
-    const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(5);
-    const [searchQuery, setSearchQuery] = useState("");
-    const [filteredUsers, setFilteredUsers] = useState<any[]>([]);
     const [newNotifications, setNewNotifications] = useState({
         investor: 0,
         researchInvestment: 0,
@@ -159,54 +149,6 @@ const AdminDashboardScreen = () => {
             return stat;
         }));
     }, [users]);
-
-    useEffect(() => {
-        const query = searchQuery.toLowerCase();
-        const filtered = users.filter(user =>
-            user.userName.toLowerCase().includes(query) ||
-            user.email.toLowerCase().includes(query)
-        );
-        setFilteredUsers(filtered);
-    }, [users, searchQuery]);
-
-    const handleDeleteUser = async () => {
-        if (!selectedUser) return;
-        try {
-            await adminApi.deleteUser(selectedUser._id, password);
-            setUsers(users.filter(user => user._id !== selectedUser._id));
-            handleCloseDialog();
-            alert(`User ${selectedUser.userName} deleted successfully!`);
-        } catch (error: any) {
-            let errorMessage = "Failed to delete user. Please try again.";
-            if (error.response?.status === 404) {
-                errorMessage = "Delete endpoint not found. Please check if the backend API is properly configured.";
-            } else if (error.response?.status === 401) {
-                errorMessage = "Unauthorized. Please check your admin password.";
-            } else if (error.response?.status === 403) {
-                errorMessage = "Forbidden. You don't have permission to delete users.";
-            }
-            alert(errorMessage);
-        }
-    };
-
-    const handleOpenDialog = (user: any) => {
-        setSelectedUser(user);
-        setOpenDialog(true);
-    };
-
-    const handleCloseDialog = () => {
-        setOpenDialog(false);
-        setPassword("");
-    };
-
-    const handleChangePage = (_event: unknown, newPage: number) => {
-        setPage(newPage);
-    };
-
-    const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-    };
 
     const handleNotificationClick = (notificationType: string) => {
         setNewNotifications(prev => ({
@@ -451,34 +393,6 @@ const AdminDashboardScreen = () => {
                     </div>
                 )}
             </div>
-
-            {/* Users Section */}
-            <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden" style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}>
-                <div className="p-5 border-b border-gray-100">
-                    <h2 className="text-xl font-bold text-gray-900 mb-4">Manage Users</h2>
-                    <SearchBar
-                        searchQuery={searchQuery}
-                        onSearchChange={setSearchQuery}
-                    />
-                </div>
-                <UsersTable
-                    users={filteredUsers}
-                    page={page}
-                    rowsPerPage={rowsPerPage}
-                    handleOpenDialog={handleOpenDialog}
-                    handleChangePage={handleChangePage}
-                    handleChangeRowsPerPage={handleChangeRowsPerPage}
-                />
-            </div>
-
-            <DeleteUserDialog
-                open={openDialog}
-                selectedUser={selectedUser}
-                password={password}
-                onClose={handleCloseDialog}
-                onPasswordChange={(e) => setPassword(e.target.value)}
-                onDelete={handleDeleteUser}
-            />
         </>
     );
 };

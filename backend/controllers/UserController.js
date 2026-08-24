@@ -62,6 +62,14 @@ const signIn = async (req, res) => {
             return res.status(404).json({ label: "USER_NOT_FOUND", status: false, message: 'User not found. Please register first.' });
         }
 
+        if (selectedUser.activeState === false) {
+            return res.status(403).json({
+                label: "USER_DEACTIVATED",
+                status: false,
+                message: 'Your account has been deactivated. Please contact support.'
+            });
+        }
+
         if (!selectedUser.isVerified) {
             return res.status(401).json({
                 label: "NOT_VERIFIED",
@@ -508,20 +516,30 @@ const updateUser = async (req, res) => {
 
 const updateUserRole = async (req, res) => {
     const userId = req.params.id;
-    const { role } = req.body;
+    const { role, adminPassword } = req.body;
     const requestUserRole = req.user.role;
 
-    // Fix: Only allow SUPER_ADMIN or ADMIN
-    if (!(requestUserRole === 'SUPER_ADMIN' || requestUserRole === 'ADMIN')) {
-        return res.status(403).json({ status: false, message: 'PERMISSION DENIED' });
+    if (requestUserRole !== 'SUPER_ADMIN') {
+        return res.status(403).json({ status: false, message: 'ONLY SUPER_ADMIN CAN CHANGE ROLES' });
     }
 
-    const validRoles = ['USER', 'ADMIN', 'DIRECTOR'];
+    if (!adminPassword) {
+        return res.status(400).json({ status: false, message: 'ADMIN PASSWORD REQUIRED' });
+    }
+
+    const validRoles = ['USER', 'ADMIN', 'DIRECTOR', 'REVIEWER'];
     if (!validRoles.includes(role)) {
         return res.status(400).json({ status: false, message: 'INVALID ROLE PROVIDED' });
     }
 
     try {
+        const adminUser = await UserSchema.findById(req.user.id);
+        const isPasswordCorrect = await bcrypt.compare(adminPassword, adminUser.password);
+        
+        if (!isPasswordCorrect) {
+            return res.status(401).json({ status: false, message: 'INCORRECT ADMIN PASSWORD' });
+        }
+
         const user = await UserSchema.findOne({ _id: userId });
         if (!user) {
             return res.status(404).json({ status: false, message: 'USER NOT FOUND' });
@@ -542,19 +560,29 @@ const updateUserRole = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
     try {
-        const users = await UserSchema.find({ role: USER_ENUMS.ROLES.USER })
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const skip = (page - 1) * limit;
+        const query = { role: { $ne: 'SUPER_ADMIN' } };
 
-            .select('_id firstName lastName mobile email userName avatar designation institution country role activeState isVerified isEmailVerified lastLoginTime createdAt');
+        const users = await UserSchema.find(query)
+            .select('_id firstName lastName mobile email userName avatar designation institution country role activeState isVerified isEmailVerified lastLoginTime createdAt')
+            .skip(skip)
+            .limit(limit)
+            .sort({ createdAt: -1 });
 
-        // Returning 200 with an empty array if none found
+        const totalUsers = await UserSchema.countDocuments(query);
+        const totalPages = Math.ceil(totalUsers / limit);
 
         return res.status(200).json({
             status: true,
             message: 'USERS RETRIEVED SUCCESSFULLY.',
             data: users,
+            totalUsers,
+            totalPages,
+            currentPage: page
         });
     } catch (error) {
-
         return res.status(500).json({
             status: false,
             message: 'SERVER ERROR.PLEASE TRY AGAIN LATER.',

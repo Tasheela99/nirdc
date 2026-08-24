@@ -209,15 +209,18 @@ const ResearchProposalApplicationScreen = () => {
                     onConfirm={handleAlertConfirm}
                 />
             )}
-            <div className="max-w-4xl mx-auto flex justify-end px-4 mt-4">
-                <AutoSaveIndicator status={autoSaveStatus} lastSavedAt={lastSavedAt} />
-            </div>
+
             <FormWizard
                 title="Research Proposal Application"
                 steps={wizardSteps}
                 onSubmit={handleSubmit}
                 isSubmitting={isSubmitting}
                 guidelinesUrl="/research-proposal-guidelines"
+                headerRightContent={
+                    <div className="bg-white/90 rounded-full px-3 py-1 shadow-sm">
+                        <AutoSaveIndicator status={autoSaveStatus} lastSavedAt={lastSavedAt} />
+                    </div>
+                }
                 noteContent={
                     <>
                         <h3 className="text-base font-semibold text-[#003893] mb-2">

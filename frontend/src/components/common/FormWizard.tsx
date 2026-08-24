@@ -14,6 +14,7 @@ interface FormWizardProps {
     isSubmitting?: boolean;
     guidelinesUrl?: string;
     noteContent?: React.ReactNode;
+    headerRightContent?: React.ReactNode;
 }
 
 const FormWizard: React.FC<FormWizardProps> = ({
@@ -23,6 +24,7 @@ const FormWizard: React.FC<FormWizardProps> = ({
     isSubmitting = false,
     guidelinesUrl,
     noteContent,
+    headerRightContent,
 }) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [completedSteps, setCompletedSteps] = useState<number[]>([]);
@@ -127,27 +129,26 @@ const FormWizard: React.FC<FormWizardProps> = ({
     return (
         <div className="bg-gray-50 min-h-screen py-8 px-4">
             <div className="w-full max-w-5xl mx-auto">
-                {/* Guidelines Button */}
-                {guidelinesUrl && (
-                    <div className="flex justify-center mb-6">
-                        <button
-                            type="button"
-                            onClick={() => window.open(guidelinesUrl, '_blank', 'noopener noreferrer')}
-                            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold text-[#003893] border-2 border-[#003893]/20 hover:bg-[#003893] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md"
-                        >
-                            Read Guidelines Before You Start
-                        </button>
-                    </div>
-                )}
-
-                {/* Main Card */}
-                <div className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100">
+                {/* Main Card (Now flush with page) */}
+                <div className="bg-transparent overflow-hidden">
                     {/* Header */}
                     <div
-                        className="px-8 py-5 text-white text-xl font-bold"
+                        className="px-4 sm:px-8 py-4 text-white flex items-center justify-between"
                         style={{ background: 'linear-gradient(135deg, #003893 0%, #2E86C1 100%)' }}
                     >
-                        {title}
+                        <div className="text-xl font-bold">{title}</div>
+                        <div className="flex items-center gap-4">
+                            {headerRightContent}
+                            {guidelinesUrl && (
+                                <button
+                                    type="button"
+                                    onClick={() => window.open(guidelinesUrl, '_blank', 'noopener noreferrer')}
+                                    className="whitespace-nowrap inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold text-white border-2 border-white/30 hover:bg-white hover:text-[#003893] transition-all duration-300"
+                                >
+                                    Read Guidelines Before You Start
+                                </button>
+                            )}
+                        </div>
                     </div>
 
                     {/* Step Indicator — clickable */}
@@ -176,7 +177,7 @@ const FormWizard: React.FC<FormWizardProps> = ({
                     )}
 
                     {/* Step Content */}
-                    <div className="p-8">
+                    <div className="p-4 sm:p-8 bg-transparent">
                         {/* Step Title */}
                         <div className="mb-6">
                             <div className="flex items-center gap-2 text-xs font-semibold text-[#2E86C1] uppercase tracking-wider mb-1">
@@ -201,7 +202,7 @@ const FormWizard: React.FC<FormWizardProps> = ({
                     )}
 
                     {/* Navigation Footer */}
-                    <div className="px-8 py-5 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+                    <div className="px-4 sm:px-8 py-5 bg-transparent border-t border-gray-200 flex items-center justify-between">
                         <button
                             type="button"
                             onClick={handleBack}

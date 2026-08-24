@@ -24,6 +24,7 @@ import CreateblogScreen from "./blog/CreateBlogPage.tsx";
 import ManageAdsScreen from "./ad/ManageAdsPage.tsx";
 import CreateAdScreen from "./ad/CreateAdPage.tsx";
 import ManageBannerScreen from "./home/ManageBannerPage.tsx";
+import ManageUsersPage from "./users/ManageUsersPage.tsx";
 import ManageDownloadsPage from "./downloads/ManageDownloadsPage.tsx";
 import CreateDownloadPage from "./downloads/CreateDownloadPage.tsx";
 import ProtectedRoute from "../../ProtectedRoute";
@@ -74,6 +75,7 @@ const AdminContextScreen = () => {
     const sidebarLinks = [
         {path: "/admin/dashboard", label: "Dashboard"},
         ...(userInfo?.role !== USER_ROLE.DIRECTOR ? [{path: "/admin/manage-directors", label: "Manage Directors"}] : []),
+        ...(userInfo?.role === USER_ROLE.SUPER_ADMIN || userInfo?.role === USER_ROLE.ADMIN ? [{path: "/admin/manage-users", label: "Manage Users"}] : []),
         {path: "/admin/manage-news", label: "Manage News"},
         {path: "/admin/view-proposals", label: "Manage Proposals"},
         {path: "/admin/manage-reviewers", label: "Pending Reviewers"},
@@ -246,6 +248,9 @@ const AdminContextScreen = () => {
                                 <>
                                     <Route path="manage-directors" element={<ManageDirectorsScreen />} />
                                 </>
+                            )}
+                            {(userInfo?.role === USER_ROLE.SUPER_ADMIN || userInfo?.role === USER_ROLE.ADMIN) && (
+                                <Route path="manage-users" element={<ManageUsersPage />} />
                             )}
                             <Route path="add-director" element={<RegisterDirectorScreen />} />
                             <Route path="create-news" element={<CreateNewsScreen />} />

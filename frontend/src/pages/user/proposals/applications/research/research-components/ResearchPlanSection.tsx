@@ -1,44 +1,44 @@
 import React from 'react';
 import { FormSectionProps } from '../research-types/FormTypes.ts';
+import { Grid, TextField, Typography, Box } from '@mui/material';
 
 const ResearchPlanSection: React.FC<FormSectionProps> = ({ formData, handleChange }) => {
     return (
-        <>
-            <div className="mt-6">
-                <label className="block text-main-color font-semibold text-lg mb-4">
-                    8. Research Plan for Gap Filling
-                    <p>(Your writeup should consider the following)</p>
-                </label>
-
-                <ul className="list-disc pl-5 space-y-1 text-gray-700">
-                    <li className="font-medium">a. Background and introduction</li>
-                    <li className="font-medium">b. Specific aims/actions</li>
-                    <li className="font-medium">c. Methodologies</li>
-                    <li className="font-medium">d. Timeline and milestones</li>
-                    <li className="font-medium">e. Expected challenges and proposed alternative approaches</li>
-                </ul>
-            </div>
-
-            <div className="mt-4">
-                <label className="block text-main-color font-medium mb-2">
-                    (Maximum 3500 characters)
-                </label>
-                <div className="space-y-4">
-                    <div>
-                        <textarea
-                            name="researchPlan"
-                            value={formData.researchPlan}
-                            onChange={handleChange}
-                            className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2"
-                            rows={4}
-                            maxLength={3500}
-                            placeholder="Research Plan"
-                        />
-                    </div>
-                </div>
-            </div>
-        </>
+        <Box sx={{ flexGrow: 1, mt: 4 }}>
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <Box sx={{ mb: 2 }}>
+                        <Typography variant="subtitle1" sx={{ fontWeight: 'bold', color: '#1f2937' }}>
+                            8. Research Plan for Gap Filling
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: '#4b5563', mb: 1 }}>
+                            (Your writeup should consider the following, max 3500 characters)
+                        </Typography>
+                        <ul className="list-disc pl-5 space-y-0.5 text-sm text-gray-700">
+                            <li>a. Background and introduction</li>
+                            <li>b. Specific aims/actions</li>
+                            <li>c. Methodologies</li>
+                            <li>d. Timeline and milestones</li>
+                            <li>e. Expected challenges and proposed alternative approaches</li>
+                        </ul>
+                    </Box>
+                    <TextField
+                        fullWidth
+                        name="researchPlan"
+                        value={formData.researchPlan}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={8}
+                        inputProps={{ maxLength: 3500 }}
+                        helperText={`${formData.researchPlan?.length || 0}/3500 characters`}
+                        placeholder="Research Plan"
+                    />
+                </Grid>
+            </Grid>
+        </Box>
     );
 };
 
 export default ResearchPlanSection;
+

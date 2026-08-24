@@ -127,9 +127,9 @@ const SignUpPage = () => {
                 }
             }
         } catch (error: any) {
-            if (error.isAxiosError) {
-                const status = error.response?.status;
-                const errorData = error.response?.data;
+            if (error.response) {
+                const status = error.response.status;
+                const errorData = error.response.data;
 
                 if (status === 429) {
                     showAlert(errorData?.message || t('messages.tooManyAttempts'), "error");
@@ -140,14 +140,16 @@ const SignUpPage = () => {
                     } else if (errorData.label === "USER_PHONE_EXISTS") {
                         setErrors((prev) => ({...prev, mobile: t('messages.phoneAlreadyRegistered')}));
                         showAlert(t('messages.phoneAlreadyRegistered'), "error");
+                    } else if (errorData.errors && Array.isArray(errorData.errors) && errorData.errors.length > 0) {
+                        showAlert(errorData.errors[0], "error");
                     } else {
                         showAlert(errorData.message || t('messages.registrationFailed'), "error");
                     }
-                } else {
-                    showAlert(t('messages.networkError'), "error");
                 }
+            } else if (error.request) {
+                showAlert(t('messages.networkError'), "error");
             } else {
-                showAlert(t('messages.unexpectedError'), "error");
+                showAlert(error.message || t('messages.unexpectedError'), "error");
             }
         } finally {
             setIsLoading(false);

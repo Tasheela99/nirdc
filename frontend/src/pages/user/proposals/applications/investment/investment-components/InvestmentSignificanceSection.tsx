@@ -1,102 +1,84 @@
 import React from 'react';
 import { InvestmentFormSectionProps } from '../investment-types/InvestmentFormTypes.ts';
+import { Grid, TextField, Box, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 
 const InvestmentSignificanceSection: React.FC<InvestmentFormSectionProps> = ({ formData, handleChange }) => {
     return (
-        <div>
-            <fieldset className="border border-gray-300 rounded-lg p-4">
-                <legend className="text-main-color font-semibold">
-                    6. Significance for the country and expected impact
-                    <p>(please describe in all areas that applicable, not exceeding 800 characters in each
-                        of the a-c categories)</p>
-                </legend>
-                
-                {/* Economic Impact */}
-                <div className="sub-section">
-                    <label className="block text-main-color font-medium mb-2">a. Economic Impact:</label>
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <FormControl component="fieldset" fullWidth>
+                        <FormLabel component="legend" sx={{ fontWeight: 'bold', color: 'text.primary', mb: 1 }}>
+                            6. Significance for the country and expected impact (not exceeding 800 characters in each of the a-c categories)
+                        </FormLabel>
 
-                    {/* Economic Impact Radio Group */}
-                    <div className="radio-group flex flex-col gap-2 mb-2">
-                        <label className="flex items-center">
-                            <input
-                                type="radio"
-                                id="export"
+                        <Box sx={{ ml: 2, mt: 2 }}>
+                            <FormLabel component="legend" sx={{ color: 'text.primary', mb: 1 }}>
+                                a. Economic Impact:
+                            </FormLabel>
+                            <RadioGroup
                                 name="significance.economicImpact"
-                                value="exportPotential"
-                                checked={formData.significance?.economicImpact === "exportPotential"}
+                                value={formData.significance?.economicImpact || ''}
                                 onChange={handleChange}
-                                className="mr-2"
-                            />
-                            Export Potential
-                        </label>
-                        <label className="flex items-center">
-                            <input
-                                type="radio"
-                                id="import"
-                                name="significance.economicImpact"
-                                value="importSubstitution"
-                                checked={formData.significance.economicImpact === "importSubstitution"}
-                                onChange={handleChange}
-                                className="mr-2"
-                            />
-                            Import Substitution
-                        </label>
-                        <label className="flex items-center">
-                            <input
-                                type="radio"
-                                id="other_economic"
-                                name="significance.economicImpact"
-                                value="other"
-                                checked={formData.significance.economicImpact === "other"}
-                                onChange={handleChange}
-                                className="mr-2"
-                            />
-                            Other
-                        </label>
-                    </div>
-                    <textarea
-                        id="other_economic_details"
-                        name="significance.other"
-                        value={formData.significance.other}
-                        onChange={handleChange}
-                        className={`w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  ${
-                            formData.significance.economicImpact === "other" ? "" : "opacity-50"
-                        }`}
-                        maxLength={3000}
-                        placeholder="Specify other economic impact"
-                        disabled={formData.significance.economicImpact !== "other"}
-                    />
-                </div>
+                            >
+                                <FormControlLabel value="exportPotential" control={<Radio />} label="Export Potential" />
+                                <FormControlLabel value="importSubstitution" control={<Radio />} label="Import Substitution" />
+                                <FormControlLabel value="other" control={<Radio />} label="Other" />
+                            </RadioGroup>
 
-                {/* Social Impact */}
-                <div className="mt-4">
-                    <label className="block text-main-color font-medium mb-2">b. Social Impact</label>
-                    <textarea
+                            <TextField
+                                fullWidth
+                                label="Other Economic Impact Details"
+                                name="significance.other"
+                                value={formData.significance?.other || ''}
+                                onChange={handleChange}
+                                variant="outlined"
+                                disabled={formData.significance?.economicImpact !== "other"}
+                                inputProps={{ maxLength: 200 }}
+                                InputLabelProps={{ shrink: true }}
+                                helperText={`${formData.significance?.other?.length || 0}/200 characters`}
+                                placeholder="Specify other economic impact"
+                                sx={{ mt: 2, display: formData.significance?.economicImpact === "other" ? 'flex' : 'none' }}
+                            />
+                        </Box>
+                    </FormControl>
+                </Grid>
+
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="b. Social Impact"
                         name="significance.socialImpact"
-                        value={formData.significance.socialImpact}
+                        value={formData.significance?.socialImpact || ''}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                        rows={2}
-                        maxLength={3000}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 800 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.significance?.socialImpact?.length || 0}/800 characters`}
                         placeholder="Describe social impact"
                     />
-                </div>
+                </Grid>
 
-                {/* Environmental Impact */}
-                <div className="mt-4">
-                    <label className="block text-main-color font-medium mb-2">c. Environmental Impact</label>
-                    <textarea
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="c. Environmental Impact"
                         name="significance.environmentalImpact"
-                        value={formData.significance.environmentalImpact}
+                        value={formData.significance?.environmentalImpact || ''}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                        rows={2}
-                        maxLength={3000}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 800 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.significance?.environmentalImpact?.length || 0}/800 characters`}
                         placeholder="Describe environmental impact"
                     />
-                </div>
-            </fieldset>
-        </div>
+                </Grid>
+            </Grid>
+        </Box>
     );
 };
 

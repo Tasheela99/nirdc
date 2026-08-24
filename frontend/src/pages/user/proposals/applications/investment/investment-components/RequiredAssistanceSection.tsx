@@ -1,5 +1,6 @@
 import React from 'react';
 import { InvestmentFormSectionProps } from '../investment-types/InvestmentFormTypes.ts';
+import { Grid, TextField, Box, FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 
 const assistanceOptions = [
     { name: "funds", label: "a. Funds" },
@@ -13,52 +14,58 @@ const assistanceOptions = [
 
 const RequiredAssistanceSection: React.FC<InvestmentFormSectionProps> = ({ formData, setFormData }) => {
     return (
-        <div>
-            <label className="block text-main-color font-medium mb-2">
-                4. Required Assistance from the Government:
-            </label>
-            <div className="space-y-2">
-                {assistanceOptions.map((option) => (
-                    <div key={option.name} className="flex items-center">
-                        <input
-                            type="checkbox"
-                            name={`requiredAssistanceFromGovernment.${option.name}`}
-                            checked={!!formData.requiredAssistanceFromGovernment[option.name as keyof typeof formData.requiredAssistanceFromGovernment]}
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <FormControl component="fieldset" fullWidth>
+                        <FormLabel component="legend" sx={{ fontWeight: 'bold', color: 'text.primary', mb: 1 }}>
+                            4. Required Assistance from the Government:
+                        </FormLabel>
+                        <FormGroup sx={{ ml: 2 }}>
+                            {assistanceOptions.map((option) => (
+                                <FormControlLabel
+                                    key={option.name}
+                                    control={
+                                        <Checkbox
+                                            checked={!!formData.requiredAssistanceFromGovernment[option.name as keyof typeof formData.requiredAssistanceFromGovernment]}
+                                            onChange={e =>
+                                                setFormData((prev: any) => ({
+                                                    ...prev,
+                                                    requiredAssistanceFromGovernment: {
+                                                        ...prev.requiredAssistanceFromGovernment,
+                                                        [option.name]: e.target.checked,
+                                                    },
+                                                }))
+                                            }
+                                            name={`requiredAssistanceFromGovernment.${option.name}`}
+                                        />
+                                    }
+                                    label={option.label}
+                                />
+                            ))}
+                        </FormGroup>
+                        <TextField
+                            fullWidth
+                            label="Other (please specify)"
+                            name="requiredAssistanceFromGovernment.other"
+                            value={formData.requiredAssistanceFromGovernment.other}
                             onChange={e =>
                                 setFormData((prev: any) => ({
                                     ...prev,
                                     requiredAssistanceFromGovernment: {
                                         ...prev.requiredAssistanceFromGovernment,
-                                        [option.name]: e.target.checked,
+                                        other: e.target.value,
                                     },
                                 }))
                             }
-                            className="mr-2"
+                            variant="outlined"
+                            sx={{ mt: 2, ml: 2, width: 'calc(100% - 16px)' }}
+                            placeholder="Other assistance"
                         />
-                        <label>{option.label}</label>
-                    </div>
-                ))}
-                <div className="mt-2">
-                    <label className="block text-main-color font-medium mb-1">Other (please specify):</label>
-                    <input
-                        type="text"
-                        name="requiredAssistanceFromGovernment.other"
-                        value={formData.requiredAssistanceFromGovernment.other}
-                        onChange={e =>
-                            setFormData((prev: any) => ({
-                                ...prev,
-                                requiredAssistanceFromGovernment: {
-                                    ...prev.requiredAssistanceFromGovernment,
-                                    other: e.target.value,
-                                },
-                            }))
-                        }
-                        className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                        placeholder="Other assistance"
-                    />
-                </div>
-            </div>
-        </div>
+                    </FormControl>
+                </Grid>
+            </Grid>
+        </Box>
     );
 };
 

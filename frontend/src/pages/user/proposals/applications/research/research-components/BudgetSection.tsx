@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormSectionProps } from '../research-types/FormTypes.ts';
+import { Grid, TextField, FormControl, InputLabel, Select, MenuItem, Box, Typography } from '@mui/material';
 
 const BudgetSection: React.FC<FormSectionProps> = ({ formData, handleChange }) => {
     const handleNumericChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -10,84 +11,85 @@ const BudgetSection: React.FC<FormSectionProps> = ({ formData, handleChange }) =
     };
 
     return (
-        <fieldset className="border border-gray-300 rounded-lg p-4">
-            <legend className="text-main-color font-semibold">9. Total Project Cost</legend>
+        <Box sx={{ flexGrow: 1, mt: 4 }}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 'bold', color: '#1f2937', mb: 2 }}>
+                9. Total Project Cost
+            </Typography>
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={6} md={3}>
+                    <FormControl fullWidth variant="outlined">
+                        <InputLabel shrink>a. Currency</InputLabel>
+                        <Select
+                            name="currency"
+                            value={formData.currency}
+                            onChange={handleChange as any}
+                        >
+                            <MenuItem value=""><em>Select</em></MenuItem>
+                            <MenuItem value="USD">USD</MenuItem>
+                            <MenuItem value="LKR">LKR</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
 
-            {/* Currency Selection */}
-            <div className="mt-4">
-                <label className="block text-main-color font-medium mb-2">
-                    a. Total project cost
-                </label>
-                <div className="flex items-center space-x-4">
-                    <select
-                        name="currency"
-                        value={formData.currency}
-                        onChange={handleChange}
-                        className="w-1/3 border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                    >
-                        <option value="">Select Currency</option>
-                        <option value="USD">USD</option>
-                        <option value="LKR">LKR</option>
-                    </select>
-
-                    <input
-                        type="text"
+                <Grid item xs={12} sm={6} md={3}>
+                    <TextField
+                        fullWidth
+                        label="Total Project Cost"
                         name="currencyValue"
                         value={formData.currencyValue}
                         onChange={handleNumericChange}
-                        className="w-2/3 border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                        placeholder="Enter amount"
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                        placeholder="0.00"
                     />
-                </div>
-            </div>
+                </Grid>
 
-            {/* Total Expenditure */}
-            <div className="mt-4">
-                <label className="block text-main-color font-medium mb-2">
-                    b. Total Expenditure to Date
-                </label>
-                <input
-                    type="text"
-                    name="expenditure"
-                    value={formData.expenditure}
-                    onChange={handleNumericChange}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                    placeholder="Enter total expenditure"
-                />
-            </div>
+                <Grid item xs={12} sm={6} md={3}>
+                    <TextField
+                        fullWidth
+                        label="b. Total Expenditure to Date"
+                        name="expenditure"
+                        value={formData.expenditure}
+                        onChange={handleNumericChange}
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                        placeholder="0.00"
+                    />
+                </Grid>
 
-            {/* Budget for Gap Filling */}
-            <div className="mt-4">
-                <label className="block text-main-color font-medium mb-2">
-                    c. Expected TOTAL Budget for Gap Filling Research
-                </label>
-                <input
-                    type="text"
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleNumericChange}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                    placeholder="Enter total"
-                />
-            </div>
+                <Grid item xs={12} sm={6} md={3}>
+                    <TextField
+                        fullWidth
+                        label="c. Expected Budget (Gap Filling)"
+                        name="budget"
+                        value={formData.budget}
+                        onChange={handleNumericChange}
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                        placeholder="0.00"
+                    />
+                </Grid>
 
-            {/* Milestone Budget */}
-            <div className="mt-4">
-                <label className="block text-main-color font-medium mb-2">
-                    d. Budget needed to achieve each milestone described in 8d
-                </label>
-                <textarea
-                    name="milestone_budget"
-                    value={formData.milestone_budget}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900 "
-                    rows={4}
-                    maxLength={400}
-                    placeholder="Describe budget allocation for each milestone"
-                />
-            </div>
-        </fieldset>
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="d. Budget needed to achieve each milestone described in 8d (max 400 chars)"
+                        name="milestone_budget"
+                        value={formData.milestone_budget}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 400 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.milestone_budget?.length || 0}/400 characters`}
+                        placeholder="Describe budget allocation for each milestone"
+                    />
+                </Grid>
+            </Grid>
+        </Box>
     );
 };
 
 export default BudgetSection;
+

@@ -1,55 +1,63 @@
 import React from 'react';
 import { InvestmentFormSectionProps } from '../investment-types/InvestmentFormTypes.ts';
+import { Grid, TextField, Box } from '@mui/material';
 
 const InvestmentBasicInfoSection: React.FC<InvestmentFormSectionProps> = ({ formData, handleChange }) => {
     return (
-        <>
-            {/* Title of the Project */}
-            <div>
-                <label className="block text-main-color font-medium mb-2">1. Title of the Project:</label>
-                <input
-                    type="text"
-                    name="projectTitle"
-                    value={formData.projectTitle}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2"
-                    placeholder="Enter project title"
-                    required
-                />
-            </div>
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={3}>
+                {/* Title of the Project */}
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="1. Title of the Project"
+                        name="projectTitle"
+                        value={formData.projectTitle}
+                        onChange={handleChange}
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true }}
+                        placeholder="Enter project title"
+                        required
+                    />
+                </Grid>
 
-            {/* Investment Objectives */}
-            <div>
-                <label className="block text-main-color font-medium mb-2">
-                    2. Investment Objectives (1-5 objectives, not exceeding 800 characters):
-                </label>
-                <textarea
-                    name="investmentObjectives"
-                    value={formData.investmentObjectives}
-                    onChange={handleChange}
-                    rows={4}
-                    maxLength={3000}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2"
-                    placeholder="Describe the investment objectives"
-                />
-            </div>
+                {/* Investment Objectives */}
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="2. Investment Objectives (1-5 objectives, not exceeding 800 characters)"
+                        name="investmentObjectives"
+                        value={formData.investmentObjectives}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 800 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.investmentObjectives?.length || 0}/800 characters`}
+                        placeholder="Describe the investment objectives"
+                    />
+                </Grid>
 
-            {/* Market Demand */}
-            <div>
-                <label className="block text-main-color font-medium mb-2">
-                    3. Market Demand (not exceeding 800 characters):
-                </label>
-                <textarea
-                    name="marketDemand"
-                    value={formData.marketDemand}
-                    onChange={handleChange}
-                    rows={4}
-                    maxLength={3000}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2"
-                    placeholder="Describe the market demand"
-                />
-            </div>
-        </>
+                {/* Market Demand */}
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="3. Market Demand (not exceeding 800 characters)"
+                        name="marketDemand"
+                        value={formData.marketDemand}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 800 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.marketDemand?.length || 0}/800 characters`}
+                        placeholder="Describe the market demand"
+                    />
+                </Grid>
+            </Grid>
+        </Box>
     );
 };
 

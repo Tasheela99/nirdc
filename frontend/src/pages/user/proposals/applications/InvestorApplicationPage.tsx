@@ -211,15 +211,18 @@ const InvestorApplicationScreen: React.FC = () => {
                     onConfirm={handleAlertConfirm}
                 />
             )}
-            <div className="max-w-4xl mx-auto flex justify-end px-4 mt-4">
-                <AutoSaveIndicator status={autoSaveStatus} lastSavedAt={lastSavedAt} />
-            </div>
+
             <FormWizard
                 title="Investor Application Form"
                 steps={wizardSteps}
                 onSubmit={handleSubmit}
                 isSubmitting={isSubmitting}
                 guidelinesUrl="/investor-guidelines"
+                headerRightContent={
+                    <div className="bg-white/90 rounded-full px-3 py-1 shadow-sm">
+                        <AutoSaveIndicator status={autoSaveStatus} lastSavedAt={lastSavedAt} />
+                    </div>
+                }
                 noteContent={
                     <>
                         <p className="text-gray-700 font-semibold mb-1">

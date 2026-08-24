@@ -147,8 +147,18 @@ const ReviewerRegistrationScreen = () => {
                 showAlert(response.message || "Registration failed.", "error");
             }
         } catch (error: any) {
-            const errorMsg = error.response?.data?.message || "Something went wrong. Please try again.";
-            showAlert(errorMsg, "error");
+            if (error.response) {
+                const errorData = error.response.data;
+                if (errorData?.errors && Array.isArray(errorData.errors) && errorData.errors.length > 0) {
+                    showAlert(errorData.errors[0], "error");
+                } else {
+                    showAlert(errorData?.message || "Registration failed.", "error");
+                }
+            } else if (error.request) {
+                showAlert("Network error. Please check your connection.", "error");
+            } else {
+                showAlert("Something went wrong. Please try again.", "error");
+            }
         } finally {
             setIsLoading(false);
         }

@@ -8,8 +8,8 @@ router.get('/my-assignments', authorized(['REVIEWER']), ReviewAssignmentControll
 router.put('/:assignmentId/submit', authorized(['REVIEWER']), ReviewAssignmentController.submitReview);
 
 // Admin routes
-router.post('/assign', authorized(['ADMIN', 'SUPER_ADMIN']), ReviewAssignmentController.assignReviewer);
+router.post('/assign', authorized(['ADMIN', 'SUPER_ADMIN', 'DIRECTOR']), ReviewAssignmentController.assignReviewer);
 router.get('/proposal/:proposalId', authorized(['ADMIN', 'SUPER_ADMIN', 'DIRECTOR']), ReviewAssignmentController.getReviewsForProposal);
-router.delete('/:assignmentId', authorized(['ADMIN', 'SUPER_ADMIN']), ReviewAssignmentController.removeAssignment);
+router.delete('/:assignmentId', authorized(['ADMIN', 'SUPER_ADMIN', 'DIRECTOR']), ReviewAssignmentController.removeAssignment);
 
 module.exports = router;

@@ -1,41 +1,46 @@
 import React from "react";
 import { InvestorFormProps } from "../investor-types/InvestorFormTypes.ts";
+import { Grid, TextField, Box } from '@mui/material';
 
 const InvestorBasicInfoSection: React.FC<InvestorFormProps> = ({ formData, handleChange }) => {
     return (
-        <>
-            {/* 1. Investment Objectives */}
-            <div>
-                <label className="block text-main-color font-medium mb-2">
-                    1. Investment objectives (1-5 objectives not exceeding 1250 characters)
-                </label>
-                <textarea
-                    name="investmentObjectives"
-                    value={formData.investmentObjectives}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2 "
-                    rows={4}
-                    maxLength={1250}
-                    placeholder="Describe your investment objectives"
-                />
-            </div>
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="1. Investment objectives (1-5 objectives not exceeding 1250 characters)"
+                        name="investmentObjectives"
+                        value={formData.investmentObjectives}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 1250 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.investmentObjectives?.length || 0}/1250 characters`}
+                        placeholder="Describe your investment objectives"
+                    />
+                </Grid>
 
-            {/* 2. Market Demand */}
-            <div>
-                <label className="block text-main-color font-medium mb-2">
-                    2. Market demand (not exceeding 1250 characters)
-                </label>
-                <textarea
-                    name="marketDemand"
-                    value={formData.marketDemand}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2 "
-                    rows={4}
-                    maxLength={1250}
-                    placeholder="Describe the market demand"
-                />
-            </div>
-        </>
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="2. Market demand (not exceeding 1250 characters)"
+                        name="marketDemand"
+                        value={formData.marketDemand}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 1250 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.marketDemand?.length || 0}/1250 characters`}
+                        placeholder="Describe the market demand"
+                    />
+                </Grid>
+            </Grid>
+        </Box>
     );
 };
 

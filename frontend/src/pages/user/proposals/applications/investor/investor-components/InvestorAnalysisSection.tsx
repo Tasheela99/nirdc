@@ -1,60 +1,67 @@
 import React from "react";
 import { InvestorFormProps } from "../investor-types/InvestorFormTypes.ts";
+import { Grid, TextField, Box } from '@mui/material';
 
 const InvestorAnalysisSection: React.FC<InvestorFormProps> = ({ formData, handleChange }) => {
     return (
-        <>
-            {/* 4. Total Project Investment */}
-            <div>
-                <label className="block text-main-color font-medium mb-2">
-                    4. Total project investment (please indicate the source of funding and whether the value you
-                    mentioned is in USD or LKR)
-                </label>
-                <textarea
-                    name="totalInvestment"
-                    value={formData.totalInvestment}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2 "
-                    rows={3}
-                    maxLength={800}
-                    placeholder="Describe total project investment including source of funding and currency"
-                />
-            </div>
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={3}>
+                {/* 4. Total Project Investment */}
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="4. Total project investment (indicate source of funding and currency USD/LKR)"
+                        name="totalInvestment"
+                        value={formData.totalInvestment}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 800 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.totalInvestment?.length || 0}/800 characters`}
+                        placeholder="Describe total project investment including source of funding and currency"
+                    />
+                </Grid>
 
-            {/* 5. Expected return on investment */}
-            <div>
-                <label className="block text-main-color font-medium mb-2">
-                    5. Expected return on investment
-                    <p>(forecast should be provided - IRR, NPV, Payback Period, Cost-Benefit Ratio, etc.)</p>
-                </label>
-                <textarea
-                    name="expectedROI"
-                    value={formData.expectedROI}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2 "
-                    rows={3}
-                    maxLength={800}
-                    placeholder="Provide detailed forecast including IRR, NPV, Payback Period, Cost-Benefit Ratio, etc."
-                />
-            </div>
+                {/* 5. Expected return on investment */}
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="5. Expected return on investment (forecast should be provided - IRR, NPV, Payback Period, etc.)"
+                        name="expectedROI"
+                        value={formData.expectedROI}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 800 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.expectedROI?.length || 0}/800 characters`}
+                        placeholder="Provide detailed forecast including IRR, NPV, Payback Period, Cost-Benefit Ratio, etc."
+                    />
+                </Grid>
 
-            {/* 8. Risk and assumptions
-            <div>
-                <label className="block text-main-color font-medium mb-2">
-                    8. Risk and assumptions, and contingency plan, if applicable
-                    <p>(not exceeding 1250 characters)</p>
-                </label>
-                <textarea
-                    name="riskAssumptions"
-                    value={formData.riskAssumptions}
-                    onChange={handleChange}
-                    className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-gray-900  focus:outline-none focus:ring-2 "
-                    rows={3}
-                    maxLength={1250}
-                    placeholder="Describe risks, assumptions, and contingency plans"
-                />
-            </div> */}
-        </>
+                {/* 8. Risk and assumptions
+                <Grid item xs={12}>
+                    <TextField
+                        fullWidth
+                        label="8. Risk and assumptions, and contingency plan, if applicable (not exceeding 1250 characters)"
+                        name="riskAssumptions"
+                        value={formData.riskAssumptions}
+                        onChange={handleChange}
+                        variant="outlined"
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 1250 }}
+                        InputLabelProps={{ shrink: true }}
+                        helperText={`${formData.riskAssumptions?.length || 0}/1250 characters`}
+                        placeholder="Describe risks, assumptions, and contingency plans"
+                    />
+                </Grid>
+                */}
+            </Grid>
+        </Box>
     );
 };
 

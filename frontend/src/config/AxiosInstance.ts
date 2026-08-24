@@ -65,7 +65,7 @@ instance.interceptors.response.use(
         return response;
     },
     (error: AxiosError) => {
-        if (error.response?.status === 401) {
+        if (error.response?.status === 401 && error.config?.url && !error.config.url.includes('/users/sign-in')) {
             localStorage.removeItem("token");
             localStorage.removeItem("userInfo");
             window.location.href = "/login";

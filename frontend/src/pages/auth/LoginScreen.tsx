@@ -45,6 +45,7 @@ const LoginScreen = () => {
             "USER_NOT_FOUND": "User not found. Please register first.",
             "INCORRECT_PASSWORD": "Incorrect password. Please try again.",
             "NOT_VERIFIED": "Please verify your email address before signing in.",
+            "USER_DEACTIVATED": "Your account has been deactivated. Please contact support.",
             "AUTH_RATE_LIMITED": "Too many login attempts. Please try again after 15 minutes.",
             "Network Error": "Network error occurred. Please check your connection.",
             "default": "An unexpected error occurred. Please try again."
@@ -95,9 +96,9 @@ const LoginScreen = () => {
         } catch (error: any) {
             let errorMessage = errorMessages["default"];
 
-            if (error.isAxiosError) {
-                const status = error.response?.status;
-                const errorData = error.response?.data;
+            if (error.response) {
+                const status = error.response.status;
+                const errorData = error.response.data;
 
                 if (status === 429) {
                     errorMessage = errorData?.message || "Too many login attempts. Please try again later.";
@@ -105,9 +106,11 @@ const LoginScreen = () => {
                     errorMessage = errorMessages[errorData.label] ||
                         errorData.message ||
                         errorMessages["default"];
-                } else {
-                    errorMessage = errorMessages["Network Error"];
                 }
+            } else if (error.request) {
+                errorMessage = errorMessages["Network Error"];
+            } else {
+                errorMessage = error.message || errorMessages["default"];
             }
 
             showAlert(errorMessage, "error");
