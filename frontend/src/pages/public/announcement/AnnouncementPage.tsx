@@ -284,7 +284,7 @@ const AllAnnouncementScreen = () => {
                   {/* Read More Link */}
                   <div className="px-6 pb-6 pt-0">
                     <Link
-                      to={`/announcement-updates/${item._id}`}
+                      to={`/announcements/${item.slug || item._id}`}
                       className="inline-flex items-center text-primary dark:text-primary-light font-semibold hover:text-primary-dark dark:hover:text-white transition-colors duration-300 text-sm"
                     >
                       Read More

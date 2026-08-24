@@ -1,5 +1,7 @@
 const AnnouncementSchema = require('../schemas/AnnouncementSchema');
 const {uploadFileToAws, awsFolderNames, getFileUrlFromAws, deleteFileFromAws, extractFileNameFromUrl, handleFileUploads} = require("../utils/FileUploadAwsUtil");
+const { generateUniqueSlug, ensureUniqueSlug } = require('../utils/SlugUtil');
+const mongoose = require('mongoose');
 const path = require('path');
 
 const cacheService = require("../services/CacheService");
@@ -14,7 +16,7 @@ const deleteFileFromAwsIfExist = async (url) => {
 
 const createAnnouncement = async (req, res) => {
     try {
-        const {titleEn, titleSi, titleTa, descriptionEn, descriptionSi, descriptionTa, date} = req.body;
+        const {titleEn, titleSi, titleTa, descriptionEn, descriptionSi, descriptionTa, date, slug} = req.body;
         const userId = req.user?.id || 'mockUserId';
 
         if (!req.files || !req.files.commonImage) {
@@ -40,7 +42,11 @@ const createAnnouncement = async (req, res) => {
         const pdfSi = await uploadSingle('pdfSi', true);
         const pdfTa = await uploadSingle('pdfTa', true);
 
+        const titleForSlug = slug || titleEn || titleSi || titleTa || 'announcement';
+        const finalSlug = await ensureUniqueSlug(AnnouncementSchema, titleForSlug);
+
         const newAnnouncementData = {
+            slug: finalSlug,
             titleEn, titleSi, titleTa,
             descriptionEn, descriptionSi, descriptionTa,
             date,
@@ -97,7 +103,14 @@ const getAllAnnouncements = async (req, res) => {
 const getAnnouncementById = async (req, res) => {
     const {id} = req.params;
 
-    AnnouncementSchema.findById({_id: id}).then(result => {
+    let query;
+    if (mongoose.Types.ObjectId.isValid(id)) {
+        query = { $or: [{ _id: id }, { slug: id }] };
+    } else {
+        query = { slug: id };
+    }
+
+    AnnouncementSchema.findOne(query).then(result => {
         if (result == null) {
             res.status(200).json({
                 success: false,
@@ -161,7 +174,7 @@ const deleteAnnouncement = async (req, res) => {
 
 const updateAnnouncement = async (req, res) => {
     const id = req.params.id;
-    const { titleEn, titleSi, titleTa, descriptionEn, descriptionSi, descriptionTa, date } = req.body;
+    const { titleEn, titleSi, titleTa, descriptionEn, descriptionSi, descriptionTa, date, slug } = req.body;
     const userId = req.user?.id || 'mockUserId';
 
     try {
@@ -212,6 +225,9 @@ const updateAnnouncement = async (req, res) => {
         }
 
         // Update fields
+        if (slug !== undefined) {
+            announcement.slug = await ensureUniqueSlug(AnnouncementSchema, slug, id);
+        }
         announcement.titleEn = titleEn !== undefined ? titleEn : announcement.titleEn;
         announcement.titleSi = titleSi !== undefined ? titleSi : announcement.titleSi;
         announcement.titleTa = titleTa !== undefined ? titleTa : announcement.titleTa;

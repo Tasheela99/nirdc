@@ -181,8 +181,8 @@ const NewsUpdatesScreen = () => {
                   {/* Read More */}
                   <div className="pt-2">
                     <Link
-                      to={`/news-updates/${item._id}`}
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all duration-150 active:scale-95"
+                      to={`/news-updates/${item.slug || item._id}`}
+                      className="inline-flex items-center text-primary dark:text-primary-light font-semibold hover:text-primary-dark dark:hover:text-white transition-colors duration-300 text-sm"
                     >
                       {t('news.readMore')}
                       <ArrowRight size={14} />

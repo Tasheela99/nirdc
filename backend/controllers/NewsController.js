@@ -2,6 +2,8 @@ const NewsSchema = require('../schemas/NewsSchema');
 const {createUpload, uploadConfigs} = require("../utils/FileUploadUtil");
 const UserSchema = require("../schemas/UserSchema");
 const { handleFileUploads, deleteFileFromAws, extractFileNameFromUrl, awsFolderNames } = require("../utils/FileUploadAwsUtil");
+const { generateUniqueSlug, ensureUniqueSlug } = require('../utils/SlugUtil');
+const mongoose = require('mongoose');
 const cacheService = require("../services/CacheService");
 const path = require('path');
 
@@ -15,7 +17,7 @@ const deleteImageFromAwsIfExist = async (imageUrl) => {
 
 const createNews = async (req, res) => {
     try {
-        const {titleEn, titleSi, titleTa, contentEn, contentSi, contentTa, date} = req.body;
+        const {titleEn, titleSi, titleTa, contentEn, contentSi, contentTa, date, slug} = req.body;
         const userId = req.user?.id || 'mockUserId'; // Mock user ID for testing
         const user = await UserSchema.findById(userId);
 
@@ -45,8 +47,12 @@ const createNews = async (req, res) => {
         const imageSi = await uploadSingle('imageSi');
         const imageTa = await uploadSingle('imageTa');
 
+        const titleForSlug = slug || titleEn || titleSi || titleTa || 'news';
+        const finalSlug = await ensureUniqueSlug(NewsSchema, titleForSlug);
+
         const newNews = new NewsSchema({
             user: userId,
+            slug: finalSlug,
             titleEn, titleSi, titleTa,
             contentEn, contentSi, contentTa,
             date,
@@ -97,7 +103,14 @@ const getAllNews = async (req, res) => {
 const getNewsById = async (req, res) => {
     const {id} = req.params;
 
-    NewsSchema.findById({_id: id}).then(result => {
+    let query;
+    if (mongoose.Types.ObjectId.isValid(id)) {
+        query = { $or: [{ _id: id }, { slug: id }] };
+    } else {
+        query = { slug: id };
+    }
+
+    NewsSchema.findOne(query).then(result => {
         if (result == null) {
             res.status(200).json({
                 success: false,
@@ -151,7 +164,7 @@ const deleteNews = async (req, res) => {
 
 const updateNews = async (req, res) => {
     const id = req.params.id;
-    const { titleEn, titleSi, titleTa, contentEn, contentSi, contentTa, date } = req.body;
+    const { titleEn, titleSi, titleTa, contentEn, contentSi, contentTa, date, slug } = req.body;
     const userId = req.user?.id || 'mockUserId';
 
     try {
@@ -187,6 +200,9 @@ const updateNews = async (req, res) => {
         }
 
         // Update fields
+        if (slug !== undefined) {
+            news.slug = await ensureUniqueSlug(NewsSchema, slug, id);
+        }
         news.titleEn = titleEn !== undefined ? titleEn : news.titleEn;
         news.titleSi = titleSi !== undefined ? titleSi : news.titleSi;
         news.titleTa = titleTa !== undefined ? titleTa : news.titleTa;

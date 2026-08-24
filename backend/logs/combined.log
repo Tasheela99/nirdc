@@ -866,3 +866,83 @@
 {"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-08-20 18:13:04"}
 {"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-20 18:13:14"}
 {"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-20 18:13:14"}
+{"error":"querySrv ECONNREFUSED _mongodb._tcp.nirdc.w93v9o8.mongodb.net","level":"error","message":"❌ Failed to connect to MongoDB:","service":"nirdc-backend","timestamp":"2026-08-20 20:27:28"}
+{"error":"querySrv ECONNREFUSED _mongodb._tcp.nirdc.w93v9o8.mongodb.net","level":"error","message":"❌ Failed to connect to MongoDB:","service":"nirdc-backend","timestamp":"2026-08-24 09:32:23"}
+{"error":"querySrv ECONNREFUSED _mongodb._tcp.nirdc.w93v9o8.mongodb.net","level":"error","message":"❌ Failed to connect to MongoDB:","service":"nirdc-backend","timestamp":"2026-08-24 09:32:36"}
+{"error":"querySrv ECONNREFUSED _mongodb._tcp.nirdc.w93v9o8.mongodb.net","level":"error","message":"❌ Failed to connect to MongoDB:","service":"nirdc-backend","timestamp":"2026-08-24 09:33:09"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-08-24 09:33:28"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-08-24 09:33:29"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-08-24 09:33:29"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-08-24 09:33:49"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-08-24 09:33:49"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-08-24 09:33:49"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:33:54"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:33:54"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:36:54"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:36:54"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:17"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:17"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:26"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:26"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:26"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:26"}
+{"level":"debug","message":"🔍 Cache MISS for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:45"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:45"}
+{"level":"debug","message":"🔍 Cache MISS for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:52"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:37:52"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:01"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:01"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:03"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:03"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:05"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:05"}
+{"level":"debug","message":"🔍 Cache MISS for [news_/api/v1/news/get-by-id/6a82a9cf3ffe76ac16089289]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:07"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-by-id/6a82a9cf3ffe76ac16089289]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:07"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:12"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:12"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:15"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:38:15"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:40:31"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 09:40:31"}
+{"level":"debug","message":"🔍 Cache MISS for [announcements_/api/v1/announcements/get-by-id/6a82aaef1999ed7d6676ccab]","service":"nirdc-backend","timestamp":"2026-08-24 09:40:33"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/6a82aaef1999ed7d6676ccab]","service":"nirdc-backend","timestamp":"2026-08-24 09:40:33"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-08-24 10:02:59"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-08-24 10:03:00"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-08-24 10:03:00"}
+{"level":"debug","message":"🔍 Cache MISS for [announcements_/api/v1/announcements/get-by-id/6a82aaef1999ed7d6676ccab]","service":"nirdc-backend","timestamp":"2026-08-24 10:03:14"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/6a82aaef1999ed7d6676ccab]","service":"nirdc-backend","timestamp":"2026-08-24 10:03:15"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:03:53"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:03:53"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/6a82aaef1999ed7d6676ccab]","service":"nirdc-backend","timestamp":"2026-08-24 10:04:56"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/6a82aaef1999ed7d6676ccab]","service":"nirdc-backend","timestamp":"2026-08-24 10:04:56"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/6a82aaef1999ed7d6676ccab]","service":"nirdc-backend","timestamp":"2026-08-24 10:04:57"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/6a82aaef1999ed7d6676ccab]","service":"nirdc-backend","timestamp":"2026-08-24 10:04:57"}
+{"level":"debug","message":"🔍 Cache MISS for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:05:04"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:05:04"}
+{"level":"debug","message":"🔍 Cache MISS for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:05:28"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:05:28"}
+{"level":"debug","message":"🔍 Cache MISS for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:05:39"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:05:39"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:05:41"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:05:41"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:05:41"}
+{"level":"debug","message":"🔍 Cache MISS for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:00"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:00"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:09"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:09"}
+{"level":"debug","message":"🔍 Cache MISS for [announcements_/api/v1/announcements/get-by-id/what-is-lorem-ipsum-announcement]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:12"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/what-is-lorem-ipsum-announcement]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:12"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/what-is-lorem-ipsum-announcement]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:25"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/what-is-lorem-ipsum-announcement]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:25"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/what-is-lorem-ipsum-announcement]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:47"}
+{"level":"debug","message":"🔍 Cache MISS for [announcements_/api/v1/announcements/get-by-id/6a82aaef1999ed7d6676ccab]","service":"nirdc-backend","timestamp":"2026-08-24 10:06:47"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/what-is-lorem-ipsum-announcement]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:02"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-by-id/what-is-lorem-ipsum-announcement]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:02"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:03"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:03"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:16"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:16"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:19"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:19"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:22"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-08-24 10:07:22"}

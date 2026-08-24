@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const AnnouncementSchema = new mongoose.Schema({
+    slug: { type: String, unique: true, sparse: true },
     titleEn: { type: String, default: '' },
     titleSi: { type: String, default: '' },
     titleTa: { type: String, default: '' },

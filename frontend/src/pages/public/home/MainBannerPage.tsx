@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../../../store/UserContext";
 import { motion } from "framer-motion";
 import { FileUp, FileCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -20,6 +21,7 @@ const MainBannerPage: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isLoggedIn } = useContext(UserContext);
 
   useEffect(() => {
     const fetchBanners = async () => {
@@ -90,7 +92,8 @@ const MainBannerPage: React.FC = () => {
             {t('banner.subtitle')}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4 mt-2 sm:mt-8 w-full max-w-md sm:max-w-none">
+          {!isLoggedIn && (
+            <div className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4 mt-2 sm:mt-8 w-full max-w-md sm:max-w-none">
 
             {/* SUBMIT button — glassy purple */}
             <button
@@ -217,6 +220,7 @@ const MainBannerPage: React.FC = () => {
             </button>
 
           </div>
+          )}
         </motion.div>
 
         {/* Slide indicators */}

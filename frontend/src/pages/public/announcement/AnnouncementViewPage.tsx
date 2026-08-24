@@ -49,7 +49,7 @@ const AnnouncementViewScreen = () => {
 
     const currentLang = i18n.language || 'en';
     const isFieldEmpty = (val: string) => !val || (val.replace(/<[^>]*>?/gm, '').trim() === '' && !val.includes('<img'));
-    
+
     const getLocalizedField = (fieldName: string) => {
         if (currentLang.startsWith('si')) {
             const val = announcementItem[`${fieldName}Si`];
@@ -65,14 +65,14 @@ const AnnouncementViewScreen = () => {
     const title = getLocalizedField('title') || "No title available";
     const content = getLocalizedField('content') || "No content available";
     const image = (currentLang.startsWith('si') && announcementItem.imageSi) ? announcementItem.imageSi :
-                  (currentLang.startsWith('ta') && announcementItem.imageTa) ? announcementItem.imageTa :
-                  (currentLang.startsWith('en') && announcementItem.imageEn) ? announcementItem.imageEn :
-                  announcementItem.commonImage;
+        (currentLang.startsWith('ta') && announcementItem.imageTa) ? announcementItem.imageTa :
+            (currentLang.startsWith('en') && announcementItem.imageEn) ? announcementItem.imageEn :
+                announcementItem.commonImage;
 
     return (
         <section id="updates-announcement" className="bg-gray-50 py-12">
             <div className="max-w-6xl mx-auto px-4">
-                <Link to="/all-announcement" className="inline-flex items-center text-main-color hover:text-third-color mb-6">
+                <Link to="/announcements" className="inline-flex items-center text-main-color hover:text-third-color mb-6">
                     <ChevronLeft className="mr-2" size={20} />
                     Back to Announcement
                 </Link>
@@ -81,9 +81,9 @@ const AnnouncementViewScreen = () => {
                     {/* Featured Image */}
                     {image && (
                         <div className="w-full h-64 md:h-80 lg:h-96">
-                            <img 
-                                className="w-full h-full object-cover" 
-                                src={image} 
+                            <img
+                                className="w-full h-full object-cover"
+                                src={image}
                                 alt={title}
                                 onError={(e) => {
                                     (e.target as HTMLImageElement).style.display = 'none';
@@ -100,9 +100,9 @@ const AnnouncementViewScreen = () => {
                             {announcementItem.date || "No date available"}
                         </p>
                         <div className="text-second-color leading-relaxed">
-                            <div 
-                                dangerouslySetInnerHTML={{ 
-                                    __html: DOMPurify.sanitize(content) 
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: DOMPurify.sanitize(content)
                                 }}
                                 style={{
                                     lineHeight: 1.7,

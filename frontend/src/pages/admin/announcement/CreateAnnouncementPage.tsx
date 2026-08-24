@@ -50,6 +50,7 @@ const LOCAL_STORAGE_KEY = "announcementFormData";
 const EXPIRATION_KEY = "announcementFormDataExpiration";
 
 interface AnnouncementFormData {
+    slug: string;
     titleEn: string;
     titleSi: string;
     titleTa: string;
@@ -68,6 +69,7 @@ interface AnnouncementFormData {
 
 interface EditAnnouncement {
     _id: string;
+    slug?: string;
     titleEn: string;
     titleSi: string;
     titleTa: string;
@@ -94,6 +96,7 @@ const CreateAnnouncementScreen = () => {
     const editAnnouncement = state?.announcement as EditAnnouncement;
 
     const defaultFormData: AnnouncementFormData = {
+        slug: "",
         titleEn: "",
         titleSi: "",
         titleTa: "",
@@ -111,9 +114,17 @@ const CreateAnnouncementScreen = () => {
     };
 
     const [formData, setFormData] = useState<AnnouncementFormData>(() => {
-        // If in edit mode, initialize with edit data
-        if (editAnnouncement) {
+        const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+        const expiration = localStorage.getItem(EXPIRATION_KEY);
+        const isExpired = expiration && new Date().getTime() > parseInt(expiration, 10);
+
+        if (savedData && !isExpired) {
+            const parsed = JSON.parse(savedData);
+            if (!parsed.slug) parsed.slug = "";
+            return parsed;
+        } else if (editAnnouncement) {
             return {
+                slug: editAnnouncement.slug || "",
                 titleEn: editAnnouncement.titleEn || "",
                 titleSi: editAnnouncement.titleSi || "",
                 titleTa: editAnnouncement.titleTa || "",
@@ -131,14 +142,7 @@ const CreateAnnouncementScreen = () => {
             };
         }
 
-        // Otherwise, try to load from localStorage
-        const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
-        const expiration = localStorage.getItem(EXPIRATION_KEY);
-        const isExpired = expiration && new Date().getTime() > parseInt(expiration, 10);
 
-        if (savedData && !isExpired) {
-            return JSON.parse(savedData);
-        }
 
         return defaultFormData;
     });
@@ -153,6 +157,22 @@ const CreateAnnouncementScreen = () => {
         imageTa: null
     });
     const [isDraftSaved, setIsDraftSaved] = useState(false);
+    const [isSlugManual, setIsSlugManual] = useState(!!editAnnouncement?.slug);
+
+    // Auto-generate slug from English title
+    useEffect(() => {
+        if (!isSlugManual && activeTab === 0) {
+            const generated = formData.titleEn
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, '-')
+                .replace(/[^\w\-]+/g, '')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+/, '')
+                .replace(/-+$/, '');
+            setFormData(prev => ({ ...prev, slug: generated }));
+        }
+    }, [formData.titleEn, isSlugManual, activeTab]);
 
     // Initialize image preview for edit mode
     useEffect(() => {
@@ -199,6 +219,11 @@ const CreateAnnouncementScreen = () => {
 
     const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
         setActiveTab(newValue);
+    };
+
+    const handleSlugChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsSlugManual(true);
+        setFormData(prev => ({ ...prev, slug: e.target.value }));
     };
 
     const handleChange = (
@@ -264,6 +289,7 @@ const CreateAnnouncementScreen = () => {
 
         try {
             const formDataToSend = new FormData();
+            formDataToSend.append("slug", formData.slug.trim());
             formDataToSend.append("titleEn", formData.titleEn.trim());
             formDataToSend.append("titleSi", formData.titleSi.trim());
             formDataToSend.append("titleTa", formData.titleTa.trim());
@@ -653,6 +679,30 @@ const CreateAnnouncementScreen = () => {
                                             }
                                         }}
                                     />
+                                    {activeTab === 0 && (
+                                        <Box mt={2}>
+                                            <Typography variant="body2" color="text.secondary" mb={1} fontWeight="500">
+                                                URL Slug
+                                            </Typography>
+                                            <TextField
+                                                fullWidth
+                                                name="slug"
+                                                placeholder="my-announcement-title"
+                                                value={formData.slug}
+                                                onChange={handleSlugChange}
+                                                variant="outlined"
+                                                size="small"
+                                                sx={{
+                                                    '& .MuiOutlinedInput-root': {
+                                                        backgroundColor: 'white',
+                                                    },
+                                                    '& .MuiInputBase-input': {
+                                                        color: 'black',
+                                                    }
+                                                }}
+                                            />
+                                        </Box>
+                                    )}
                                 </Paper>
 
                                 {/* Enhanced Content Section */}

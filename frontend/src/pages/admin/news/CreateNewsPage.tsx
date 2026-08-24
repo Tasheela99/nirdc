@@ -50,6 +50,7 @@ const LOCAL_STORAGE_KEY = "newsFormData";
 const EXPIRATION_KEY = "newsFormDataExpiration";
 
 interface NewsFormData {
+    slug: string;
     titleEn: string;
     titleSi: string;
     titleTa: string;
@@ -65,6 +66,7 @@ interface NewsFormData {
 
 interface EditNews {
     _id: string;
+    slug?: string;
     titleEn: string;
     titleSi: string;
     titleTa: string;
@@ -88,6 +90,7 @@ const CreateNewsScreen = () => {
     const editNews = state?.news as EditNews;
 
     const defaultFormData: NewsFormData = {
+        slug: "",
         titleEn: "",
         titleSi: "",
         titleTa: "",
@@ -102,9 +105,21 @@ const CreateNewsScreen = () => {
     };
 
     const [formData, setFormData] = useState<NewsFormData>(() => {
+        // Otherwise, try to load from localStorage
+        const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+        const expiration = localStorage.getItem(EXPIRATION_KEY);
+        const isExpired = expiration && new Date().getTime() > parseInt(expiration, 10);
+
+        if (savedData && !isExpired) {
+            const parsed = JSON.parse(savedData);
+            if (!parsed.slug) parsed.slug = "";
+            return parsed;
+        }
+
         // If in edit mode, initialize with edit data
         if (editNews) {
             return {
+                slug: editNews.slug || "",
                 titleEn: editNews.titleEn || "",
                 titleSi: editNews.titleSi || "",
                 titleTa: editNews.titleTa || "",
@@ -119,14 +134,7 @@ const CreateNewsScreen = () => {
             };
         }
 
-        // Otherwise, try to load from localStorage
-        const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
-        const expiration = localStorage.getItem(EXPIRATION_KEY);
-        const isExpired = expiration && new Date().getTime() > parseInt(expiration, 10);
 
-        if (savedData && !isExpired) {
-            return JSON.parse(savedData);
-        }
 
         return defaultFormData;
     });
@@ -141,6 +149,22 @@ const CreateNewsScreen = () => {
         imageTa: null
     });
     const [isDraftSaved, setIsDraftSaved] = useState(false);
+    const [isSlugManual, setIsSlugManual] = useState(!!editNews?.slug);
+
+    // Auto-generate slug from English title
+    useEffect(() => {
+        if (!isSlugManual && activeTab === 0) {
+            const generated = formData.titleEn
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, '-')
+                .replace(/[^\w\-]+/g, '')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+/, '')
+                .replace(/-+$/, '');
+            setFormData(prev => ({ ...prev, slug: generated }));
+        }
+    }, [formData.titleEn, isSlugManual, activeTab]);
 
     // Initialize image preview for edit mode
     useEffect(() => {
@@ -184,6 +208,11 @@ const CreateNewsScreen = () => {
 
     const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
         setActiveTab(newValue);
+    };
+
+    const handleSlugChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsSlugManual(true);
+        setFormData(prev => ({ ...prev, slug: e.target.value }));
     };
 
     const handleChange = (
@@ -240,6 +269,7 @@ const CreateNewsScreen = () => {
 
         try {
             const formDataToSend = new FormData();
+            formDataToSend.append("slug", formData.slug.trim());
             formDataToSend.append("titleEn", formData.titleEn.trim());
             formDataToSend.append("titleSi", formData.titleSi.trim());
             formDataToSend.append("titleTa", formData.titleTa.trim());
@@ -629,6 +659,30 @@ const CreateNewsScreen = () => {
                                             }
                                         }}
                                     />
+                                    {activeTab === 0 && (
+                                        <Box mt={2}>
+                                            <Typography variant="body2" color="text.secondary" mb={1} fontWeight="500">
+                                                URL Slug
+                                            </Typography>
+                                            <TextField
+                                                fullWidth
+                                                name="slug"
+                                                placeholder="my-news-title"
+                                                value={formData.slug}
+                                                onChange={handleSlugChange}
+                                                variant="outlined"
+                                                size="small"
+                                                sx={{
+                                                    '& .MuiOutlinedInput-root': {
+                                                        backgroundColor: 'white',
+                                                    },
+                                                    '& .MuiInputBase-input': {
+                                                        color: 'black',
+                                                    }
+                                                }}
+                                            />
+                                        </Box>
+                                    )}
                                 </Paper>
 
                                 {/* Enhanced Content Section */}

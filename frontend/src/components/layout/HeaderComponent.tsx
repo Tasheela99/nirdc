@@ -46,6 +46,8 @@ const UserDropdown: React.FC<UserDropdownProps> = ({userInfo, handleLogout, isMo
         return (userInfo?.userName?.[0] || "U").toUpperCase();
     };
 
+    const firstName = userInfo?.userName?.split(" ")[0] || "User";
+
     if (isMobile) {
         return (
             <div className="space-y-2 pt-3 border-t border-gray-200 dark:border-dark-border">
@@ -81,13 +83,13 @@ const UserDropdown: React.FC<UserDropdownProps> = ({userInfo, handleLogout, isMo
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors"
+                className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-white/10 transition-colors"
                 aria-expanded={isOpen}
                 aria-haspopup="true"
                 aria-label="User menu"
             >
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-200 hidden sm:block max-w-[100px] truncate">
-                    {userInfo?.userName || "User"}
+                <span className="text-sm font-medium text-white/90 hidden sm:block max-w-[150px] truncate">
+                    {firstName}
                 </span>
                 <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-semibold shadow-sm">
                     {getInitial()}

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const NewsSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
+    slug: { type: String, unique: true, sparse: true },
     titleEn: { type: String, default: '' },
     titleSi: { type: String, default: '' },
     titleTa: { type: String, default: '' },

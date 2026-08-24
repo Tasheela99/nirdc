@@ -1,1 +1,5 @@
 {"error":"querySrv ECONNREFUSED _mongodb._tcp.nirdc.w93v9o8.mongodb.net","level":"error","message":"❌ Failed to connect to MongoDB:","service":"nirdc-backend","timestamp":"2026-08-20 09:09:33"}
+{"error":"querySrv ECONNREFUSED _mongodb._tcp.nirdc.w93v9o8.mongodb.net","level":"error","message":"❌ Failed to connect to MongoDB:","service":"nirdc-backend","timestamp":"2026-08-20 20:27:28"}
+{"error":"querySrv ECONNREFUSED _mongodb._tcp.nirdc.w93v9o8.mongodb.net","level":"error","message":"❌ Failed to connect to MongoDB:","service":"nirdc-backend","timestamp":"2026-08-24 09:32:23"}
+{"error":"querySrv ECONNREFUSED _mongodb._tcp.nirdc.w93v9o8.mongodb.net","level":"error","message":"❌ Failed to connect to MongoDB:","service":"nirdc-backend","timestamp":"2026-08-24 09:32:36"}
+{"error":"querySrv ECONNREFUSED _mongodb._tcp.nirdc.w93v9o8.mongodb.net","level":"error","message":"❌ Failed to connect to MongoDB:","service":"nirdc-backend","timestamp":"2026-08-24 09:33:09"}
