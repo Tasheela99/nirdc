@@ -1028,3 +1028,1038 @@
 {"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-08-24 18:46:44"}
 {"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-08-24 18:46:45"}
 {"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-08-24 18:46:45"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 12:01:05"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 12:01:07"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 12:01:07"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:01:57"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:01:57"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:01:57"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:01:57"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 12:02:57"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 12:02:58"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 12:02:58"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:06:53"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:06:53"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:07:54"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:07:55"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:07:55"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:07:55"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:07:55"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:07:55"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:07:55"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:07:55"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:07:55"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:07:55"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:11:29"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:11:30"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:11:30"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:11:30"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:11:30"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:11:38"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:11:39"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:11:39"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:11:39"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:11:39"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:12:54"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:17"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:30"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:13:56"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:10"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:10"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:14:10"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:10"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:10"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 12:14:32"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 12:14:33"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 12:14:33"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:36"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:36"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:36"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:37"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:14:37"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 12:14:37"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:37"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:37"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:37"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 12:14:37"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:15:12"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:15:12"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:19:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:19:34"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:19:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:19:34"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:14"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:14"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:14"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:14"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:51"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:51"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:51"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:37:51"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:38:30"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:38:30"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:44:33"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:44:34"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:56:34"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:56:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:56:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:56:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:57:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:57:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:57:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:57:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:58:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:58:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:58:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:58:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:59:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:59:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:59:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 12:59:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:00:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:00:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:00:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:00:34"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:01:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:01:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:01:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:01:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:02:34"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:02:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:02:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:02:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:03:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:03:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:03:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:03:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:04:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:04:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:04:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:04:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:05:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:05:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:05:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:05:35"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:06:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:06:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:06:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:06:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:07:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:07:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:07:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:07:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:08:35"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:08:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:08:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:08:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:09:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:09:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:09:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:09:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:10:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:10:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:10:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:10:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:11:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:11:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:11:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:11:34"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:12:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:12:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:12:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:12:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:13:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:14:34"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:14:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:14:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:14:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:15:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:15:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:15:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:15:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:16:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:16:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:16:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:16:34"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:17:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:17:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:17:35"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:17:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:18:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:18:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:18:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:18:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:19:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:19:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:19:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:19:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:20:34"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:20:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:20:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:20:35"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:21:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:21:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:21:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:21:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:22:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:22:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:22:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:22:34"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:23:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:23:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:23:34"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:23:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:24:07"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:24:07"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:24:07"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:24:07"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:24:10"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:24:10"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:25:05"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:25:05"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:25:05"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:25:05"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 13:27:00"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:46:10"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:46:10"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:46:18"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:46:18"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:53:11"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:53:11"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:53:21"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:53:21"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:53:32"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 13:53:32"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:00:07"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:00:07"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:16:03"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:16:03"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:22:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:22:34"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:26:26"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:26:26"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:26:49"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:26:49"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:30:07"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:30:07"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:30:42"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 14:30:42"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 15:20:36"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 15:20:38"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 15:20:38"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:20:44"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:20:44"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:20:44"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:20:44"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 15:24:39"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 15:24:39"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:33:34"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 15:34:00"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 15:34:02"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 15:34:20"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 15:34:21"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 15:34:21"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:34:25"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:34:59"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:34:59"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 15:39:54"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 15:39:55"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 15:39:55"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:07"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:07"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:07"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:07"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:08"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:08"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:40:08"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:43"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:44"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:48"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:48"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:40:49"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:40:49"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:41:04"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:41:04"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:41:04"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:41:04"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 15:41:04"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 15:41:04"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:43:51"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:43:51"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:43:52"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:43:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:43:56"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:43:56"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:43:57"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:43:57"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:00"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:44:00"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:00"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:01"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:05"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:44:05"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:05"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:06"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:44:06"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:06"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:06"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:44:06"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:06"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:07"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:44:07"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:07"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:44:07"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:12"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:44:12"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:44:12"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:44:12"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:46:37"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:46:37"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:46:37"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:46:37"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:47:00"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:47:00"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:47:00"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:47:00"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:47:00"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:47:01"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:47:01"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:47:01"}
+{"level":"debug","message":"🔍 Cache MISS for [about_history_/api/v1/about/history]","service":"nirdc-backend","timestamp":"2026-10-13 15:50:51"}
+{"level":"debug","message":"⚡ Cache HIT for [about_history_/api/v1/about/history]","service":"nirdc-backend","timestamp":"2026-10-13 15:50:51"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:50:55"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:50:55"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:50:55"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:50:55"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:50:55"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:00"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:00"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:00"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:51:00"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:00"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:51:00"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:04"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:51:04"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:04"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:04"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:04"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:51:04"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:04"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:04"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:05"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:51:05"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:51:05"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:51:05"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 15:53:42"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 15:53:42"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:53:42"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 15:53:42"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 15:53:42"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:53:43"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 15:53:43"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 15:53:43"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 15:53:43"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 15:53:43"}
+{"error":"VisionMission validation failed: mission.description.ta: Path `mission.description.ta` is required., mission.description.si: Path `mission.description.si` is required., mission.highlightText.ta: Path `mission.highlightText.ta` is required., mission.highlightText.si: Path `mission.highlightText.si` is required., mission.title.ta: Path `mission.title.ta` is required., mission.title.si: Path `mission.title.si` is required., vision.description.ta: Path `vision.description.ta` is required., vision.description.si: Path `vision.description.si` is required., vision.highlightText.ta: Path `vision.highlightText.ta` is required., vision.highlightText.si: Path `vision.highlightText.si` is required., vision.title.ta: Path `vision.title.ta` is required., vision.title.si: Path `vision.title.si` is required.","level":"error","message":"Error creating vision and mission:","service":"nirdc-backend","timestamp":"2026-10-13 15:54:55"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 15:54:55"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:54:56"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 15:54:56"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 15:54:56"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 15:54:56"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 15:55:00"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:55:01"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 15:55:01"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 15:55:01"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 15:55:01"}
+{"error":"VisionMission validation failed: mission.description.ta: Path `mission.description.ta` is required., mission.description.si: Path `mission.description.si` is required., mission.highlightText.ta: Path `mission.highlightText.ta` is required., mission.highlightText.si: Path `mission.highlightText.si` is required., mission.title.ta: Path `mission.title.ta` is required., mission.title.si: Path `mission.title.si` is required., vision.description.ta: Path `vision.description.ta` is required., vision.description.si: Path `vision.description.si` is required., vision.highlightText.ta: Path `vision.highlightText.ta` is required., vision.highlightText.si: Path `vision.highlightText.si` is required., vision.title.ta: Path `vision.title.ta` is required., vision.title.si: Path `vision.title.si` is required.","level":"error","message":"Error creating vision and mission:","service":"nirdc-backend","timestamp":"2026-10-13 15:55:13"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 15:55:14"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:55:14"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 15:55:14"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 15:55:14"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 15:55:14"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 15:55:45"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 15:55:46"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 15:55:46"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:00"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:00"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:01"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:01"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 15:56:01"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 15:56:01"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:01"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:01"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:01"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:01"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:25"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:56:25"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:25"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:25"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:56:25"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:25"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:26"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:26"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:56:26"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:58"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:56:58"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:58"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:58"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:56:58"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:56:58"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:56:58"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:56:58"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:37"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:57:37"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:37"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:38"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:57:38"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:42"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:57:42"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:42"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:42"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:57:42"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:42"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:57:42"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:43"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:57:43"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:47"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:57:47"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:47"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:57:47"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:57:48"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:57:48"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:07"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:08"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:08"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:08"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:08"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:11"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:11"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:11"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:11"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:12"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:12"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:30"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:30"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:30"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:30"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:31"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:32"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:32"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:32"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:32"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:33"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:33"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:44"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:44"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:44"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:44"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:45"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:49"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:49"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:49"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:49"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:58:50"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:58:50"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:38"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:38"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:38"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:38"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:39"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:39"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:41"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:41"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:41"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:41"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:41"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:41"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:41"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:41"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:42"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:42"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:42"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:44"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:44"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:44"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:44"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 15:59:45"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 15:59:45"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:05"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:00:05"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:05"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:00:05"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:06"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:07"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:00:07"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:07"}
+{"level":"warn","message":"Failed to set cache key 'about_dir_msg_/api/v1/about/director-message': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:00:07"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:08"}
+{"level":"error","message":"Cache middleware error: Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:00:08"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 16:00:16"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 16:00:18"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 16:00:18"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:29"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:29"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:29"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:29"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:00:29"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:00:29"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:29"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:29"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:29"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:30"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:53"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:00:53"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:53"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:54"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:55"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:00:55"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:55"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:00:55"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:01:20"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:01:20"}
+{"level":"warn","message":"Failed to set cache key 'partner_cards_/api/v1/partner-cards': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:01:21"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:01:21"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:01:21"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:01:21"}
+{"level":"warn","message":"Failed to set cache key 'partner_cards_/api/v1/partner-cards': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:01:21"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:01:21"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:01:23"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:01:23"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:01:23"}
+{"level":"warn","message":"Failed to set cache key 'partner_cards_/api/v1/partner-cards': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:01:23"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:01:23"}
+{"error":"ContactInfo validation failed: workingHours.schedule.ta: Path `workingHours.schedule.ta` is required., workingHours.schedule.si: Path `workingHours.schedule.si` is required., workingHours.title.ta: Path `workingHours.title.ta` is required., workingHours.title.si: Path `workingHours.title.si` is required., telephone.title.ta: Path `telephone.title.ta` is required., telephone.title.si: Path `telephone.title.si` is required., email.title.ta: Path `email.title.ta` is required., email.title.si: Path `email.title.si` is required., location.address.ta: Path `location.address.ta` is required., location.address.si: Path `location.address.si` is required., location.title.ta: Path `location.title.ta` is required., location.title.si: Path `location.title.si` is required., organizationName.ta: Path `organizationName.ta` is required., organizationName.si: Path `organizationName.si` is required.","level":"error","message":"Error creating contact info:","service":"nirdc-backend","timestamp":"2026-10-13 16:02:18"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:02:18"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:02:18"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:02:18"}
+{"level":"warn","message":"Failed to set cache key 'partner_cards_/api/v1/partner-cards': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:02:18"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:02:18"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:02:23"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:02:23"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:02:23"}
+{"level":"warn","message":"Failed to set cache key 'partner_cards_/api/v1/partner-cards': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:02:23"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:02:23"}
+{"error":"ContactInfo validation failed: workingHours.schedule.ta: Path `workingHours.schedule.ta` is required., workingHours.schedule.si: Path `workingHours.schedule.si` is required., workingHours.title.ta: Path `workingHours.title.ta` is required., workingHours.title.si: Path `workingHours.title.si` is required., telephone.title.ta: Path `telephone.title.ta` is required., telephone.title.si: Path `telephone.title.si` is required., email.title.ta: Path `email.title.ta` is required., email.title.si: Path `email.title.si` is required., location.address.ta: Path `location.address.ta` is required., location.address.si: Path `location.address.si` is required., location.title.ta: Path `location.title.ta` is required., location.title.si: Path `location.title.si` is required., organizationName.ta: Path `organizationName.ta` is required., organizationName.si: Path `organizationName.si` is required.","level":"error","message":"Error creating contact info:","service":"nirdc-backend","timestamp":"2026-10-13 16:02:29"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:02:29"}
+{"error":"Cast to ObjectId failed for value \"all\" (type string) at path \"_id\" for model \"PartnerCard\"","level":"error","message":"Error fetching partner card by ID:","service":"nirdc-backend","timestamp":"2026-10-13 16:02:29"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:02:29"}
+{"level":"warn","message":"Failed to set cache key 'partner_cards_/api/v1/partner-cards': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:02:29"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:02:29"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:06:40"}
+{"level":"warn","message":"Failed to set cache key 'about_intro_/api/v1/about/introduction': Cannot read properties of undefined (reading '_defaultToObjectOptions')","service":"nirdc-backend","timestamp":"2026-10-13 16:06:40"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:06:43"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 16:07:38"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 16:07:40"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 16:07:40"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:41"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:41"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:44"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:49"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:49"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:50"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:50"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:51"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:51"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:51"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:51"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:07:51"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:09:34"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:09:34"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:09:34"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:09:34"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:09:34"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:09:34"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:09:35"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:09:35"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:10:57"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:11:02"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:11:15"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:11:18"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:11:27"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:11:30"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:01"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:01"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:03"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:03"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:03"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:03"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:03"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:03"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:03"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:14"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:14"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:14"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:14"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:14"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:14"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:20"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:20"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:20"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:14:20"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:16:50"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:16:50"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:16:50"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [about_values_/api/v1/about/values]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [about_history_/api/v1/about/history]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [about_obj_/api/v1/about/objectives]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [about_resp_/api/v1/about/responsibilities]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [about_func_/api/v1/about/functions-services]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [about_team_/api/v1/about/team]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [about_org_/api/v1/about/organizational-structure]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:17:52"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:00"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:00"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:00"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:00"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:05"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:05"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:05"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:05"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:25"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:25"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:25"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:25"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:34"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:34"}
+{"level":"debug","message":"⚡ Cache HIT for [about_history_/api/v1/about/history]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:42"}
+{"level":"debug","message":"⚡ Cache HIT for [about_history_/api/v1/about/history]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:42"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:45"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:45"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:45"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:45"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:46"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:46"}
+{"level":"debug","message":"⚡ Cache HIT for [about_values_/api/v1/about/values]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:50"}
+{"level":"debug","message":"⚡ Cache HIT for [about_values_/api/v1/about/values]","service":"nirdc-backend","timestamp":"2026-10-13 16:18:50"}
+{"level":"debug","message":"⚡ Cache HIT for [about_team_/api/v1/about/team]","service":"nirdc-backend","timestamp":"2026-10-13 16:19:21"}
+{"level":"debug","message":"⚡ Cache HIT for [about_team_/api/v1/about/team]","service":"nirdc-backend","timestamp":"2026-10-13 16:19:21"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:19:31"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:19:31"}
+{"level":"debug","message":"⚡ Cache HIT for [about_org_/api/v1/about/organizational-structure]","service":"nirdc-backend","timestamp":"2026-10-13 16:19:40"}
+{"level":"debug","message":"⚡ Cache HIT for [about_org_/api/v1/about/organizational-structure]","service":"nirdc-backend","timestamp":"2026-10-13 16:19:40"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:22:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:22:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:22:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:22:52"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:22:53"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:22:53"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:39"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:39"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:43"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:44"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:44"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:44"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:44"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:45"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:25:45"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:27:19"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 16:28:00"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 16:28:01"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 16:28:01"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:28:04"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:38"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:38"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:38"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:38"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:39"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:39"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:57"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:57"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:57"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:57"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:58"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:58"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:58"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:29:58"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 16:30:10"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 16:30:11"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 16:30:11"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:30:18"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:30:18"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:31:25"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:31:25"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:31:25"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:31:25"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:31:26"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:31:26"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:32:16"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:32:16"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:32:16"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:32:16"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:32:16"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:32:17"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:33:28"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:33:28"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:33:33"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:33:33"}
+{"level":"debug","message":"🔍 Cache MISS for [about_org_/api/v1/about/organizational-structure]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:19"}
+{"level":"debug","message":"⚡ Cache HIT for [about_org_/api/v1/about/organizational-structure]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:19"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:50"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:50"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:50"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:50"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:50"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:50"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:52"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:52"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:52"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:52"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:52"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:52"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:52"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 16:34:53"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:01"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:01"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:01"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:01"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:02"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:02"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:09"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:09"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:10"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:14"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:14"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:15"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:16"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:16"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:16"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:16"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:16"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:16"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:34"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:34"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:35"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:43"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:43"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:43"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:43"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:35:43"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:40:40"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:41:12"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:04"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:04"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:05"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:05"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:05"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:05"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:07"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:07"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:07"}
+{"level":"debug","message":"🔍 Cache MISS for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:07"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:07"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:07"}
+{"level":"debug","message":"🔍 Cache MISS for [about_values_/api/v1/about/values]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_values_/api/v1/about/values]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:51"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:51"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:51"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:51"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:51"}
+{"level":"debug","message":"⚡ Cache HIT for [downloads_/api/v1/downloads]","service":"nirdc-backend","timestamp":"2026-10-13 16:48:51"}
+{"level":"debug","message":"🔍 Cache MISS for [about_resp_/api/v1/about/responsibilities]","service":"nirdc-backend","timestamp":"2026-10-13 16:50:16"}
+{"level":"debug","message":"⚡ Cache HIT for [about_resp_/api/v1/about/responsibilities]","service":"nirdc-backend","timestamp":"2026-10-13 16:50:16"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:30"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:30"}
+{"level":"debug","message":"⚡ Cache HIT for [about_resp_/api/v1/about/responsibilities]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:31"}
+{"level":"debug","message":"⚡ Cache HIT for [about_resp_/api/v1/about/responsibilities]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:31"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:31"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:31"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:31"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:31"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:32"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:32"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:35"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:35"}
+{"level":"debug","message":"⚡ Cache HIT for [about_resp_/api/v1/about/responsibilities]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:35"}
+{"level":"debug","message":"⚡ Cache HIT for [about_resp_/api/v1/about/responsibilities]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:35"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:36"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:36"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:36"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:36"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:37"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:37"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:42"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:42"}
+{"level":"debug","message":"⚡ Cache HIT for [about_resp_/api/v1/about/responsibilities]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:42"}
+{"level":"debug","message":"⚡ Cache HIT for [about_resp_/api/v1/about/responsibilities]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:42"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:43"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:44"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:52:44"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:53:21"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:53:21"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:53:21"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:53:21"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:53:21"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:53:21"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:58:59"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:00"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:00"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:00"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:00"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:00"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:00"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:00"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:00"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:00"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:01"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:01"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:05"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:05"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:06"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:06"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:06"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:06"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:06"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:06"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:06"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:06"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:07"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:07"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:11"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:11"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:11"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:11"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:11"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:11"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:12"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:12"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:12"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:12"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:13"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:13"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:54"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 16:59:54"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:00:11"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:00:11"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:00:11"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:00:11"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:08"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:08"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:08"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:08"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:08"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:08"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:08"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:08"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:31"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:31"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:31"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:31"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:31"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:02:31"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 17:03:18"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 17:03:19"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 17:03:19"}
+{"email":"test@example.com","id":"6ace1710ba79fcd2a6ed2ee5","level":"info","message":"New contact inquiry submitted","service":"nirdc-backend","timestamp":"2026-10-13 17:03:36"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:41"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:41"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:41"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:42"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:42"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:42"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:45"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:45"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:45"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:45"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:45"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:45"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:45"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:05:45"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:10:58"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:10:58"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:11:39"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:11:39"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:13:13"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:13:37"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:13:49"}
+{"level":"info","message":"✅ MongoDB connected successfully","service":"nirdc-backend","timestamp":"2026-10-13 17:14:51"}
+{"level":"info","message":"✅ Admin initialized","service":"nirdc-backend","timestamp":"2026-10-13 17:14:52"}
+{"level":"info","message":"🚀 Server is running on port 4000","service":"nirdc-backend","timestamp":"2026-10-13 17:14:52"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:14:58"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:14:58"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:14:58"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:14:58"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:14:58"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:14:58"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:15:06"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:15:06"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:16:14"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:16:14"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:16:15"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:16:15"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:16:15"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:16:15"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:16:55"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:16:55"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:17:19"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:17:39"}
+{"email":"kasun@test.com","id":"6ace1b3577e0fe41233d5dae","level":"info","message":"New contact inquiry submitted","service":"nirdc-backend","timestamp":"2026-10-13 17:21:18"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:21:58"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:13"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:13"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:36"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:36"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:40"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:40"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:40"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:40"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:41"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:22:41"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:24:18"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:27:36"}
+{"email":"nimal@gmail.com","id":"6ace1cba77e0fe41233d5ddb","level":"info","message":"New contact inquiry submitted","service":"nirdc-backend","timestamp":"2026-10-13 17:27:46"}
+{"level":"debug","message":"🔍 Cache MISS for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:41"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:41"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:53"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:53"}
+{"level":"debug","message":"🔍 Cache MISS for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:57"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:58"}
+{"level":"debug","message":"🔍 Cache MISS for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:58"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:58"}
+{"level":"debug","message":"🔍 Cache MISS for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:58"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:58"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:58"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:30:58"}
+{"level":"debug","message":"🔍 Cache MISS for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:04"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:04"}
+{"level":"debug","message":"🔍 Cache MISS for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:04"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:04"}
+{"level":"debug","message":"🔍 Cache MISS for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:05"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:05"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:33"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:33"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:33"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:33"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:33"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:33"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:33"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:33"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:37"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:31:37"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:00"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:00"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:00"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:00"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:00"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:00"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:00"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:01"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:02"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:02"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:06"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:06"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:07"}
+{"level":"debug","message":"⚡ Cache HIT for [hero_/api/v1/hero-section]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:07"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:07"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:07"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:07"}
+{"level":"debug","message":"⚡ Cache HIT for [partner_cards_/api/v1/partner-cards]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:07"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:07"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:07"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:08"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:08"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:08"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:08"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:09"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:09"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:12"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:33:12"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:34:53"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:34:53"}
+{"level":"debug","message":"🔍 Cache MISS for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:34:59"}
+{"level":"debug","message":"⚡ Cache HIT for [news_/api/v1/news/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:34:59"}
+{"level":"debug","message":"🔍 Cache MISS for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:01"}
+{"level":"debug","message":"⚡ Cache HIT for [announcements_/api/v1/announcements/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:02"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:37"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:37"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:37"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:37"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:37"}
+{"level":"debug","message":"⚡ Cache HIT for [homepage_/api/v1/home-page-details/get-all]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:37"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:37"}
+{"level":"debug","message":"⚡ Cache HIT for [vision_mission_/api/v1/vision-mission]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:37"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_intro_/api/v1/about/introduction]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_dir_msg_/api/v1/about/director-message]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:52"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:54"}
+{"level":"debug","message":"⚡ Cache HIT for [about_nav_/api/v1/about/nav-config]","service":"nirdc-backend","timestamp":"2026-10-13 17:35:54"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:37:49"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:37:49"}
+{"level":"debug","message":"🔍 Cache MISS for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:41:10"}
+{"level":"debug","message":"⚡ Cache HIT for [contact_info_/api/v1/contact-info]","service":"nirdc-backend","timestamp":"2026-10-13 17:41:10"}

@@ -64,7 +64,9 @@ const DownloadsSection: FC = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-lg text-gray-800 dark:text-gray-100 mb-1 group-hover:text-primary transition-colors leading-tight truncate">
-                    {doc.title}
+                    {typeof doc.title === "string"
+                      ? doc.title
+                      : doc.title?.si || doc.title?.en || "Download File"}
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
                     {doc.fileType} • {doc.fileSize}

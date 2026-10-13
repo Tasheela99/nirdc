@@ -61,10 +61,10 @@ class CacheService {
             if (this.isRedisConnected && this.redisClient) {
                 await this.redisClient.set(key, stringVal, { EX: ttlSeconds });
             }
+            this.memoryCache.set(key, JSON.parse(stringVal), ttlSeconds);
         } catch (err) {
-            logger.warn(`Redis SET failed for key '${key}'.`);
+            logger.warn(`Cache SET failed for key '${key}': ${err.message}`);
         }
-        this.memoryCache.set(key, value, ttlSeconds);
     }
 
     /**

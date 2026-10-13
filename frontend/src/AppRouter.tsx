@@ -22,10 +22,27 @@ const ReviewerRegistrationPage = lazy(() => import("@/pages/auth/ReviewerRegistr
 // Public pages
 const HomePage = lazy(() => import("@/pages/public/HomePage.tsx"));
 const AboutPage = lazy(() => import("@/pages/public/AboutPage.tsx"));
+const IntroductionPage = lazy(() => import("@/pages/public/about/IntroductionPage.tsx"));
+const HistoryPage = lazy(() => import("@/pages/public/about/HistoryPage.tsx"));
+const VisionMissionPage = lazy(() => import("@/pages/public/about/VisionMissionPage.tsx"));
+const ValuesPage = lazy(() => import("@/pages/public/about/ValuesPage.tsx"));
+const ObjectivesPage = lazy(() => import("@/pages/public/about/ObjectivesPage.tsx"));
+const ResponsibilitiesPage = lazy(() => import("@/pages/public/about/ResponsibilitiesPage.tsx"));
+const FunctionsServicesPage = lazy(() => import("@/pages/public/about/FunctionsServicesPage.tsx"));
+const DirectorMessagePage = lazy(() => import("@/pages/public/about/DirectorMessagePage.tsx"));
+const TeamPage = lazy(() => import("@/pages/public/about/TeamPage.tsx"));
+const OrganizationalStructurePage = lazy(() => import("@/pages/public/about/OrganizationalStructurePage.tsx"));
+
+// Resources pages
+const DownloadsPage = lazy(() => import("@/pages/public/resources/DownloadsPage.tsx"));
+const ReportsPublicationsPage = lazy(() => import("@/pages/public/resources/ReportsPublicationsPage.tsx"));
+const NewslettersPage = lazy(() => import("@/pages/public/resources/NewslettersPage.tsx"));
+
 const StrategicObjectivesScreen = lazy(() => import("@/pages/public/home/StrategicObjectivesPage.tsx"));
 const NewsUpdatesScreen = lazy(() => import("@/pages/public/home/NewsUpdatesPage.tsx"));
 const MainBannerPage = lazy(() => import("@/pages/public/home/MainBannerPage.tsx"));
 const PrivacyPolicy = lazy(() => import("@/pages/public/PrivacyPolicyPage.tsx"));
+const ContactUsPage = lazy(() => import("@/pages/public/ContactUsPage.tsx"));
 
 // Proposals
 const Proposal = lazy(() => import("@/pages/user/proposals/ProposalPage.tsx"));
@@ -99,7 +116,7 @@ const AppRouter = () => {
             {!hideLayout && <Header />}
 
             <div className="flex flex-auto flex-col min-h-[calc(100vh-64px)]">
-                <div className="flex-grow flex flex-col">
+                <div className="flex-grow flex flex-col relative z-20">
                     <Suspense fallback={<LoadingSpinner />}>
                         <Routes>
                             {/* Public Routes */}
@@ -112,6 +129,24 @@ const AppRouter = () => {
                             <Route path="/reviewer-registration" element={<ReviewerRegistrationPage />} />
                             <Route path="/mainbanner" element={<MainBannerPage />} />
                             <Route path="/about-us" element={<AboutPage />} />
+                            <Route path="/about-us/introduction" element={<IntroductionPage />} />
+                            <Route path="/about-us/history" element={<HistoryPage />} />
+                            <Route path="/about-us/vision-mission" element={<VisionMissionPage />} />
+                            <Route path="/about-us/values" element={<ValuesPage />} />
+                            <Route path="/about-us/objectives" element={<ObjectivesPage />} />
+                            <Route path="/about-us/responsibilities" element={<ResponsibilitiesPage />} />
+                            <Route path="/about-us/functions-services" element={<FunctionsServicesPage />} />
+                            <Route path="/about-us/director-message" element={<DirectorMessagePage />} />
+                            <Route path="/about-us/team" element={<TeamPage />} />
+                            <Route path="/about-us/organizational-structure" element={<OrganizationalStructurePage />} />
+
+                            <Route path="/resources/downloads" element={<DownloadsPage />} />
+                            <Route path="/resources/reports-publications" element={<ReportsPublicationsPage />} />
+                            <Route path="/resources/newsletters" element={<NewslettersPage />} />
+                            <Route path="/contact-us" element={<ContactUsPage />} />
+                            <Route path="/contact-us/inquiry" element={<ContactUsPage defaultTab="inquiry" />} />
+                            <Route path="/contact-us/head-office" element={<ContactUsPage defaultTab="head-office" />} />
+                            <Route path="/contact" element={<Navigate to="/contact-us" replace />} />
                             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                             <Route path="/strategic-objectives" element={<StrategicObjectivesScreen />} />
                             <Route path="/updates-news" element={<NewsUpdatesScreen />} />

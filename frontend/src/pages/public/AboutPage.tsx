@@ -12,6 +12,10 @@ const AboutPage: FC = () => {
                 <AboutUsScreen />
             </Suspense>
 
+            {/* <Suspense fallback={<div className="h-64 bg-surface dark:bg-dark-bg animate-pulse" />}>
+                <OurHistorySection />
+            </Suspense> */}
+
             <Suspense fallback={<div className="h-64 bg-surface dark:bg-dark-bg animate-pulse" />}>
                 <DownloadsSection />
             </Suspense>

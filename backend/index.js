@@ -138,17 +138,37 @@ app.use('/api/v1/ads', AdRoute);
 app.use('/api/v1/home-page-details', HomePageDetailsRoute);
 app.use('/api/v1/proposals', UnopenedProposalsRoute);
 
+// Homepage Sections (Multi-language)
+const HeroSectionRoute = require('./routes/HeroSectionRoute');
+const VisionMissionRoute = require('./routes/VisionMissionRoute');
+const PartnerCardRoute = require('./routes/PartnerCardRoute');
+const ContactInfoRoute = require('./routes/ContactInfoRoute');
+
+app.use('/api/v1/hero-section', HeroSectionRoute);
+app.use('/api/v1/vision-mission', VisionMissionRoute);
+app.use('/api/v1/partner-cards', PartnerCardRoute);
+app.use('/api/v1/contact-info', ContactInfoRoute);
+
+// About Us Sections
+const AboutUsRoute = require('./routes/AboutUsRoute');
+app.use('/api/v1/about', AboutUsRoute);
+
+
 const ReviewerConfigRoute = require('./routes/ReviewerConfigRoute');
 const McqRoute = require('./routes/McqRoute');
 const ReviewAssignmentRoute = require('./routes/ReviewAssignmentRoute');
 const ReviewerRegistrationRoute = require('./routes/reviewerRegistrationRoutes');
 const DownloadRoute = require('./routes/DownloadRoute');
+const InquiryRoute = require('./routes/InquiryRoute');
+const HeadOfficeOfficerRoute = require('./routes/HeadOfficeOfficerRoute');
 
 app.use('/api/v1/reviewer-config', ReviewerConfigRoute);
 app.use('/api/v1', McqRoute); 
 app.use('/api/v1/review-assignments', ReviewAssignmentRoute);
 app.use('/api/v1/reviewer-registration', ReviewerRegistrationRoute);
 app.use('/api/v1/downloads', DownloadRoute);
+app.use('/api/v1/inquiries', InquiryRoute);
+app.use('/api/v1/head-office-officers', HeadOfficeOfficerRoute);
 
 // Global Error Handler Middleware
 app.use(errorHandler);

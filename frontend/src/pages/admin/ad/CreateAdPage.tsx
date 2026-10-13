@@ -14,6 +14,7 @@ import {
   Switch,
   FormControlLabel,
   CircularProgress,
+  Paper,
 } from "@mui/material";
 import { Save, ArrowLeft } from "lucide-react";
 
@@ -138,21 +139,35 @@ const CreateAdScreen = () => {
   };
 
   return (
-    <Box sx={{ padding: 4, maxWidth: 800 }}>
-      {/* Header */}
-      <Box display="flex" alignItems="center" gap={2} mb={4}>
-        <button
-          onClick={() => navigate("/admin/manage-ads")}
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-        >
-          <ArrowLeft size={20} />
-        </button>
-        <Typography variant="h4" sx={{ color: "#003893" }} fontWeight="bold">
-          {isEdit ? "Edit Advertisement" : "Create Advertisement"}
-        </Typography>
+    <Box className="space-y-6 pb-12" sx={{ maxWidth: 880 }}>
+      {/* ─── Header ─── */}
+      <Box display="flex" flexWrap="wrap" alignItems="center" justifyContent="space-between" gap={2}>
+        <Box display="flex" alignItems="center" gap={1.5}>
+          <Button
+            variant="outlined"
+            size="small"
+            startIcon={<ArrowLeft size={16} />}
+            onClick={() => navigate("/admin/manage-ads")}
+            sx={{ textTransform: "none", borderRadius: 2 }}
+          >
+            Back to Ads
+          </Button>
+          <div>
+            <Typography variant="h5" fontWeight={800} sx={{ color: "#111827" }}>
+              {isEdit ? "Edit Advertisement" : "Create Advertisement"}
+            </Typography>
+            <Typography variant="body2" sx={{ color: "#6B7280" }}>
+              {isEdit
+                ? "Update advertisement parameters, schedule, or banner notice."
+                : "Fill in advertisement details to publish or schedule a portal notice."}
+            </Typography>
+          </div>
+        </Box>
       </Box>
 
-      <div className="space-y-6 bg-white rounded-xl border border-gray-200 p-6">
+      {/* ─── Form Container ─── */}
+      <Paper elevation={0} sx={{ borderRadius: 3, border: "1px solid #E5E7EB", p: { xs: 3, md: 4 }, bgcolor: "white" }}>
+        <div className="space-y-6">
         {/* Title */}
         <TextField
           fullWidth
@@ -298,6 +313,7 @@ const CreateAdScreen = () => {
           </Button>
         </Box>
       </div>
+      </Paper>
     </Box>
   );
 };

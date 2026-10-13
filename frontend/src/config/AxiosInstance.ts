@@ -40,7 +40,6 @@ instance.interceptors.request.use(
                 } else {
                     localStorage.removeItem("token");
                     localStorage.removeItem("userInfo");
-                    window.location.href = "/login";
                 }
             }
 
@@ -50,7 +49,6 @@ instance.interceptors.request.use(
         } catch (error) {
             localStorage.removeItem("token");
             localStorage.removeItem("userInfo");
-            window.location.href = "/login";
         }
         return config;
     },
@@ -68,7 +66,20 @@ instance.interceptors.response.use(
         if (error.response?.status === 401 && error.config?.url && !error.config.url.includes('/users/sign-in')) {
             localStorage.removeItem("token");
             localStorage.removeItem("userInfo");
-            window.location.href = "/login";
+
+            // Only redirect to /login if currently on a protected route
+            const pathname = window.location.pathname;
+            const isProtectedRoute =
+                pathname.startsWith('/admin') ||
+                pathname.startsWith('/user') ||
+                pathname.startsWith('/reviewer') ||
+                pathname.startsWith('/director') ||
+                pathname.startsWith('/proposal') ||
+                pathname.startsWith('/main-page');
+
+            if (isProtectedRoute) {
+                window.location.href = "/login";
+            }
         }
 
         // Normalize 429 responses — ensure data is always an object with a message

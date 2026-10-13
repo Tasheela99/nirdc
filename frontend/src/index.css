@@ -97,6 +97,19 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+/* Marquee scrolling animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
 /* ===== MUI Overrides ===== */
 @layer utilities {
   .MuiOutlinedInput-root .MuiOutlinedInput-input:focus {

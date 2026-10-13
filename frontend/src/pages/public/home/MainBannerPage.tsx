@@ -88,7 +88,7 @@ const MainBannerPage: React.FC = () => {
             <span style={{ color: "#8c2963" }}>{t('banner.titleLine2')}</span>
           </h1>
 
-          <p className="text-sm sm:text-lg text-white/90 sm:text-white/80 mb-5 sm:mb-8 max-w-xl leading-relaxed font-body">
+          <p className="text-sm sm:text-lg text-white/90 sm:text-white/80 mb-5 sm:mb-8 max-w-2xl leading-relaxed font-body whitespace-pre-line">
             {t('banner.subtitle')}
           </p>
 

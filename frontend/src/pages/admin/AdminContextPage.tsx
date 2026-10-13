@@ -5,7 +5,7 @@ import {
     Menu, X, LayoutDashboard, Users, Newspaper,
     FileText, Megaphone, BookOpen, LogOut, Lock, ExternalLink, ChevronDown
 } from "lucide-react";
-import { Tv, Image as ImageIcon, DownloadCloud } from "lucide-react";
+import { Tv, DownloadCloud, LayoutTemplate } from "lucide-react";
 import { Menu as MuiMenu, MenuItem, Avatar } from "@mui/material";
 import ManageDirectorsScreen from "./directors/ManageDirectorsPage.tsx";
 import RegisterDirectorScreen from "./directors/RegisterDirectorPage.tsx";
@@ -23,7 +23,8 @@ import ManageBlogScreen from "./blog/ManageBlogPage.tsx";
 import CreateblogScreen from "./blog/CreateBlogPage.tsx";
 import ManageAdsScreen from "./ad/ManageAdsPage.tsx";
 import CreateAdScreen from "./ad/CreateAdPage.tsx";
-import ManageBannerScreen from "./home/ManageBannerPage.tsx";
+import HomePageContentManagementScreen from "./home/HomePageContentManagementPage.tsx";
+import AboutUsContentManagementScreen from "./about/AboutUsContentManagementPage.tsx";
 import ManageUsersPage from "./users/ManageUsersPage.tsx";
 import ManageDownloadsPage from "./downloads/ManageDownloadsPage.tsx";
 import CreateDownloadPage from "./downloads/CreateDownloadPage.tsx";
@@ -32,23 +33,21 @@ import {USER_ROLE} from "../../constants/AppConstants.tsx";
 import ChangePasswordDialog from "../../components/common/ChangePasswordDialog";
 import PendingReviewersPage from "./reviewers/PendingReviewersPage.tsx";
 import ReviewerSettingsPage from "./reviewer-settings/ReviewerSettingsPage.tsx";
-import { UserCheck, Settings } from "lucide-react";
+import ManageContactContentPage from "./contact/ManageContactContentPage.tsx";
+import { UserCheck, Settings, Building, PhoneCall, MessageSquare } from "lucide-react";
 
 const SIDEBAR_WIDTH = 260;
 
-const sidebarIcons: Record<string, React.ReactNode> = {
-    "Dashboard": <LayoutDashboard size={18} />,
-    "Manage Directors": <Users size={18} />,
-    "Manage News": <Newspaper size={18} />,
-    "Manage Proposals": <FileText size={18} />,
-    "Pending Reviewers": <UserCheck size={18} />,
-    "Reviewer Settings": <Settings size={18} />,
-    "Manage Announcements": <Megaphone size={18} />,
-    "Manage Blogs": <BookOpen size={18} />,
-    "Manage Ads": <Tv size={18} />,
-    "Manage Banner": <ImageIcon size={18} />,
-    "Manage Downloads": <DownloadCloud size={18} />,
-};
+interface SidebarItem {
+    path: string;
+    label: string;
+    icon: React.ReactNode;
+}
+
+interface SidebarSection {
+    category: string;
+    items: SidebarItem[];
+}
 
 const AdminContextScreen = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -72,67 +71,115 @@ const AdminContextScreen = () => {
         navigate("/login", { replace: true });
     };
 
-    const sidebarLinks = [
-        {path: "/admin/dashboard", label: "Dashboard"},
-        ...(userInfo?.role !== USER_ROLE.DIRECTOR ? [{path: "/admin/manage-directors", label: "Manage Directors"}] : []),
-        ...(userInfo?.role === USER_ROLE.SUPER_ADMIN || userInfo?.role === USER_ROLE.ADMIN ? [{path: "/admin/manage-users", label: "Manage Users"}] : []),
-        {path: "/admin/manage-news", label: "Manage News"},
-        {path: "/admin/view-proposals", label: "Manage Proposals"},
-        {path: "/admin/manage-reviewers", label: "Pending Reviewers"},
-        {path: "/admin/reviewer-settings", label: "Reviewer Settings"},
-        {path: "/admin/manage-announcements", label: "Manage Announcements"},
-        {path: "/admin/manage-blog", label: "Manage Blogs"},
-        {path: "/admin/manage-ads", label: "Manage Ads"},
-        {path: "/admin/manage-banner", label: "Manage Banner"},
-        {path: "/admin/manage-downloads", label: "Manage Downloads"},
+    const userManagementItems: SidebarItem[] = [
+        ...(userInfo?.role !== USER_ROLE.DIRECTOR ? [{ path: "/admin/manage-directors", label: "Directors", icon: <Users size={17} /> }] : []),
+        ...(userInfo?.role === USER_ROLE.SUPER_ADMIN || userInfo?.role === USER_ROLE.ADMIN ? [{ path: "/admin/manage-users", label: "Users & Roles", icon: <UserCheck size={17} /> }] : []),
+    ];
+
+    const sidebarSections: SidebarSection[] = [
+        {
+            category: "OVERVIEW",
+            items: [
+                { path: "/admin/dashboard", label: "Dashboard", icon: <LayoutDashboard size={17} /> },
+            ]
+        },
+        ...(userManagementItems.length > 0 ? [{
+            category: "USER MANAGEMENT",
+            items: userManagementItems
+        }] : []),
+        {
+            category: "PROPOSALS & REVIEW",
+            items: [
+                { path: "/admin/view-proposals", label: "Project Proposals", icon: <FileText size={17} /> },
+                { path: "/admin/manage-reviewers", label: "Pending Reviewers", icon: <UserCheck size={17} /> },
+                { path: "/admin/reviewer-settings", label: "Reviewer Settings", icon: <Settings size={17} /> },
+            ]
+        },
+        {
+            category: "MEDIA & PUBLICATIONS",
+            items: [
+                { path: "/admin/manage-news", label: "News & Updates", icon: <Newspaper size={17} /> },
+                { path: "/admin/manage-announcements", label: "Announcements", icon: <Megaphone size={17} /> },
+                { path: "/admin/manage-blog", label: "Blogs & Articles", icon: <BookOpen size={17} /> },
+                { path: "/admin/manage-downloads", label: "Downloads Library", icon: <DownloadCloud size={17} /> },
+            ]
+        },
+        {
+            category: "WEBSITE CONTENT",
+            items: [
+                { path: "/admin/home-content", label: "Home Page", icon: <LayoutTemplate size={17} /> },
+                { path: "/admin/about-content", label: "About Page", icon: <Building size={17} /> },
+                { path: "/admin/manage-ads", label: "Advertisements", icon: <Tv size={17} /> },
+                { path: "/admin/manage-inquiries", label: "Contact Inquiries", icon: <MessageSquare size={17} /> },
+                { path: "/admin/manage-contact", label: "Contact Details", icon: <PhoneCall size={17} /> },
+            ]
+        }
     ];
 
     const getInitial = () => (userInfo?.userName?.[0] || "A").toUpperCase();
 
     // ─── Sidebar Content (shared between desktop & mobile) ───
     const SidebarContent = ({onLinkClick}: { onLinkClick?: () => void }) => (
-        <div className="flex flex-col h-full" style={{ background: 'linear-gradient(180deg, #001d4a 0%, #003893 100%)' }}>
-            {/* Logo */}
-            <div className="px-5 py-5 flex items-center gap-3">
-                <Link to="/admin/dashboard" onClick={onLinkClick}>
-                    <img src={logo} alt="NIRDC Logo" className="h-9 w-auto brightness-0 invert" />
+        <div className="flex flex-col h-full text-white" style={{ background: 'linear-gradient(180deg, #001438 0%, #002561 50%, #00183b 100%)' }}>
+            {/* Logo Header */}
+            <div className="px-5 py-5 flex items-center justify-between">
+                <Link to="/admin/dashboard" onClick={onLinkClick} className="block transition-opacity hover:opacity-90">
+                    <img src={logo} alt="NIRDC Logo" className="h-9 w-auto brightness-0 invert drop-shadow-sm" />
                 </Link>
             </div>
 
-            <div className="h-px bg-white/15 mx-4" />
+            <div className="h-px bg-white/10 mx-4" />
 
-            {/* Nav Links */}
-            <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-                {sidebarLinks.map((link, index) => (
-                    <NavLink
-                        key={index}
-                        to={link.path}
-                        onClick={onLinkClick}
-                        className={({isActive}) =>
-                            `flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 no-underline cursor-pointer ${
-                                isActive
-                                    ? 'bg-white/20 text-white shadow-sm'
-                                    : 'text-white/70 hover:bg-white/10 hover:text-white'
-                            }`
-                        }
-                    >
-                        {sidebarIcons[link.label] || <FileText size={18} />}
-                        {link.label}
-                    </NavLink>
+            {/* Categorized Nav Links */}
+            <nav className="flex-1 px-3 py-3 overflow-y-auto space-y-3.5">
+                {sidebarSections.map((section, sIdx) => (
+                    <div key={sIdx} className="space-y-1">
+                        <div className="px-3 pt-1 pb-0.5">
+                            <span className="text-[10px] font-black tracking-widest text-blue-200/50 uppercase select-none">
+                                {section.category}
+                            </span>
+                        </div>
+                        <div className="space-y-0.5">
+                            {section.items.map((link, iIdx) => (
+                                <NavLink
+                                    key={iIdx}
+                                    to={link.path}
+                                    onClick={onLinkClick}
+                                    className={({isActive}) =>
+                                        `flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs sm:text-[13px] font-medium transition-all duration-150 no-underline cursor-pointer group ${
+                                            isActive
+                                                ? 'bg-white/20 text-white font-bold shadow-sm backdrop-blur-sm border-l-[3px] border-amber-400 pl-2.5'
+                                                : 'text-white/70 hover:bg-white/10 hover:text-white'
+                                        }`
+                                    }
+                                >
+                                    <span className="shrink-0 text-white/80 group-hover:text-white transition-colors">
+                                        {link.icon}
+                                    </span>
+                                    <span className="truncate">{link.label}</span>
+                                </NavLink>
+                            ))}
+                        </div>
+                    </div>
                 ))}
+            </nav>
 
-                {/* Visit Website — opens in new tab */}
+            {/* Bottom: Visit Public Website */}
+            <div className="p-3 border-t border-white/10 shrink-0 bg-black/20">
                 <a
                     href="/"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={onLinkClick}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 no-underline cursor-pointer text-white/70 hover:bg-white/10 hover:text-white mt-2 border-t border-white/10 pt-3"
+                    className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-[13px] font-semibold transition-all duration-200 no-underline cursor-pointer text-white/80 hover:bg-white/15 hover:text-white"
                 >
-                    <ExternalLink size={18} />
-                    Visit Website
+                    <div className="flex items-center gap-2.5">
+                        <ExternalLink size={16} className="text-white/70" />
+                        <span>Visit Website</span>
+                    </div>
+                    <span className="text-[10px] uppercase font-bold text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-500/30">Live</span>
                 </a>
-            </nav>
+            </div>
         </div>
     );
 
@@ -266,7 +313,11 @@ const AdminContextScreen = () => {
                             <Route path="manage-blog" element={<ProtectedRoute><ManageBlogScreen /></ProtectedRoute>} />
                             <Route path="manage-ads" element={<ProtectedRoute><ManageAdsScreen /></ProtectedRoute>} />
                             <Route path="create-ad" element={<ProtectedRoute><CreateAdScreen /></ProtectedRoute>} />
-                            <Route path="manage-banner" element={<ProtectedRoute><ManageBannerScreen /></ProtectedRoute>} />
+                            <Route path="manage-banner" element={<Navigate to="/admin/home-content" replace />} />
+                            <Route path="home-content" element={<ProtectedRoute><HomePageContentManagementScreen /></ProtectedRoute>} />
+                            <Route path="about-content" element={<ProtectedRoute><AboutUsContentManagementScreen /></ProtectedRoute>} />
+                            <Route path="manage-inquiries" element={<ProtectedRoute><ManageContactContentPage defaultTab="inquiries" /></ProtectedRoute>} />
+                            <Route path="manage-contact" element={<ProtectedRoute><ManageContactContentPage defaultTab="general" /></ProtectedRoute>} />
                             <Route path="manage-downloads" element={<ProtectedRoute><ManageDownloadsPage /></ProtectedRoute>} />
                             <Route path="create-download" element={<ProtectedRoute><CreateDownloadPage /></ProtectedRoute>} />
                     </Routes>

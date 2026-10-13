@@ -9,7 +9,7 @@ const FooterComponent: FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#111827]/[0.96] dark:bg-[#0D050A]/[0.96] backdrop-blur-md text-gray-300">
+    <footer className="bg-[#111827]/[0.96] dark:bg-[#0D050A]/[0.96] backdrop-blur-md text-gray-300 relative z-0">
       {/* Main Footer */}
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -79,6 +79,7 @@ const FooterComponent: FC = () => {
                 { label: t('footer.news'), href: '/all-news' },
                 { label: t('footer.announcements'), href: '/announcements' },
                 { label: t('footer.aboutUs'), href: '/about-us' },
+                { label: t('footer.contactUs', 'Contact Us'), href: '/contact-us' },
                 { label: t('footer.privacyPolicy'), href: '/privacy-policy' },
               ].map((link) => (
                 <Link

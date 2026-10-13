@@ -21,12 +21,24 @@ const ManageDownloadsPage = () => {
     const [downloadList, setDownloadList] = useState<any>([]);
     const [searchQuery, setSearchQuery] = useState("");
 
+    const getTitle = (d: any) =>
+        typeof d?.title === "string" ? d.title : (d?.title?.en || d?.title?.si || "Untitled Document");
+
+    const getCategoryName = (d: any) => {
+        if (typeof d?.category === "object" && (d.category?.en || d.category?.si)) {
+            return d.category.en || d.category.si;
+        }
+        return d?.categoryKey || "CIRCULAR";
+    };
+
     const filteredDownloads = useMemo(() => {
         if (!searchQuery.trim()) return downloadList;
         const q = searchQuery.toLowerCase();
         return downloadList.filter((download: any) =>
-            download?.title?.toLowerCase().includes(q) ||
-            download?.fileType?.toLowerCase().includes(q)
+            getTitle(download).toLowerCase().includes(q) ||
+            download?.fileType?.toLowerCase().includes(q) ||
+            getCategoryName(download).toLowerCase().includes(q) ||
+            (download?.documentNumber && download.documentNumber.toLowerCase().includes(q))
         );
     }, [downloadList, searchQuery]);
 
@@ -56,7 +68,7 @@ const ManageDownloadsPage = () => {
             setIsLoading(true);
 
             try {
-                const response = (await downloadApi.getAllDownloads()) as any;
+                const response = (await downloadApi.getAllDownloadsAdmin()) as any;
 
                 if (response.status === true) {
                     setDownloadList(response.data);
@@ -79,7 +91,7 @@ const ManageDownloadsPage = () => {
         <Box sx={{ padding: 4 }}>
             <Box display="flex" justifyContent="space-between" alignItems="center" mb={3}>
                 <Typography variant="h4" sx={{ color: '#003893' }} fontWeight="bold">
-                    Manage Downloads
+                    Manage Downloads (බාගත කිරීම්)
                 </Typography>
                 <Button
                     variant="contained"
@@ -95,7 +107,7 @@ const ManageDownloadsPage = () => {
                 <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                 <input
                     type="text"
-                    placeholder="Search by title or file type..."
+                    placeholder="Search by title, category, or file type..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003893]/20 focus:border-[#003893] transition-all max-w-md"
@@ -113,34 +125,57 @@ const ManageDownloadsPage = () => {
                 emptyMessage="No downloads found."
                 columns={[
                     { key: '#', label: '#', width: 50 },
-                    { key: 'title', label: 'Title' },
-                    { key: 'fileType', label: 'File Type', width: 100 },
+                    { key: 'title', label: 'Document Title' },
+                    { key: 'category', label: 'Category', width: 170 },
+                    { key: 'fileType', label: 'Format', width: 90 },
                     { key: 'fileSize', label: 'Size', width: 100 },
-                    { key: 'link', label: 'File URL', width: 150 },
-                    { key: 'actions', label: 'Actions', align: 'center', width: 100 },
+                    { key: 'link', label: 'File URL', width: 120 },
+                    { key: 'actions', label: 'Actions', align: 'center', width: 90 },
                 ]}
-                rows={filteredDownloads.map((download: any, index: number) => (
-                    <TableRow key={download._id} sx={{ '&:last-child td': { borderBottom: 0 }, bgcolor: 'white' }}>
-                        <TableCell sx={{ color: '#6B7280', fontSize: '0.85rem' }}>{index + 1}</TableCell>
-                        <TableCell sx={{ fontWeight: 500 }}>{download?.title}</TableCell>
-                        <TableCell>
-                            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-semibold rounded">{download?.fileType}</span>
-                        </TableCell>
-                        <TableCell sx={{ fontSize: '0.85rem' }}>{download?.fileSize}</TableCell>
-                        <TableCell>
-                            <a href={download?.fileUrl} target="_blank" rel="noopener noreferrer" className="text-[#003893] hover:underline text-sm font-medium">
-                                View File
-                            </a>
-                        </TableCell>
-                        <TableCell align="center">
-                            <Box display="flex" justifyContent="center" gap={0.5}>
-                                <button onClick={() => handleDelete(download._id)} className="p-1.5 rounded-lg text-red-600 hover:bg-red-50 transition-colors" title="Delete">
-                                    <Trash2 size={16} />
-                                </button>
-                            </Box>
-                        </TableCell>
-                    </TableRow>
-                ))}
+                rows={filteredDownloads.map((download: any, index: number) => {
+                    const titleEn = typeof download?.title === "string" ? download.title : (download?.title?.en || "");
+                    const titleSi = typeof download?.title === "object" ? download?.title?.si : "";
+
+                    return (
+                        <TableRow key={download._id} sx={{ '&:last-child td': { borderBottom: 0 }, bgcolor: 'white' }}>
+                            <TableCell sx={{ color: '#6B7280', fontSize: '0.85rem' }}>{index + 1}</TableCell>
+                            <TableCell sx={{ fontWeight: 500 }}>
+                                <div className="text-sm font-semibold text-gray-900">{titleEn || titleSi || "Untitled Document"}</div>
+                                {titleSi && titleEn && (
+                                    <div className="text-xs text-gray-500 font-normal">{titleSi}</div>
+                                )}
+                                {download?.documentNumber && (
+                                    <span className="text-[10px] font-mono bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded mt-0.5 inline-block">
+                                        {download.documentNumber}
+                                    </span>
+                                )}
+                            </TableCell>
+                            <TableCell>
+                                <span className="px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-md border border-blue-100 inline-block">
+                                    {getCategoryName(download)}
+                                </span>
+                            </TableCell>
+                            <TableCell>
+                                <span className="px-2 py-0.5 bg-gray-100 text-gray-700 text-xs font-semibold rounded">
+                                    {download?.fileType || "PDF"}
+                                </span>
+                            </TableCell>
+                            <TableCell sx={{ fontSize: '0.85rem', color: '#6B7280' }}>{download?.fileSize || "-"}</TableCell>
+                            <TableCell>
+                                <a href={download?.fileUrl} target="_blank" rel="noopener noreferrer" className="text-[#003893] hover:underline text-sm font-medium">
+                                    View File
+                                </a>
+                            </TableCell>
+                            <TableCell align="center">
+                                <Box display="flex" justifyContent="center" gap={0.5}>
+                                    <button onClick={() => handleDelete(download._id)} className="p-1.5 rounded-lg text-red-600 hover:bg-red-50 transition-colors" title="Delete">
+                                        <Trash2 size={16} />
+                                    </button>
+                                </Box>
+                            </TableCell>
+                        </TableRow>
+                    );
+                })}
             />
         </Box>
     );
