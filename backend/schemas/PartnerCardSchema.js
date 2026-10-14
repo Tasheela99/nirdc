@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const multiLangString = {
-  en: { type: String, required: true, trim: true },
+  en: { type: String, default: '', trim: true },
   si: { type: String, default: '', trim: true },
   ta: { type: String, default: '', trim: true }
 };

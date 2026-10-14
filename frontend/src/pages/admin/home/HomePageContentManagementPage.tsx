@@ -150,8 +150,8 @@ export default function HomePageContentManagementPage() {
         }
       }
 
-      // 3. Partner Cards
-      const partnersRes = await homePageContentApi.getPartnerCards();
+      // 3. Partner Cards & Quick Links
+      const partnersRes = await homePageContentApi.getAllPartnerCardsAdmin().catch(() => homePageContentApi.getPartnerCards());
       if (partnersRes?.data && Array.isArray(partnersRes.data)) {
         setPartnerCards(partnersRes.data);
       }
@@ -377,7 +377,7 @@ export default function HomePageContentManagementPage() {
     }
 
     if (!finalLogoUrl.trim()) {
-      showAlert("Please select a logo image file for the partner.", "error");
+      showAlert("Please enter a logo URL or select an image file for the partner.", "error");
       return;
     }
 
@@ -403,7 +403,7 @@ export default function HomePageContentManagementPage() {
         showAlert(editingPartnerId ? "Partner card updated!" : "Partner card added!", "success");
         setPartnerModalOpen(false);
         // Refresh partner cards
-        const updated = await homePageContentApi.getPartnerCards();
+        const updated = await homePageContentApi.getAllPartnerCardsAdmin().catch(() => homePageContentApi.getPartnerCards());
         if (updated?.data) setPartnerCards(updated.data);
       } else {
         showAlert(res?.message || "Failed to save partner card", "error");
@@ -635,7 +635,7 @@ export default function HomePageContentManagementPage() {
         >
           <Tab icon={<Sparkles size={17} />} iconPosition="start" label="1. Hero Banner Section" />
           <Tab icon={<Target size={17} />} iconPosition="start" label="2. Vision & Mission" />
-          <Tab icon={<Users2 size={17} />} iconPosition="start" label="3. Partner Cards" />
+          <Tab icon={<Users2 size={17} />} iconPosition="start" label="3. Partner Cards & Quick Links" />
           <Tab icon={<PhoneCall size={17} />} iconPosition="start" label="4. Contact Information" />
         </Tabs>
 
@@ -904,10 +904,10 @@ export default function HomePageContentManagementPage() {
               <Box display="flex" justifyContent="space-between" alignItems="center">
                 <div>
                   <Typography variant="h6" fontWeight={700} sx={{ color: "#111827" }}>
-                    Partner & Stakeholder Cards
+                    Partner & Quick Link Cards
                   </Typography>
                   <Typography variant="caption" sx={{ color: "#6B7280" }}>
-                    Manage institutional partners, logos, descriptions, and redirection links.
+                    Manage quick links & partner cards (President's Office, Clean Sri Lanka, etc.), logos, descriptions, and redirection links.
                   </Typography>
                 </div>
                 <Button
@@ -1127,11 +1127,27 @@ export default function HomePageContentManagementPage() {
           {renderMultiLangField("Partner Title / Name", partnerTitle, setPartnerTitle)}
           {renderMultiLangField("Partner Short Description", partnerDesc, setPartnerDesc, true, 2)}
 
-          {/* Logo File Upload with AWS S3 Util */}
+          {/* Logo URL Input & File Upload */}
           <Box mb={2}>
             <Typography variant="caption" fontWeight={700} sx={{ color: "#374151", textTransform: "uppercase", letterSpacing: "0.5px" }} display="block" mb={0.75}>
-              Partner Logo Image (AWS S3 Upload)
+              Partner Logo Image (URL or AWS S3 File Upload)
             </Typography>
+
+            <TextField
+              fullWidth
+              size="small"
+              label="Logo Image URL or Local Asset Path"
+              placeholder="/presidentsoffice_logo.png or https://..."
+              value={partnerLogoUrl}
+              onChange={(e) => {
+                const val = e.target.value;
+                setPartnerLogoUrl(val);
+                if (!partnerLogoFile) {
+                  setPartnerLogoPreview(val || null);
+                }
+              }}
+              sx={{ bgcolor: "white", mb: 1.5 }}
+            />
 
             <input
               ref={partnerLogoInputRef}

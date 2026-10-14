@@ -9,7 +9,7 @@ router.get('/admin/all', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), Partn
 router.get('/all', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), PartnerCardController.getAllPartnerCardsAdmin);
 
 // Public endpoints
-router.get('/', cacheMiddleware(300, 'partner_cards'), PartnerCardController.getAllPartnerCards);
+router.get('/', cacheMiddleware(60, 'partner_cards'), PartnerCardController.getAllPartnerCards);
 router.get('/:id', PartnerCardController.getPartnerCardById);
 router.post('/upload-logo', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), PartnerCardController.uploadPartnerLogo);
 router.post('/', authorized(['SUPER_ADMIN', 'ADMIN', 'DIRECTOR']), PartnerCardController.createPartnerCard);

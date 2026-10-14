@@ -13,14 +13,20 @@ const cacheMiddleware = (ttlSeconds = 300, prefix = 'cache') => {
             return next();
         }
 
+        const isBypass = req.headers['cache-control'] === 'no-cache' || 
+                         req.query?.nocache === 'true' || 
+                         req.query?.refresh === 'true';
+
         const cacheKey = `${prefix}_${req.originalUrl || req.url}`;
 
         try {
-            const cachedData = await cacheService.get(cacheKey);
-            if (cachedData) {
-                logger.debug(`⚡ Cache HIT for [${cacheKey}]`);
-                res.setHeader('X-Cache', 'HIT');
-                return res.status(200).json(cachedData);
+            if (!isBypass) {
+                const cachedData = await cacheService.get(cacheKey);
+                if (cachedData) {
+                    logger.debug(`⚡ Cache HIT for [${cacheKey}]`);
+                    res.setHeader('X-Cache', 'HIT');
+                    return res.status(200).json(cachedData);
+                }
             }
 
             logger.debug(`🔍 Cache MISS for [${cacheKey}]`);

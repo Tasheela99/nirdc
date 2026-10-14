@@ -1,7 +1,59 @@
+const mongoose = require('mongoose');
 const PartnerCard = require('../schemas/PartnerCardSchema');
 const cacheService = require('../services/CacheService');
 const logger = require('../utils/LoggerUtil');
 const { uploadFileToAws, getFileUrlFromAws, awsFolderNames } = require('../utils/FileUploadAwsUtil');
+
+const DEFAULT_PARTNER_CARDS = [
+  {
+    title: {
+      en: "President's Office",
+      si: "ජනාධිපති කාර්යාලය",
+      ta: "ஜனாதிபதி செயலகம்"
+    },
+    description: {
+      en: "Official website of the Presidential Secretariat of Sri Lanka.",
+      si: "ශ්‍රී ලංකා ජනාධිපති කාර්යාලයේ නිල වෙබ් අඩවිය.",
+      ta: "இலங்கை ஜனாதிபதி செயலகத்தின் உத்தியோகபூர்வ இணையதளம்."
+    },
+    logoUrl: "/presidentsoffice_logo.png",
+    linkUrl: "https://www.presidentsoffice.gov.lk/",
+    order: 1,
+    isActive: true
+  },
+  {
+    title: {
+      en: "Clean Sri Lanka",
+      si: "ක්ලීන් ශ්‍රී ලංකා",
+      ta: "க்ளீன் ஸ்ரீலங்கா"
+    },
+    description: {
+      en: "Official website of the Clean Sri Lanka National Programme.",
+      si: "ක්ලීන් ශ්‍රී ලංකා ජාතික වැඩසටහනේ නිල වෙබ් අඩවිය.",
+      ta: "Clean Sri Lanka தேசிய திட்டத்தின் உத்தியோகபூர்வ இணையதளம்."
+    },
+    logoUrl: "/cleansrilanka_logo.png",
+    linkUrl: "https://cleansrilanka.gov.lk/",
+    order: 2,
+    isActive: true
+  },
+  {
+    title: {
+      en: "Prajashakthi",
+      si: "ප්‍රජාශක්ති",
+      ta: "பிரஜாசக்தி"
+    },
+    description: {
+      en: "Official website of the Prajashakthi National Programme.",
+      si: "ප්‍රජාශක්ති වැඩසටහනේ නිල වෙබ් අඩවිය.",
+      ta: "பிரஜாசக்தி தேசிய திட்டத்தின் உத்தியோகபூர்வ இணையதளம்."
+    },
+    logoUrl: "/praajashakthi_logo.webp",
+    linkUrl: "https://www.prajashakthi.gov.lk/",
+    order: 3,
+    isActive: true
+  }
+];
 
 /**
  * Get all active partner cards
@@ -10,7 +62,14 @@ const { uploadFileToAws, getFileUrlFromAws, awsFolderNames } = require('../utils
  */
 const getAllPartnerCards = async (req, res) => {
   try {
-    const cards = await PartnerCard.find({ isActive: true }).sort({ order: 1, createdAt: 1 });
+    let cards = await PartnerCard.find({ isActive: true }).sort({ order: 1, createdAt: 1 }).lean();
+    if (!cards || cards.length === 0) {
+      const count = await PartnerCard.countDocuments();
+      if (count === 0) {
+        await PartnerCard.insertMany(DEFAULT_PARTNER_CARDS);
+        cards = await PartnerCard.find({ isActive: true }).sort({ order: 1, createdAt: 1 }).lean();
+      }
+    }
     return res.status(200).json({
       status: true,
       message: 'Partner cards fetched successfully',
@@ -34,7 +93,11 @@ const getAllPartnerCards = async (req, res) => {
  */
 const getAllPartnerCardsAdmin = async (req, res) => {
   try {
-    const cards = await PartnerCard.find().sort({ order: 1, createdAt: 1 });
+    let cards = await PartnerCard.find().sort({ order: 1, createdAt: 1 }).lean();
+    if (!cards || cards.length === 0) {
+      await PartnerCard.insertMany(DEFAULT_PARTNER_CARDS);
+      cards = await PartnerCard.find().sort({ order: 1, createdAt: 1 }).lean();
+    }
     return res.status(200).json({
       status: true,
       count: cards.length,
@@ -57,7 +120,15 @@ const getAllPartnerCardsAdmin = async (req, res) => {
  */
 const getPartnerCardById = async (req, res) => {
   try {
-    const card = await PartnerCard.findById(req.params.id);
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        status: false,
+        message: 'Invalid partner card ID'
+      });
+    }
+
+    const card = await PartnerCard.findById(id).lean();
     if (!card) {
       return res.status(404).json({
         status: false,
@@ -96,8 +167,8 @@ const createPartnerCard = async (req, res) => {
     }
 
     // Process logo upload if file provided
-    if (req.files && (req.files.logo || req.files.logoUrl)) {
-      const file = req.files.logo || req.files.logoUrl;
+    if (req.files && (req.files.logo || req.files.logoUrl || req.files.file || req.files.image)) {
+      const file = req.files.logo || req.files.logoUrl || req.files.file || req.files.image;
       try {
         const folder = awsFolderNames.resource || 'homepage';
         const fileName = `${folder}/partner_${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
@@ -115,13 +186,25 @@ const createPartnerCard = async (req, res) => {
       });
     }
 
+    // Normalize multiLang fields
+    const normalizedTitle = {
+      en: title?.en || title?.si || title?.ta || 'Partner',
+      si: title?.si || '',
+      ta: title?.ta || ''
+    };
+    const normalizedDesc = {
+      en: description?.en || description?.si || description?.ta || '',
+      si: description?.si || '',
+      ta: description?.ta || ''
+    };
+
     const newCard = new PartnerCard({
-      title,
-      description,
-      logoUrl,
-      linkUrl: linkUrl || '',
+      title: normalizedTitle,
+      description: normalizedDesc,
+      logoUrl: logoUrl.trim(),
+      linkUrl: linkUrl ? linkUrl.trim() : '',
       order: order !== undefined ? Number(order) : 0,
-      isActive: isActive !== undefined ? isActive : true
+      isActive: isActive !== undefined ? (isActive === true || isActive === 'true') : true
     });
 
     await newCard.save();
@@ -152,6 +235,13 @@ const createPartnerCard = async (req, res) => {
 const updatePartnerCard = async (req, res) => {
   try {
     const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        status: false,
+        message: 'Invalid partner card ID'
+      });
+    }
+
     let { title, description, logoUrl, linkUrl, order, isActive } = req.body;
 
     const card = await PartnerCard.findById(id);
@@ -170,8 +260,8 @@ const updatePartnerCard = async (req, res) => {
     }
 
     // Process new logo upload if file provided
-    if (req.files && (req.files.logo || req.files.logoUrl)) {
-      const file = req.files.logo || req.files.logoUrl;
+    if (req.files && (req.files.logo || req.files.logoUrl || req.files.file || req.files.image)) {
+      const file = req.files.logo || req.files.logoUrl || req.files.file || req.files.image;
       try {
         const folder = awsFolderNames.resource || 'homepage';
         const fileName = `${folder}/partner_${Date.now()}_${file.name.replace(/\s+/g, '_')}`;
@@ -182,12 +272,29 @@ const updatePartnerCard = async (req, res) => {
       }
     }
 
-    if (title) card.title = title;
-    if (description) card.description = description;
-    if (logoUrl) card.logoUrl = logoUrl;
-    if (linkUrl !== undefined) card.linkUrl = linkUrl;
+    if (title) {
+      card.title = {
+        en: title.en !== undefined ? title.en : (card.title?.en || ''),
+        si: title.si !== undefined ? title.si : (card.title?.si || ''),
+        ta: title.ta !== undefined ? title.ta : (card.title?.ta || '')
+      };
+      if (!card.title.en) {
+        card.title.en = card.title.si || card.title.ta || 'Partner';
+      }
+    }
+
+    if (description) {
+      card.description = {
+        en: description.en !== undefined ? description.en : (card.description?.en || ''),
+        si: description.si !== undefined ? description.si : (card.description?.si || ''),
+        ta: description.ta !== undefined ? description.ta : (card.description?.ta || '')
+      };
+    }
+
+    if (logoUrl) card.logoUrl = logoUrl.trim();
+    if (linkUrl !== undefined) card.linkUrl = linkUrl ? linkUrl.trim() : '';
     if (order !== undefined) card.order = Number(order);
-    if (isActive !== undefined) card.isActive = isActive;
+    if (isActive !== undefined) card.isActive = (isActive === true || isActive === 'true');
 
     await card.save();
 
@@ -217,8 +324,14 @@ const updatePartnerCard = async (req, res) => {
 const deletePartnerCard = async (req, res) => {
   try {
     const { id } = req.params;
-    const deleted = await PartnerCard.findByIdAndDelete(id);
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        status: false,
+        message: 'Invalid partner card ID'
+      });
+    }
 
+    const deleted = await PartnerCard.findByIdAndDelete(id);
     if (!deleted) {
       return res.status(404).json({
         status: false,
@@ -286,5 +399,6 @@ module.exports = {
   createPartnerCard,
   updatePartnerCard,
   deletePartnerCard,
-  uploadPartnerLogo
+  uploadPartnerLogo,
+  DEFAULT_PARTNER_CARDS
 };
