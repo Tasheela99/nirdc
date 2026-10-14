@@ -8,6 +8,7 @@ import { AlertProvider } from "./components/common/AlertContextScreen.tsx";
 import { DarkModeProvider } from "./store/DarkModeContext.tsx";
 import { useTranslation } from "react-i18next";
 import CookieConsent from "./components/common/CookieConsent.tsx";
+import ScrollToTop from "./components/common/ScrollToTop.tsx";
 
 function App() {
     const { i18n } = useTranslation();
@@ -45,6 +46,7 @@ function App() {
                             <meta name="twitter:image" content="https://nirdc.gov.lk/assets/NIRDC-WEB-LOGO.svg" />
                         </Helmet>
                         <BrowserRouter>
+                            <ScrollToTop />
                             <AppRouter />
                             <CookieConsent />
                         </BrowserRouter>
