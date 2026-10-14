@@ -4,9 +4,11 @@ import { ChevronLeft } from 'lucide-react';
 import newsApi from "../../../api/NewsApi.ts";
 import DOMPurify from 'dompurify';
 import { useTranslation } from "react-i18next";
+import PageHero from "@/components/common/PageHero";
+
 
 const NewsViewScreen = () => {
-    const { i18n } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { id } = useParams<{ id: string }>();
     const [newsItem, setNewsItem] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -70,58 +72,70 @@ const NewsViewScreen = () => {
                   newsItem.commonImage;
 
     return (
-        <section id="updates-news" className="bg-gray-50 py-12">
-            <div className="max-w-6xl mx-auto px-4">
-                <Link to="/all-news" className="inline-flex items-center text-main-color hover:text-third-color mb-6">
-                    <ChevronLeft className="mr-2" size={20} />
-                    Back to News
-                </Link>
+        <div className="min-h-screen bg-canvas dark:bg-dark-bg text-text-primary dark:text-gray-100 transition-colors duration-200">
+            <PageHero
+                badge={t("header.news", "News")}
+                title={title}
+                subtitle={newsItem.date || ""}
+                breadcrumbs={[
+                    { label: t("header.updatesNews", "News & Updates"), href: "/all-news" },
+                    { label: title },
+                ]}
+            />
 
-                <article className="bg-white rounded-lg shadow-md overflow-hidden">
-                    {/* Featured Image */}
-                    {image && (
-                        <div className="w-full h-64 md:h-80 lg:h-96">
-                            <img 
-                                className="w-full h-full object-cover" 
-                                src={image} 
-                                alt={title}
-                                onError={(e) => {
-                                    (e.target as HTMLImageElement).style.display = 'none';
-                                }}
-                            />
-                        </div>
-                    )}
+            <section id="updates-news" className="py-12">
+                <div className="max-w-5xl mx-auto px-4">
+                    <Link to="/all-news" className="inline-flex items-center text-primary hover:text-primary-dark font-medium mb-6 transition-colors">
+                        <ChevronLeft className="mr-1.5" size={18} />
+                        {t("news.backToNews", "Back to News")}
+                    </Link>
 
-                    <div className="p-4 md:p-6 lg:p-8">
-                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-main-color mb-4">
-                            {title}
-                        </h1>
-                        <p className="text-sm text-third-color mb-6">
-                            {newsItem.date || "No date available"}
-                        </p>
-                        <div className="text-second-color leading-relaxed">
-                            <div 
-                                dangerouslySetInnerHTML={{ 
-                                    __html: DOMPurify.sanitize(content) 
-                                }}
-                                style={{
-                                    lineHeight: 1.7,
-                                }}
-                                className="prose prose-lg max-w-none 
-                                    prose-p:mb-4 prose-p:text-second-color
-                                    prose-h1:text-main-color prose-h1:text-2xl prose-h1:font-bold prose-h1:mb-4
-                                    prose-h2:text-main-color prose-h2:text-xl prose-h2:font-semibold prose-h2:mb-3
-                                    prose-h3:text-main-color prose-h3:text-lg prose-h3:font-medium prose-h3:mb-2
-                                    prose-strong:text-main-color prose-strong:font-semibold
-                                    prose-ul:mb-4 prose-ol:mb-4 prose-li:mb-1
-                                    prose-blockquote:border-l-4 prose-blockquote:border-main-color prose-blockquote:pl-4 prose-blockquote:italic
-                                    prose-img:rounded-lg prose-img:shadow-md prose-img:mx-auto"
-                            />
+                    <article className="bg-white dark:bg-dark-surface rounded-2xl shadow-xl border border-gray-100 dark:border-dark-border overflow-hidden">
+                        {/* Featured Image */}
+                        {image && (
+                            <div className="w-full h-64 md:h-80 lg:h-96">
+                                <img 
+                                    className="w-full h-full object-cover" 
+                                    src={image} 
+                                    alt={title}
+                                    onError={(e) => {
+                                        (e.target as HTMLImageElement).style.display = 'none';
+                                    }}
+                                />
+                            </div>
+                        )}
+
+                        <div className="p-6 md:p-8 lg:p-10">
+                            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-main-color dark:text-white mb-4">
+                                {title}
+                            </h1>
+                            <p className="text-sm text-third-color dark:text-gray-400 mb-6">
+                                {newsItem.date || "No date available"}
+                            </p>
+                            <div className="text-second-color dark:text-gray-300 leading-relaxed">
+                                <div 
+                                    dangerouslySetInnerHTML={{ 
+                                        __html: DOMPurify.sanitize(content) 
+                                    }}
+                                    style={{
+                                        lineHeight: 1.7,
+                                    }}
+                                    className="prose prose-lg max-w-none dark:prose-invert
+                                        prose-p:mb-4
+                                        prose-h1:text-2xl prose-h1:font-bold prose-h1:mb-4
+                                        prose-h2:text-xl prose-h2:font-semibold prose-h2:mb-3
+                                        prose-h3:text-lg prose-h3:font-medium prose-h3:mb-2
+                                        prose-strong:font-semibold
+                                        prose-ul:mb-4 prose-ol:mb-4 prose-li:mb-1
+                                        prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-4 prose-blockquote:italic
+                                        prose-img:rounded-xl prose-img:shadow-md prose-img:mx-auto"
+                                />
+                            </div>
                         </div>
-                    </div>
-                </article>
-            </div>
-        </section>
+                    </article>
+                </div>
+            </section>
+        </div>
     );
 };
 

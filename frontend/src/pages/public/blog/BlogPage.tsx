@@ -4,9 +4,10 @@ import { Search, X } from "lucide-react";
 import DOMPurify from 'dompurify';
 import blogApi from "../../../api/BlogApi.ts";
 import { useTranslation } from "react-i18next";
+import PageHero from "@/components/common/PageHero";
 
 const AllBlogScreen = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [blogList, setBlogList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -128,46 +129,59 @@ const AllBlogScreen = () => {
   return (
     <div className="min-h-screen bg-canvas dark:bg-dark-bg text-text-primary dark:text-gray-100 transition-colors duration-200">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#5D1840] via-[#4C1333] to-[#360C23] py-16">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 font-sans">
-            Blog & Updates
-          </h1>
-          <p className="text-lg text-white/80 mb-8 font-body">
-            Stay informed with the latest blog and updates from NIRDC
-          </p>
-          
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto">
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
+      <PageHero
+        badge={t("header.blogs", "Blogs")}
+        title={t("header.blogUpdates", "Blog & Articles")}
+        subtitle={t(
+          "blog.heroSubtitle",
+          "Stay informed with insightful articles, technological trends, and research perspectives from NIRDC."
+        )}
+        breadcrumbs={[{ label: t("header.blogs", "Blogs") }]}
+      />
+
+      {/* Blog List Section */}
+      <section className="py-10">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* Search Bar Toolbar */}
+          <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="relative flex-1 max-w-md">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                <Search className="h-4 w-4 text-gray-400" />
               </div>
               <input
                 ref={searchInputRef}
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search blog articles..."
-                className="w-full pl-10 pr-12 py-3 border-0 rounded-xl text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-accent-light focus:ring-offset-2 focus:ring-offset-primary outline-none shadow-lg"
+                placeholder="Search blog articles... (Ctrl+K)"
+                className="w-full pl-10 pr-10 py-2.5 bg-white dark:bg-dark-surface border border-gray-200 dark:border-dark-border rounded-xl text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent outline-none shadow-sm transition-all"
               />
               {searchQuery && (
                 <button
                   onClick={clearSearch}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-gray-100 rounded-r-xl transition-colors"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-gray-700 dark:hover:text-gray-200 text-gray-400 transition-colors"
                   title="Clear search (Esc)"
                 >
-                  <X className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+
+            {/* Total Count */}
+            <div className="flex items-center gap-3">
+              <span className="text-xs sm:text-sm text-text-secondary dark:text-gray-400 font-medium">
+                {filteredBlog.length} {filteredBlog.length === 1 ? "article" : "articles"}
+              </span>
+              {searchQuery && (
+                <button
+                  onClick={clearSearch}
+                  className="text-xs px-2.5 py-1 rounded-lg bg-primary/10 text-primary dark:text-primary-light hover:bg-primary/20 font-medium transition-colors"
+                >
+                  Clear search
                 </button>
               )}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Blog List Section */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4">
           {/* Search Results Info */}
           {searchQuery && (
             <div className="flex justify-between items-center mb-6">

@@ -209,7 +209,16 @@ const Header: React.FC = () => {
     const contactDropdownRef = useRef<HTMLDivElement>(null);
 
     const location = useLocation();
-    const isTransparentPage = location.pathname === '/' || location.pathname.startsWith('/about-us') || location.pathname.startsWith('/resources') || location.pathname.startsWith('/contact-us');
+    const isTransparentPage =
+        location.pathname === '/' ||
+        location.pathname.startsWith('/about-us') ||
+        location.pathname.startsWith('/resources') ||
+        location.pathname.startsWith('/contact-us') ||
+        location.pathname === '/all-news' ||
+        location.pathname.startsWith('/news-updates') ||
+        location.pathname.startsWith('/updates-news') ||
+        location.pathname.startsWith('/announcements') ||
+        location.pathname.startsWith('/blogs');
     const [scrolled, setScrolled] = useState(false);
 
     const isTransparent = isTransparentPage && !scrolled;

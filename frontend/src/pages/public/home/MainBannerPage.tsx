@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FileUp, FileCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import bannerApi from "../../../api/BannerApi";
+import homePageContentApi, { HeroSectionData, MultiLangString } from "@/api/HomePageContentApi";
 import hero1 from "../../../assets/hero_01.png";
 import hero2 from "../../../assets/hero_02.png";
 import hero3 from "../../../assets/hero_03.png";
@@ -18,26 +19,68 @@ const fallbackMobileBanners = [mobileHero1, mobileHero2, mobileHero3];
 const MainBannerPage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [banners, setBanners] = useState<string[]>(fallbackBanners);
+  const [heroData, setHeroData] = useState<HeroSectionData | null>(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { isLoggedIn } = useContext(UserContext);
 
+  const currentLang = i18n.language || "en";
+  const langKey: "en" | "si" | "ta" = currentLang.startsWith("si")
+    ? "si"
+    : currentLang.startsWith("ta")
+    ? "ta"
+    : "en";
+
+  const getLocalized = (field?: MultiLangString, fallback = ""): string => {
+    if (!field) return fallback;
+    const current = field[langKey]?.trim();
+    if (current) return current;
+    const en = field.en?.trim();
+    if (en) return en;
+    const si = field.si?.trim();
+    if (si) return si;
+    const ta = field.ta?.trim();
+    if (ta) return ta;
+    return fallback;
+  };
+
   useEffect(() => {
-    const fetchBanners = async () => {
+    let isMounted = true;
+    const fetchHeroData = async () => {
       try {
-        const response = await bannerApi.getAllHomepageImages() as any;
-        if (response.status === true && response.data?.bannerImages?.length > 0) {
-          setBanners(response.data.bannerImages);
+        const response = await homePageContentApi.getHeroSection();
+        if (response?.status && response?.data && isMounted) {
+          setHeroData(response.data);
+          if (Array.isArray(response.data.images) && response.data.images.length > 0) {
+            setBanners(response.data.images);
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn("Could not fetch hero section from homePageContentApi", err);
+      }
+
+      // Fallback to legacy banner API if no hero images in HeroSection
+      try {
+        const legacyRes = (await bannerApi.getAllHomepageImages()) as any;
+        if (legacyRes?.status === true && legacyRes.data?.bannerImages?.length > 0 && isMounted) {
+          setBanners(legacyRes.data.bannerImages);
         }
       } catch {
-        // Silent fallback to static images
+        // Fallback to static images
       }
     };
-    fetchBanners();
+
+    fetchHeroData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   useEffect(() => {
+    if (banners.length <= 1) return;
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
     }, 5000);
@@ -50,15 +93,106 @@ const MainBannerPage: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const badgeText = getLocalized(
+    heroData?.preTitle,
+    t("banner.badge", "NATIONAL INITIATIVE FOR R&D COMMERCIALISATION")
+  );
+
+  const descriptionText = getLocalized(
+    heroData?.description,
+    t(
+      "banner.subtitle",
+      "Bridging the gap between groundbreaking research and real-world solutions for Sri Lanka's economic growth and social well-being."
+    )
+  );
+
+  const renderMainTitle = () => {
+    const rawTitle = getLocalized(heroData?.mainTitle, "");
+
+    if (!rawTitle) {
+      return (
+        <>
+          {t("banner.titleLine1", "Transforming Research")}
+          <br />
+          <span style={{ color: "#8c2963" }}>{t("banner.titleLine2", "Into National Impact")}</span>
+        </>
+      );
+    }
+
+    if (rawTitle.includes("\n")) {
+      const [first, ...rest] = rawTitle.split("\n");
+      return (
+        <>
+          {first}
+          <br />
+          <span style={{ color: "#8c2963" }}>{rest.join(" ")}</span>
+        </>
+      );
+    }
+
+    const words = rawTitle.trim().split(/\s+/);
+    if (words.length <= 2) {
+      return (
+        <>
+          {words[0]}{" "}
+          {words[1] && <span style={{ color: "#8c2963" }}>{words[1]}</span>}
+        </>
+      );
+    }
+
+    const mid = Math.ceil(words.length / 2);
+    const line1 = words.slice(0, mid).join(" ");
+    const line2 = words.slice(mid).join(" ");
+    return (
+      <>
+        {line1}
+        <br />
+        <span style={{ color: "#8c2963" }}>{line2}</span>
+      </>
+    );
+  };
+
+  const handleButtonClick = (link?: string, defaultRoute = "/login") => {
+    if (!link || !link.trim()) {
+      navigate(defaultRoute);
+      return;
+    }
+    const cleanLink = link.trim();
+    if (cleanLink.startsWith("/")) {
+      navigate(cleanLink);
+      return;
+    }
+    if (cleanLink.startsWith("http://") || cleanLink.startsWith("https://")) {
+      try {
+        const url = new URL(cleanLink);
+        if (
+          url.hostname === window.location.hostname ||
+          url.hostname === "localhost" ||
+          url.hostname.includes("nirdc.gov.lk")
+        ) {
+          navigate(url.pathname + url.search + url.hash);
+          return;
+        }
+      } catch {}
+      window.open(cleanLink, "_blank", "noopener,noreferrer");
+      return;
+    }
+    navigate(`/${cleanLink}`);
+  };
+
   return (
     <section className="relative w-full h-[85vh] sm:h-screen min-h-[500px] overflow-hidden" aria-label="Hero banner">
       {banners.map((banner, index) => {
-        const bgImage = isMobile ? fallbackMobileBanners[index % fallbackMobileBanners.length] : banner;
+        const bgImage =
+          isMobile && (!heroData?.images || heroData.images.length === 0)
+            ? fallbackMobileBanners[index % fallbackMobileBanners.length]
+            : banner;
         return (
           <div
             key={index}
-            className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
+            className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
             style={{ backgroundImage: `url(${bgImage})` }}
             role="img"
             aria-label={`Banner image ${index + 1}`}
@@ -78,148 +212,246 @@ const MainBannerPage: React.FC = () => {
         >
           <div className="mb-3 sm:mb-5">
             <span className="text-white/90 text-[10px] sm:text-sm font-semibold tracking-wide uppercase">
-              {t('banner.badge')}
+              {badgeText}
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-3 sm:mb-6 leading-[1.15] sm:leading-[1.1] tracking-tight font-sans">
-            {t('banner.titleLine1')}
-            <br />
-            <span style={{ color: "#8c2963" }}>{t('banner.titleLine2')}</span>
+            {renderMainTitle()}
           </h1>
 
           <p className="text-sm sm:text-lg text-white/90 sm:text-white/80 mb-5 sm:mb-8 max-w-2xl leading-relaxed font-body whitespace-pre-line">
-            {t('banner.subtitle')}
+            {descriptionText}
           </p>
 
           {!isLoggedIn && (
             <div className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-4 mt-2 sm:mt-8 w-full max-w-md sm:max-w-none">
+              {heroData?.buttons && heroData.buttons.length > 0 ? (
+                heroData.buttons.map((btn, btnIdx) => {
+                  const isPrimary = btnIdx % 2 === 0;
+                  const defaultLabel = isPrimary ? "USER LOGIN" : "REVIEWER REGISTRATION";
+                  const defaultSubLabel = isPrimary
+                    ? "I Want To Submit Proposal"
+                    : "I Want To Review Proposal";
+                  const defaultRoute = isPrimary ? "/login" : "/reviewer-registration";
 
-            {/* SUBMIT button — glassy purple */}
-            <button
-              onClick={() => navigate("/login")}
-              className="group relative flex flex-col items-center justify-center gap-3 sm:gap-5 flex-1 py-3 sm:py-0 sm:h-[190px] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
-              style={{
-                background: "linear-gradient(145deg, rgba(140, 41, 99, 0.50) 0%, rgba(100, 20, 65, 0.28) 100%)",
-                border: "1px solid rgba(200, 80, 140, 0.40)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                boxShadow: "0 8px 32px rgba(140, 41, 99, 0.35), inset 0 1px 0 rgba(255,255,255,0.15)",
-              }}
-            >
-              {/* Inner gloss sheen */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: "linear-gradient(160deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 50%, transparent 100%)",
-                }}
-              />
-              {/* Hover glow */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{
-                  background: "linear-gradient(145deg, rgba(200,80,140,0.25) 0%, rgba(140,41,99,0.12) 100%)",
-                }}
-              />
+                  const labelText = getLocalized(btn.label, defaultLabel);
+                  const subLabelText = getLocalized(btn.subLabel, defaultSubLabel);
 
-              {/* Icon */}
-              <FileUp
-                className="w-8 h-8 sm:w-11 sm:h-11 text-pink-100 group-hover:scale-110 transition-transform duration-300 drop-shadow"
-                strokeWidth={1.4}
-              />
+                  return (
+                    <button
+                      key={btn._id || btnIdx}
+                      onClick={() => handleButtonClick(btn.link, defaultRoute)}
+                      className="group relative flex flex-col items-center justify-center gap-3 sm:gap-5 flex-1 py-4 sm:py-0 sm:h-[190px] px-4 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 text-center"
+                      style={
+                        isPrimary
+                          ? {
+                              background:
+                                "linear-gradient(145deg, rgba(140, 41, 99, 0.50) 0%, rgba(100, 20, 65, 0.28) 100%)",
+                              border: "1px solid rgba(200, 80, 140, 0.40)",
+                              backdropFilter: "blur(16px)",
+                              WebkitBackdropFilter: "blur(16px)",
+                              boxShadow:
+                                "0 8px 32px rgba(140, 41, 99, 0.35), inset 0 1px 0 rgba(255,255,255,0.15)",
+                            }
+                          : {
+                              background:
+                                "linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(140,41,99,0.15) 100%)",
+                              border: "1px solid rgba(255,255,255,0.30)",
+                              backdropFilter: "blur(16px)",
+                              WebkitBackdropFilter: "blur(16px)",
+                              boxShadow:
+                                "0 8px 32px rgba(140,41,99,0.20), inset 0 1px 0 rgba(255,255,255,0.25)",
+                            }
+                      }
+                    >
+                      {/* Inner gloss sheen */}
+                      <div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          background: isPrimary
+                            ? "linear-gradient(160deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 50%, transparent 100%)"
+                            : "linear-gradient(160deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.04) 50%, transparent 100%)",
+                        }}
+                      />
+                      {/* Hover glow */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        style={{
+                          background: isPrimary
+                            ? "linear-gradient(145deg, rgba(200,80,140,0.25) 0%, rgba(140,41,99,0.12) 100%)"
+                            : "rgba(255,255,255,0.08)",
+                        }}
+                      />
 
-              {/* Text instead of pill */}
-              <div
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  letterSpacing: "0.18em",
-                  color: "rgba(255,210,235,0.95)",
-                  textTransform: "uppercase" as const,
-                }}
-              >
-                USER LOGIN
-              </div>
+                      {/* Icon */}
+                      {btn.iconUrl ? (
+                        <img
+                          src={btn.iconUrl}
+                          alt={labelText}
+                          className="w-8 h-8 sm:w-11 sm:h-11 object-contain drop-shadow group-hover:scale-110 transition-transform duration-300"
+                        />
+                      ) : isPrimary ? (
+                        <FileUp
+                          className="w-8 h-8 sm:w-11 sm:h-11 text-pink-100 group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                          strokeWidth={1.4}
+                        />
+                      ) : (
+                        <FileCheck
+                          className="w-8 h-8 sm:w-11 sm:h-11 text-white group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                          strokeWidth={1.4}
+                        />
+                      )}
 
-              {/* Label */}
-              <span
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 500,
-                  color: "rgba(255,190,225,0.70)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase" as const,
-                  transition: "color 0.2s",
-                }}
-                className="group-hover:!text-pink-100"
-              >
-                I Want To Submit Proposal
-              </span>
-            </button>
+                      {/* Action text */}
+                      <div
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          letterSpacing: "0.18em",
+                          color: isPrimary ? "rgba(255,210,235,0.95)" : "rgba(255,255,255,0.95)",
+                          textTransform: "uppercase" as const,
+                        }}
+                      >
+                        {labelText}
+                      </div>
 
-            {/* REVIEW button — glassy white/frost */}
-            <button
-              onClick={() => navigate("/reviewer-registration")}
-              className="group relative flex flex-col items-center justify-center gap-3 sm:gap-5 flex-1 py-3 sm:py-0 sm:h-[190px] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
-              style={{
-                background: "linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(140,41,99,0.15) 100%)",
-                border: "1px solid rgba(255,255,255,0.30)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                boxShadow: "0 8px 32px rgba(140,41,99,0.20), inset 0 1px 0 rgba(255,255,255,0.25)",
-              }}
-            >
-              {/* Inner gloss sheen */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: "linear-gradient(160deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.04) 50%, transparent 100%)",
-                }}
-              />
-              {/* Hover glow */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{
-                  background: "rgba(255,255,255,0.08)",
-                }}
-              />
+                      {/* Sub-label */}
+                      {subLabelText && (
+                        <span
+                          style={{
+                            fontSize: "11px",
+                            fontWeight: 500,
+                            color: isPrimary ? "rgba(255,190,225,0.70)" : "rgba(255,255,255,0.65)",
+                            letterSpacing: "0.06em",
+                            textTransform: "uppercase" as const,
+                            transition: "color 0.2s",
+                          }}
+                          className={isPrimary ? "group-hover:!text-pink-100" : "group-hover:!text-white"}
+                        >
+                          {subLabelText}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })
+              ) : (
+                <>
+                  {/* Default fallback button 1 */}
+                  <button
+                    onClick={() => navigate("/login")}
+                    className="group relative flex flex-col items-center justify-center gap-3 sm:gap-5 flex-1 py-3 sm:py-0 sm:h-[190px] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                    style={{
+                      background:
+                        "linear-gradient(145deg, rgba(140, 41, 99, 0.50) 0%, rgba(100, 20, 65, 0.28) 100%)",
+                      border: "1px solid rgba(200, 80, 140, 0.40)",
+                      backdropFilter: "blur(16px)",
+                      WebkitBackdropFilter: "blur(16px)",
+                      boxShadow:
+                        "0 8px 32px rgba(140, 41, 99, 0.35), inset 0 1px 0 rgba(255,255,255,0.15)",
+                    }}
+                  >
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background:
+                          "linear-gradient(160deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 50%, transparent 100%)",
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{
+                        background:
+                          "linear-gradient(145deg, rgba(200,80,140,0.25) 0%, rgba(140,41,99,0.12) 100%)",
+                      }}
+                    />
+                    <FileUp
+                      className="w-8 h-8 sm:w-11 sm:h-11 text-pink-100 group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                      strokeWidth={1.4}
+                    />
+                    <div
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        letterSpacing: "0.18em",
+                        color: "rgba(255,210,235,0.95)",
+                        textTransform: "uppercase" as const,
+                      }}
+                    >
+                      USER LOGIN
+                    </div>
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 500,
+                        color: "rgba(255,190,225,0.70)",
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase" as const,
+                        transition: "color 0.2s",
+                      }}
+                      className="group-hover:!text-pink-100"
+                    >
+                      I Want To Submit Proposal
+                    </span>
+                  </button>
 
-              {/* Icon */}
-              <FileCheck
-                className="w-8 h-8 sm:w-11 sm:h-11 text-white group-hover:scale-110 transition-transform duration-300 drop-shadow"
-                strokeWidth={1.4}
-              />
-
-              {/* Text instead of pill */}
-              <div
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  letterSpacing: "0.18em",
-                  color: "rgba(255,255,255,0.95)",
-                  textTransform: "uppercase" as const,
-                }}
-              >
-                REVIEWER REGISTRATION
-              </div>
-
-              {/* Label */}
-              <span
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 500,
-                  color: "rgba(255,255,255,0.65)",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase" as const,
-                  transition: "color 0.2s",
-                }}
-                className="group-hover:!text-white"
-              >
-                I Want To Review Proposal
-              </span>
-            </button>
-
-          </div>
+                  {/* Default fallback button 2 */}
+                  <button
+                    onClick={() => navigate("/reviewer-registration")}
+                    className="group relative flex flex-col items-center justify-center gap-3 sm:gap-5 flex-1 py-3 sm:py-0 sm:h-[190px] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                    style={{
+                      background:
+                        "linear-gradient(145deg, rgba(255,255,255,0.18) 0%, rgba(140,41,99,0.15) 100%)",
+                      border: "1px solid rgba(255,255,255,0.30)",
+                      backdropFilter: "blur(16px)",
+                      WebkitBackdropFilter: "blur(16px)",
+                      boxShadow:
+                        "0 8px 32px rgba(140,41,99,0.20), inset 0 1px 0 rgba(255,255,255,0.25)",
+                    }}
+                  >
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background:
+                          "linear-gradient(160deg, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0.04) 50%, transparent 100%)",
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{ background: "rgba(255,255,255,0.08)" }}
+                    />
+                    <FileCheck
+                      className="w-8 h-8 sm:w-11 sm:h-11 text-white group-hover:scale-110 transition-transform duration-300 drop-shadow"
+                      strokeWidth={1.4}
+                    />
+                    <div
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        letterSpacing: "0.18em",
+                        color: "rgba(255,255,255,0.95)",
+                        textTransform: "uppercase" as const,
+                      }}
+                    >
+                      REVIEWER REGISTRATION
+                    </div>
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 500,
+                        color: "rgba(255,255,255,0.65)",
+                        letterSpacing: "0.06em",
+                        textTransform: "uppercase" as const,
+                        transition: "color 0.2s",
+                      }}
+                      className="group-hover:!text-white"
+                    >
+                      I Want To Review Proposal
+                    </span>
+                  </button>
+                </>
+              )}
+            </div>
           )}
         </motion.div>
 
@@ -229,10 +461,9 @@ const MainBannerPage: React.FC = () => {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${index === currentIndex
-                ? "w-8 bg-white"
-                : "w-2 bg-white/40 hover:bg-white/60"
-                }`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === currentIndex ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
+              }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

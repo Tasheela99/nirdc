@@ -5,6 +5,8 @@ import { Eye, Target } from "lucide-react";
 import QuickLinksSection from "./QuickLinksSection";
 import ContactUsSection from "./ContactUsSection";
 import homePageContentApi, { VisionMissionData } from "@/api/HomePageContentApi";
+import VantaNetBackground from "@/components/common/VantaNetBackground";
+
 
 type Pt = [number, number];
 
@@ -172,64 +174,18 @@ const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
       id="vision-mission-section"
       className="relative z-20 w-full pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 overflow-visible flex items-center justify-center"
       style={{
-        background: noBackground
-          ? "transparent"
-          : `
-          radial-gradient(circle at 25% 65%, rgba(138, 133, 219, 0.22) 0%, transparent 45%),
-          radial-gradient(circle at 75% 45%, rgba(111, 78, 185, 0.20) 0%, transparent 50%),
-          linear-gradient(180deg, #120726 0%, #180d32 25%, #0f0722 55%, #090416 85%, #07091d 100%)
-        `,
+        background: noBackground ? "transparent" : "#000000",
       }}
       aria-label="Vision and Mission"
     >
-      {/* Background silk wave glow */}
-      {!noBackground && (
-        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-90">
-          <svg
-            className="absolute w-full h-full"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
-            viewBox="0 0 1440 600"
-          >
-            <defs>
-              <linearGradient id="purpleWaveGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#5846a3" stopOpacity="0.85" />
-                <stop offset="25%" stopColor="#8a85db" stopOpacity="0.95" />
-                <stop offset="55%" stopColor="#6f4eb9" stopOpacity="0.9" />
-                <stop offset="85%" stopColor="#6c52af" stopOpacity="0.75" />
-                <stop offset="100%" stopColor="#3e1c6e" stopOpacity="0.65" />
-              </linearGradient>
-              <filter id="waveBlurHeavy" filterUnits="userSpaceOnUse" x="-1000" y="-1000" width="3440" height="2600">
-                <feGaussianBlur stdDeviation="55" />
-              </filter>
-              <filter id="waveBlurCore" filterUnits="userSpaceOnUse" x="-1000" y="-1000" width="3440" height="2600">
-                <feGaussianBlur stdDeviation="28" />
-              </filter>
-            </defs>
+      {/* Vanta.NET 3D animated background */}
+      {!noBackground && <VantaNetBackground />}
 
-            <path
-              d="M-300,460 C280,530 380,270 780,340 C1080,390 1280,210 1800,270 L1800,800 L-300,800 Z"
-              fill="url(#purpleWaveGrad)"
-              filter="url(#waveBlurHeavy)"
-              opacity="0.8"
-            />
-            <path
-              d="M-300,430 C260,490 360,260 760,330 C1060,380 1260,200 1800,260"
-              fill="none"
-              stroke="url(#purpleWaveGrad)"
-              strokeWidth="120"
-              filter="url(#waveBlurCore)"
-              opacity="0.95"
-            />
-          </svg>
-        </div>
-      )}
-
-      {/* Soft fade into the next section (removes the hard seam between the two sections) */}
+      {/* Soft fade into the next section (removes the hard seam between the sections) */}
       {!noBackground && (
         <div
-          className="absolute inset-x-0 bottom-0 h-24 sm:h-28 lg:h-32 pointer-events-none"
-          style={{ background: "linear-gradient(180deg, rgba(18, 7, 38, 0) 0%, #111827 100%)" }}
+          className="absolute inset-x-0 bottom-0 h-24 sm:h-28 lg:h-32 pointer-events-none z-10"
+          style={{ background: "linear-gradient(180deg, transparent 0%, #111827 100%)" }}
         />
       )}
 

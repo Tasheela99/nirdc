@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import PageHero from "@/components/common/PageHero";
 import {
   MapPin,
   Mail,
@@ -23,7 +24,7 @@ interface ContactUsPageProps {
 }
 
 const ContactUsPage: React.FC<ContactUsPageProps> = ({ defaultTab = "inquiry" }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const currentLang = (i18n.language?.startsWith("si") ? "si" : i18n.language?.startsWith("ta") ? "ta" : "en") as "en" | "si" | "ta";
 
@@ -146,13 +147,104 @@ const ContactUsPage: React.FC<ContactUsPageProps> = ({ defaultTab = "inquiry" })
     return obj[currentLang] || obj.en || fallback;
   };
 
-  return (
-    <div className="min-h-screen bg-[#09030c] text-white pt-24 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-20 right-1/4 w-[550px] h-[550px] bg-pink-700/15 rounded-full blur-[150px] pointer-events-none" />
+  const isHeadOffice = activeTab === "head-office";
 
-      <div className="max-w-[1300px] mx-auto relative z-10 space-y-10">
+  const heroBadge = t("header.contactUs", "Contact Us");
+  const heroTitle = isHeadOffice
+    ? currentLang === "si"
+      ? "ප්‍රධාන කාර්යාලය (Head Office)"
+      : currentLang === "ta"
+      ? "தலைமை அலுவலகம்"
+      : "Head Office & Directorate"
+    : currentLang === "si"
+    ? "විමසීම් (Public Inquiries)"
+    : currentLang === "ta"
+    ? "விசாரணைகள்"
+    : "Contact & Public Inquiries";
+
+  const heroSubtitle = isHeadOffice
+    ? currentLang === "si"
+      ? "ප්‍රධාන කාර්යාලය, ප්‍රධාන නිලධාරීන් සහ අංශ ප්‍රධානීන්ගේ නිල සම්බන්ධතා තොරතුරු"
+      : currentLang === "ta"
+      ? "தலைமை அலுவலகம் மற்றும் முக்கிய அதிகாரிகளின் தொடர்பு விவரங்கள்"
+      : "Official contact directory of the NIRDC Directorate, divisions, and senior leadership."
+    : currentLang === "si"
+    ? "ඔබගේ පර්යේෂණ වාණිජකරණ විමසීම්, යෝජනා හෝ අවශ්‍යතා සඳහා අප හා සම්බන්ධ වන්න."
+    : currentLang === "ta"
+    ? "உங்கள் விசாரணைகள் மற்றும் கருத்துக்களுக்காக எங்களைத் தொடர்பு கொள்ளவும்."
+    : "Reach out to the NIRDC team for research commercialization inquiries, investor matching, or public feedback.";
+
+  const currentTabLabel = isHeadOffice
+    ? currentLang === "si"
+      ? "ප්‍රධාන කාර්යාලය"
+      : currentLang === "ta"
+      ? "தலைமை அலுவலகம்"
+      : "Head Office"
+    : currentLang === "si"
+    ? "විමසීම්"
+    : currentLang === "ta"
+    ? "விசாரණைகள்"
+    : "Inquiry";
+
+  return (
+    <div className="min-h-screen bg-[#09030c] text-white">
+      {/* Page Hero with Vanta 3D Net */}
+      <PageHero
+        badge={heroBadge}
+        title={heroTitle}
+        subtitle={heroSubtitle}
+        breadcrumbs={[
+          { label: t("header.contactUs", "Contact Us"), href: "/contact-us" },
+          { label: currentTabLabel },
+        ]}
+      />
+
+      <div className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Ambient background glows */}
+        <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute bottom-20 right-1/4 w-[550px] h-[550px] bg-pink-700/15 rounded-full blur-[150px] pointer-events-none" />
+
+        <div className="max-w-[1300px] mx-auto relative z-10 space-y-10">
+          {/* Tab Switcher Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              to="/contact-us/inquiry"
+              onClick={() => setActiveTab("inquiry")}
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 flex items-center gap-2 ${
+                activeTab === "inquiry"
+                  ? "bg-primary text-white shadow-lg shadow-primary/30 scale-[1.02]"
+                  : "bg-white/10 text-white/70 hover:text-white hover:bg-white/15"
+              }`}
+            >
+              <Send size={15} />
+              <span>
+                {currentLang === "si"
+                  ? "විමසීම් (Inquiry)"
+                  : currentLang === "ta"
+                  ? "விசாரணைகள் (Inquiry)"
+                  : "Public Inquiries"}
+              </span>
+            </Link>
+
+            <Link
+              to="/contact-us/head-office"
+              onClick={() => setActiveTab("head-office")}
+              className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 flex items-center gap-2 ${
+                activeTab === "head-office"
+                  ? "bg-primary text-white shadow-lg shadow-primary/30 scale-[1.02]"
+                  : "bg-white/10 text-white/70 hover:text-white hover:bg-white/15"
+              }`}
+            >
+              <Building2 size={15} />
+              <span>
+                {currentLang === "si"
+                  ? "ප්‍රධාන කාර්යාලය (Head Office)"
+                  : currentLang === "ta"
+                  ? "தலைமை அலுவலகம் (Head Office)"
+                  : "Head Office & Officers"}
+              </span>
+            </Link>
+          </div>
 
 
         {/* Tab 1: INQUIRY (විමසීම්) */}
@@ -780,7 +872,8 @@ const ContactUsPage: React.FC<ContactUsPageProps> = ({ defaultTab = "inquiry" })
         )}
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default ContactUsPage;

@@ -7,6 +7,7 @@ export interface MultiLangString {
 }
 
 export interface HeroButton {
+  _id?: string;
   label: MultiLangString;
   subLabel: MultiLangString;
   iconUrl?: string;
