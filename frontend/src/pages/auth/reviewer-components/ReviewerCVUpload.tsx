@@ -41,13 +41,13 @@ const ReviewerCVUpload: React.FC<Props> = ({ file, onFileChange }) => {
 
     return (
         <div className="space-y-4 py-2">
-            <p className="text-sm text-[#475569] dark:text-[#94A3B8]">
+            <p className="text-sm text-white/80">
                 {t('reviewerRegistration.cvUpload.instructions')}
             </p>
 
             {!file ? (
                 <div 
-                    className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl p-8 text-center hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors cursor-pointer group"
+                    className="border-2 border-dashed border-white/25 rounded-2xl p-8 text-center bg-white/[0.03] hover:bg-white/[0.08] hover:border-pink-400/50 transition-all cursor-pointer group backdrop-blur-sm"
                     onClick={() => fileInputRef.current?.click()}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
@@ -59,27 +59,27 @@ const ReviewerCVUpload: React.FC<Props> = ({ file, onFileChange }) => {
                         className="hidden" 
                         accept=".pdf,.doc,.docx"
                     />
-                    <div className="w-16 h-16 bg-blue-50 dark:bg-blue-900/20 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                    <div className="w-16 h-16 bg-pink-500/10 border border-pink-500/20 text-pink-300 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:border-pink-400/50 transition-all shadow-[0_0_20px_rgba(236,72,153,0.2)]">
                         <UploadCloud size={32} />
                     </div>
-                    <h3 className="text-lg font-medium text-[#1E293B] dark:text-[#F8FAFC] mb-1">{t('reviewerRegistration.cvUpload.uploadTitle')}</h3>
-                    <p className="text-sm text-[#64748B]">{t('reviewerRegistration.cvUpload.dragDrop')}</p>
-                    <p className="text-xs text-[#94A3B8] mt-2">{t('reviewerRegistration.cvUpload.formats')}</p>
+                    <h3 className="text-lg font-semibold text-white mb-1">{t('reviewerRegistration.cvUpload.uploadTitle')}</h3>
+                    <p className="text-sm text-white/70">{t('reviewerRegistration.cvUpload.dragDrop')}</p>
+                    <p className="text-xs text-white/50 mt-2">{t('reviewerRegistration.cvUpload.formats')}</p>
                 </div>
             ) : (
-                <div className="border border-gray-200 dark:border-gray-700 rounded-xl p-4 flex items-center justify-between bg-white dark:bg-dark-surface">
+                <div className="border border-white/15 rounded-2xl p-4 flex items-center justify-between bg-white/[0.06] backdrop-blur-md shadow-lg">
                     <div className="flex items-center gap-4 overflow-hidden">
-                        <div className="w-12 h-12 bg-pink-50 dark:bg-pink-900/20 text-[#6B1D4A] rounded-lg flex items-center justify-center shrink-0">
+                        <div className="w-12 h-12 bg-pink-500/15 border border-pink-500/30 text-pink-300 rounded-xl flex items-center justify-center shrink-0">
                             <FileText size={24} />
                         </div>
                         <div className="overflow-hidden">
-                            <h4 className="font-medium text-[#1E293B] dark:text-[#F8FAFC] truncate">{file.name}</h4>
-                            <p className="text-xs text-[#64748B]">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
+                            <h4 className="font-medium text-white truncate">{file.name}</h4>
+                            <p className="text-xs text-white/60">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
                         </div>
                     </div>
                     <button 
                         onClick={() => onFileChange(null)}
-                        className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                        className="p-2 text-white/50 hover:text-rose-400 hover:bg-rose-500/10 rounded-xl transition-colors cursor-pointer"
                         title="Remove file"
                     >
                         <X size={20} />

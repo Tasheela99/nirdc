@@ -135,17 +135,17 @@ const ReviewerMCQ: React.FC<Props> = ({ sessionId, onComplete }) => {
     };
 
     if (isLoading) {
-        return <div className="flex justify-center p-8"><CircularProgress /></div>;
+        return <div className="flex justify-center p-8"><CircularProgress sx={{ color: '#ec4899' }} /></div>;
     }
 
     if (mcqs.length === 0) {
         return (
             <div className="text-center p-8 space-y-4">
-                <p className="text-gray-500">{t('reviewerRegistration.mcq.noMcqs')}</p>
+                <p className="text-white/70">{t('reviewerRegistration.mcq.noMcqs')}</p>
                 <button 
                     onClick={handleFallbackComplete}
                     disabled={isSubmitting}
-                    className="px-6 py-2 bg-[#6B1D4A] text-white rounded-lg hover:bg-[#8C2963] transition-colors flex items-center justify-center gap-2 mx-auto disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="px-6 py-2.5 bg-gradient-to-r from-[#8C2963] to-[#6B1D4A] hover:from-[#9d2e6f] hover:to-[#7c2256] text-white rounded-xl shadow-[0_4px_20px_rgba(140,41,99,0.4)] transition-all flex items-center justify-center gap-2 mx-auto disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                     {isSubmitting && <CircularProgress size={18} color="inherit" />}
                     {t('reviewerRegistration.mcq.proceedBtn')}
@@ -155,9 +155,9 @@ const ReviewerMCQ: React.FC<Props> = ({ sessionId, onComplete }) => {
     }
 
     return (
-        <div className="space-y-8 py-2">
+        <div className="space-y-6 py-2">
             {submitted && (
-                <div className={`p-4 rounded-xl border ${score >= mcqs.length ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
+                <div className={`p-4 rounded-xl border backdrop-blur-md ${score >= mcqs.length ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-200' : 'bg-rose-950/60 border-rose-500/40 text-rose-200'}`}>
                     <h3 className="text-lg font-bold">{t('reviewerRegistration.mcq.scoreText', { score, total: mcqs.length })}</h3>
                     <p className="text-sm mt-1">
                         {score >= mcqs.length 
@@ -167,10 +167,10 @@ const ReviewerMCQ: React.FC<Props> = ({ sessionId, onComplete }) => {
                 </div>
             )}
 
-            <div className="space-y-6">
+            <div className="space-y-5">
                 {mcqs.map((mcq, index) => (
-                    <div key={mcq._id} className="bg-gray-50 dark:bg-gray-800/30 p-5 rounded-xl border border-gray-100 dark:border-gray-700/50">
-                        <h4 className="font-medium text-[#1E293B] dark:text-[#F8FAFC] mb-3">
+                    <div key={mcq._id} className="bg-white/[0.04] p-5 rounded-2xl border border-white/10 backdrop-blur-md shadow-sm">
+                        <h4 className="font-semibold text-white/95 mb-3 text-base">
                             {index + 1}. {mcq.questionText}
                         </h4>
                         <FormControl component="fieldset" className="w-full">
@@ -182,15 +182,15 @@ const ReviewerMCQ: React.FC<Props> = ({ sessionId, onComplete }) => {
                                     <FormControlLabel
                                         key={optIdx}
                                         value={optIdx}
-                                        control={<Radio sx={{ color: '#6B1D4A', '&.Mui-checked': { color: '#6B1D4A' } }} />}
-                                        label={option}
+                                        control={<Radio sx={{ color: 'rgba(255, 255, 255, 0.6)', '&.Mui-checked': { color: '#ec4899' } }} />}
+                                        label={<span className="text-sm text-white/90">{option}</span>}
                                         disabled={submitted}
-                                        className={`ml-0 mb-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${
+                                        className={`ml-0 mb-1 rounded-xl p-1.5 transition-colors border ${
                                             submitted && optIdx === mcq.correctOptionIndex 
-                                                ? 'bg-green-100 dark:bg-green-900/30 font-medium' 
+                                                ? 'bg-emerald-500/20 border-emerald-400/40 text-emerald-200 font-medium' 
                                                 : submitted && answers[mcq._id] === optIdx && answers[mcq._id] !== mcq.correctOptionIndex
-                                                ? 'bg-red-100 dark:bg-red-900/30'
-                                                : ''
+                                                ? 'bg-rose-500/20 border-rose-400/40 text-rose-200'
+                                                : 'border-transparent hover:bg-white/[0.06] hover:border-white/10'
                                         }`}
                                     />
                                 ))}
@@ -200,11 +200,11 @@ const ReviewerMCQ: React.FC<Props> = ({ sessionId, onComplete }) => {
                 ))}
             </div>
 
-            <div className="flex justify-end pt-4 gap-4">
+            <div className="flex justify-end pt-2 gap-4">
                 {submitted && score < mcqs.length && (
                     <button 
                         onClick={handleRetry} 
-                        className="px-6 py-2 border border-[#6B1D4A] text-[#6B1D4A] rounded-lg hover:bg-pink-50 transition-colors"
+                        className="px-6 py-2.5 border border-pink-400/40 text-pink-300 rounded-xl hover:bg-pink-500/10 transition-colors font-medium cursor-pointer"
                     >
                         {t('reviewerRegistration.mcq.retryBtn')}
                     </button>
@@ -213,7 +213,7 @@ const ReviewerMCQ: React.FC<Props> = ({ sessionId, onComplete }) => {
                     <button 
                         onClick={handleSubmit} 
                         disabled={isSubmitting}
-                        className="px-6 py-2 bg-[#6B1D4A] text-white rounded-lg hover:bg-[#8C2963] transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                        className="px-6 py-2.5 bg-gradient-to-r from-[#8C2963] to-[#6B1D4A] hover:from-[#9d2e6f] hover:to-[#7c2256] text-white rounded-xl shadow-[0_4px_20px_rgba(140,41,99,0.4)] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer font-semibold"
                     >
                         {isSubmitting && <CircularProgress size={18} color="inherit" />}
                         {t('reviewerRegistration.mcq.submitBtn')}

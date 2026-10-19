@@ -115,8 +115,8 @@ const AppRouter = () => {
             {/* Header */}
             {!hideLayout && <Header />}
 
-            <div className="flex flex-auto flex-col min-h-[calc(100vh-64px)]">
-                <div className="flex-grow flex flex-col relative z-20">
+            <div className={`flex flex-auto flex-col ${location.pathname === "/reviewer-registration" ? "min-h-[calc(100vh-80px)] bg-[#020204]" : "min-h-[calc(100vh-64px)]"}`}>
+                <div className={`flex-grow flex flex-col relative z-20 ${location.pathname === "/reviewer-registration" ? "h-full bg-[#020204]" : ""}`}>
                     <Suspense fallback={<LoadingSpinner />}>
                         <Routes>
                             {/* Public Routes */}

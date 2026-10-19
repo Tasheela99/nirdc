@@ -1,25 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PageHero from "@/components/common/PageHero";
-import { Download, Search, FileText, Calendar, Tag, HardDrive } from "lucide-react";
+import { Download, Search, FileText, Calendar, HardDrive } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import DownloadApi, { DownloadData } from "@/api/DownloadApi";
-
-interface CategoryTab {
-  key: string;
-  en: string;
-  si: string;
-  ta: string;
-}
-
-const CATEGORY_TABS: CategoryTab[] = [
-  { key: "ALL", en: "All Downloads", si: "සියලු බාගත කිරීම්", ta: "அனைத்து பதிவிறக்கங்கள்" },
-  { key: "CIRCULAR", en: "Circular Templates (PDF)", si: "චක්‍රලේඛ ආකෘති (PDF)", ta: "சுற்றறிக்கை படிவங்கள் (PDF)" },
-  { key: "REPORT", en: "Report Templates", si: "වාර්තා ආකෘති", ta: "அறிக்கை படிவங்கள்" },
-  { key: "ETHICS", en: "Code of Ethics Templates", si: "ආචාරධර්ම සංග්‍රහ ආකෘති", ta: "நெறிமுறை விதிகள் படிவங்கள்" },
-  { key: "DOCUMENT", en: "Document Templates", si: "ලේඛන ආකෘති", ta: "ஆவணப் படிවங்கள்" },
-  { key: "APPLICATION", en: "Job Application Forms", si: "තනතුරු සඳහා අයදුම්පත් ආකෘති", ta: "வேலை விண்ணப்பப் படிவங்கள்" },
-  { key: "OTHER", en: "General Downloads", si: "සාමාන්‍ය බාගත කිරීම්", ta: "பொது பதிவிறக்கங்கள்" },
-];
 
 const fallbackDownloads: DownloadData[] = [
   {
@@ -128,7 +111,6 @@ const DownloadsPage: React.FC = () => {
     ? "ta"
     : "en";
 
-  const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [downloads, setDownloads] = useState<DownloadData[]>(fallbackDownloads);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -163,9 +145,6 @@ const DownloadsPage: React.FC = () => {
   };
 
   const filteredFiles = downloads.filter((file) => {
-    const matchesCategory =
-      selectedCategory === "ALL" || file.categoryKey === selectedCategory;
-
     const titleText = (file.title?.[langKey] || file.title?.en || "").toLowerCase();
     const descText = (file.description?.[langKey] || file.description?.en || "").toLowerCase();
     const docNum = (file.documentNumber || "").toLowerCase();
@@ -174,7 +153,7 @@ const DownloadsPage: React.FC = () => {
     const matchesSearch =
       !q || titleText.includes(q) || descText.includes(q) || docNum.includes(q);
 
-    return matchesCategory && matchesSearch;
+    return matchesSearch;
   });
 
   return (
@@ -196,44 +175,20 @@ const DownloadsPage: React.FC = () => {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
-        {/* Search and Category Filters */}
-        <div className="flex flex-col gap-5 bg-white dark:bg-white/5 p-5 sm:p-6 rounded-3xl border border-gray-200 dark:border-white/10 shadow-sm">
-          <div className="relative w-full">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-            <input
-              type="text"
-              placeholder={
-                langKey === "si"
-                  ? "ලේඛනය හෝ චක්‍රලේඛ අංකය සොයන්න..."
-                  : "Search by title, description, or reference number..."
-              }
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 rounded-2xl border border-gray-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-sm focus:outline-none focus:ring-2 focus:ring-primary dark:text-white"
-            />
-          </div>
-
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 pt-1">
-            {CATEGORY_TABS.map((tab) => {
-              const isSelected = selectedCategory === tab.key;
-              const label = tab[langKey] || tab.en;
-              return (
-                <button
-                  key={tab.key}
-                  onClick={() => setSelectedCategory(tab.key)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 flex items-center gap-1.5 ${
-                    isSelected
-                      ? "bg-primary text-white shadow-md shadow-primary/20 scale-[1.02]"
-                      : "bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/15"
-                  }`}
-                >
-                  <Tag size={12} className={isSelected ? "text-white" : "text-gray-400"} />
-                  <span>{label}</span>
-                </button>
-              );
-            })}
-          </div>
+        {/* Search Bar */}
+        <div className="relative w-full">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+          <input
+            type="text"
+            placeholder={
+              langKey === "si"
+                ? "ලේඛනය හෝ චක්‍රලේඛ අංකය සොයන්න..."
+                : "Search by title, description, or reference number..."
+            }
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-11 pr-4 py-3.5 rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-primary dark:text-white"
+          />
         </div>
 
         {/* Files Grid */}
@@ -251,8 +206,8 @@ const DownloadsPage: React.FC = () => {
             </h3>
             <p className="text-xs text-gray-500">
               {langKey === "si"
-                ? "තෝරාගත් කාණ්ඩයට අදාළ ලේඛන නොමැත. කරුණාකර වෙනත් කාණ්ඩයක් තෝරන්න."
-                : "No matching documents found for this filter. Please try a different category."}
+                ? "සොයන ලද වචන වලට අදාළ ලේඛන හමු නොවීය. කරුණාකර වෙනත් සෙවුම් වචනයක් භාවිතා කරන්න."
+                : "No matching documents found. Please try a different search term."}
             </p>
           </div>
         ) : (

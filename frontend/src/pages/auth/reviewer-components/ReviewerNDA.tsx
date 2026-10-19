@@ -29,10 +29,10 @@ const ReviewerNDA: React.FC<Props> = ({ completed, onComplete }) => {
 
     return (
         <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-[#6B1D4A] dark:text-[#B84B8E]">{t('reviewerRegistration.nda.heading')}</h3>
+            <h3 className="text-lg font-semibold text-pink-300 tracking-wide">{t('reviewerRegistration.nda.heading')}</h3>
             
-            <div className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg p-6 h-64 overflow-y-auto shadow-inner text-sm text-gray-700 dark:text-gray-300 leading-relaxed font-body space-y-4">
-                <h4 className="font-bold text-center mb-4">{t('reviewerRegistration.nda.docTitle')}</h4>
+            <div className="bg-black/40 border border-white/15 rounded-2xl p-6 h-64 overflow-y-auto shadow-inner text-sm text-white/85 leading-relaxed font-body space-y-4 backdrop-blur-md">
+                <h4 className="font-bold text-center mb-4 text-white text-base">{t('reviewerRegistration.nda.docTitle')}</h4>
                 <p>{t('reviewerRegistration.nda.p1')}</p>
                 
                 <p><strong>{t('reviewerRegistration.nda.p2').split(':')[0]}:</strong> {t('reviewerRegistration.nda.p2').split(':')[1]}</p>
@@ -41,22 +41,21 @@ const ReviewerNDA: React.FC<Props> = ({ completed, onComplete }) => {
                 <p><strong>{t('reviewerRegistration.nda.p5').split(':')[0]}:</strong> {t('reviewerRegistration.nda.p5').split(':')[1]}</p>
                 <p><strong>{t('reviewerRegistration.nda.p6').split(':')[0]}:</strong> {t('reviewerRegistration.nda.p6').split(':')[1]}</p>
                 
-                <p className="mt-4 font-semibold text-center italic">
+                <p className="mt-4 font-semibold text-center italic text-pink-200">
                     {t('reviewerRegistration.nda.p7')}
                 </p>
             </div>
             
-            <div className="mt-2 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 p-3 rounded-lg flex items-center">
+            <div className="mt-2 bg-white/[0.04] border border-white/15 p-3.5 rounded-xl flex items-center backdrop-blur-md">
                 <FormControlLabel
                     control={
                         <Checkbox 
                             checked={checked} 
                             onChange={(e) => setChecked(e.target.checked)}
-                            sx={{ '&.Mui-checked': { color: '#6B1D4A' } }}
+                            sx={{ color: 'rgba(255, 255, 255, 0.6)', '&.Mui-checked': { color: '#ec4899' } }}
                         />
                     }
-                    label={t('reviewerRegistration.nda.confirm')}
-                    className="text-sm font-medium"
+                    label={<span className="text-sm font-medium text-white/90">{t('reviewerRegistration.nda.confirm')}</span>}
                 />
             </div>
 
@@ -64,7 +63,11 @@ const ReviewerNDA: React.FC<Props> = ({ completed, onComplete }) => {
                 <button
                     onClick={handleComplete}
                     disabled={!checked || isLoading}
-                    className={`px-8 py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2 font-semibold ${checked ? 'bg-[#6B1D4A] text-white hover:bg-[#8C2963] shadow-md' : 'bg-gray-300 dark:bg-white/10 text-gray-500 dark:text-gray-400 cursor-not-allowed'} disabled:opacity-70 disabled:cursor-not-allowed`}
+                    className={`px-8 py-2.5 rounded-xl transition-all flex items-center justify-center gap-2 font-semibold ${
+                        checked 
+                            ? 'bg-gradient-to-r from-[#8C2963] to-[#6B1D4A] hover:from-[#9d2e6f] hover:to-[#7c2256] text-white shadow-[0_4px_20px_rgba(140,41,99,0.4)] cursor-pointer' 
+                            : 'bg-white/10 text-white/40 border border-white/10 cursor-not-allowed'
+                    } disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
                     {isLoading ? <CircularProgress size={18} color="inherit" /> : <CheckCircle size={18} />}
                     {t('reviewerRegistration.nda.acceptBtn')}

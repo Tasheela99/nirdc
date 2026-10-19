@@ -6,6 +6,8 @@ import { useAlert } from "../../components/common/AlertContextScreen.tsx";
 import UserContext from "../../store/UserContext.tsx";
 import authApi from "../../api/AuthApi.ts";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import VantaNetBackground from "../../components/common/VantaNetBackground.tsx";
 
 const ForceChangePasswordScreen = () => {
     const { t } = useTranslation();
@@ -63,45 +65,65 @@ const ForceChangePasswordScreen = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50 p-4">
-            <div className="w-full max-w-md">
-                {/* Card */}
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="relative min-h-[calc(100vh-80px)] sm:min-h-screen flex items-center justify-center overflow-hidden px-4 py-12 bg-gradient-to-b from-[#0b0c14] via-[#06070a] to-[#020204]">
+            {/* Background Glows for depth */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-white/[0.08] rounded-full blur-[140px] pointer-events-none" />
+            <div className="absolute bottom-10 left-10 w-72 h-72 bg-white/[0.04] rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute top-10 right-10 w-72 h-72 bg-white/[0.04] rounded-full blur-[100px] pointer-events-none" />
+
+            {/* 3D Vanta Net Animated Background */}
+            <VantaNetBackground
+                color={0xFF0B132B}
+                backgroundColor={0x0b0208}
+                points={18.0}
+                maxDistance={42.0}
+                spacing={28.0}
+                showDots={true}
+            />
+
+            <div className="relative z-10 w-full max-w-md">
+                {/* Glassmorphic Card */}
+                <motion.div
+                    initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.55, ease: "easeOut" }}
+                    className="rounded-3xl overflow-hidden border border-white/25 backdrop-blur-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.35)]"
+                    style={{
+                        background: "linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%)",
+                    }}
+                >
                     {/* Header */}
-                    <div
-                        className="p-6 text-center"
-                        style={{ background: 'linear-gradient(135deg, #001d4a 0%, #003893 100%)' }}
-                    >
-                        <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                    <div className="p-8 text-center border-b border-white/15 bg-gradient-to-br from-white/[0.12] via-white/[0.05] to-black/30 backdrop-blur-xl">
+                        <div className="w-16 h-16 bg-white/15 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-inner border border-white/20 backdrop-blur-md">
                             <ShieldCheck size={32} className="text-white" />
                         </div>
-                        <h1 className="text-xl font-bold text-white">Change Your Password</h1>
-                        <p className="text-white/70 text-sm mt-1">
+                        <h1 className="text-2xl font-bold text-white tracking-tight drop-shadow-sm">Change Your Password</h1>
+                        <p className="text-white/70 text-sm mt-1.5 font-light">
                             You must change your temporary password before continuing
                         </p>
                     </div>
 
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="p-6 space-y-5">
+                    <form onSubmit={handleSubmit} className="p-8 space-y-5">
                         {/* Current/Temp Password */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            <label className="block text-xs font-semibold uppercase tracking-wider text-white/80 mb-2">
                                 Current (Temporary) Password
                             </label>
                             <div className="relative">
-                                <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/50" />
                                 <input
                                     type={showOld ? "text" : "password"}
                                     value={oldPassword}
                                     onChange={(e) => setOldPassword(e.target.value)}
                                     required
-                                    className="w-full pl-10 pr-10 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#003893]/20 focus:border-[#003893] transition-all"
+                                    className="w-full pl-10 pr-10 py-3 bg-white/[0.08] border border-white/20 rounded-xl text-sm text-white placeholder-white/40 focus:outline-none focus:border-[#e279b5] focus:ring-1 focus:ring-[#e279b5] transition-all backdrop-blur-[8px]"
                                     placeholder="Enter your temporary password"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowOld(!showOld)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/50 hover:text-white"
                                 >
                                     {showOld ? <EyeOff size={16} /> : <Eye size={16} />}
                                 </button>
@@ -110,23 +132,23 @@ const ForceChangePasswordScreen = () => {
 
                         {/* New Password */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            <label className="block text-xs font-semibold uppercase tracking-wider text-white/80 mb-2">
                                 New Password
                             </label>
                             <div className="relative">
-                                <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/50" />
                                 <input
                                     type={showNew ? "text" : "password"}
                                     value={newPassword}
                                     onChange={(e) => setNewPassword(e.target.value)}
                                     required
-                                    className="w-full pl-10 pr-10 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#003893]/20 focus:border-[#003893] transition-all"
+                                    className="w-full pl-10 pr-10 py-3 bg-white/[0.08] border border-white/20 rounded-xl text-sm text-white placeholder-white/40 focus:outline-none focus:border-[#e279b5] focus:ring-1 focus:ring-[#e279b5] transition-all backdrop-blur-[8px]"
                                     placeholder="Create a new password (min 8 chars)"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowNew(!showNew)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/50 hover:text-white"
                                 >
                                     {showNew ? <EyeOff size={16} /> : <Eye size={16} />}
                                 </button>
@@ -135,23 +157,23 @@ const ForceChangePasswordScreen = () => {
 
                         {/* Confirm New Password */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            <label className="block text-xs font-semibold uppercase tracking-wider text-white/80 mb-2">
                                 Confirm New Password
                             </label>
                             <div className="relative">
-                                <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/50" />
                                 <input
                                     type={showConfirm ? "text" : "password"}
                                     value={confirmNewPassword}
                                     onChange={(e) => setConfirmNewPassword(e.target.value)}
                                     required
-                                    className="w-full pl-10 pr-10 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#003893]/20 focus:border-[#003893] transition-all"
+                                    className="w-full pl-10 pr-10 py-3 bg-white/[0.08] border border-white/20 rounded-xl text-sm text-white placeholder-white/40 focus:outline-none focus:border-[#e279b5] focus:ring-1 focus:ring-[#e279b5] transition-all backdrop-blur-[8px]"
                                     placeholder="Confirm your new password"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowConfirm(!showConfirm)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/50 hover:text-white"
                                 >
                                     {showConfirm ? <EyeOff size={16} /> : <Eye size={16} />}
                                 </button>
@@ -162,8 +184,7 @@ const ForceChangePasswordScreen = () => {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full py-3 rounded-lg text-white font-semibold text-sm transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25 flex items-center justify-center gap-2 disabled:opacity-60"
-                            style={{ background: 'linear-gradient(135deg, #003893, #2E86C1)' }}
+                            className="w-full py-3.5 rounded-xl text-white font-semibold text-sm transition-all duration-200 shadow-lg shadow-[#8C2963]/30 hover:shadow-xl hover:shadow-[#8C2963]/40 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 disabled:opacity-60 bg-gradient-to-r from-[#8C2963] via-[#a03273] to-[#6B1D4A] hover:from-[#9C3872] hover:to-[#8C2963]"
                         >
                             {isLoading ? (
                                 <CircularProgress size={20} sx={{ color: 'white' }} />
@@ -175,7 +196,7 @@ const ForceChangePasswordScreen = () => {
                             )}
                         </button>
                     </form>
-                </div>
+                </motion.div>
             </div>
         </div>
     );

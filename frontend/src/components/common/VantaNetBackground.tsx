@@ -16,7 +16,8 @@ interface VantaNetBackgroundProps {
 const VantaNetBackground: React.FC<VantaNetBackgroundProps> = ({
   className = "",
   style = {},
-  color = 0x8C2963,
+  // color = 0xFF0B132B,
+  color = 0xFF0B132B,
   backgroundColor = 0x000000,
   points = 20.0,
   maxDistance = 45.0,
@@ -37,7 +38,7 @@ const VantaNetBackground: React.FC<VantaNetBackgroundProps> = ({
 
       try {
         const vantaFn = (NET as any)?.default || NET;
-        // Normalize 32-bit hex (e.g. 0xFF8C2963) to 24-bit 0x8C2963 for Three.js
+        // Normalize 32-bit hex (e.g. 0xFF8C2963) to 24-bit 0xFF0B132B for Three.js
         const resolvedColor =
           typeof color === "number" && color > 0xffffff ? color & 0xffffff : color;
         const resolvedBg =

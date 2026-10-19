@@ -1,8 +1,8 @@
-import {FormEvent, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
-import {countries} from "countries-list";
-import {z} from "zod";
+import { countries } from "countries-list";
+import { z } from "zod";
 import logo from "../../assets/NIRDC-logo-SVG.svg";
 import authApi from "../../api/AuthApi";
 import PhoneInput from "react-phone-number-input";
@@ -14,25 +14,26 @@ import {
     InputAdornment,
     TextField,
 } from "@mui/material";
-import {useAlert} from "../../components/common/AlertContextScreen.tsx";
-import {motion} from "framer-motion";
-import {User, Briefcase, Building2, Mail, Eye, EyeOff, Globe, Phone, ArrowRight, ArrowLeft} from "lucide-react";
+import { useAlert } from "../../components/common/AlertContextScreen.tsx";
+import { motion } from "framer-motion";
+import { User, Briefcase, Building2, Mail, Eye, EyeOff, Globe, Phone, ArrowRight, ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import VantaNetBackground from "../../components/common/VantaNetBackground.tsx";
 
 const SignUpSchema = z.object({
-    firstName: z.string().min(2, {message: 'First name must be at least 2 characters'}),
-    lastName: z.string().min(2, {message: 'Last name must be at least 2 characters'}),
-    designation: z.string().min(1, {message: 'Designation is required'}),
-    institution: z.string().min(1, {message: 'Institution is required'}),
-    mobile: z.string().min(10, {message: 'Invalid mobile number'}),
-    email: z.string().email({message: 'Invalid email address'}),
-    country: z.string().min(1, {message: 'Country is required'}),
+    firstName: z.string().min(2, { message: 'First name must be at least 2 characters' }),
+    lastName: z.string().min(2, { message: 'Last name must be at least 2 characters' }),
+    designation: z.string().min(1, { message: 'Designation is required' }),
+    institution: z.string().min(1, { message: 'Institution is required' }),
+    mobile: z.string().min(10, { message: 'Invalid mobile number' }),
+    email: z.string().email({ message: 'Invalid email address' }),
+    country: z.string().min(1, { message: 'Country is required' }),
     password: z.string()
-        .min(8, {message: 'Password must be at least 8 characters'})
-        .regex(/[A-Z]/, {message: 'Password must contain an uppercase letter'})
-        .regex(/[a-z]/, {message: 'Password must contain a lowercase letter'})
-        .regex(/[0-9]/, {message: 'Password must contain a number'})
-        .regex(/[@$!%*?&]/, {message: 'Password must contain at least one special character (@, $, !, %, *, ?, &)'}),
+        .min(8, { message: 'Password must be at least 8 characters' })
+        .regex(/[A-Z]/, { message: 'Password must contain an uppercase letter' })
+        .regex(/[a-z]/, { message: 'Password must contain a lowercase letter' })
+        .regex(/[0-9]/, { message: 'Password must contain a number' })
+        .regex(/[@$!%*?&]/, { message: 'Password must contain at least one special character (@, $, !, %, *, ?, &)' }),
     confirmPassword: z.string()
 }).refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
@@ -54,7 +55,7 @@ const countryOptions: OptionType[] = Object.entries(countries).map(([, country])
 const SignUpPage = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const {showAlert} = useAlert();
+    const { showAlert } = useAlert();
     const [formData, setFormData] = useState<any>({
         firstName: "",
         lastName: "",
@@ -116,11 +117,11 @@ const SignUpPage = () => {
                 navigate(`/security/verify-account/${formData.email}`);
             } else {
                 if (response.label === "USER_EMAIL_EXISTS") {
-                    setErrors((prev) => ({...prev, email: t('messages.emailAlreadyRegistered')}));
+                    setErrors((prev) => ({ ...prev, email: t('messages.emailAlreadyRegistered') }));
                     showAlert(t('messages.emailAlreadyRegistered'), "error");
                 }
                 if (response.label === "USER_PHONE_EXISTS") {
-                    setErrors((prev) => ({...prev, mobile: t('messages.phoneAlreadyRegistered')}));
+                    setErrors((prev) => ({ ...prev, mobile: t('messages.phoneAlreadyRegistered') }));
                     showAlert(t('messages.phoneAlreadyRegistered'), "error");
                 } else {
                     showAlert(response.message || t('messages.registrationFailed'), "error");
@@ -135,10 +136,10 @@ const SignUpPage = () => {
                     showAlert(errorData?.message || t('messages.tooManyAttempts'), "error");
                 } else if (errorData) {
                     if (errorData.label === "USER_EMAIL_EXISTS") {
-                        setErrors((prev) => ({...prev, email: t('messages.emailAlreadyRegistered')}));
+                        setErrors((prev) => ({ ...prev, email: t('messages.emailAlreadyRegistered') }));
                         showAlert(t('messages.emailAlreadyRegistered'), "error");
                     } else if (errorData.label === "USER_PHONE_EXISTS") {
-                        setErrors((prev) => ({...prev, mobile: t('messages.phoneAlreadyRegistered')}));
+                        setErrors((prev) => ({ ...prev, mobile: t('messages.phoneAlreadyRegistered') }));
                         showAlert(t('messages.phoneAlreadyRegistered'), "error");
                     } else if (errorData.errors && Array.isArray(errorData.errors) && errorData.errors.length > 0) {
                         showAlert(errorData.errors[0], "error");
@@ -167,58 +168,117 @@ const SignUpPage = () => {
     };
 
     const handleMobileChange = (value: string | undefined) => {
-        setFormData((prev: any) => ({...prev, mobile: value || ""}));
+        setFormData((prev: any) => ({ ...prev, mobile: value || "" }));
     };
 
     const handleChange = (field: keyof typeof formData, value: string) => {
-        setFormData((prev: any) => ({...prev, [field]: value}));
+        setFormData((prev: any) => ({ ...prev, [field]: value }));
         if (errors[field as keyof typeof errors]) {
             setErrors((prev) => {
-                const newErrors = {...prev};
+                const newErrors = { ...prev };
                 delete newErrors[field as keyof typeof errors];
                 return newErrors;
             });
         }
     };
 
+    const glassInputSx = {
+        "& .MuiOutlinedInput-root": {
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            backdropFilter: "blur(8px)",
+            borderRadius: "14px",
+            color: "#ffffff",
+            transition: "all 0.2s ease-in-out",
+            "& fieldset": {
+                borderColor: "rgba(255, 255, 255, 0.22)",
+            },
+            "&:hover fieldset": {
+                borderColor: "rgba(235, 120, 180, 0.6)",
+            },
+            "&.Mui-focused": {
+                backgroundColor: "rgba(255, 255, 255, 0.12)",
+                "& fieldset": {
+                    borderColor: "#e279b5",
+                    borderWidth: "1.5px",
+                },
+            },
+        },
+        "& .MuiInputLabel-root": {
+            color: "rgba(255, 255, 255, 0.75)",
+            "&.Mui-focused": {
+                color: "#f8a5d3",
+                fontWeight: 600,
+            },
+        },
+        "& .MuiInputBase-input": {
+            color: "#ffffff",
+        },
+        "& .MuiFormHelperText-root": {
+            color: "rgba(255, 255, 255, 0.7)",
+            "&.Mui-error": {
+                color: "#f87171",
+            },
+        },
+    };
+
     return (
-        <div className="min-h-[80vh] flex items-center justify-center bg-[#FAFAFA] dark:bg-dark-bg px-4 py-12">
+        <div className="relative min-h-[calc(100vh-80px)] sm:min-h-screen flex items-center justify-center overflow-hidden px-4 py-12 bg-gradient-to-b from-[#0b0c14] via-[#06070a] to-[#020204]">
+            {/* Background Glows for depth */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-white/[0.08] rounded-full blur-[140px] pointer-events-none" />
+            <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/[0.04] rounded-full blur-[110px] pointer-events-none" />
+            <div className="absolute top-10 right-10 w-80 h-80 bg-white/[0.04] rounded-full blur-[110px] pointer-events-none" />
+
+            {/* 3D Vanta Net Animated Background */}
+            <VantaNetBackground
+                color={0xFF0B132B}
+                backgroundColor={0x0b0208}
+                points={18.0}
+                maxDistance={42.0}
+                spacing={28.0}
+                showDots={true}
+            />
+
+            {/* Glassmorphic Container Card */}
             <motion.div
-                initial={{opacity: 0, y: 20}}
-                animate={{opacity: 1, y: 0}}
-                transition={{duration: 0.6, ease: "easeOut"}}
-                className="w-full max-w-6xl bg-white dark:bg-dark-surface rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.4)] overflow-hidden flex flex-col lg:flex-row border border-black/5 dark:border-white/5"
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="relative z-10 w-full max-w-6xl rounded-3xl overflow-hidden flex flex-col lg:flex-row border border-white/25 backdrop-blur-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.35)]"
+                style={{
+                    background: "linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%)",
+                }}
             >
                 {/* Left - Branding Panel */}
-                <div className="hidden lg:flex lg:w-[45%] flex-col items-center justify-center bg-gradient-to-br from-primary to-primary-dark p-12 text-center">
+                <div className="hidden lg:flex lg:w-[45%] flex-col items-center justify-center p-12 text-center relative overflow-hidden border-r border-white/15 bg-gradient-to-br from-white/[0.12] via-white/[0.05] to-black/30 backdrop-blur-xl">
+                    <div className="absolute -top-24 -left-24 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
                     <img
                         src={logo}
                         alt="NIRDC Logo"
-                        className="w-48 h-auto mb-6 brightness-0 invert"
+                        className="w-48 h-auto mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.4)]"
                     />
-                    
-                    <h2 className="text-2xl font-bold text-white mb-3 tracking-tight">
+
+                    <h2 className="text-2xl font-bold text-white mb-3 tracking-tight drop-shadow-sm">
                         {t('auth.register.joinNirdc', 'Accelerate Innovation')}
                     </h2>
-                    
+
                     <p className="text-white/80 text-[0.95rem] max-w-xs leading-relaxed font-body font-light">
                         {t('auth.register.joinText', 'Join the premier platform connecting Sri Lankan researchers with visionary investors to commercialize high-impact R&D projects.')}
                     </p>
                 </div>
 
                 {/* Right - Form Panel */}
-                <div className="w-full lg:w-[55%] flex flex-col justify-center px-6 py-10 sm:px-12 lg:px-16 overflow-y-auto">
+                <div className="w-full lg:w-[55%] flex flex-col justify-center px-6 py-10 sm:px-12 lg:px-16 overflow-y-auto relative">
                     <div className="max-w-[480px] w-full mx-auto">
                         <div className="text-center lg:text-left mb-8">
                             <img
                                 src={logo}
                                 alt="NIRDC Logo"
-                                className="w-28 h-auto mx-auto mb-6 lg:hidden"
+                                className="w-32 h-auto mx-auto mb-6 lg:hidden drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]"
                             />
-                            <h1 className="text-3xl font-extrabold text-[#1A0D15] dark:text-white font-sans tracking-tight mb-2">
+                            <h1 className="text-3xl font-extrabold text-white font-sans tracking-tight mb-2 drop-shadow-sm">
                                 {t('auth.register.createAccount', 'Create Account')}
                             </h1>
-                            <p className="text-[#475569] dark:text-[#94A3B8] font-body text-sm">
+                            <p className="text-white/70 font-body text-sm font-light">
                                 {t('auth.register.fillDetails', 'Enter your professional details to access the portal.')}
                             </p>
                         </div>
@@ -234,11 +294,11 @@ const SignUpPage = () => {
                                     required
                                     error={!!errors.firstName}
                                     helperText={errors.firstName}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' } }}
+                                    sx={glassInputSx}
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <User size={16} className="text-[#94A3B8]" />
+                                                <User size={16} className="text-white/60" />
                                             </InputAdornment>
                                         ),
                                     }}
@@ -251,11 +311,11 @@ const SignUpPage = () => {
                                     required
                                     error={!!errors.lastName}
                                     helperText={errors.lastName}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' } }}
+                                    sx={glassInputSx}
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <User size={16} className="text-[#94A3B8]" />
+                                                <User size={16} className="text-white/60" />
                                             </InputAdornment>
                                         ),
                                     }}
@@ -272,11 +332,11 @@ const SignUpPage = () => {
                                     required
                                     error={!!errors.designation}
                                     helperText={errors.designation}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' } }}
+                                    sx={glassInputSx}
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <Briefcase size={16} className="text-[#94A3B8]" />
+                                                <Briefcase size={16} className="text-white/60" />
                                             </InputAdornment>
                                         ),
                                     }}
@@ -289,11 +349,11 @@ const SignUpPage = () => {
                                     required
                                     error={!!errors.institution}
                                     helperText={errors.institution}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' } }}
+                                    sx={glassInputSx}
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <Building2 size={16} className="text-[#94A3B8]" />
+                                                <Building2 size={16} className="text-white/60" />
                                             </InputAdornment>
                                         ),
                                     }}
@@ -311,20 +371,33 @@ const SignUpPage = () => {
                                         styles={{
                                             control: (base, state) => ({
                                                 ...base,
-                                                borderColor: errors.country ? '#d32f2f' : (state.isFocused ? '#6B1D4A' : '#c4c4c4'),
-                                                '&:hover': { borderColor: state.isFocused ? '#6B1D4A' : '#003893' },
-                                                boxShadow: state.isFocused ? '0 0 0 1px #6B1D4A' : 'none',
+                                                borderColor: errors.country ? '#d32f2f' : (state.isFocused ? '#e279b5' : 'rgba(255, 255, 255, 0.22)'),
+                                                '&:hover': { borderColor: state.isFocused ? '#e279b5' : 'rgba(235, 120, 180, 0.6)' },
+                                                boxShadow: state.isFocused ? '0 0 0 1px #e279b5' : 'none',
                                                 height: '56px',
                                                 minHeight: '56px',
-                                                borderRadius: '10px',
+                                                borderRadius: '14px',
                                                 fontSize: '1rem',
-                                                backgroundColor: 'transparent'
+                                                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                                                backdropFilter: 'blur(8px)',
+                                                color: '#ffffff'
                                             }),
-                                            menu: (base) => ({...base, zIndex: 1300, borderRadius: '10px', overflow: 'hidden'}),
+                                            singleValue: (base) => ({ ...base, color: '#ffffff' }),
+                                            input: (base) => ({ ...base, color: '#ffffff' }),
+                                            placeholder: (base) => ({ ...base, color: 'rgba(255, 255, 255, 0.75)' }),
+                                            menu: (base) => ({
+                                                ...base,
+                                                zIndex: 1300,
+                                                borderRadius: '14px',
+                                                overflow: 'hidden',
+                                                backgroundColor: '#1b0817',
+                                                border: '1px solid rgba(255, 255, 255, 0.15)',
+                                                backdropFilter: 'blur(16px)'
+                                            }),
                                             option: (base, state) => ({
                                                 ...base,
-                                                backgroundColor: state.isSelected ? '#6B1D4A' : state.isFocused ? '#F8F9FA' : 'transparent',
-                                                color: state.isSelected ? 'white' : '#1A0D15',
+                                                backgroundColor: state.isSelected ? '#8C2963' : state.isFocused ? 'rgba(140, 41, 99, 0.3)' : 'transparent',
+                                                color: 'white',
                                                 cursor: 'pointer'
                                             })
                                         }}
@@ -332,21 +405,22 @@ const SignUpPage = () => {
                                             IndicatorSeparator: () => null,
                                             DropdownIndicator: () => (
                                                 <div className="pr-2">
-                                                    <Globe size={16} className="text-[#94A3B8]" />
+                                                    <Globe size={16} className="text-white/60" />
                                                 </div>
                                             ),
                                         }}
                                     />
                                     {errors.country && (
-                                        <p className="text-[0.75rem] text-[#d32f2f] mt-1 ml-[14px] font-body">{errors.country}</p>
+                                        <p className="text-[0.75rem] text-[#f87171] mt-1 ml-[14px] font-body">{errors.country}</p>
                                     )}
                                 </div>
 
                                 <div>
-                                    <div className={`border rounded-[10px] px-3 h-[56px] flex items-center transition-all ${errors.mobile ? 'border-[#d32f2f]' : 'border-black/20 hover:border-black/30 dark:border-white/20 dark:hover:border-white/30'} focus-within:border-[#6B1D4A] focus-within:ring-1 focus-within:ring-[#6B1D4A] dark:focus-within:border-[#F2B705] dark:focus-within:ring-[#F2B705]`}>
+                                    <div className={`border rounded-[14px] px-3 h-[56px] flex items-center transition-all bg-white/[0.08] backdrop-blur-[8px] ${errors.mobile ? 'border-[#d32f2f]' : 'border-white/22 hover:border-pink-400/50'} focus-within:border-[#e279b5] focus-within:ring-1 focus-within:ring-[#e279b5]`}>
                                         <FormControl fullWidth sx={{
                                             '& .PhoneInput': { width: '100%', display: 'flex', alignItems: 'center' },
-                                            '& .PhoneInputInput': { border: 'none', outline: 'none', fontSize: '1rem', width: '100%', background: 'transparent', color: 'inherit' },
+                                            '& .PhoneInputInput': { border: 'none', outline: 'none', fontSize: '1rem', width: '100%', background: 'transparent', color: '#ffffff' },
+                                            '& .PhoneInputInput::placeholder': { color: 'rgba(255, 255, 255, 0.75)' },
                                             '& .PhoneInputInput:focus, & .PhoneInputInput:focus-visible': { outline: 'none !important', border: 'none !important', boxShadow: 'none !important' }
                                         }}>
                                             <div className="flex items-center w-full">
@@ -359,14 +433,14 @@ const SignUpPage = () => {
                                                     placeholder={t('auth.register.mobilePlaceholder', 'Mobile Number *')}
                                                     autoComplete="tel"
                                                 />
-                                                <Phone size={18} className="text-[#94A3B8] shrink-0 ml-2" />
+                                                <Phone size={18} className="text-white/60 shrink-0 ml-2" />
                                             </div>
                                         </FormControl>
                                     </div>
                                     {errors.mobile ? (
-                                        <p className="text-[0.75rem] text-[#d32f2f] mt-1 ml-[14px] font-body">{errors.mobile}</p>
+                                        <p className="text-[0.75rem] text-[#f87171] mt-1 ml-[14px] font-body">{errors.mobile}</p>
                                     ) : (
-                                        <p className="text-[0.75rem] text-[#64748B] mt-1 ml-[14px] font-body">
+                                        <p className="text-[0.75rem] text-white/60 mt-1 ml-[14px] font-body">
                                             {t('auth.register.mobileHelper', 'Used for account verification and project updates.')}
                                         </p>
                                     )}
@@ -384,11 +458,11 @@ const SignUpPage = () => {
                                 required
                                 error={!!errors.email}
                                 helperText={errors.email}
-                                sx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' } }}
+                                sx={glassInputSx}
                                 InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="end">
-                                            <Mail size={16} className="text-[#94A3B8]" />
+                                            <Mail size={16} className="text-white/60" />
                                         </InputAdornment>
                                     ),
                                 }}
@@ -406,12 +480,12 @@ const SignUpPage = () => {
                                     required
                                     error={!!errors.password}
                                     helperText={errors.password}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' } }}
+                                    sx={glassInputSx}
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <IconButton onClick={() => setShowPassword((prev) => !prev)} edge="end" size="small" className="hover:bg-transparent">
-                                                    {showPassword ? <Eye size={16} className="text-[#64748B]" /> : <EyeOff size={16} className="text-[#94A3B8]" />}
+                                                <IconButton onClick={() => setShowPassword((prev) => !prev)} edge="end" size="small" className="hover:bg-transparent" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+                                                    {showPassword ? <Eye size={16} className="text-pink-300" /> : <EyeOff size={16} className="text-white/50" />}
                                                 </IconButton>
                                             </InputAdornment>
                                         ),
@@ -427,12 +501,12 @@ const SignUpPage = () => {
                                     required
                                     error={!!errors.confirmPassword}
                                     helperText={errors.confirmPassword}
-                                    sx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' } }}
+                                    sx={glassInputSx}
                                     InputProps={{
                                         endAdornment: (
                                             <InputAdornment position="end">
-                                                <IconButton onClick={() => setShowConfirmPassword((prev) => !prev)} edge="end" size="small" className="hover:bg-transparent">
-                                                    {showConfirmPassword ? <Eye size={16} className="text-[#64748B]" /> : <EyeOff size={16} className="text-[#94A3B8]" />}
+                                                <IconButton onClick={() => setShowConfirmPassword((prev) => !prev)} edge="end" size="small" className="hover:bg-transparent" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+                                                    {showConfirmPassword ? <Eye size={16} className="text-pink-300" /> : <EyeOff size={16} className="text-white/50" />}
                                                 </IconButton>
                                             </InputAdornment>
                                         ),
@@ -445,7 +519,7 @@ const SignUpPage = () => {
                                 <button
                                     type="submit"
                                     disabled={isLoading}
-                                    className="group relative w-full flex items-center justify-center gap-2 bg-[#6B1D4A] hover:bg-[#8C2963] text-white font-sans font-semibold py-3 rounded-xl transition-all duration-300 shadow-[0_4px_14px_rgba(107,29,74,0.3)] hover:shadow-[0_6px_20px_rgba(107,29,74,0.4)] disabled:opacity-70 disabled:cursor-not-allowed disabled:shadow-none overflow-hidden cursor-pointer"
+                                    className="group relative w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#8C2963] via-[#a03273] to-[#6B1D4A] hover:from-[#9C3872] hover:to-[#8C2963] text-white font-sans font-semibold py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-[#8C2963]/30 hover:shadow-xl hover:shadow-[#8C2963]/40 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed disabled:shadow-none overflow-hidden cursor-pointer"
                                 >
                                     <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none" />
                                     {isLoading ? (
@@ -461,17 +535,17 @@ const SignUpPage = () => {
                                 <button
                                     type="button"
                                     onClick={() => navigate("/login")}
-                                    className="w-full flex items-center justify-center gap-1.5 text-[#475569] dark:text-[#94A3B8] hover:text-[#6B1D4A] dark:hover:text-[#F2B705] font-medium py-2 rounded-xl transition-colors duration-200 text-[0.85rem] cursor-pointer"
+                                    className="w-full flex items-center justify-center gap-1.5 text-white/80 hover:text-white font-medium py-2 rounded-xl transition-colors duration-200 text-[0.85rem] cursor-pointer"
                                 >
                                     <ArrowLeft size={14} />
                                     {t('auth.backToLogin', 'Already have an account? Sign in')}
                                 </button>
-                                
-                                <div className="pt-2 border-t border-black/10 dark:border-white/10 flex justify-center">
+
+                                <div className="pt-2 border-t border-white/10 flex justify-center">
                                     <button
                                         type="button"
                                         onClick={() => navigate("/reviewer-registration")}
-                                        className="text-[#003893] dark:text-blue-400 hover:underline font-medium text-[0.85rem] cursor-pointer"
+                                        className="text-pink-300 hover:text-pink-200 hover:underline font-medium text-[0.85rem] cursor-pointer"
                                     >
                                         I want to be a Reviewer
                                     </button>

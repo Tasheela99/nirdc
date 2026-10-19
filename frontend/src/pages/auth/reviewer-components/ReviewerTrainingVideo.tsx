@@ -129,17 +129,17 @@ const ReviewerTrainingVideo: React.FC<Props> = ({ completed, onComplete }) => {
     };
 
     if (isLoading) {
-        return <div className="flex justify-center p-8"><CircularProgress sx={{ color: '#6B1D4A' }} /></div>;
+        return <div className="flex justify-center p-8"><CircularProgress sx={{ color: '#ec4899' }} /></div>;
     }
 
     if (!videoUrl) {
         return (
-            <div className="flex flex-col items-center justify-center p-8 text-gray-500">
-                <p className="mb-4">{t('reviewerRegistration.video.unavailable')}</p>
+            <div className="flex flex-col items-center justify-center p-8 text-white/70">
+                <p className="mb-4 text-center">{t('reviewerRegistration.video.unavailable')}</p>
                 <button 
                     onClick={handleComplete}
                     disabled={isSubmitting}
-                    className="px-6 py-2 bg-[#6B1D4A] hover:bg-[#8C2963] text-white rounded-lg flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="px-6 py-2.5 bg-gradient-to-r from-[#8C2963] to-[#6B1D4A] hover:from-[#9d2e6f] hover:to-[#7c2256] text-white rounded-xl shadow-[0_4px_20px_rgba(140,41,99,0.4)] flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                     {isSubmitting && <CircularProgress size={18} color="inherit" />}
                     {t('reviewerRegistration.video.proceedBtn')}
@@ -151,7 +151,7 @@ const ReviewerTrainingVideo: React.FC<Props> = ({ completed, onComplete }) => {
     return (
         <div className="space-y-6 py-2">
             <div 
-                className="bg-black rounded-xl overflow-hidden shadow-md relative aspect-video flex items-center justify-center cursor-pointer group"
+                className="bg-black/80 rounded-2xl overflow-hidden shadow-2xl relative aspect-video flex items-center justify-center cursor-pointer group border border-white/15 backdrop-blur-md"
                 onClick={togglePlay}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
@@ -171,7 +171,7 @@ const ReviewerTrainingVideo: React.FC<Props> = ({ completed, onComplete }) => {
                 {/* Big play button in center when paused */}
                 {!isPlaying && (
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center pointer-events-none">
-                        <div className="w-16 h-16 bg-[#6B1D4A]/90 rounded-full flex items-center justify-center text-white transform group-hover:scale-110 transition-transform">
+                        <div className="w-16 h-16 bg-[#8C2963]/90 rounded-full flex items-center justify-center text-white transform group-hover:scale-110 transition-transform shadow-[0_0_25px_rgba(236,72,153,0.5)] border border-white/20">
                             <PlayCircle size={32} className="ml-1" />
                         </div>
                     </div>
@@ -198,7 +198,7 @@ const ReviewerTrainingVideo: React.FC<Props> = ({ completed, onComplete }) => {
                                 step="0.05" 
                                 value={volume} 
                                 onChange={handleVolumeChange} 
-                                className="w-0 overflow-hidden group-hover/volume:w-24 transition-all duration-300 accent-[#6B1D4A]"
+                                className="w-0 overflow-hidden group-hover/volume:w-24 transition-all duration-300 accent-[#ec4899]"
                             />
                         </div>
                     </div>
@@ -207,13 +207,13 @@ const ReviewerTrainingVideo: React.FC<Props> = ({ completed, onComplete }) => {
                         <select 
                             value={playbackRate} 
                             onChange={changePlaybackRate}
-                            className="bg-black/50 border border-white/20 rounded px-2 py-1 text-sm outline-none cursor-pointer hover:bg-black/70 transition-colors"
+                            className="bg-black/60 border border-white/20 rounded-lg px-2.5 py-1 text-sm text-white outline-none cursor-pointer hover:bg-black/80 transition-colors backdrop-blur-md"
                         >
-                            <option value={0.5}>0.5x</option>
-                            <option value={1}>1x</option>
-                            <option value={1.25}>1.25x</option>
-                            <option value={1.5}>1.5x</option>
-                            <option value={2}>2x</option>
+                            <option value={0.5} className="bg-[#1b0817] text-white">0.5x</option>
+                            <option value={1} className="bg-[#1b0817] text-white">1x</option>
+                            <option value={1.25} className="bg-[#1b0817] text-white">1.25x</option>
+                            <option value={1.5} className="bg-[#1b0817] text-white">1.5x</option>
+                            <option value={2} className="bg-[#1b0817] text-white">2x</option>
                         </select>
                         <button onClick={toggleFullscreen} className="hover:text-pink-300 transition-colors">
                             <Maximize size={24} />
@@ -222,17 +222,25 @@ const ReviewerTrainingVideo: React.FC<Props> = ({ completed, onComplete }) => {
                 </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <p className="text-sm text-gray-500 font-medium">
-                    {isVideoEnded ? <span className="text-green-600 flex items-center gap-1"><CheckCircle size={16}/> {t('reviewerRegistration.video.completed')}</span> : t('reviewerRegistration.video.required')}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+                <p className="text-sm font-medium">
+                    {isVideoEnded ? (
+                        <span className="text-emerald-400 flex items-center gap-1.5 font-semibold">
+                            <CheckCircle size={16}/> {t('reviewerRegistration.video.completed')}
+                        </span>
+                    ) : (
+                        <span className="text-white/70">
+                            {t('reviewerRegistration.video.required')}
+                        </span>
+                    )}
                 </p>
                 <button 
                     onClick={handleComplete} 
                     disabled={!isVideoEnded || isSubmitting}
-                    className={`px-8 py-2 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 ${
+                    className={`px-8 py-2.5 rounded-xl font-semibold transition-all flex items-center justify-center gap-2 ${
                         isVideoEnded 
-                        ? "bg-[#6B1D4A] hover:bg-[#8C2963] text-white disabled:opacity-70 disabled:cursor-not-allowed" 
-                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        ? "bg-gradient-to-r from-[#8C2963] to-[#6B1D4A] hover:from-[#9d2e6f] hover:to-[#7c2256] text-white shadow-[0_4px_20px_rgba(140,41,99,0.4)] cursor-pointer" 
+                        : "bg-white/10 text-white/40 border border-white/10 cursor-not-allowed"
                     }`}
                 >
                     {isSubmitting && <CircularProgress size={18} color="inherit" />}

@@ -50,6 +50,39 @@ const ResetPasswordPage = () => {
         }
     };
 
+    const glassInputSx = {
+        "& .MuiOutlinedInput-root": {
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            backdropFilter: "blur(8px)",
+            borderRadius: "14px",
+            color: "#ffffff",
+            transition: "all 0.2s ease-in-out",
+            "& fieldset": {
+                borderColor: "rgba(255, 255, 255, 0.22)",
+            },
+            "&:hover fieldset": {
+                borderColor: "rgba(235, 120, 180, 0.6)",
+            },
+            "&.Mui-focused": {
+                backgroundColor: "rgba(255, 255, 255, 0.12)",
+                "& fieldset": {
+                    borderColor: "#e279b5",
+                    borderWidth: "1.5px",
+                },
+            },
+        },
+        "& .MuiInputLabel-root": {
+            color: "rgba(255, 255, 255, 0.75)",
+            "&.Mui-focused": {
+                color: "#f8a5d3",
+                fontWeight: 600,
+            },
+        },
+        "& .MuiInputBase-input": {
+            color: "#ffffff",
+        },
+    };
+
     return (
         <AuthLayout
             title="Reset Password"
@@ -65,12 +98,13 @@ const ResetPasswordPage = () => {
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     required
+                    sx={glassInputSx}
                     onKeyDown={(e) => { if (e.key === " ") e.preventDefault(); }}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton onClick={() => setShowNewPassword(p => !p)} edge="end" size="small">
-                                    {showNewPassword ? <Eye size={18} className="text-gray-500" /> : <EyeOff size={18} className="text-gray-400" />}
+                                <IconButton onClick={() => setShowNewPassword(p => !p)} edge="end" size="small" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+                                    {showNewPassword ? <Eye size={18} className="text-pink-300" /> : <EyeOff size={18} className="text-white/50" />}
                                 </IconButton>
                             </InputAdornment>
                         ),
@@ -84,12 +118,13 @@ const ResetPasswordPage = () => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
+                    sx={glassInputSx}
                     onKeyDown={(e) => { if (e.key === " ") e.preventDefault(); }}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton onClick={() => setShowConfirmPassword(p => !p)} edge="end" size="small">
-                                    {showConfirmPassword ? <Eye size={18} className="text-gray-500" /> : <EyeOff size={18} className="text-gray-400" />}
+                                <IconButton onClick={() => setShowConfirmPassword(p => !p)} edge="end" size="small" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+                                    {showConfirmPassword ? <Eye size={18} className="text-pink-300" /> : <EyeOff size={18} className="text-white/50" />}
                                 </IconButton>
                             </InputAdornment>
                         ),
@@ -99,7 +134,7 @@ const ResetPasswordPage = () => {
                 <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#8C2963] via-[#a03273] to-[#6B1D4A] hover:from-[#9C3872] hover:to-[#8C2963] text-white font-semibold py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-[#8C2963]/30 hover:shadow-xl hover:shadow-[#8C2963]/40 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                     {isLoading ? <CircularProgress size={22} color="inherit" /> : <><KeyRound size={18} /> Reset Password</>}
                 </button>

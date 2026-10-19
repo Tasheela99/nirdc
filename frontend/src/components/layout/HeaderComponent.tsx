@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import logoLight from "../../assets/NIRDC-logo-LIGHT.svg";
+import logoLight from "../../assets/NIRDC-logo-SVG.svg";
 import emblem from "../../assets/Emblem_of_Sri_Lanka.svg";
 import { USER_ROLE } from "../../constants/AppConstants";
 import UserContext from "../../store/UserContext.tsx";
@@ -181,7 +181,7 @@ const Header: React.FC = () => {
                     setAboutNavConfig((prev) => ({ ...prev, ...res.data }));
                 }
             })
-            .catch(() => {});
+            .catch(() => { });
         return () => {
             isMounted = false;
         };
@@ -404,9 +404,8 @@ const Header: React.FC = () => {
                                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                                     exit={{ opacity: 0, y: -4, scale: 0.98 }}
                                                     transition={{ duration: 0.2, ease: "easeOut" }}
-                                                    className={`absolute right-0 top-full mt-[30px] ${
-                                                        visibleColCount === 1 ? 'w-[280px]' : visibleColCount === 2 ? 'w-[520px]' : visibleColCount === 3 ? 'w-[720px]' : 'w-[860px]'
-                                                    } rounded-xl sm:rounded-2xl z-50 overflow-hidden shadow-2xl`}
+                                                    className={`absolute right-0 top-full mt-[30px] ${visibleColCount === 1 ? 'w-[280px]' : visibleColCount === 2 ? 'w-[520px]' : visibleColCount === 3 ? 'w-[720px]' : 'w-[860px]'
+                                                        } rounded-xl sm:rounded-2xl z-50 overflow-hidden shadow-2xl`}
                                                     style={{
                                                         background: "linear-gradient(145deg, rgba(15, 23, 42, 0.94) 0%, rgba(28, 12, 24, 0.95) 50%, rgba(68, 18, 48, 0.93) 100%)",
                                                         border: "1px solid rgba(255,255,255,0.18)",

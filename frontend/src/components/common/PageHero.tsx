@@ -28,9 +28,8 @@ export const PageHero: React.FC<PageHeroProps> = ({
 }) => {
   return (
     <section
-      className={`relative overflow-hidden bg-gradient-to-b from-[#2e091f] via-[#190512] to-[#0c0309] text-white border-b border-white/10 ${
-        compact ? "pt-24 sm:pt-28 pb-8 sm:pb-10" : "pt-28 sm:pt-32 pb-10 sm:pb-14"
-      }`}
+      className={`relative overflow-hidden bg-gradient-to-b from-[#2e091f] via-[#190512] to-[#0c0309] text-white border-b border-white/10 ${compact ? "pt-24 sm:pt-28 pb-8 sm:pb-10" : "pt-28 sm:pt-32 pb-10 sm:pb-14"
+        }`}
     >
       {/* Background Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
@@ -39,7 +38,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
 
       {/* Vanta Net Background */}
       <VantaNetBackground
-        color={0x8C2963}
+        color={0xFF0B132B}
         backgroundColor={0x12030f}
         points={20.0}
         maxDistance={45.0}
@@ -99,11 +98,10 @@ export const PageHero: React.FC<PageHeroProps> = ({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className={`${
-            compact
-              ? "text-2xl sm:text-4xl lg:text-5xl mb-3"
-              : "text-3xl sm:text-5xl lg:text-6xl mb-4"
-          } font-extrabold text-white tracking-tight leading-tight font-sans`}
+          className={`${compact
+            ? "text-2xl sm:text-4xl lg:text-5xl mb-3"
+            : "text-3xl sm:text-5xl lg:text-6xl mb-4"
+            } font-extrabold text-white tracking-tight leading-tight font-sans`}
         >
           {title}
         </motion.h1>
@@ -114,11 +112,10 @@ export const PageHero: React.FC<PageHeroProps> = ({
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className={`${
-              compact
-                ? "text-sm sm:text-base max-w-2xl"
-                : "text-base sm:text-lg lg:text-xl max-w-3xl"
-            } text-white/80 leading-relaxed`}
+            className={`${compact
+              ? "text-sm sm:text-base max-w-2xl"
+              : "text-base sm:text-lg lg:text-xl max-w-3xl"
+              } text-white/80 leading-relaxed`}
           >
             {subtitle}
           </motion.p>

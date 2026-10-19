@@ -29,23 +29,22 @@ const ReviewerIntro: React.FC<Props> = ({ completed, onComplete }) => {
 
     return (
         <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-[#6B1D4A] dark:text-[#B84B8E]">{t('reviewerRegistration.intro.heading')}</h3>
-            <div className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed space-y-3">
+            <h3 className="text-lg font-semibold text-pink-300 tracking-wide">{t('reviewerRegistration.intro.heading')}</h3>
+            <div className="text-white/85 text-sm leading-relaxed space-y-3 font-light">
                 <p>{t('reviewerRegistration.intro.p1')}</p>
                 <p>{t('reviewerRegistration.intro.p2')}</p>
             </div>
             
-            <div className="mt-4 bg-gray-50 dark:bg-white/5 p-4 rounded-lg border border-gray-200 dark:border-white/10">
+            <div className="mt-4 bg-white/[0.04] p-4 rounded-xl border border-white/15 backdrop-blur-md">
                 <FormControlLabel
                     control={
                         <Checkbox 
                             checked={checked} 
                             onChange={(e) => setChecked(e.target.checked)}
-                            sx={{ '&.Mui-checked': { color: '#6B1D4A' } }}
+                            sx={{ color: 'rgba(255, 255, 255, 0.6)', '&.Mui-checked': { color: '#ec4899' } }}
                         />
                     }
-                    label={t('reviewerRegistration.intro.confirm')}
-                    className="text-sm"
+                    label={<span className="text-sm text-white/90 font-medium">{t('reviewerRegistration.intro.confirm')}</span>}
                 />
             </div>
 
@@ -53,7 +52,11 @@ const ReviewerIntro: React.FC<Props> = ({ completed, onComplete }) => {
                 <button 
                     onClick={handleComplete}
                     disabled={!checked || isLoading}
-                    className={`px-6 py-2 rounded-lg transition-colors flex items-center gap-2 ${checked ? 'bg-[#6B1D4A] text-white hover:bg-[#8C2963]' : 'bg-gray-300 dark:bg-white/10 text-gray-500 dark:text-gray-400 cursor-not-allowed'}`}
+                    className={`px-6 py-2.5 rounded-xl font-semibold transition-all flex items-center gap-2 ${
+                        checked 
+                            ? 'bg-gradient-to-r from-[#8C2963] to-[#6B1D4A] hover:from-[#9d2e6f] hover:to-[#7c2256] text-white shadow-[0_4px_20px_rgba(140,41,99,0.4)] cursor-pointer' 
+                            : 'bg-white/10 text-white/40 border border-white/10 cursor-not-allowed'
+                    }`}
                 >
                     {isLoading ? <CircularProgress size={18} color="inherit" /> : <CheckCircle size={18} />}
                     {t('reviewerRegistration.buttons.confirmProceed')}

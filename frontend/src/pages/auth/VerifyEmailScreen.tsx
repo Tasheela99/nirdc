@@ -39,6 +39,39 @@ const VerifyEmailPage = () => {
         }
     };
 
+    const glassInputSx = {
+        "& .MuiOutlinedInput-root": {
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            backdropFilter: "blur(8px)",
+            borderRadius: "14px",
+            color: "#ffffff",
+            transition: "all 0.2s ease-in-out",
+            "& fieldset": {
+                borderColor: "rgba(255, 255, 255, 0.22)",
+            },
+            "&:hover fieldset": {
+                borderColor: "rgba(235, 120, 180, 0.6)",
+            },
+            "&.Mui-focused": {
+                backgroundColor: "rgba(255, 255, 255, 0.12)",
+                "& fieldset": {
+                    borderColor: "#e279b5",
+                    borderWidth: "1.5px",
+                },
+            },
+        },
+        "& .MuiInputLabel-root": {
+            color: "rgba(255, 255, 255, 0.75)",
+            "&.Mui-focused": {
+                color: "#f8a5d3",
+                fontWeight: 600,
+            },
+        },
+        "& .MuiInputBase-input": {
+            color: "#ffffff",
+        },
+    };
+
     return (
         <AuthLayout
             title="Verify Email"
@@ -55,11 +88,12 @@ const VerifyEmailPage = () => {
                         value={email}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                         required
+                        sx={glassInputSx}
                         onKeyDown={(e) => { if (e.key === " ") e.preventDefault(); }}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
-                                    <Mail size={18} className="text-gray-400" />
+                                    <Mail size={18} className="text-white/60" />
                                 </InputAdornment>
                             ),
                         }}
@@ -74,10 +108,11 @@ const VerifyEmailPage = () => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOtp(e.target.value)}
                     required
                     inputProps={{maxLength: 8}}
+                    sx={glassInputSx}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
-                                <KeyRound size={18} className="text-gray-400" />
+                                <KeyRound size={18} className="text-white/60" />
                             </InputAdornment>
                         ),
                     }}
@@ -87,7 +122,7 @@ const VerifyEmailPage = () => {
                     <button
                         type="button"
                         onClick={() => navigate("/resend-otp")}
-                        className="text-sm text-primary dark:text-primary-light hover:underline font-medium flex items-center gap-1"
+                        className="text-sm text-pink-300 hover:text-pink-200 hover:underline font-medium flex items-center gap-1 transition-colors"
                     >
                         <RefreshCw size={14} /> {t('auth.verify.didntReceive')}
                     </button>
@@ -96,7 +131,7 @@ const VerifyEmailPage = () => {
                 <button
                     onClick={handleVerifyOtp}
                     disabled={isLoading}
-                    className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#8C2963] via-[#a03273] to-[#6B1D4A] hover:from-[#9C3872] hover:to-[#8C2963] text-white font-semibold py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-[#8C2963]/30 hover:shadow-xl hover:shadow-[#8C2963]/40 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                     {isLoading ? <CircularProgress size={22} color="inherit" /> : <><ShieldCheck size={18} /> Verify Email</>}
                 </button>
@@ -104,7 +139,7 @@ const VerifyEmailPage = () => {
                 <button
                     type="button"
                     onClick={() => navigate("/login")}
-                    className="w-full flex items-center justify-center gap-2 border-2 border-gray-300 dark:border-dark-border text-gray-700 dark:text-gray-300 hover:border-primary hover:text-primary font-medium py-2.5 rounded-xl transition-all duration-200 text-sm"
+                    className="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-pink-400/50 text-white font-medium py-3 rounded-xl transition-all duration-200 text-sm backdrop-blur-sm"
                 >
                     <ArrowLeft size={16} /> {t('auth.backToLogin')}
                 </button>

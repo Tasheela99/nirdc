@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Facebook, Youtube, Linkedin, Mail, MapPin, Globe, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logoLight from '../../assets/NIRDC-logo-LIGHT.svg';
+import logoLight from '../../assets/NIRDC-logo-SVG.svg';
 import { useTranslation } from 'react-i18next';
 
 const FooterComponent: FC = () => {

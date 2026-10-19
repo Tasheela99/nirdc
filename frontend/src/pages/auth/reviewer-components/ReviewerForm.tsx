@@ -144,6 +144,45 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
         }
     };
 
+    const glassInputSx = {
+        "& .MuiOutlinedInput-root": {
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            backdropFilter: "blur(8px)",
+            borderRadius: "14px",
+            color: "#ffffff",
+            transition: "all 0.2s ease-in-out",
+            "& fieldset": {
+                borderColor: "rgba(255, 255, 255, 0.22)",
+            },
+            "&:hover fieldset": {
+                borderColor: "rgba(235, 120, 180, 0.6)",
+            },
+            "&.Mui-focused": {
+                backgroundColor: "rgba(255, 255, 255, 0.12)",
+                "& fieldset": {
+                    borderColor: "#e279b5",
+                    borderWidth: "1.5px",
+                },
+            },
+        },
+        "& .MuiInputLabel-root": {
+            color: "rgba(255, 255, 255, 0.75)",
+            "&.Mui-focused": {
+                color: "#f8a5d3",
+                fontWeight: 600,
+            },
+        },
+        "& .MuiInputBase-input": {
+            color: "#ffffff",
+        },
+        "& .MuiFormHelperText-root": {
+            color: "rgba(255, 255, 255, 0.7)",
+            "&.Mui-error": {
+                color: "#f87171",
+            },
+        },
+    };
+
     return (
         <form onSubmit={handleSubmit} className="space-y-5 py-2">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -152,14 +191,16 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                     fullWidth value={formData.firstName}
                     onChange={(e) => handleChange("firstName", e.target.value)}
                     error={!!errors.firstName} helperText={errors.firstName}
-                    InputProps={{ endAdornment: <InputAdornment position="end"><User size={16} className="text-[#94A3B8]" /></InputAdornment> }}
+                    sx={glassInputSx}
+                    InputProps={{ endAdornment: <InputAdornment position="end"><User size={16} className="text-white/60" /></InputAdornment> }}
                 />
                 <TextField
                     label={t('auth.register.lastName', 'Last Name')}
                     fullWidth value={formData.lastName}
                     onChange={(e) => handleChange("lastName", e.target.value)}
                     error={!!errors.lastName} helperText={errors.lastName}
-                    InputProps={{ endAdornment: <InputAdornment position="end"><User size={16} className="text-[#94A3B8]" /></InputAdornment> }}
+                    sx={glassInputSx}
+                    InputProps={{ endAdornment: <InputAdornment position="end"><User size={16} className="text-white/60" /></InputAdornment> }}
                 />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -168,14 +209,16 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                     fullWidth value={formData.designation}
                     onChange={(e) => handleChange("designation", e.target.value)}
                     error={!!errors.designation} helperText={errors.designation}
-                    InputProps={{ endAdornment: <InputAdornment position="end"><Briefcase size={16} className="text-[#94A3B8]" /></InputAdornment> }}
+                    sx={glassInputSx}
+                    InputProps={{ endAdornment: <InputAdornment position="end"><Briefcase size={16} className="text-white/60" /></InputAdornment> }}
                 />
                 <TextField
                     label={t('auth.register.institution', 'Institution')}
                     fullWidth value={formData.institution}
                     onChange={(e) => handleChange("institution", e.target.value)}
                     error={!!errors.institution} helperText={errors.institution}
-                    InputProps={{ endAdornment: <InputAdornment position="end"><Building2 size={16} className="text-[#94A3B8]" /></InputAdornment> }}
+                    sx={glassInputSx}
+                    InputProps={{ endAdornment: <InputAdornment position="end"><Building2 size={16} className="text-white/60" /></InputAdornment> }}
                 />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -188,29 +231,36 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                         styles={{
                             control: (base, state) => ({
                                 ...base,
-                                backgroundColor: 'transparent',
-                                borderColor: errors.country ? '#d32f2f' : (state.isFocused ? '#6B1D4A' : 'rgba(128, 128, 128, 0.4)'),
-                                height: '56px', minHeight: '56px', borderRadius: '10px', fontSize: '1rem',
-                                boxShadow: 'none'
+                                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                                backdropFilter: 'blur(8px)',
+                                borderColor: errors.country ? '#d32f2f' : (state.isFocused ? '#e279b5' : 'rgba(255, 255, 255, 0.22)'),
+                                '&:hover': { borderColor: state.isFocused ? '#e279b5' : 'rgba(235, 120, 180, 0.6)' },
+                                height: '56px', minHeight: '56px', borderRadius: '14px', fontSize: '1rem',
+                                boxShadow: state.isFocused ? '0 0 0 1px #e279b5' : 'none',
+                                color: '#ffffff'
                             }),
-                            singleValue: (base) => ({ ...base, color: 'inherit' }),
-                            input: (base) => ({ ...base, color: 'inherit' }),
-                            placeholder: (base) => ({ ...base, color: '#94A3B8' }),
-                            menu: (base) => ({ ...base, zIndex: 9999, backgroundColor: '#ffffff', borderRadius: '10px', overflow: 'hidden' }),
+                            singleValue: (base) => ({ ...base, color: '#ffffff' }),
+                            input: (base) => ({ ...base, color: '#ffffff' }),
+                            placeholder: (base) => ({ ...base, color: 'rgba(255, 255, 255, 0.75)' }),
+                            menu: (base) => ({ ...base, zIndex: 9999, backgroundColor: '#1b0817', border: '1px solid rgba(255, 255, 255, 0.15)', borderRadius: '14px', overflow: 'hidden', backdropFilter: 'blur(16px)' }),
                             option: (base, state) => ({
                                 ...base,
-                                color: state.isSelected ? '#ffffff' : '#1e293b',
-                                backgroundColor: state.isSelected ? '#6B1D4A' : (state.isFocused ? '#f1f5f9' : '#ffffff'),
+                                color: '#ffffff',
+                                backgroundColor: state.isSelected ? '#8C2963' : (state.isFocused ? 'rgba(140, 41, 99, 0.3)' : 'transparent'),
                                 cursor: 'pointer',
                                 '&:active': { backgroundColor: '#8C2963', color: '#ffffff' }
                             })
                         }}
                     />
-                    {errors.country && <p className="text-[0.75rem] text-[#d32f2f] mt-1 ml-[14px]">{errors.country}</p>}
+                    {errors.country && <p className="text-[0.75rem] text-[#f87171] mt-1 ml-[14px]">{errors.country}</p>}
                 </div>
                 <div>
-                    <div className={`border rounded-[10px] px-3 h-[56px] flex items-center transition-colors ${errors.mobile ? 'border-[#d32f2f]' : 'border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40'}`}>
-                        <FormControl fullWidth sx={{ '& .PhoneInputInput': { border: 'none', outline: 'none', width: '100%', backgroundColor: 'transparent', color: 'inherit', fontSize: '1rem' }, '& .PhoneInput': { display: 'flex', alignItems: 'center' } }}>
+                    <div className={`border rounded-[14px] px-3 h-[56px] flex items-center transition-colors bg-white/[0.08] backdrop-blur-[8px] ${errors.mobile ? 'border-[#d32f2f]' : 'border-white/22 hover:border-pink-400/50'}`}>
+                        <FormControl fullWidth sx={{
+                            '& .PhoneInputInput': { border: 'none', outline: 'none', width: '100%', backgroundColor: 'transparent', color: '#ffffff', fontSize: '1rem' },
+                            '& .PhoneInputInput::placeholder': { color: 'rgba(255, 255, 255, 0.75)' },
+                            '& .PhoneInput': { display: 'flex', alignItems: 'center' }
+                        }}>
                             <PhoneInput
                                 international
                                 value={formData.mobile}
@@ -220,7 +270,7 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                             />
                         </FormControl>
                     </div>
-                    {errors.mobile && <p className="text-[0.75rem] text-[#d32f2f] mt-1 ml-[14px]">{errors.mobile}</p>}
+                    {errors.mobile && <p className="text-[0.75rem] text-[#f87171] mt-1 ml-[14px]">{errors.mobile}</p>}
                 </div>
             </div>
             <TextField
@@ -228,14 +278,15 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                 type="email" fullWidth value={formData.email}
                 onChange={(e) => handleChange("email", e.target.value)}
                 error={!!errors.email} helperText={errors.email}
-                InputProps={{ endAdornment: <InputAdornment position="end"><Mail size={16} className="text-[#94A3B8]" /></InputAdornment> }}
+                sx={glassInputSx}
+                InputProps={{ endAdornment: <InputAdornment position="end"><Mail size={16} className="text-white/60" /></InputAdornment> }}
             />
             
             <div className="grid grid-cols-1 gap-2 mt-2">
-                <p className={`font-semibold ${errors.areasOfExpertise ? 'text-[#d32f2f]' : 'text-gray-700 dark:text-gray-200'}`}>
+                <p className={`font-semibold ${errors.areasOfExpertise ? 'text-[#f87171]' : 'text-white/90'}`}>
                     {t('auth.register.selectExpertise', 'Areas of Expertise *')}
                 </p>
-                <div className={`p-4 border rounded-xl ${errors.areasOfExpertise ? 'border-[#d32f2f]' : 'border-gray-200 dark:border-white/10'}`}>
+                <div className={`p-4 border rounded-xl backdrop-blur-sm ${errors.areasOfExpertise ? 'border-[#d32f2f] bg-red-500/10' : 'border-white/15 bg-white/[0.04]'}`}>
                     <FormGroup className="grid grid-cols-1 sm:grid-cols-2 gap-x-4">
                         {PREDEFINED_EXPERTISE.map((expertise) => (
                             <FormControlLabel
@@ -245,16 +296,16 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                                         checked={(formData.areasOfExpertise as string[]).includes(expertise)}
                                         onChange={() => handleExpertiseToggle(expertise)}
                                         sx={{
-                                            color: '#94A3B8',
-                                            '&.Mui-checked': { color: '#6B1D4A' },
+                                            color: 'rgba(255, 255, 255, 0.6)',
+                                            '&.Mui-checked': { color: '#e279b5' },
                                         }}
                                     />
                                 }
-                                label={<span className="text-sm text-gray-700 dark:text-gray-300">{expertise}</span>}
+                                label={<span className="text-sm text-white/90">{expertise}</span>}
                             />
                         ))}
                     </FormGroup>
-                    {errors.areasOfExpertise && <p className="text-[0.75rem] text-[#d32f2f] mt-2">{errors.areasOfExpertise}</p>}
+                    {errors.areasOfExpertise && <p className="text-[0.75rem] text-[#f87171] mt-2">{errors.areasOfExpertise}</p>}
                 </div>
             </div>
 
@@ -266,6 +317,7 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                     onChange={(e) => handleChange("customExpertise", e.target.value)}
                     helperText={t('auth.register.expertiseHint', 'Separate multiple areas with commas')}
                     placeholder={t('auth.register.expertisePlaceholder', 'e.g. Artificial Intelligence, Data Science')}
+                    sx={glassInputSx}
                 />
             </div>
 
@@ -275,11 +327,12 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                     type={showPassword ? "text" : "password"} fullWidth
                     value={formData.password} onChange={(e) => handleChange("password", e.target.value)}
                     error={!!errors.password} helperText={errors.password}
+                    sx={glassInputSx}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end" size="small">
-                                    {showPassword ? <Eye size={16} /> : <EyeOff size={16} />}
+                                <IconButton onClick={() => setShowPassword(!showPassword)} edge="end" size="small" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+                                    {showPassword ? <Eye size={16} className="text-pink-300" /> : <EyeOff size={16} className="text-white/50" />}
                                 </IconButton>
                             </InputAdornment>
                         ),
@@ -290,11 +343,12 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                     type={showConfirmPassword ? "text" : "password"} fullWidth
                     value={formData.confirmPassword} onChange={(e) => handleChange("confirmPassword", e.target.value)}
                     error={!!errors.confirmPassword} helperText={errors.confirmPassword}
+                    sx={glassInputSx}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton onClick={() => setShowConfirmPassword(!showConfirmPassword)} edge="end" size="small">
-                                    {showConfirmPassword ? <Eye size={16} /> : <EyeOff size={16} />}
+                                <IconButton onClick={() => setShowConfirmPassword(!showConfirmPassword)} edge="end" size="small" sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+                                    {showConfirmPassword ? <Eye size={16} className="text-pink-300" /> : <EyeOff size={16} className="text-white/50" />}
                                 </IconButton>
                             </InputAdornment>
                         ),
@@ -308,7 +362,7 @@ const ReviewerForm: React.FC<Props> = ({ initialData, onComplete, cvUploadCompon
                 <button 
                     type="submit" 
                     disabled={isLoading}
-                    className="px-8 py-3 bg-[#6B1D4A] text-white rounded-xl font-semibold hover:bg-[#8C2963] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="px-8 py-3.5 bg-gradient-to-r from-[#8C2963] via-[#a03273] to-[#6B1D4A] hover:from-[#9C3872] hover:to-[#8C2963] text-white rounded-xl font-semibold shadow-lg shadow-[#8C2963]/30 hover:shadow-xl hover:shadow-[#8C2963]/40 hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
                 >
                     {isLoading ? <CircularProgress size={24} color="inherit" /> : (t('reviewerRegistration.personalDetails.submitBtn', 'Submit Registration') as string)}
                 </button>
