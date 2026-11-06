@@ -5,7 +5,7 @@ import aboutUsContentApi, { DirectorMessageData, getMultiLangText } from "@/api/
 import { useTranslation } from "react-i18next";
 
 const DirectorMessagePage: React.FC = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentLang = i18n.language || "en";
 
   const [data, setData] = useState<DirectorMessageData | null>(null);
@@ -27,7 +27,7 @@ const DirectorMessagePage: React.FC = () => {
   }, []);
 
   const badge = getMultiLangText(data?.badge, currentLang, "Leadership");
-  const title = "Director Message";
+  const title = t('header.aboutDirectorMessage', 'Director Message');
   const quote = getMultiLangText(
     data?.quote,
     currentLang,
@@ -76,8 +76,8 @@ const DirectorMessagePage: React.FC = () => {
         title={title}
         subtitle="A personal address from the Director General on our mission to unlock Sri Lanka's intellectual potential."
         breadcrumbs={[
-          { label: "About Us", href: "/about-us" },
-          { label: "Director Message" },
+          { label: t('header.about', 'About Us'), href: "/about-us" },
+          { label: title },
         ]}
       />
 

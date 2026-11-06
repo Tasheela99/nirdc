@@ -86,37 +86,23 @@ const ContactUsSection: React.FC = () => {
   };
 
   return (
-    <section id="contact-us-section" className="w-full pt-6 sm:pt-8 lg:pt-10" aria-label="Contact Us">
+    <section id="contact-us-section" className="w-full pt-2 sm:pt-4" aria-label="Contact Us">
       {/* Main Grid: Info + Form */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-        {/* Left: Contact Info Cards - Sculpted Aerodynamic Shape (Borderless) */}
+        {/* Left: Contact Info Cards - Sculpted Aerodynamic Shape */}
         <div className="lg:col-span-5 space-y-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55 }}
-            className="relative rounded-tl-[3rem] sm:rounded-tl-[4.5rem] rounded-br-[3rem] sm:rounded-br-[4.5rem] rounded-tr-2xl rounded-bl-2xl p-6 sm:p-9 lg:p-10 border-0 backdrop-blur-2xl shadow-2xl space-y-6 overflow-hidden group"
+            className="relative rounded-tl-[3rem] sm:rounded-tl-[4.5rem] rounded-br-[3rem] sm:rounded-br-[4.5rem] rounded-tr-2xl rounded-bl-2xl p-6 sm:p-9 lg:p-10 border border-slate-200/90 shadow-sm space-y-6 overflow-hidden bg-white"
             style={{
-              background:
-                "linear-gradient(155deg, rgba(255, 255, 255, 0.12) 0%, rgba(140, 41, 99, 0.18) 45%, rgba(18, 9, 28, 0.8) 100%)",
-              border: "none",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              boxShadow: "0 20px 50px rgba(0, 0, 0, 0.45)",
+              background: "#ffffff",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03)",
             }}
           >
-            {/* Ambient Diagonal Glass Sheen */}
-            <div
-              className="absolute -top-24 -left-24 w-64 h-64 rounded-full pointer-events-none opacity-40 blur-2xl"
-              style={{ background: "radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%)" }}
-            />
-            <div
-              className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full pointer-events-none opacity-30 blur-2xl"
-              style={{ background: "radial-gradient(circle, rgba(165, 42, 105, 0.4) 0%, transparent 70%)" }}
-            />
-
-            <h3 className="relative text-xl sm:text-2xl font-extrabold text-white pb-2 tracking-tight drop-shadow-sm">
+            <h3 className="relative text-xl sm:text-2xl font-extrabold text-slate-900 pb-2 tracking-tight">
               {getLocalized(
                 contactInfo?.organizationName,
                 getLocalized(contactInfo?.location?.title, t("homeContact.office", "President's Office"))
@@ -125,14 +111,14 @@ const ContactUsSection: React.FC = () => {
 
             {/* Address */}
             <div className="relative flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 text-pink-200 flex items-center justify-center shrink-0 border-0 backdrop-blur-md shadow-sm">
-                <MapPin size={22} />
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 flex items-center justify-center shrink-0 shadow-xs">
+                <MapPin size={22} className="text-slate-800" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white/90">
+                <h4 className="text-sm font-semibold text-slate-900">
                   {getLocalized(contactInfo?.location?.title, t("contactPage.officeTitle", "Office Location"))}
                 </h4>
-                <p className="text-sm text-white/75 mt-1 leading-relaxed whitespace-pre-line">
+                <p className="text-sm text-slate-600 mt-1 leading-relaxed whitespace-pre-line">
                   {getLocalized(
                     contactInfo?.location?.address,
                     t(
@@ -146,16 +132,16 @@ const ContactUsSection: React.FC = () => {
 
             {/* Email */}
             <div className="relative flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 text-purple-200 flex items-center justify-center shrink-0 border-0 backdrop-blur-md shadow-sm">
-                <Mail size={22} />
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 flex items-center justify-center shrink-0 shadow-xs">
+                <Mail size={22} className="text-slate-800" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white/90">
+                <h4 className="text-sm font-semibold text-slate-900">
                   {getLocalized(contactInfo?.email?.title, t("contactPage.emailTitle", "Email Inquiries"))}
                 </h4>
                 <a
                   href={`mailto:${contactInfo?.email?.address || "nirdc@presidentsoffice.lk"}`}
-                  className="text-sm text-pink-300 hover:text-white hover:underline mt-1 block font-medium transition-colors"
+                  className="text-sm text-slate-800 hover:text-black hover:underline mt-1 block font-semibold transition-colors"
                 >
                   {contactInfo?.email?.address || "nirdc@presidentsoffice.lk"}
                 </a>
@@ -164,16 +150,16 @@ const ContactUsSection: React.FC = () => {
 
             {/* Phone */}
             <div className="relative flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 text-emerald-200 flex items-center justify-center shrink-0 border-0 backdrop-blur-md shadow-sm">
-                <Phone size={22} />
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 flex items-center justify-center shrink-0 shadow-xs">
+                <Phone size={22} className="text-slate-800" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white/90">
+                <h4 className="text-sm font-semibold text-slate-900">
                   {getLocalized(contactInfo?.telephone?.title, t("contactPage.phoneTitle", "Telephone"))}
                 </h4>
                 <a
                   href={`tel:${(contactInfo?.telephone?.number || "+94112354354").replace(/\s+/g, "")}`}
-                  className="text-sm text-emerald-300 hover:text-white hover:underline mt-1 block font-medium transition-colors"
+                  className="text-sm text-slate-800 hover:text-black hover:underline mt-1 block font-semibold transition-colors"
                 >
                   {contactInfo?.telephone?.number || "+94 (0)11 2354 354"}
                 </a>
@@ -183,14 +169,14 @@ const ContactUsSection: React.FC = () => {
             {/* Fax (if present) */}
             {contactInfo?.fax?.number && (
               <div className="relative flex items-start gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-white/10 text-sky-200 flex items-center justify-center shrink-0 border-0 backdrop-blur-md shadow-sm">
-                  <Printer size={22} />
+                <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 flex items-center justify-center shrink-0 shadow-xs">
+                  <Printer size={22} className="text-slate-800" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-white/90">
+                  <h4 className="text-sm font-semibold text-slate-900">
                     {getLocalized(contactInfo?.fax?.title, "Fax Number")}
                   </h4>
-                  <span className="text-sm text-sky-300 mt-1 block font-medium">
+                  <span className="text-sm text-slate-700 mt-1 block font-semibold">
                     {contactInfo.fax.number}
                   </span>
                 </div>
@@ -199,14 +185,14 @@ const ContactUsSection: React.FC = () => {
 
             {/* Working hours */}
             <div className="relative flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/10 text-amber-200 flex items-center justify-center shrink-0 border-0 backdrop-blur-md shadow-sm">
-                <Clock size={22} />
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 flex items-center justify-center shrink-0 shadow-xs">
+                <Clock size={22} className="text-slate-800" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white/90">
+                <h4 className="text-sm font-semibold text-slate-900">
                   {getLocalized(contactInfo?.workingHours?.title, t("contactPage.hoursTitle", "Working Hours"))}
                 </h4>
-                <p className="text-sm text-white/75 mt-1">
+                <p className="text-sm text-slate-600 mt-1">
                   {getLocalized(
                     contactInfo?.workingHours?.schedule,
                     t("contactPage.hours", "Monday - Friday: 8:30 AM - 4:30 PM")
@@ -217,37 +203,23 @@ const ContactUsSection: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Right: Interactive Message Form - Interlocking Complementary Shape (Borderless) */}
+        {/* Right: Interactive Message Form - Interlocking Complementary Shape */}
         <div className="lg:col-span-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="relative rounded-tr-[3rem] sm:rounded-tr-[4.5rem] rounded-bl-[3rem] sm:rounded-bl-[4.5rem] rounded-tl-2xl rounded-br-2xl p-6 sm:p-9 lg:p-12 border-0 backdrop-blur-2xl shadow-2xl overflow-hidden group"
+            className="relative rounded-tr-[3rem] sm:rounded-tr-[4.5rem] rounded-bl-[3rem] sm:rounded-bl-[4.5rem] rounded-tl-2xl rounded-br-2xl p-6 sm:p-9 lg:p-12 border border-slate-200/90 shadow-sm overflow-hidden bg-white"
             style={{
-              background:
-                "linear-gradient(155deg, rgba(255, 255, 255, 0.10) 0%, rgba(120, 35, 90, 0.15) 50%, rgba(14, 7, 24, 0.85) 100%)",
-              border: "none",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              boxShadow: "0 20px 50px rgba(0, 0, 0, 0.45)",
+              background: "#ffffff",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03)",
             }}
           >
-            {/* Ambient Diagonal Glow Accent */}
-            <div
-              className="absolute -top-24 -right-24 w-72 h-72 rounded-full pointer-events-none opacity-40 blur-2xl"
-              style={{ background: "radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%)" }}
-            />
-            <div
-              className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full pointer-events-none opacity-30 blur-2xl"
-              style={{ background: "radial-gradient(circle, rgba(165, 42, 105, 0.35) 0%, transparent 70%)" }}
-            />
-
-            <h3 className="relative text-2xl sm:text-3xl font-extrabold text-white mb-2 tracking-tight drop-shadow-sm">
+            <h3 className="relative text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">
               {t("contactPage.formTitle", "Send Us a Message")}
             </h3>
-            <p className="relative text-sm text-white/75 mb-7">
+            <p className="relative text-sm text-slate-600 mb-7">
               {t(
                 "contactPage.formDesc",
                 "Fill out the form below and our team will get back to you promptly."
@@ -255,9 +227,9 @@ const ContactUsSection: React.FC = () => {
             </p>
 
             {submitted ? (
-              <div className="p-8 text-center bg-emerald-500/10 border-0 rounded-2xl space-y-4">
-                <CheckCircle2 size={48} className="text-emerald-400 mx-auto" />
-                <p className="text-emerald-200 font-semibold text-lg">
+              <div className="p-8 text-center bg-emerald-50 border border-emerald-200 rounded-2xl space-y-4">
+                <CheckCircle2 size={48} className="text-emerald-600 mx-auto" />
+                <p className="text-emerald-900 font-semibold text-lg">
                   {t(
                     "contactPage.success",
                     "Your message has been received. We will get back to you soon!"
@@ -269,13 +241,7 @@ const ContactUsSection: React.FC = () => {
                     setSubmitted(false);
                     setFormData({ name: "", email: "", subject: "", message: "" });
                   }}
-                  className="mt-4 px-6 py-2.5 rounded-xl text-sm font-semibold text-white transition-all hover:bg-white/20 active:scale-95 cursor-pointer border-0"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.12)",
-                    border: "none",
-                    backdropFilter: "blur(12px)",
-                    WebkitBackdropFilter: "blur(12px)",
-                  }}
+                  className="mt-4 px-6 py-2.5 rounded-xl text-sm font-semibold text-black border border-black bg-white hover:bg-black hover:text-white transition-all active:scale-95 cursor-pointer shadow-xs"
                 >
                   Send Another Message
                 </button>
@@ -283,14 +249,14 @@ const ContactUsSection: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 {submitError && (
-                  <div className="p-3.5 rounded-xl bg-red-500/20 border border-red-500/40 text-red-200 text-xs flex items-center gap-2">
-                    <AlertCircle size={16} className="text-red-300 shrink-0" />
+                  <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                    <AlertCircle size={16} className="text-red-600 shrink-0" />
                     <span>{submitError}</span>
                   </div>
                 )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-white/80 mb-2">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                       {t("contactPage.name", "Your Full Name")} *
                     </label>
                     <input
@@ -298,12 +264,12 @@ const ContactUsSection: React.FC = () => {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border-0 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all text-sm"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent transition-all text-sm"
                       placeholder="John Doe"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-white/80 mb-2">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                       {t("contactPage.email", "Email Address")} *
                     </label>
                     <input
@@ -311,27 +277,27 @@ const ContactUsSection: React.FC = () => {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-white/10 border-0 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all text-sm"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent transition-all text-sm"
                       placeholder="john@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-white/80 mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                     {t("contactPage.subject", "Subject")}
                   </label>
                   <input
                     type="text"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border-0 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent transition-all text-sm"
                     placeholder="Commercialization Inquiry"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-white/80 mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                     {t("contactPage.message", "Message")} *
                   </label>
                   <textarea
@@ -339,7 +305,7 @@ const ContactUsSection: React.FC = () => {
                     rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-white/10 border-0 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all text-sm resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent transition-all text-sm resize-none"
                     placeholder="Write your message here..."
                   />
                 </div>
@@ -347,23 +313,16 @@ const ContactUsSection: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-white transition-all duration-200 hover:scale-[1.02] hover:bg-white/20 active:scale-95 cursor-pointer border-0 disabled:opacity-60 disabled:hover:scale-100"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.12)",
-                    border: "none",
-                    backdropFilter: "blur(16px)",
-                    WebkitBackdropFilter: "blur(16px)",
-                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25)",
-                  }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold text-black border border-black bg-white hover:bg-black hover:text-white transition-all duration-200 hover:scale-[1.02] active:scale-95 cursor-pointer shadow-xs disabled:opacity-50 disabled:hover:scale-100 disabled:hover:bg-white disabled:hover:text-black"
                 >
                   {submitting ? (
                     <>
-                      <Loader2 size={18} className="animate-spin text-white" />
+                      <Loader2 size={18} className="animate-spin text-current" />
                       <span>{t("contactPage.sending", "Sending...")}</span>
                     </>
                   ) : (
                     <>
-                      <Send size={18} className="text-white drop-shadow-sm" />
+                      <Send size={18} className="text-current" />
                       <span>{t("contactPage.send", "Send Message")}</span>
                     </>
                   )}

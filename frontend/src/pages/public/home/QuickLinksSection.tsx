@@ -4,47 +4,14 @@ import { useTranslation } from "react-i18next";
 import { ExternalLink } from "lucide-react";
 import homePageContentApi, { PartnerCardData } from "@/api/HomePageContentApi";
 
-const THEMES = [
-    {
-        background: "linear-gradient(145deg, rgba(140, 41, 99, 0.45) 0%, rgba(100, 20, 65, 0.25) 100%)",
-        glow: "rgba(140, 41, 99, 0.25)",
-        hoverColor: "group-hover:text-pink-100",
-    },
-    {
-        background: "linear-gradient(145deg, rgba(40, 160, 110, 0.28) 0%, rgba(16, 90, 70, 0.15) 100%)",
-        glow: "rgba(40, 160, 110, 0.20)",
-        hoverColor: "group-hover:text-emerald-100",
-    },
-    {
-        background: "linear-gradient(145deg, rgba(175, 105, 65, 0.30) 0%, rgba(105, 55, 30, 0.16) 100%)",
-        glow: "rgba(175, 105, 65, 0.20)",
-        hoverColor: "group-hover:text-amber-100",
-    },
-    {
-        background: "linear-gradient(145deg, rgba(59, 130, 246, 0.35) 0%, rgba(30, 58, 138, 0.20) 100%)",
-        glow: "rgba(59, 130, 246, 0.22)",
-        hoverColor: "group-hover:text-blue-100",
-    },
-    {
-        background: "linear-gradient(145deg, rgba(168, 85, 247, 0.35) 0%, rgba(88, 28, 135, 0.20) 100%)",
-        glow: "rgba(168, 85, 247, 0.22)",
-        hoverColor: "group-hover:text-purple-100",
-    },
-    {
-        background: "linear-gradient(145deg, rgba(234, 88, 12, 0.32) 0%, rgba(124, 45, 18, 0.20) 100%)",
-        glow: "rgba(234, 88, 12, 0.20)",
-        hoverColor: "group-hover:text-orange-100",
-    },
-];
-
 const QuickLinksSection: React.FC = () => {
     const { t, i18n } = useTranslation();
     const currentLang = i18n.language || "en";
     const langKey: "en" | "si" | "ta" = currentLang.startsWith("si")
         ? "si"
         : currentLang.startsWith("ta")
-        ? "ta"
-        : "en";
+            ? "ta"
+            : "en";
 
     const [partnerCards, setPartnerCards] = useState<PartnerCardData[]>([]);
 
@@ -75,14 +42,7 @@ const QuickLinksSection: React.FC = () => {
                 si: "ජනාධිපති කාර්යාලය",
                 ta: "ஜனாதிபதி செயலகம்",
             },
-            description: {
-                en: t(
-                    "quickLinks.presidentsOffice.description",
-                    "Official website of the Presidential Secretariat of Sri Lanka."
-                ),
-                si: "ශ්‍රී ලංකා ජනාධිපති කාර්යාලයේ නිල වෙබ් අඩවිය.",
-                ta: "இலங்கை ஜனாதிபதி செயலகத்தின் உத்தியோகபூர்வ இணையதளம்.",
-            },
+            description: { en: "", si: "", ta: "" },
             logoUrl: "/presidentsoffice_logo.png",
             linkUrl: "https://www.presidentsoffice.gov.lk/",
             order: 1,
@@ -95,16 +55,9 @@ const QuickLinksSection: React.FC = () => {
                 si: "ක්ලීන් ශ්‍රී ලංකා",
                 ta: "Clean Sri Lanka",
             },
-            description: {
-                en: t(
-                    "quickLinks.cleanSriLanka.description",
-                    "Official website of the Clean Sri Lanka National Programme."
-                ),
-                si: "ක්ලීන් ශ්‍රී ලංකා ජාතික වැඩසටහනේ නිල වෙබ් අඩවිය.",
-                ta: "Clean Sri Lanka தேசிய திட்டத்தின் உத்தியோகபூர்வ இணையதளம்.",
-            },
-            logoUrl: "/cleansrilanka_logo.png",
-            linkUrl: "https://cleansrilanka.gov.lk/",
+            description: { en: "", si: "", ta: "" },
+            logoUrl: "/cleansrilanka_logo.webp",
+            linkUrl: "https://www.cleansrilanka.gov.lk/",
             order: 2,
             isActive: true,
         },
@@ -115,14 +68,7 @@ const QuickLinksSection: React.FC = () => {
                 si: "ප්‍රජාශක්ති",
                 ta: "பிரஜாசக்தி",
             },
-            description: {
-                en: t(
-                    "quickLinks.prajashakthi.description",
-                    "Official website of the Prajashakthi National Programme."
-                ),
-                si: "ප්‍රජාශක්ති වැඩසටහනේ නිල වෙබ් අඩවිය.",
-                ta: "பிரஜாசக்தி தேசிய திட்டத்தின் உத்தியோகபூர்வ இணையதளம்.",
-            },
+            description: { en: "", si: "", ta: "" },
             logoUrl: "/praajashakthi_logo.webp",
             linkUrl: "https://www.prajashakthi.gov.lk/",
             order: 3,
@@ -135,21 +81,24 @@ const QuickLinksSection: React.FC = () => {
     return (
         <div
             id="quick-links-section"
-            className="w-full pt-8 sm:pt-12 lg:pt-16 pb-8"
+            className="w-full pt-4 sm:pt-6 pb-4"
             aria-label="Quick Links"
         >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 w-full">
                 {displayCards.map((card, i) => {
-                    const theme = THEMES[i % THEMES.length];
                     const title =
                         (typeof card.title === "string" ? card.title : card.title?.[langKey]) ||
                         (typeof card.title === "object" ? card.title?.en || card.title?.si || card.title?.ta : "") ||
                         "";
-                    const description =
-                        (typeof card.description === "string" ? card.description : card.description?.[langKey]) ||
-                        (typeof card.description === "object" ? card.description?.en || card.description?.si || card.description?.ta : "") ||
-                        "";
                     const key = card._id || `partner-card-${i}`;
+
+                    const isCleanSriLanka =
+                        Boolean(card.linkUrl && card.linkUrl.toLowerCase().includes("clean")) ||
+                        Boolean(card.logoUrl && card.logoUrl.toLowerCase().includes("clean")) ||
+                        Boolean(card._id && String(card._id).toLowerCase().includes("clean")) ||
+                        title.toLowerCase().includes("clean") ||
+                        title.includes("ක්ලීන්") ||
+                        title.includes("க்ளீன்");
 
                     return (
                         <motion.a
@@ -158,64 +107,47 @@ const QuickLinksSection: React.FC = () => {
                             target={card.linkUrl && card.linkUrl !== "#" ? "_blank" : undefined}
                             rel={card.linkUrl && card.linkUrl !== "#" ? "noopener noreferrer" : undefined}
                             aria-label={title}
-                            className="group relative flex flex-col rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 overflow-hidden outline-none border-0 focus-visible:ring-2 focus-visible:ring-white/80 cursor-pointer"
+                            className="group relative flex flex-row items-center gap-4 sm:gap-5 rounded-2xl sm:rounded-3xl p-4 sm:p-5 overflow-hidden outline-none cursor-pointer bg-white transition-all duration-200 border border-slate-200/90 hover:border-black/30 shadow-xs hover:shadow-md"
                             style={{
-                                background: theme.background,
-                                border: "none",
-                                backdropFilter: "blur(16px)",
-                                WebkitBackdropFilter: "blur(16px)",
-                                boxShadow: `0 8px 32px ${theme.glow}`,
+                                background: "#ffffff",
+                                boxShadow: "0 4px 18px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02)",
                             }}
-                            initial={{ opacity: 0, y: 24 }}
+                            initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.55, delay: i * 0.1, ease: [0.23, 1, 0.32, 1] }}
-                            whileHover={{ y: -6 }}
+                            transition={{ duration: 0.45, delay: i * 0.08, ease: [0.23, 1, 0.32, 1] }}
+                            whileHover={{ y: -3, scale: 1.01 }}
                         >
-                            {/* Inner gloss sheen matching main banner */}
+                            {/* Logo Container - Clean Sri Lanka has white text so needs a forest green badge to be clearly visible */}
                             <div
-                                className="absolute inset-0 pointer-events-none"
-                                style={{
-                                    background:
-                                        "linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%)",
-                                }}
-                            />
-
-                            {/* Hover glow */}
-                            <div
-                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                                style={{
-                                    background: "rgba(255, 255, 255, 0.06)",
-                                }}
-                            />
-
-                            <div
-                                className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-white mb-6 p-2"
-                                style={{
-                                    background: "rgba(255, 255, 255, 0.14)",
-                                    border: "none",
-                                    backdropFilter: "blur(12px)",
-                                    WebkitBackdropFilter: "blur(12px)",
-                                }}
+                                className={`relative w-20 sm:w-24 h-14 sm:h-16 rounded-xl flex items-center justify-center shrink-0 p-2 shadow-xs transition-colors ${isCleanSriLanka
+                                    ? "bg-[#1b4332] border border-[#2d6a4f]"
+                                    : "bg-white border border-slate-200/80"
+                                    }`}
                             >
                                 {card.logoUrl ? (
                                     <img
-                                        src={card.logoUrl}
+                                        src={isCleanSriLanka ? "/cleansrilanka_logo.png" : card.logoUrl}
                                         alt={title}
-                                        className="w-10 h-10 sm:w-11 sm:h-11 object-contain drop-shadow"
+                                        className="w-full h-full max-h-12 object-contain"
                                         onError={(e) => {
-                                            (e.currentTarget as HTMLElement).style.display = "none";
+                                            const target = e.currentTarget as HTMLImageElement;
+                                            if (target.src.includes(".webp")) {
+                                                target.src = target.src.replace(".webp", ".png");
+                                            } else if (target.src.includes(".png")) {
+                                                target.src = target.src.replace(".png", ".webp");
+                                            }
                                         }}
                                     />
                                 ) : (
-                                    <ExternalLink className="w-8 h-8 text-white/80" />
+                                    <ExternalLink className="w-6 h-6 text-slate-400" />
                                 )}
                             </div>
 
-                            <h3 className={`relative text-2xl sm:text-[28px] leading-tight font-extrabold text-white mb-2 tracking-tight drop-shadow-sm ${theme.hoverColor} transition-colors duration-200`}>
+                            {/* Title (Right of the Icon) */}
+                            <h3 className="relative text-base sm:text-lg font-bold text-slate-800 tracking-tight transition-colors duration-200 leading-snug group-hover:text-primary">
                                 {title}
                             </h3>
-                            <p className="relative text-base text-white/90 leading-relaxed">{description}</p>
                         </motion.a>
                     );
                 })}

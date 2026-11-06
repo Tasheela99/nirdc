@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Facebook, Youtube, Linkedin, Mail, MapPin, Globe, ArrowUpRight } from 'lucide-react';
+import { Facebook, Youtube, Linkedin, Mail, MapPin, Phone, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logoLight from '../../assets/NIRDC-logo-SVG.svg';
 import { useTranslation } from 'react-i18next';
@@ -22,50 +22,34 @@ const FooterComponent: FC = () => {
             </p>
           </div>
 
-          {/* Contact Us */}
+          {/* Connect with Us */}
           <div className="space-y-5">
-            <h3 className="text-white text-sm font-semibold uppercase tracking-wider">{t('footer.contactUs')}</h3>
+            <h3 className="text-white text-sm font-semibold uppercase tracking-wider">
+              {t('footer.connectWithUs', t('footer.contactUs'))}
+            </h3>
             <div className="space-y-4">
-              <a
-                href="mailto:nirdc@presidentsoffice.lk"
-                className="flex items-start gap-3 text-sm text-gray-400 hover:text-primary-light transition-colors group"
-              >
-                <Mail size={16} className="mt-0.5 shrink-0 text-primary-light" />
-                <span>nirdc@presidentsoffice.lk</span>
-              </a>
-              <a
-                href="https://presidentsoffice.gov.lk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-3 text-sm text-gray-400 hover:text-primary-light transition-colors group"
-              >
-                <Globe size={16} className="mt-0.5 shrink-0 text-primary-light group-hover:scale-110 transition-transform" />
-                <span className="group-hover:underline">presidentsoffice.gov.lk</span>
-              </a>
-              <a
-                href="https://cleansrilanka.gov.lk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-3 text-sm text-gray-400 hover:text-primary-light transition-colors group"
-              >
-                <Globe size={16} className="mt-0.5 shrink-0 text-primary-light group-hover:scale-110 transition-transform" />
-                <span className="group-hover:underline">cleansrilanka.gov.lk</span>
-              </a>
-              <a
-                href="https://www.prajashakthi.gov.lk/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-3 text-sm text-gray-400 hover:text-primary-light transition-colors group"
-              >
-                <Globe size={16} className="mt-0.5 shrink-0 text-primary-light group-hover:scale-110 transition-transform" />
-                <span className="group-hover:underline">prajashakthi.gov.lk</span>
-              </a>
               <div className="flex items-start gap-3 text-sm text-gray-400">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-primary-light" />
-                <address className="not-italic leading-relaxed">
+                <MapPin size={16} className="mt-1 shrink-0 text-primary-light" />
+                <address className="not-italic leading-relaxed whitespace-pre-line">
                   {t('footer.address')}
                 </address>
               </div>
+
+              <a
+                href="mailto:nirdc@presidentsoffice.lk"
+                className="flex items-center gap-3 text-sm text-gray-400 hover:text-primary-light transition-colors group"
+              >
+                <Mail size={16} className="shrink-0 text-primary-light" />
+                <span>nirdc@presidentsoffice.lk</span>
+              </a>
+
+              <a
+                href="tel:+94112354354"
+                className="flex items-center gap-3 text-sm text-gray-400 hover:text-primary-light transition-colors group"
+              >
+                <Phone size={16} className="shrink-0 text-primary-light" />
+                <span>{t('footer.phone', '+94 (0)11 2354 354')}</span>
+              </a>
             </div>
           </div>
 

@@ -43,6 +43,7 @@ const NewsUpdatesScreen = lazy(() => import("@/pages/public/home/NewsUpdatesPage
 const MainBannerPage = lazy(() => import("@/pages/public/home/MainBannerPage.tsx"));
 const PrivacyPolicy = lazy(() => import("@/pages/public/PrivacyPolicyPage.tsx"));
 const ContactUsPage = lazy(() => import("@/pages/public/ContactUsPage.tsx"));
+const GalleryPage = lazy(() => import("@/pages/public/GalleryPage.tsx"));
 
 // Proposals
 const Proposal = lazy(() => import("@/pages/user/proposals/ProposalPage.tsx"));
@@ -141,12 +142,14 @@ const AppRouter = () => {
                             <Route path="/about-us/organizational-structure" element={<OrganizationalStructurePage />} />
 
                             <Route path="/resources/downloads" element={<DownloadsPage />} />
+                            <Route path="/downloads" element={<Navigate to="/resources/downloads" replace />} />
                             <Route path="/resources/reports-publications" element={<ReportsPublicationsPage />} />
                             <Route path="/resources/newsletters" element={<NewslettersPage />} />
+                            <Route path="/services" element={<FunctionsServicesPage />} />
+                            <Route path="/gallery" element={<GalleryPage />} />
                             <Route path="/contact-us" element={<ContactUsPage />} />
-                            <Route path="/contact-us/inquiry" element={<ContactUsPage defaultTab="inquiry" />} />
-                            <Route path="/contact-us/head-office" element={<ContactUsPage defaultTab="head-office" />} />
                             <Route path="/contact" element={<Navigate to="/contact-us" replace />} />
+                            <Route path="/contacts" element={<Navigate to="/contact-us" replace />} />
                             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                             <Route path="/strategic-objectives" element={<StrategicObjectivesScreen />} />
                             <Route path="/updates-news" element={<NewsUpdatesScreen />} />

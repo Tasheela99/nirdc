@@ -80,7 +80,7 @@ const defaultTeamMembers = [
 ];
 
 const TeamPage: React.FC = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentLang = i18n.language || "en";
 
   const [dbMembers, setDbMembers] = useState<TeamMemberData[]>([]);
@@ -134,12 +134,12 @@ const TeamPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0c050b] text-gray-900 dark:text-gray-100">
       <PageHero
-        badge="Leadership"
-        title="Our Team"
+        badge={t('header.about', 'Leadership')}
+        title={t('header.aboutTeam', 'Our Team')}
         subtitle="The dedicated professionals, scientists, legal minds, and venture experts driving NIRDC's operational excellence."
         breadcrumbs={[
-          { label: "About Us", href: "/about-us" },
-          { label: "Our Team" },
+          { label: t('header.about', 'About Us'), href: "/about-us" },
+          { label: t('header.aboutTeam', 'Our Team') },
         ]}
       />
 

@@ -16,7 +16,7 @@ const VisionMissionPage: React.FC = () => {
       />
 
       {/* Render Vision & Mission with no background color */}
-      <VisionMissionSection showQuickLinks={false} showContactUs={false} noBackground={true} />
+      <VisionMissionSection showQuickLinks={false} showComplaintsBar={false} noBackground={true} />
     </div>
   );
 };

@@ -3,9 +3,8 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Eye, Target } from "lucide-react";
 import QuickLinksSection from "./QuickLinksSection";
-import ContactUsSection from "./ContactUsSection";
+import PublicComplaintsBar from "./PublicComplaintsBar";
 import homePageContentApi, { VisionMissionData } from "@/api/HomePageContentApi";
-import VantaNetBackground from "@/components/common/VantaNetBackground";
 
 
 type Pt = [number, number];
@@ -38,13 +37,14 @@ const ICON = 64;
 
 interface VisionMissionSectionProps {
   showQuickLinks?: boolean;
+  showComplaintsBar?: boolean;
   showContactUs?: boolean;
   noBackground?: boolean;
 }
 
 const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
   showQuickLinks = true,
-  showContactUs = true,
+  showComplaintsBar = true,
   noBackground = false,
 }) => {
   const { t, i18n } = useTranslation();
@@ -172,30 +172,20 @@ const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
   return (
     <section
       id="vision-mission-section"
-      className="relative z-20 w-full pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-24 overflow-visible flex items-center justify-center"
+      className="relative z-20 w-full pt-8 sm:pt-12 lg:pt-16 pb-10 sm:pb-14 overflow-visible flex items-center justify-center"
       style={{
-        background: noBackground ? "transparent" : "#000000",
+        background: noBackground ? "transparent" : "#edf2f7",
       }}
       aria-label="Vision and Mission"
     >
-      {/* Vanta.NET 3D animated background */}
-      {!noBackground && <VantaNetBackground />}
-
-      {/* Soft fade into the next section (removes the hard seam between the sections) */}
-      {!noBackground && (
-        <div
-          className="absolute inset-x-0 bottom-0 h-24 sm:h-28 lg:h-32 pointer-events-none z-10"
-          style={{ background: "linear-gradient(180deg, transparent 0%, #111827 100%)" }}
-        />
-      )}
-
       {/* Main Container */}
-      <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-30">
+      <div className="max-w-screen-xl w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-30 space-y-8 sm:space-y-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+          className="pb-4 sm:pb-6"
         >
           {/* DESKTOP (>= lg): the height and the triangles adapt to the text of the current language */}
           <div
@@ -209,12 +199,8 @@ const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
               style={{
                 clipPath: `path('${visionPath}')`,
                 WebkitClipPath: `path('${visionPath}')`,
-                background: noBackground
-                  ? "linear-gradient(145deg, #8C2963 0%, #5F1441 100%)"
-                  : "linear-gradient(145deg, rgba(140, 41, 99, 0.45) 0%, rgba(100, 20, 65, 0.25) 100%)",
-                filter: noBackground ? "drop-shadow(0 15px 35px rgba(140, 41, 99, 0.25))" : undefined,
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
+                background: "#ffffff",
+                filter: "drop-shadow(0 10px 25px rgba(0, 0, 0, 0.06))",
               }}
             />
 
@@ -224,12 +210,8 @@ const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
               style={{
                 clipPath: `path('${missionPath}')`,
                 WebkitClipPath: `path('${missionPath}')`,
-                background: noBackground
-                  ? "linear-gradient(145deg, #2A1024 0%, #170513 100%)"
-                  : "linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(140, 41, 99, 0.12) 100%)",
-                filter: noBackground ? "drop-shadow(0 15px 35px rgba(0, 0, 0, 0.25))" : undefined,
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
+                background: "#ffffff",
+                filter: "drop-shadow(0 10px 25px rgba(0, 0, 0, 0.06))",
               }}
             />
 
@@ -240,19 +222,19 @@ const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
               style={{ left: vLeft, top: vTop, width: vWidth }}
             >
               <h3
-                className="font-extrabold text-white mb-[1.2cqw] tracking-tight font-sans drop-shadow-sm leading-tight"
+                className="font-extrabold text-slate-900 mb-[1.2cqw] tracking-tight font-sans drop-shadow-sm leading-tight"
                 style={{ fontSize: titleSize }}
               >
                 {visionTitle}
               </h3>
 
-              <div className="mb-[1.4cqw] inline-block bg-white/10 border-l-2 border-pink-300 rounded-r-lg px-3.5 py-2 backdrop-blur-sm">
-                <p className="leading-snug font-semibold text-pink-100" style={{ fontSize: bodySize }}>
+              <div className="mb-[1.4cqw] inline-block bg-pink-50 border-l-2 border-primary rounded-r-lg px-3.5 py-2">
+                <p className="leading-snug font-semibold text-primary" style={{ fontSize: bodySize }}>
                   "{visionSummary}"
                 </p>
               </div>
 
-              <p className="text-white/95 leading-relaxed font-body" style={{ fontSize: bodySize }}>
+              <p className="text-slate-600 leading-relaxed font-body" style={{ fontSize: bodySize }}>
                 {visionContent}
               </p>
             </div>
@@ -260,32 +242,26 @@ const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
             {/* Eye icon (sits right under the vision text, inside the tip) */}
             <div className="absolute z-10" style={{ left: eyeLeft, top: eyeTop }}>
               <div
-                className="rounded-2xl inline-flex items-center justify-center text-white"
+                className="rounded-2xl inline-flex items-center justify-center text-primary bg-pink-50 border border-pink-100 shadow-sm"
                 style={{
                   width: ICON,
                   height: ICON,
-                  background: "rgba(255, 255, 255, 0.16)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
                 }}
               >
-                <Eye size={32} strokeWidth={1.8} className="drop-shadow" />
+                <Eye size={32} strokeWidth={1.8} />
               </div>
             </div>
 
             {/* Target icon (top of the mission shape) */}
             <div className="absolute z-10" style={{ left: 0.77 * w - ICON / 2, top: 0.075 * w }}>
               <div
-                className="rounded-2xl inline-flex items-center justify-center text-white"
+                className="rounded-2xl inline-flex items-center justify-center text-purple-600 bg-purple-50 border border-purple-100 shadow-sm"
                 style={{
                   width: ICON,
                   height: ICON,
-                  background: "rgba(255, 255, 255, 0.18)",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
                 }}
               >
-                <Target size={32} strokeWidth={1.8} className="drop-shadow" />
+                <Target size={32} strokeWidth={1.8} />
               </div>
             </div>
 
@@ -296,19 +272,19 @@ const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
               style={{ left: mLeft, top: mTop, width: mWidth }}
             >
               <h3
-                className="font-extrabold text-white mb-[1.2cqw] tracking-tight font-sans drop-shadow-sm leading-tight"
+                className="font-extrabold text-slate-900 mb-[1.2cqw] tracking-tight font-sans drop-shadow-sm leading-tight"
                 style={{ fontSize: titleSize }}
               >
                 {missionTitle}
               </h3>
 
-              <div className="mb-[1.4cqw] inline-block bg-white/10 border-l-2 border-purple-200 rounded-r-lg px-3.5 py-2 backdrop-blur-sm">
-                <p className="leading-snug font-semibold text-purple-100" style={{ fontSize: bodySize }}>
+              <div className="mb-[1.4cqw] inline-block bg-purple-50 border-l-2 border-purple-600 rounded-r-lg px-3.5 py-2">
+                <p className="leading-snug font-semibold text-purple-700" style={{ fontSize: bodySize }}>
                   "{missionSummary}"
                 </p>
               </div>
 
-              <p className="text-white/95 leading-relaxed font-body" style={{ fontSize: bodySize }}>
+              <p className="text-slate-600 leading-relaxed font-body" style={{ fontSize: bodySize }}>
                 {missionContent}
               </p>
             </div>
@@ -318,73 +294,51 @@ const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
           <div className="block lg:hidden space-y-5 sm:space-y-6 max-w-2xl mx-auto">
             {/* Vision Mobile Card */}
             <div
-              className="relative rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-9 overflow-hidden"
+              className="relative rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-9 overflow-hidden bg-white border border-slate-100 shadow-md"
               style={{
-                background: noBackground
-                  ? "linear-gradient(145deg, #8C2963 0%, #5F1441 100%)"
-                  : "linear-gradient(145deg, rgba(140, 41, 99, 0.45) 0%, rgba(100, 20, 65, 0.25) 100%)",
-                border: noBackground
-                  ? "1px solid rgba(255, 255, 255, 0.15)"
-                  : "1px solid rgba(200, 80, 140, 0.40)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                boxShadow: noBackground
-                  ? "0 15px 35px rgba(140, 41, 99, 0.25)"
-                  : "0 8px 32px rgba(140, 41, 99, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15)",
+                background: "#ffffff",
+                boxShadow: "0 10px 25px rgba(0, 0, 0, 0.05)",
               }}
             >
-              <div
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-white mb-5"
-                style={{ background: "rgba(255, 255, 255, 0.16)", border: "1px solid rgba(255, 255, 255, 0.2)" }}
-              >
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-primary bg-pink-50 border border-pink-100 mb-5">
                 <Eye size={28} strokeWidth={1.8} />
               </div>
 
-              <h3 className="text-3xl sm:text-4xl leading-tight font-extrabold text-white mb-4 tracking-tight">
+              <h3 className="text-3xl sm:text-4xl leading-tight font-extrabold text-slate-900 mb-4 tracking-tight">
                 {visionTitle}
               </h3>
-              <p className="text-sm sm:text-base leading-snug font-semibold text-pink-200 mb-4 bg-white/10 px-3.5 py-2.5 rounded-lg border-l-2 border-pink-300">
+              <p className="text-sm sm:text-base leading-snug font-semibold text-primary mb-4 bg-pink-50 px-3.5 py-2.5 rounded-lg border-l-2 border-primary">
                 "{visionSummary}"
               </p>
-              <p className="text-base sm:text-lg text-white/95 leading-relaxed">{visionContent}</p>
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">{visionContent}</p>
             </div>
 
             {/* Mission Mobile Card */}
             <div
-              className="relative rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-9 overflow-hidden"
+              className="relative rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-9 overflow-hidden bg-white border border-slate-100 shadow-md"
               style={{
-                background: noBackground
-                  ? "linear-gradient(145deg, #2A1024 0%, #170513 100%)"
-                  : "linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(140, 41, 99, 0.12) 100%)",
-                border: noBackground
-                  ? "1px solid rgba(255, 255, 255, 0.15)"
-                  : "1px solid rgba(255, 255, 255, 0.30)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                boxShadow: noBackground
-                  ? "0 15px 35px rgba(0, 0, 0, 0.25)"
-                  : "0 8px 32px rgba(140, 41, 99, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.22)",
+                background: "#ffffff",
+                boxShadow: "0 10px 25px rgba(0, 0, 0, 0.05)",
               }}
             >
-              <div
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-white mb-5"
-                style={{ background: "rgba(255, 255, 255, 0.18)", border: "1px solid rgba(255, 255, 255, 0.2)" }}
-              >
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-purple-600 bg-purple-50 border border-purple-100 mb-5">
                 <Target size={28} strokeWidth={1.8} />
               </div>
 
-              <h3 className="text-3xl sm:text-4xl leading-tight font-extrabold text-white mb-4 tracking-tight">
+              <h3 className="text-3xl sm:text-4xl leading-tight font-extrabold text-slate-900 mb-4 tracking-tight">
                 {missionTitle}
               </h3>
-              <p className="text-sm sm:text-base leading-snug font-semibold text-purple-200 mb-4 bg-white/10 px-3.5 py-2.5 rounded-lg border-l-2 border-purple-200">
+              <p className="text-sm sm:text-base leading-snug font-semibold text-purple-700 mb-4 bg-purple-50 px-3.5 py-2.5 rounded-lg border-l-2 border-purple-600">
                 "{missionSummary}"
               </p>
-              <p className="text-base sm:text-lg text-white/95 leading-relaxed">{missionContent}</p>
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">{missionContent}</p>
             </div>
           </div>
         </motion.div>
+        {/* Public Complaints & Inquiries Action Bar */}
+        {showComplaintsBar && !noBackground && <PublicComplaintsBar />}
+
         {showQuickLinks && <QuickLinksSection />}
-        {showContactUs && <ContactUsSection />}
       </div>
     </section>
   );

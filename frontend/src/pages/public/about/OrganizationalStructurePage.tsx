@@ -59,7 +59,7 @@ const defaultDivisions = [
 ];
 
 const OrganizationalStructurePage: React.FC = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentLang = i18n.language || "en";
 
   const [dbDivisions, setDbDivisions] = useState<OrganizationalStructureData[]>([]);
@@ -93,12 +93,12 @@ const OrganizationalStructurePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0c050b] text-gray-900 dark:text-gray-100">
       <PageHero
-        badge="Leadership"
-        title="Organizational Structure"
+        badge={t('header.about', 'Leadership')}
+        title={t('header.aboutOrganizationalStructure', 'Organizational Structure')}
         subtitle="Transparent governance architecture designed for efficiency, accountability, and seamless execution."
         breadcrumbs={[
-          { label: "About Us", href: "/about-us" },
-          { label: "Organizational Structure" },
+          { label: t('header.about', 'About Us'), href: "/about-us" },
+          { label: t('header.aboutOrganizationalStructure', 'Organizational Structure') },
         ]}
       />
 

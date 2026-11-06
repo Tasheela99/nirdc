@@ -99,7 +99,17 @@
   },
   "header": {
     "home": "Home",
+    "about": "About",
+    "aboutIntroduction": "Introduction",
+    "aboutHistory": "Our History",
+    "aboutDirectorMessage": "Director Message",
+    "aboutTeam": "Our Team",
+    "aboutOrganizationalStructure": "Organizational Structure",
     "proposals": "Project Proposals",
+    "services": "Functions & Services",
+    "downloads": "Downloads",
+    "gallery": "Gallery",
+    "contacts": "Contacts",
     "updatesNews": "News and Updates",
     "news": "News",
     "announcements": "Announcements",
@@ -275,13 +285,24 @@
   },
   "about": {
     "title": "About Us",
-    "description": "We are a team of scientists, administrators, economists, industrialists, legal and many other subject experts, got together to build a government initiative to rapidly commercialise completed or near completed research and developments (R&D) done in Sri Lanka. While a long-term R&D mechanism is initiated at the newly formed Science and Technology ministry, we operate at the President's Secretariat to provide gap filling funding for near completed R&D projects and help investors to match completed R&D projects."
+    "description": "We are a multidisciplinary team bridging Sri Lanka's research innovations with national and global commercial reality.",
+    "vision": "Our Vision",
+    "mission": "Our Mission",
+    "visionMission": "Our Vision & Mission",
+    "objectives": "Our Objectives",
+    "responsibilities": "Our Responsibilities",
+    "values": "Our Values",
+    "viewAll": "View All",
+    "introSubtitle": "Our strategic vision, mission, objectives, responsibilities, and core values driving national research commercialisation."
   },
   "history": {
-    "badge": "Our Journey & Evolution",
+    "badge": "Institutional Background & Journey",
     "title": "Our History",
     "subtitle": "From vision to national impact: The journey of NIRDC in transforming Sri Lanka's research ecosystem into commercial realities.",
-    "intro": "The National Initiative for R&D Commercialisation (NIRDC) was founded at the Presidential Secretariat as a decisive national response to bridge the long-standing divide between academic research and commercial industry.",
+    "backgroundTitle": "Institutional Background & Genesis",
+    "backgroundBadge": "Presidential Secretariat Initiative",
+    "backgroundContent": "We are a multidisciplinary team established through a state-sector initiative bringing together scientists, administrators, economists, industrialists, legal experts, and scholars across various disciplines to accelerate the commercialisation of completed or near-completed Research and Development (R&D) in Sri Lanka. Operating under the Presidential Secretariat, our national framework initiates a long-term national R&D mechanism. Headquartered at the Presidential Secretariat, the National Initiative for Research and Development Commercialisation operationalizes government financial funding for near-completed R&D projects, matches completed R&D projects with investors, and assists researchers facing commercialisation hurdles.",
+    "milestonesTitle": "Our Journey & Key Milestones",
     "milestones": [
       {
         "year": "Phase 1",
@@ -306,10 +327,24 @@
     ],
     "quote": "Empowering homegrown innovation to build a resilient, knowledge-driven Sri Lankan economy."
   },
+  "functionsServices": {
+    "title": "Functions & Services",
+    "subtitle": "Key commercialisation services provided by the National Initiative for Research and Development Commercialisation for state and semi-government institutions, researchers, innovators, and entrepreneurs.",
+    "intro": "The main services provided by the National Initiative for Research and Development Commercialisation (NIRDC) for state and semi-government institutions, researchers, innovators, and entrepreneurs regarding the commercialisation of Research and Development (R&D) projects are outlined below:",
+    "mainFunctionsTitle": "Key Functions",
+    "functionsList": [
+      "Providing government financial funding (up to LKR 500 Million) for near-completed Research and Development (R&D) projects.",
+      "Matching investors for completed Research and Development (R&D) projects.",
+      "Resolving problems and bottlenecks of researchers who have already onboarded or engaged investors.",
+      "Raising public awareness regarding research and development, and disseminating research-based scientific knowledge."
+    ]
+  },
   "footer": {
     "brandDescription": "National Initiative for Research & Development Commercialisation, driving innovation and economic growth in Sri Lanka.",
     "contactUs": "Contact Us",
-    "address": "Presidential Secretariat, Galle Face, Colombo 01, Sri Lanka.",
+    "connectWithUs": "Connect with Us",
+    "address": "Presidential Secretariat,\nGalle Face,\nColombo 01,\nSri Lanka.",
+    "phone": "+94 (0)11 2354 354",
     "quickLinks": "Quick Links",
     "home": "Home",
     "aboutUs": "About Us",
